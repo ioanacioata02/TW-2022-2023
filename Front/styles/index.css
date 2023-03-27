@@ -1,6 +1,7 @@
 :root {
     --main-bg-color: #7EB09B;
     --accent-color: #475B5A;
+    --text-color:#fff;
 }
 
 /*Remove the padding and the margin of every html element*/
@@ -17,6 +18,7 @@ body {
 /*remove any kind of decorations for the links*/
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* remove the dots of a list*/
@@ -31,11 +33,11 @@ li {
     justify-content: space-between;
     padding: 20px;
     background-color: var(--main-bg-color);
-    color: #fff;
+    color:var(--text-color);
 }
 
 .nav-links a {
-    color: #fff;
+    color: var(--text-color)
 }
 
 .logo {
@@ -49,44 +51,53 @@ li {
 }
 
 
- .dropbtn {
-  
-    cursor: pointer;
-  }
-  
+.dropbtn {
 
-  
-  .dropdown {
+    cursor: pointer;
+}
+
+
+
+.dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown-menu {
+}
+
+.dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0.5em;
+    background-color: var(--accent-color);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dropdown-menu a {
-    color: black;
-    padding: 12px 16px;
+}
+
+.dropdown-menu a {
+    color: var(--text-color);
+    padding: 4;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-menu a:hover {background-color: #ddd;}
-
-  .show {display:block;} 
-
-
-.menu li:hover {
-    background-color: #4c9e9e;
-    border-radius: 5px;
-    transition: 0.3s ease;
 }
+
+.dropdown-menu a:hover {
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    border-color: rgb(43, 25, 25);
+    background-color: var(--accent-color-2);
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+li:hover>a {
+    color: var(--accent-color);
+}
+
 
 .menu li {
     padding: 5px 14px
@@ -140,7 +151,10 @@ li {
     height: 44px;
     object-fit: cover;
 }
-
+.language-list:hover
+{
+    width: 2.5em;
+}
 @media (max-width: 1400px) {
     .search-bar {
         width: 25em;
@@ -172,8 +186,7 @@ li {
 
         display: none;
         position: absolute;
-        background-color: teal;
-    
+        background-color: var(--accent-color);
         right: 0;
         left: 0;
         text-align: center;
@@ -181,11 +194,7 @@ li {
 
     }
 
-    .menu li:hover {
-        display: inline-block;
-        background-color: #4c9e9e;
-        transition: 0.3s ease;
-    }
+
 
     .menu li+li {
         margin-top: 12px;

@@ -14,32 +14,39 @@
 
 <body>
     <nav class="navbar ">
-        <div class="logo"><img class ="image-logo"src="../assets/logo.svg"></div>
+        <div class="logo"><img class="image-logo" src="../assets/logo.svg"></div>
         <input type="text" class="search-bar" placeholder="Search">
         <ul class="nav-links">
             <input type="checkbox" id="checkbox_toggle" style="display: none;">
-            <label for="checkbox_toggle" class="menu-icon-phones" >&#9776;</label>
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
             <div class="menu">
                 <li><a href="/">Home</a></li>
                 <li class="dropdown">
-                    <a onclick="myFunction()" class="dropbtn">Courses</a>
-                <div id="myDropdown" class="dropdown-menu">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-                   
+                    <a onclick="myFunction('myDropdown')" class="dropbtn">Courses</a>
+                    <div id="myDropdown" class="dropdown-menu">
+                        <a href="#">Decorator</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+
                 </li>
-                <li ><a href="/">About</a></li>
-                <li id="#log-in"> <a href="/">Log In</a></li>
-                <li id="#sign-up"><a href="/">Sign Up</a></li>
-                <li class="languages">
+                <li><a href="/">About</a></li>
+                <li id="log-in"> <a href="/">Log In</a></li>
+                <li id="sign-up"><a href="/">Sign Up</a></li>
+                <li class="dropdown">
+                    <img onclick="myFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
+                        src="../assets/flag_en.svg">
+                    <div id="myDropdown2" class="dropdown-menu">
+                        <img src="../assets/flag_en.svg" id="language-eng" class="language-list">
+                        <img src="../assets/flag_ro.svg" id="language-ro" class="language-list">
+                    </div>
                 </li>
+
             </div>
         </ul>
     </nav>
     <script src="../scripts/login.js" defer></script>
-    
+
 </body>
 
 </html>
