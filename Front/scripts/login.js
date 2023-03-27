@@ -6,7 +6,7 @@ let element2=  document.querySelector('#sign-up');
 element2.style.display="none";
 const newItem =  document.createElement('li');
 newItem.id='profile-button';
-newItem.innerHTML='<a href="/">Profile</a>';
+newItem.innerHTML='<a href="profile-stats.html">Profile</a>';
 element1.parentNode.replaceChild(newItem, element1);
 }
 
