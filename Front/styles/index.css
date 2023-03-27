@@ -1,5 +1,6 @@
 :root {
-    --main-bg-color: rgb(143, 188, 143);
+    --main-bg-color: #7EB09B;
+    --accent-color: #475B5A;
 }
 
 /*Remove the padding and the margin of every html element*/
@@ -47,6 +48,40 @@ li {
     font-size: 18px;
 }
 
+
+ .dropbtn {
+  
+    cursor: pointer;
+  }
+  
+
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {background-color: #ddd;}
+
+  .show {display:block;} 
+
+
 .menu li:hover {
     background-color: #4c9e9e;
     border-radius: 5px;
@@ -61,117 +96,84 @@ li {
     position: relative;
 }
 
-.dropdown {
-    background-color: rgb(1, 139, 139);
-    padding: 1em 0;
-    position: absolute;
-    display: none;
-    border-radius: 8px;
-    top: 35px;
-}
 
-.dropdown li+li {
-    margin-top: 10px;
-}
-
-.dropdown li {
-    padding: 0.5em 1em;
-    width: 8em;
-    text-align: center;
-}
-.search-bar
-{
+.search-bar {
     width: 40em;
-    line-height:3em;
+    line-height: 3em;
     border-radius: 15px;
     border: none;
 }
-.search-bar::placeholder
-{
+
+.search-bar::placeholder {
     padding-left: 5px;
 }
-.dropdown li:hover {
-    background-color: #4c9e9e;
+
+
+
+.languages {
+    position: relative;
 }
 
-.courses:hover .dropdown {
-    display: block;
-    right: 0;
-}
-.languages
-{
-    position: relative; 
-}
-.languages:hover .dropdown
-{
-    display: block;
-    right: 0;
-}
-.menu-icon-phones
-{
+.menu-icon-phones {
     display: none;
 }
-.language-display
-{
+
+.language-display {
     width: 2em;
     margin: 0;
     padding-top: 5px;
-    object-fit:fill;
+    object-fit: fill;
     object-position: center;
-  
+
 }
-.language-list
-{
+
+.language-list {
     width: 2em;
     margin: 0;
     padding-top: 5px;
-    object-fit:fill;
+    object-fit: fill;
     object-position: center;
 }
 
-.image-logo
-{
+.image-logo {
     width: 168px;
     height: 44px;
     object-fit: cover;
 }
 
-@media (max-width: 1400px)
-{
-    .search-bar
-{
-    width: 25em;
-    line-height:3em;
-    border-radius: 15px;
-    border: none;
-}
-}
-
-@media (max-width: 1200px)
-{
-    .search-bar
-{
-    width: 20em;
-    line-height:3em;
-    border-radius: 15px;
-    border: none;
-}
-}
-
-@media (max-width: 1250px) {
-    
-    .search-bar
-    {
-        width: 40em;
-        line-height:3em;
+@media (max-width: 1400px) {
+    .search-bar {
+        width: 25em;
+        line-height: 3em;
         border-radius: 15px;
         border: none;
     }
+}
+
+@media (max-width: 1200px) {
+    .search-bar {
+        width: 20em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+@media (max-width: 1250px) {
+
+    .search-bar {
+        width: 40em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+
     .menu {
 
         display: none;
         position: absolute;
         background-color: teal;
+    
         right: 0;
         left: 0;
         text-align: center;
@@ -196,59 +198,30 @@ li {
     .menu-icon-phones {
         display: block;
     }
-
-    .dropdown {
-        left: 50%;
-        top: 30px;
-        transform: translateX(35%);
-        transform: translateY(-10px);
-        z-index: 10;
-    }
-
-    .dropdown li:hover {
-        background-color: #4c9e9e;
-    }
-    .courses:hover .dropdown {
-        display: block;
-        float: none;
-        width: 150px;
-
-    }
-    .languages:hover .dropdown
-    {
-        display: block;
-        float: none;
-        width: 150px;
-        
-    }
 }
 
-@media (max-width: 800px) 
-{
-    .search-bar
-    {
+@media (max-width: 800px) {
+    .search-bar {
         width: 25em;
-        line-height:3em;
+        line-height: 3em;
         border-radius: 15px;
         border: none;
     }
 }
-@media (max-width: 600px) 
-{
-    .search-bar
-    {
+
+@media (max-width: 600px) {
+    .search-bar {
         width: 20em;
-        line-height:3em;
+        line-height: 3em;
         border-radius: 15px;
         border: none;
     }
 }
-@media (max-width: 500px) 
-{
-    .search-bar
-    {
+
+@media (max-width: 500px) {
+    .search-bar {
         width: 15em;
-        line-height:3em;
+        line-height: 3em;
         border-radius: 15px;
         border: none;
     }
