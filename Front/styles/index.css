@@ -118,6 +118,7 @@ li {
     padding-top: 5px;
     object-fit:fill;
     object-position: center;
+  
 }
 .language-list
 {
@@ -126,6 +127,13 @@ li {
     padding-top: 5px;
     object-fit:fill;
     object-position: center;
+}
+
+.image-logo
+{
+    width: 168px;
+    height: 44px;
+    object-fit: cover;
 }
 
 @media (max-width: 1400px)
@@ -193,6 +201,8 @@ li {
         left: 50%;
         top: 30px;
         transform: translateX(35%);
+        transform: translateY(-10px);
+        z-index: 10;
     }
 
     .dropdown li:hover {
@@ -209,6 +219,7 @@ li {
         display: block;
         float: none;
         width: 150px;
+        
     }
 }
 
