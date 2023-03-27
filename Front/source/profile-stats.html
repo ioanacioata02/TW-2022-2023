@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <title>InformatiX</title>
+</head>
+
+<body>
+    <nav>
+
+    </nav>
+    <main class="main-box-profile">
+        <div class="sidebar">
+            <div class="up">
+                <img class="circle" src="https://randomuser.me/api/portraits/women/64.jpg" alt="user">
+            </div>
+            <ul class ="top-txt">
+                <li>
+                    <h2>Nume</h2>
+                </li>
+                <li>
+                    <h3>
+                        Rol
+                    </h3>
+                </li>
+            </ul>
+            <ul class="profile-options">
+                <!--<li><a href="#"><span class="icon"></span><span class="profile-item">detalii cont?</span></a></li>-->
+                <li><a href="#statistici"><i class="fas fa-chart-bar"></i><span class="profile-item">statistici</span></a></li>
+                <li><a href="#clase"><i class='fas fa-school'></i><span class="profile-item">clase</span></a></li>
+                <li><a href="#teme"><i class='fas fa-book-open'></i><span class="profile-item">teme</span></a></li>
+                <li><a href="#istoric-probleme"><i class="fa fa-history" aria-hidden="true"></i><span class="profile-item">istoric
+                            probleme</span></a></li>
+                <li><a href="#comentarii"><i class='fas fa-comment-alt'></i><span class="profile-item">comentarii</span></a>
+                </li>
+                <li><a href="#"><span class="icon"></span><span class="profile-item">logout</span></a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <section id="statistici">
+                <div class="item" id="all">
+                </div>
+                <div class="item" id="easy">
+                    <div class="progress-bar">
+                        <div class="text">
+                            <span id="number1">87</span>
+                            <span>%</span>
+                        </div>
+                        <svg>
+                            <circle id="easy-svg" cx="80" cy="80" r="60"></circle>
+                        </svg>
+                    </div>
+                    <h3>EASY</h3>
+                </div>
+                <div class="item" id="medium">
+                </div>
+                <div class="item" id="hard">
+                </div>
+        </div>
+    </main>
+    
+    <script>
+        let number = document.getElementById("number1");
+        let myCircle = document.getElementById("easy-svg");
+        let counter = 0;
+
+        let counterLimit = Number(number.innerHTML);
+        const loadProgressBar = (procentValue, counter, counterLimit, progressBar, length) => {
+            setInterval(() => {
+                if (counter == counterLimit) {
+                    clearInterval();
+                }
+                else {
+                    counter += 1;
+                    procentValue.innerHTML = counter;
+                    myCircle.style.strokeDashoffset = length - length/100*counter;
+                }
+            }, 25)
+        }
+
+        loadProgressBar(number, counter, counterLimit, myCircle, 369);
+    </script>
+</body>
+
+</html>
