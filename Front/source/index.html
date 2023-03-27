@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatix</title>
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+
+<body>
+    <nav class="navbar ">
+        <div class="logo"><img class ="image-logo"src="../assets/logo.svg"></div>
+        <input type="text" class="search-bar" placeholder="Search">
+        <ul class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display: none;">
+            <label for="checkbox_toggle" class="menu-icon-phones" >&#9776;</label>
+            <div class="menu">
+                <li><a href="/">Home</a></li>
+                <li class="courses">
+                    <a href="/">Courses</a>
+                    <ul class="dropdown">
+                        <li><a href="/">Dropdown 1 </a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 3</a></li>
+                        <li><a href="/">Dropdown 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="/">About</a></li>
+                <li><a href="/">Log In</a></li>
+                <li><a href="/">Sign Up</a></li>
+                <li>
+                </li>
+                <li class="languages">
+                    <img class="language-display" id="displayed-image" src="../assets/flag_en.svg">
+                    <ul class="dropdown">
+                        <li > <img src="../assets/flag_en.svg" id="language-eng" class="language-list"></li>
+                        <li > <img src="../assets/flag_ro.svg" id="language-ro" class="language-list"></li>
+                      
+                    </ul>
+                </li>
+            </div>
+        </ul>
+    </nav>
+    <script src="../scripts/changeDisplayLanugage.js"></script>
+</body>
+
+</html>
