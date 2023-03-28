@@ -1,17 +1,16 @@
-function myFunction(dropdownId) {
-    document.getElementById(dropdownId).classList.toggle("show");
-  }
-  
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-menu");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+let oppend = null;
+
+function dropDownFunction(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+
+    if (oppend === dropdownId && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        oppend = null;
+    } else {
+        if (oppend !== null) {
+            document.getElementById(oppend).classList.remove('show');
         }
-      }
+        dropdown.classList.add('show');
+        oppend = dropdownId;
     }
-  } 
+}

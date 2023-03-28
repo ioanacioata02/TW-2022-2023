@@ -1,0 +1,16 @@
+.filter-serach-bar
+{
+    line-height: 3em;
+    border:none;
+    border-radius: 6px;
+    box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.filter-serach-bar:focus
+{
+    outline-offset: 2px;
+    outline-color: gray;
+}
+.filter-serach-bar::placeholder
+{
+    text-align:center;
+}

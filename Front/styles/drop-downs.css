@@ -1,0 +1,42 @@
+.dropbtn {
+
+    cursor: pointer;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    padding: 0.5em;
+    background-color: var(--accent-color);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: var(--text-color);
+    padding: 4;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    border-color: rgb(43, 25, 25);
+    background-color: var(--accent-color-2);
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    
+}
