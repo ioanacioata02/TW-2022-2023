@@ -1,0 +1,196 @@
+:root {
+    --main-bg-color: #7EB09B;
+    --accent-color: #475B5A;
+    --text-color:#fff;
+}
+
+/*Remove the padding and the margin of every html element*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+}
+
+/*remove any kind of decorations for the links*/
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* remove the dots of a list*/
+li {
+    list-style: none;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--main-bg-color);
+    color:var(--text-color);
+}
+
+.nav-links a {
+    color: var(--text-color)
+}
+
+.logo {
+    font-size: 32px;
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+
+
+
+.menu-anchor:hover {
+    color: var(--accent-color);
+}
+
+
+.menu li {
+    padding: 5px 14px
+}
+
+.courses {
+    position: relative;
+}
+
+
+.search-bar {
+    width: 40em;
+    line-height: 3em;
+    border-radius: 15px;
+    border: none;
+}
+
+.search-bar::placeholder {
+    padding-left: 5px;
+}
+
+
+
+.languages {
+    position: relative;
+}
+
+.menu-icon-phones {
+    display: none;
+}
+
+.language-display {
+    width: 2em;
+    margin: 0;
+    padding-top: 5px;
+    object-fit: fill;
+    object-position: center;
+
+}
+
+.language-list {
+    width: 2em;
+    margin: 0;
+    padding-top: 5px;
+    object-fit: fill;
+    object-position: center;
+}
+
+.image-logo {
+    width: 168px;
+    height: 44px;
+    object-fit: cover;
+}
+.language-list:hover
+{
+    width: 2.5em;
+}
+@media (max-width: 1400px) {
+    .search-bar {
+        width: 25em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .search-bar {
+        width: 20em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+@media (max-width: 1250px) {
+
+    .search-bar {
+        width: 40em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+
+    .menu {
+
+        display: none;
+        position: absolute;
+        background-color: var(--accent-color);
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 16px 0;
+
+    }
+
+
+
+    .menu li+li {
+        margin-top: 12px;
+    }
+
+    input[type=checkbox]:checked~.menu {
+        display: block;
+    }
+
+    .menu-icon-phones {
+        display: block;
+    }
+}
+
+@media (max-width: 800px) {
+    .search-bar {
+        width: 25em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-bar {
+        width: 20em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .search-bar {
+        width: 15em;
+        line-height: 3em;
+        border-radius: 15px;
+        border: none;
+    }
+}

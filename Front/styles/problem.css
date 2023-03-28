@@ -1,0 +1,112 @@
+:root {
+    --main-bg-color: #7EB09B;
+    --accent-color: #475B5A;
+    --text-color:#fff;
+}
+.filter-serach-bar
+{
+    line-height: 3em;
+    border:none;
+    border-radius: 6px;
+    box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.filter-serach-bar:focus
+{
+    outline-offset: 2px;
+    outline-color: gray;
+}
+.filter-difficulty-button, .filter-tags-button,  .filter-status-button
+{
+    border:none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, border 0.05s;
+}
+.filter-difficulty-button:hover, .filter-tags-button:hover,  .filter-status-button:hover
+{
+    background-color: 	#FFF5EE;
+}
+.filter-difficulty-button:active, .filter-tags-button:active,  .filter-status-button:active
+{
+    border: solid;
+    border-color: var(--accent-color);
+}
+
+.filter-serach-bar::placeholder
+{
+    text-align:center;
+}
+    .filter-system
+    {
+        display: grid;
+        gap:10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top:10px;
+        grid-template-columns: 70fr 10fr 10fr 10fr;
+    }
+    .problems-header
+    {
+        background-color: #0b4c5f;
+        display: grid;
+        margin-top: 20px;
+        gap: 5px;
+        grid-template-columns: 25fr 25fr 25fr 25fr;
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .problems-header-content
+    {
+        text-align: center;
+        font-size: 20px;
+    }
+    .problem
+    {
+        display: grid;
+        margin-top: 20px;
+        grid-template-columns: 25fr 25fr 25fr 25fr;
+        margin-left:5px;
+        cursor: pointer;
+        margin-right:5px;
+    }
+    .problem-main
+    {
+     font-size: 18px;
+     text-align: center;
+     border: solid;   
+    }
+    .problem-main-end
+    {
+        font-size: 18px;
+        text-align: center;
+        border: solid;   
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .problem-main-start
+    {
+        font-size: 18px;
+        text-align: center;
+        border: solid; 
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .main-content {
+        background-color: var(--accent-color);
+        margin-top: 4em;
+        
+    }
+    .filler {
+        background-color: red;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-container {
+        display: grid;
+        grid-template-columns: 10fr 80fr 10fr;
+        gap: 0px;
+        min-height: 100vh;
+
+    }
