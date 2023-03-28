@@ -25,10 +25,10 @@
                     none;">
             <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
             <div class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/">Problem</a></li>
+                <li><a class="menu-anchor" href="index.html">Home</a></li>
+                <li><a class="menu-anchor" href="problems.html">Problem</a></li>
                 <li class="dropdown">
-                    <a onclick="dropDownFunction('myDropdown')" class="dropbtn">Courses</a>
+                    <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
                         <a href="#">Decorator</a>
                         <a href="#">Link 2</a>
@@ -36,9 +36,9 @@
                     </div>
 
                 </li>
-                <li><a href="about.html">About</a></li>
-                <li id="log-in"> <a href="/">Log In</a></li>
-                <li id="sign-up"><a href="/">Sign Up</a></li>
+                <li><a class="menu-anchor" href="about.html">About</a></li>
+                <li id="log-in"> <a class="menu-anchor" href="/">Log In</a></li>
+                <li id="sign-up"><a class="menu-anchor" href="/">Sign Up</a></li>
                 <li class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
                         src="../assets/flag_en.svg">
@@ -59,7 +59,25 @@
                 <button class="filter-tags-button">Tags</button>
                 <button class="filter-status-button">Status</button>
             </div>
-
+            <div class="problems-header">
+               <span class="problems-header-content">Title</span>
+               <span class="problems-header-content">Status</span>
+               <span class="problems-header-content">Acceptance</span>
+               <span class="problems-header-content">Difficulty</span>
+            </div>
+            <div class="problems">
+                <ul>
+                    <li class="problem-list">
+                        <a class="problem">
+                        <span class="problem-main">1.Two Sum</span>
+                        <span class="problem-main-start">Done</span>
+                        <span class="problem-main">64%</span>
+                        <span class="problem-main-end">easy</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+             </div>
         </div>
 
         <div class="filler">Right column</div>
@@ -70,33 +88,5 @@
 
 </html>
 <style>
-    .filter-system
-    {
-        display: grid;
-        gap:10px;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top:10px;
-        grid-template-columns: 70fr 10fr 10fr 10fr;
-    }
-    .main-content {
-        background-color: yellow;
-        margin-top: 4em;
-        
-    }
 
-    .filler {
-        background-color: red;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-
-    .content-container {
-        display: grid;
-        grid-template-columns: 10fr 80fr 10fr;
-        gap: 0px;
-        min-height: 100vh;
-
-    }
 </style>

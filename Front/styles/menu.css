@@ -53,7 +53,7 @@ li {
 
 
 
-li:hover>a {
+.menu-anchor:hover {
     color: var(--accent-color);
 }
 
