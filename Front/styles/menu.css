@@ -220,7 +220,6 @@ li {
 
 
 
-/* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -268,8 +267,6 @@ span.psw {
   font-size: 20px;
 }
 
-
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
