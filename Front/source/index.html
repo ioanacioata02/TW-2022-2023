@@ -37,62 +37,58 @@
 
                 </li>
                 <li><a class="menu-anchor" href="about.html">About</a></li>
-                <li> <button class="menu-anchor" onclick="document.getElementById('01').style.display='block'" >Login</button>
+                <li> <a class="menu-anchor" onclick="document.getElementById('01').style.display='block'" >Login</a>
                     <div id="01" class="bkg-login">
   
                         <form class="login-form">
                           <div class="imgcontainer">
                             <span onclick="document.getElementById('01').style.display='none'" class="close" title="Close Form"> &#x2716;</span>
-                            <h1>Login here!👤</h1>
+                            <h1>Login here!&#x1F464;</h1>
                           </div>
                       
                           <div class="form-fields">
                             <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Type Username" name="uname" required>
+                            <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
                       
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Type Password" name="psw" required>
+                            <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
                               
-                            <button  >Login</button>
+                            <button class="login-button" >Login</button>
             
+                          
                           </div>
-                      
+              
+                    </form> 
+   
+                </div>
 
-                        </form>
-                      </div>
                       
                       
                 </li>
                 <li>
-                <button class="menu-anchor" onclick="document.getElementById('02').style.display='block'" >Sign Up</button>
+                <a class="menu-anchor" onclick="document.getElementById('02').style.display='block'" >Sign Up</a>
                     <div id="02" class="bkg-login">
   
                         <form class="login-form">
                           <div class="imgcontainer">
                             <span onclick="document.getElementById('02').style.display='none'" class="close" title="Close Form"> &#x2716;</span>
-                            <h1>Sign up here!👤</h1>
+                            <h1>Sign up here!&#x1F464;</h1>
                           </div>
                       
                           <div class="form-fields">
                             <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Type Username" name="uname" required>
+                            <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
                       
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Type Password" name="psw" required>
+                            <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
                               
-                            <button  >Sign up</button>
+                            <button class="login-button" >Sign up</button>
             
                           </div>
-                      
-                          <script>
-                            var login_form = document.getElementById('02');
-                            window.onclick = function(event) {
-                                if (event.target == login_form) {
-                                    login_form.style.display = "none";
-                                }
-                            }
-                            </script>
-                        </form></li>
+                        </form>
+                        </div>
+        
+                        </li>
                 <li class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
                         src="../assets/flag_en.svg">

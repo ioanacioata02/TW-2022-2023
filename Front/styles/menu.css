@@ -195,8 +195,7 @@ li {
 }
 
 
-
-input[type=text], input[type=password] {
+.login-input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -205,9 +204,8 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-
-button {
-  background-color: var(--main-bg-color);
+.login-button {
+  background-color:rgb(21, 41, 21);
   color: white;
   margin: none;
   border: none;
@@ -215,11 +213,14 @@ button {
   width: 100%;
   font-family: cursive;
   font-size:18px;
+  padding-bottom: 10px;
+  padding-top:5px;
+
 }
 
 
 
-
+/* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -228,7 +229,7 @@ button {
 }
 
 
-.form {
+.form-fields {
   padding: 16px;
 }
 
@@ -248,6 +249,7 @@ span.psw {
   overflow: auto; 
   background-color: rgba(0,0,0,0.4); 
   padding-top: 60px;
+  padding-left:20px;
 }
 
 .login-form {
@@ -267,7 +269,7 @@ span.psw {
 }
 
 
-
+/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;

@@ -20,5 +20,3 @@ function loggedOut()
     newItem.innerHTML='<a href="/">Log In</a>';
     element1.parentNode.replaceChild(newItem, element1);
 }
-
-
