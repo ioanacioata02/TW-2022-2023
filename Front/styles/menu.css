@@ -154,7 +154,6 @@ li {
     }
 
 
-
     .menu li+li {
         margin-top: 12px;
     }
@@ -193,4 +192,88 @@ li {
         border-radius: 15px;
         border: none;
     }
+}
+
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button {
+  background-color: var(--main-bg-color);
+  color: white;
+  margin: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: cursive;
+  font-size:18px;
+}
+
+
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+  color:black;
+}
+
+
+.form {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+.bkg-login {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 60px;
+}
+
+.login-form {
+   
+  background-color: #a3beb5;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 40%; 
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  bottom:15px;
+  color: #000;
+  font-size: 20px;
+}
+
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
 }
