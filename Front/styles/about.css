@@ -39,7 +39,7 @@ a{
     
   
    
-    width: 30%;
+    width: 25%;
    
 
 
@@ -52,6 +52,7 @@ a{
     flex-direction: row;
     justify-content: flex-start;
     margin-right:20px;
+    object-fit: cover;
 }
 .column
 {
@@ -68,6 +69,7 @@ p{
 
 .poze{ width:150px;
     height:190px;
+   
 
 
 }
@@ -92,4 +94,7 @@ p{
     height:5%;
     margin-left:0;
 
+}
+h1{
+font-size: 60px;
 }
