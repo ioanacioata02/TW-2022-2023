@@ -26,7 +26,6 @@ li {
     list-style: none;
 }
 
-
 .navbar {
     display: flex;
     align-items: center;
@@ -120,6 +119,9 @@ li {
         line-height: 3em;
         border-radius: 15px;
         border: none;
+    }
+    .menu-anchor:hover {
+        color:  #68a5a1 ;
     }
 }
 
