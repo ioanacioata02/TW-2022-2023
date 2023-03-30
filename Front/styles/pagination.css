@@ -1,0 +1,38 @@
+:root {
+    --yes-no-border-radius: 10px;
+    --pagination-buttons-border-radius: 5px;
+    --pagination-active-button-col: #0a91c2;
+}
+
+.hidden {
+    display: none;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+    justify-content: center;
+}
+
+.pagination-number,
+.pagination-button {
+    font-size: 1em;
+    background-color: transparent;
+    border: none;
+    margin: 0.25em 0.25em;
+    cursor: pointer;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: var(--pagination-buttons-border-radius);
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+    background: white;
+}
+
+.pagination-number.active {
+    color: white;
+    background: var(--pagination-active-button-col);
+}

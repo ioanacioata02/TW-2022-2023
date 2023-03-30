@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
@@ -90,4 +91,76 @@ td:last-child button.yes:hover {
 td:last-child button.no:hover {
   color: white;
   background-color: rgb(231, 82, 56);
+=======
+* {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  width: 90%;
+  padding: 1.2em;
+  margin: auto;
+  background: whitesmoke;
+}
+
+.select-box {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+select {
+  margin-left: 0.8em;
+  cursor: pointer;
+  border: none;
+}
+
+table {
+  width: 100%;
+  margin: 2px auto;
+  table-layout: auto;
+  background-color: #ffff;
+  border-collapse: collapse;
+}
+
+tr {
+  border: 1px solid #b3b2b2;
+}
+
+table tr th,
+td {
+  padding: 0.5em;
+}
+
+.table-admin td:last-child button {
+  border: none;
+  color: whitesmoke;
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: var(--yes-no-border-radius);
+}
+
+td:last-child button.yes {
+  background-color: #16A085;
+}
+
+td:last-child button.no {
+  background-color: tomato;
+}
+
+td:last-child button.yes:hover {
+  color: white;
+  background-color: #128471;
+}
+
+td:last-child button.no:hover {
+  color: white;
+  background-color: rgb(231, 82, 56);
+>>>>>>> mainPage
 }

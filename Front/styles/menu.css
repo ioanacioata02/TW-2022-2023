@@ -1,6 +1,7 @@
 :root {
-    --main-bg-color: #7EB09B;
-    --accent-color: #475B5A;
+    --main-bg-color: #404258;
+    --accent-color: #474E68;
+    --accent-color-2:#6B728F;
     --text-color:#fff;
 }
 
@@ -25,7 +26,6 @@ a {
 li {
     list-style: none;
 }
-
 
 .navbar {
     display: flex;
@@ -54,7 +54,7 @@ li {
 
 
 .menu-anchor:hover {
-    color: var(--accent-color);
+    color: var(--accent-color-2);
 }
 
 
@@ -121,6 +121,9 @@ li {
         border-radius: 15px;
         border: none;
     }
+    .menu-anchor:hover {
+        color:  #68a5a1 ;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -152,6 +155,8 @@ li {
         padding: 16px 0;
 
     }
+
+
 
     .menu li+li {
         margin-top: 12px;
@@ -192,5 +197,3 @@ li {
         border: none;
     }
 }
-
-
