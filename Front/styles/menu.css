@@ -1,6 +1,7 @@
 :root {
-    --main-bg-color: #7EB09B;
-    --accent-color: #475B5A;
+    --main-bg-color: #404258;
+    --accent-color: #474E68;
+    --accent-color-2:#6B728F;
     --text-color:#fff;
 }
 
@@ -53,7 +54,7 @@ li {
 
 
 .menu-anchor:hover {
-    color: var(--accent-color);
+    color: var(--accent-color-2);
 }
 
 

@@ -1,7 +1,8 @@
 :root {
-    --main-bg-color: #7EB09B;
-    --accent-color: #475B5A;
-    --text-color: #fff;
+    --main-bg-color: #404258;
+    --accent-color: #474E68;
+    --accent-color-2:#6B728F;
+    --text-color:#fff;
 }
 
 .filter-serach-bar {
@@ -116,4 +117,18 @@
     gap: 0px;
     min-height: 100vh;
 
+}
+@media (max-width: 800px)
+{
+    .content-container
+    {
+        grid-template-columns: 100fr;
+    }
+    .filler {
+        background-color: red;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: none;
+    } 
 }
