@@ -8,6 +8,15 @@ let nrOfRows = selectedNr.value;
 let pageCount = Math.ceil(rows.length / nrOfRows);
 let currentPage = 1;
 
+prevButton.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+});
+
+
+nextButton.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+});
+
 selectedNr.onchange = reloadPage;
 
 function disableButton(button) {
@@ -79,14 +88,6 @@ function setCurrentPage(pageNum) {
 function loadPage() {
     getPaginationNumbers();
     setCurrentPage(1);
-
-    prevButton.addEventListener("click", () => {
-        setCurrentPage(currentPage - 1);
-    });
-
-    nextButton.addEventListener("click", () => {
-        setCurrentPage(currentPage + 1);
-    });
 
     document.querySelectorAll(".pagination-number").forEach((button) => {
         let pageIndex = Number(button.getAttribute("page-index"));
