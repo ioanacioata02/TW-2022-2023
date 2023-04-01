@@ -2,9 +2,11 @@
 	--sidebar-color: #195c70;;
 	--border-rad: 20px;
 	--text-color-sidebar: #c1bbda;
-	--neon-green: #39FF14;
+	--all-color:rgb(70, 22, 125);
+	--easy-color: #39FF14;
+	--medium-color:rgb(218, 169, 10);
+	--hard-color:#f45454;
 	--stats-bg-color:rgba(65, 74, 103, 0.353);
-
 
 	--main-bar-color: #3AAFA9;
     --accent-color: #2B7A78;
@@ -93,6 +95,7 @@ body{
 }
 
 .main-box-profile .main-content {
+	margin-top: 0;
 	background-color: var(--accent-color);
 	flex: 2.5;
 	padding: 1.5em;
@@ -200,34 +203,34 @@ body{
 }
 
 #all-svg{
-	stroke: rgb(70, 22, 125);
+	stroke: var(--all-color);
 }
 
 #easy-svg{
-	stroke: var(--neon-green);
+	stroke: var(--easy-color);
 }
 
 #medium-svg{
-	stroke: rgb(218, 169, 10);
+	stroke: var(--medium-color);
 }
 
 #hard-svg{
-	stroke: #f45454;
+	stroke: var(--hard-color);
 }
 
 #all h3, #all>span:last-child{
-	color: rgb(70, 22, 125);
+	color: var(--all-color);
 }
 
 #easy h3, #easy>span:last-child{
-	color: var(--neon-green);
+	color: var(--easy-color);
 }
 
 #medium h3, #medium>span:last-child{
-	color: rgb(218, 169, 10);
+	color: var(--medium-color);
 }
 
 #hard h3, #hard>span:last-child{
-	color: #f45454;
+	color: var(--hard-color);
 	
 }
