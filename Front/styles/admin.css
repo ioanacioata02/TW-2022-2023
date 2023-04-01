@@ -1,13 +1,28 @@
+:root {
+  --main-bar-color: #3AAFA9;
+  --accent-color: #2B7A78;
+  --text-color: #fff;
+  --text-hover: #4F4A41;
+  --background: #DEF2F1;
+  --drop-down: #2B7A78;
+
+
+  --border-rad: 20px;
+  --lighter-main-bar-color: #79dfda;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
+body{
+  background-color: var(--background);
+}
+
 main {
-  width: 90%;
   padding: 1.2em;
-  margin: auto;
-  background: whitesmoke;
+  margin: 0px 50px 0px 50px;
 }
 
 .select-box {
@@ -23,21 +38,52 @@ select {
   border: none;
 }
 
-table {
+.table-admin {
   width: 100%;
   margin: 2px auto;
   table-layout: auto;
   background-color: #ffff;
   border-collapse: collapse;
+  border-radius: var(--border-rad) var(--border-rad) 0 0;
+  font-size: 1em;
 }
 
-tr {
-  border: 1px solid #b3b2b2;
-}
-
-table tr th,
-td {
+.table-admin tr th,
+.table-admin td {
   padding: 0.5em;
+}
+
+.table-admin thead th:first-child {
+  border-radius: var(--border-rad) 0 0 0;
+}
+
+.table-admin thead th:last-child {
+  border-radius: 0 var(--border-rad) 0 0;
+}
+
+.table-admin thead{
+  background-color: var(--drop-down);
+}
+
+.table-admin tr:nth-child(even){
+  background-color: var(--lighter-main-bar-color);
+}
+
+.table-admin td {
+  text-align: center;
+}
+
+.tags button {
+  border: none;
+  color: black;
+  padding: 0.3em 0.6em;
+  text-align: center;
+  font-size: 1em;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: var(--yes-no-border-radius);
+  margin: 0 4px;
+  background-color: #ebc474;
 }
 
 .table-admin td:last-child button {
@@ -68,4 +114,13 @@ td:last-child button.yes:hover {
 td:last-child button.no:hover {
   color: white;
   background-color: rgb(231, 82, 56);
+}
+
+.select-box{
+  font-size: 1.2em;
+}
+
+#rows-per-page{
+  padding: 0.2em;
+  border-radius: 2px;
 }
