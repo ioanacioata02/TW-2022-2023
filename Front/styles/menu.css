@@ -1,18 +1,25 @@
 :root {
-    --main-bg-color: #7EB09B;
-    --accent-color: #475B5A;
+    --main-bar-color: #3AAFA9;
+    --accent-color: #2B7A78;
     --text-color:#fff;
+    --text-hover:#4F4A41;
+    --background:#DEF2F1;
+    --drop-down:#2B7A78;
+    
 }
+
 
 /*Remove the padding and the margin of every html element*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Roboto;
 }
 
 body {
     font-family: cursive;
+    background-color: var(--background);
 }
 
 /*remove any kind of decorations for the links*/
@@ -31,7 +38,7 @@ li {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bar-color);
     color:var(--text-color);
 }
 
@@ -45,7 +52,7 @@ li {
 
 .menu {
     display: flex;
-    gap: 1em;
+    gap: 3em;
     font-size: 18px;
 }
 
@@ -53,7 +60,7 @@ li {
 
 
 .menu-anchor:hover {
-    color: var(--accent-color);
+    color: var(--text-hover);
 }
 
 
@@ -121,7 +128,7 @@ li {
         border: none;
     }
     .menu-anchor:hover {
-        color:  #68a5a1 ;
+        color:  var(--text-hover) ;
     }
 }
 
@@ -147,7 +154,7 @@ li {
 
         display: none;
         position: absolute;
-        background-color: var(--accent-color);
+        background-color: var(--drop-down);
         right: 0;
         left: 0;
         text-align: center;
