@@ -1,0 +1,95 @@
++<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
+
+    <title>Informatix</title>
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/drop-downs.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/main-page-content.css">
+
+    <script src="../scripts/languageDisplay.js" defer></script>
+    <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/login.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <!--<input type="text" class="search-bar" placeholder="Search"> -->
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:
+                    none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" >Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" >Problem</a>
+                </div>
+                <div class="dropdown">
+                    <a >Courses</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" >About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor"
+                        id="log-in">Login</a>
+                    
+                </div>
+                <div>
+                    <a class="menu-anchor" id="sign-up">Sign Up</a>
+                </div>
+                <div class="dropdown">
+                    <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
+                        src="../assets/flag_en.svg" alt="">
+                    <div id="myDropdown2" class="dropdown-menu">
+                        <img src="../assets/flag_en.svg" id="language-eng" class="language-list" alt="">
+                        <img src="../assets/flag_ro.svg" id="language-ro" class="language-list" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="bkg-login">
+        <form class="login-form">
+            <div class="imgcontainer">
+                <a class="close" href="index.html"
+                    title="Close Form"> &#x2716;</a>
+                <h1>Login here!&#x1F464;</h1>
+            </div>
+            <div class="form-fields">
+                
+                    <b>Username</b>
+               
+                <input class="login-input" type="text" placeholder="Type Username" name="uname"
+                    required>
+               
+                    <b>Password</b>
+              
+                <input class="login-input" type="password" placeholder="Type Password" name="psw"
+                    required>
+                <button class="login-button">Login</button>
+            </div>
+        </form>
+        
+    </div>
+
+
+
+</body>
+
+</html>
