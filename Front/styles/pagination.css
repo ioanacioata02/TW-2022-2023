@@ -15,6 +15,7 @@
     justify-content: center;
 }
 
+.pagination-dots,
 .pagination-number,
 .pagination-button {
     font-size: 1em;
