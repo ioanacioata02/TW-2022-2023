@@ -101,8 +101,9 @@
   td:last-child button.yes {
     background-color: #16A085;
   }
-  tr td:nth-child(1) button.add_button {
+td:nth-child(3) button.add_button {
     background-color: #16A085;
+    color:white;
   }
   td:last-child button.no {
     background-color: tomato;
