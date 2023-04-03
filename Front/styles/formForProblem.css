@@ -41,16 +41,17 @@ body h2{
     box-sizing: border-box;
     margin-top: 0.4em;
     margin-bottom: 1.1em;
-    transition: 0.5s;
     outline: none;
 }
 
-textarea{
+.container textarea{
     resize: vertical;
 }
 
 .container input[type=text]:focus,
 .container textarea:focus{
+    transition: 0.5s;
+    transition-property: border;
     border-color: #195c70;
 }
 
