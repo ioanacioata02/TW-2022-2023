@@ -77,6 +77,7 @@ input[type=submit]:active {
     border-radius: var(--form-border-rad);
     background-color: var(--accent-color);
     padding: 1.2em;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.45);
 }
 
 .container details ul{
@@ -94,20 +95,20 @@ input[type=submit]:active {
     vertical-align: bottom;
 }
 
-.pass-link a{
+.link a{
     text-decoration: none;
     color: var(--text-hover);
     transition: 0.4s;
 }
 
-.pass-link a:hover{
+.link a:hover{
     color: brown;
 }
 
-.pass-link a:active{
-    font-size: 1.5em;
+.link a:active{
+    text-decoration: underline;
 }
 
-.pass-link{
+.link{
     margin-bottom: 0.5em;
 }
