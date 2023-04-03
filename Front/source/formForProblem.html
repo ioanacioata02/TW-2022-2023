@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/formForProblem.css">
+    <title>InformatiX</title>
+</head>
+
+<body>
+
+    <h2>Propose new problem</h2>
+
+    <div class="container">
+        <form action="">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
+
+
+            <label>Tags</label>
+            <details>
+                <summary>Options</summary>
+                <ul>
+                    <li><input type="checkbox" name="bkt" id="bkt"><label for="bkt">bkt</label></li>
+                    <li><input type="checkbox" name="tag" id="arrays"><label for="arrays">arrays</label></li>
+                    <li><input type="checkbox" name="tag" id="dynamicProgramming"><label
+                            for="dynamicProgramming">dynamic programming</label></li>
+                    <li><input type="checkbox" name="tag" id="tablouri"><label for="tablouri">multi-dimensional arrays</label></li>
+                    <li><input type="checkbox" name="tag" id="subprograms"><label for="subprograms">subprograms</label></li>
+                    <li><input type="checkbox" name="tag" id="recursion"><label
+                            for="recursion">recursion</label></li>
+                    <li><input type="checkbox" name="tag" id="greedy"><label for="greedy">greedy</label></li>
+                    <li><input type="checkbox" name="tag" id="divisibility"><label
+                            for="divisibility">divisibility</label></li>
+                    <li><input type="checkbox" name="tag" id="elementaryAlgorithms"><label
+                            for="elementaryAlgorithms">elementary algorithms</label></li>
+                </ul>
+            </details>
+            <br>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="The description of the problem" rows="6" required></textarea>
+            <label for="tests">Tests</label>
+            <textarea id="tests" name="tests" placeholder="{[input](output)}.&#10;{[input](output)}.&#10;{[input](output)}/" rows="5" required></textarea>
+            <div class="pass-link">
+                <a href="#">See model</a>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

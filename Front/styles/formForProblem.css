@@ -1,0 +1,112 @@
+:root{
+    --main-bar-color: #3AAFA9;
+    --accent-color: #2B7A78;
+    --text-color: #fff;
+    --text-hover: #4F4A41;
+    --background: #DEF2F1;
+    --drop-down: #2B7A78;
+
+    --form-border-rad: 5px;
+    --submit-btn-rad: 4px;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 90%;
+    margin: 10px auto;
+    font-size: 1.2em;
+    background-color: var(--background);
+    color: rgb(4, 6, 61);
+}
+
+body h2{
+    text-align: center;
+    padding: 0.4em;
+    color: black;
+}
+
+.container form>label::after{
+    content: ":";
+}
+
+.container input[type=text],
+.container textarea {
+    width: 100%;
+    padding: 1em;
+    border: 4px solid var(--main-bar-color);
+    border-radius: var(--form-border-rad);
+    box-sizing: border-box;
+    margin-top: 0.4em;
+    margin-bottom: 1.1em;
+    transition: 0.5s;
+    outline: none;
+}
+
+textarea{
+    resize: vertical;
+}
+
+.container input[type=text]:focus,
+.container textarea:focus{
+    border-color: #195c70;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 1em 1.4em;
+    border-radius: var(--submit-btn-rad);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+input[type=submit]:hover {
+    background-color: #195c70;
+}
+
+input[type=submit]:active {
+    transform: scale(0.9);
+}
+
+.container {
+    border-radius: var(--form-border-rad);
+    background-color: var(--accent-color);
+    padding: 1.2em;
+}
+
+.container details ul{
+    list-style-type: none;
+}
+
+.container details ul li{
+    padding: 0.15em;
+}
+
+.container input[type=checkbox]{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.4em;
+    vertical-align: bottom;
+}
+
+.pass-link a{
+    text-decoration: none;
+    color: var(--text-hover);
+    transition: 0.4s;
+}
+
+.pass-link a:hover{
+    color: brown;
+}
+
+.pass-link a:active{
+    font-size: 1.5em;
+}
+
+.pass-link{
+    margin-bottom: 0.5em;
+}
