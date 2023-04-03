@@ -98,7 +98,7 @@
     border-radius: var(--yes-no-border-radius);
   }
 
-td:nth-child(4) button.add_button ,td:nth-child(5) button.add_button,td:nth-child(6) button.add_button {
+td:last-child button.add_button {
     background-color: #16A085;
     border: none;
     color: whitesmoke;
@@ -111,20 +111,8 @@ td:nth-child(4) button.add_button ,td:nth-child(5) button.add_button,td:nth-chil
     border-radius: 10px;
   }
 
- td:nth-child(4) button.add_button:hover {
-    color: white;
-    background-color: #128471;
-  }
-  td:nth-child(5) button.add_button:hover
-  {
-    color: white;
-    background-color: #128471;
-  }
-  td:nth-child(6) button.add_button:hover
-  {
-    color: white;
-    background-color: #128471;
-  }
+ 
+  
   .select-box{
     font-size: 1.2em;
   }

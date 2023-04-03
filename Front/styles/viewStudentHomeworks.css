@@ -98,7 +98,7 @@
     border-radius: var(--yes-no-border-radius);
   }
 
-td:nth-child(4) button.add_button ,td:nth-child(5) button.add_button,td:nth-child(6) button.add_button {
+td:last-child button.add_button {
     background-color: #16A085;
     border: none;
     color: whitesmoke;
@@ -111,20 +111,40 @@ td:nth-child(4) button.add_button ,td:nth-child(5) button.add_button,td:nth-chil
     border-radius: 10px;
   }
 
- td:nth-child(4) button.add_button:hover {
+ td:last-child button.add_button:hover {
     color: white;
     background-color: #128471;
   }
-  td:nth-child(5) button.add_button:hover
-  {
+  .table-admin td:nth-last-child(2) button {
+    border: none;
+    color: whitesmoke;
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: 1em;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  td:nth-last-child(2) button.yes {
+    background-color: #16A085;
+  }
+  
+  td:nth-last-child(2) button.no {
+    background-color: tomato;
+  }
+  
+  td:nth-last-child(2) button.yes:hover {
     color: white;
     background-color: #128471;
   }
-  td:nth-child(6) button.add_button:hover
-  {
+  
+  td:nth-last-child(2) button.no:hover {
     color: white;
-    background-color: #128471;
+    background-color: rgb(231, 82, 56);
   }
+  
   .select-box{
     font-size: 1.2em;
   }
