@@ -55,10 +55,15 @@ body{
 	text-align: center;
 	padding: 0.4em;
 }
+
 .sidebar h2 {
 	color: #fff;
 	text-align: center;
 	padding: 0.5em;
+}
+
+.sidebar .top-txt{
+	margin-bottom: 0.5em;
 }
 
 .sidebar ul {
@@ -132,6 +137,11 @@ body{
 	border-radius: var(--border-rad);
 	width: 250px;
 	height: 250px;
+}
+
+#logout:active{
+	transition-duration: 0.3s;
+	background-color: #f45454;
 }
 
 @media (max-width: 900px) {

@@ -3,7 +3,7 @@ let proposeProblem = document.getElementById("propune-problema");
 
 proposeProblem.classList.add("hidden");
 
-if (role === "profesor") {
+if (role === "teacher") {
     proposeProblem.classList.remove("hidden");
 }
 
