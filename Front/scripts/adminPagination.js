@@ -141,4 +141,5 @@ function reloadPage() {
     reset();
     loadPage();
 }
+
 loadPage();

@@ -55,7 +55,13 @@ body h2{
     border-color: #195c70;
 }
 
-input[type=submit] {
+.form-buttons{
+    display: flex;
+    justify-content: space-between;
+    row-gap: 1em;
+}
+
+input[type=submit], .form-buttons .back-to-profile {
     background-color: #04AA6D;
     border: none;
     color: white;
@@ -69,8 +75,16 @@ input[type=submit]:hover {
     background-color: #195c70;
 }
 
-input[type=submit]:active {
+input[type=submit]:active, .form-buttons .back-to-profile:active {
     transform: scale(0.9);
+}
+
+.form-buttons .back-to-profile{
+    background-color: var(--main-bar-color);
+}
+
+.form-buttons .back-to-profile:hover{
+    background-color: #195c70;
 }
 
 .container {
@@ -111,4 +125,10 @@ input[type=submit]:active {
 
 .link{
     margin-bottom: 0.5em;
+}
+
+@media (max-width: 350px) {
+	.form-buttons{
+        flex-direction: column;
+    }
 }

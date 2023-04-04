@@ -3,7 +3,7 @@ let proposeProblem = document.getElementById("propune-problema");
 
 proposeProblem.classList.add("hidden");
 
-if (role === "profesor"){
+if (role === "profesor") {
     proposeProblem.classList.remove("hidden");
 }
 
@@ -26,10 +26,13 @@ function loadProgressBar(procentValue, counter, counterLimit, progressBar, lengt
     }, 25)
 }
 
-for(let i = 0; i < numberIds.length; i++){
+for (let i = 0; i < numberIds.length; i++) {
     let number = document.getElementById(numberIds[i]);
     let myCircle = document.getElementById(allCircles[i]);
     let counterLimit = Number(number.innerHTML);
     let counter = 0;
     loadProgressBar(number, counter, counterLimit, myCircle, 369);
 }
+
+let logout = document.getElementById("logout");
+logout.addEventListener("click", () => { loggedOut(); });

@@ -124,3 +124,12 @@ td:last-child button.no:hover {
   padding: 0.2em;
   border-radius: 2px;
 }
+
+.link-to-probl:hover{
+  font-weight: bold;
+  color: rgb(166, 0, 255);
+}
+
+.link-to-probl:active{
+  text-decoration: underline;
+}
