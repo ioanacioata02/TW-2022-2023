@@ -17,6 +17,7 @@ function loggedOut()
     element2.style.display="block";
     const newItem =  document.createElement('div');
     newItem.id='profile-button';
-    newItem.innerHTML="<a class=\"menu-anchor\" >Login</a>"
+    newItem.innerHTML = '<a class="menu-anchor" href="login.html" id="log-in">Login</a>';
+
     element1.parentNode.replaceChild(newItem, element1);
 }

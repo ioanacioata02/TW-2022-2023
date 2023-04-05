@@ -65,9 +65,9 @@
   align-items: center;
   background-color: #195c70;
   color: #FFFFFF;
-  font-weight: bold;
   font-size: 18px;
   padding: 10px;
+  font-weight: 500;
   margin: 20px 5px 0;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -135,7 +135,7 @@
     margin-top: 4em;
     padding: 5px;
     border-radius: 5px;
-
+    
 }
 
 .filler {
@@ -155,6 +155,24 @@
 }
 @media (max-width: 800px)
 {
+    .problems-header
+    {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .acceptance{
+        display: none;
+    }
+    .acceptance-rate
+    {
+        display: none;
+    }
+    .problem
+    {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 800px)
+{
     .content-container
     {
         grid-template-columns: 100fr;
@@ -165,4 +183,37 @@
         padding: 0;
         display: none;
     } 
+}
+@media (max-width:600px)
+{
+  
+    
+}
+
+@media (max-width: 600px)
+{
+    .filter-system 
+    {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .filter-serach-bar
+    {
+        grid-column: span 3;
+    }
+    .main-content
+    {
+        width: 100vw;
+    }
+    .filter-tags-button
+    {
+        grid-column: span 2;
+    }
+    .filter-difficulty-button,
+.filter-tags-button,
+.filter-status-button
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 }
