@@ -1,0 +1,134 @@
+:root{
+    --main-bar-color: #3AAFA9;
+    --accent-color: #2B7A78;
+    --text-color: #fff;
+    --text-hover: #4F4A41;
+    --background: #DEF2F1;
+    --drop-down: #2B7A78;
+
+    --form-border-rad: 5px;
+    --submit-btn-rad: 4px;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 90%;
+    margin: 10px auto;
+    font-size: 1.2em;
+    background-color: var(--background);
+    color: rgb(4, 6, 61);
+}
+
+body h2{
+    text-align: center;
+    padding: 0.4em;
+    color: black;
+}
+
+.container form>label::after{
+    content: ":";
+}
+
+.container input[type=text],
+.container textarea {
+    width: 100%;
+    padding: 1em;
+    border: 4px solid var(--main-bar-color);
+    border-radius: var(--form-border-rad);
+    box-sizing: border-box;
+    margin-top: 0.4em;
+    margin-bottom: 1.1em;
+    outline: none;
+}
+
+.container textarea{
+    resize: vertical;
+}
+
+.container input[type=text]:focus,
+.container textarea:focus{
+    transition: 0.5s;
+    transition-property: border;
+    border-color: #195c70;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: space-between;
+    row-gap: 1em;
+}
+
+input[type=submit], .form-buttons .back-to-profile {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 1em 1.4em;
+    border-radius: var(--submit-btn-rad);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+input[type=submit]:hover {
+    background-color: #195c70;
+}
+
+input[type=submit]:active, .form-buttons .back-to-profile:active {
+    transform: scale(0.9);
+}
+
+.form-buttons .back-to-profile{
+    background-color: var(--main-bar-color);
+}
+
+.form-buttons .back-to-profile:hover{
+    background-color: #195c70;
+}
+
+.container {
+    border-radius: var(--form-border-rad);
+    background-color: var(--accent-color);
+    padding: 1.2em;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.45);
+}
+
+.container details ul{
+    list-style-type: none;
+}
+
+.container details ul li{
+    padding: 0.15em;
+}
+
+.container input[type=checkbox]{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.4em;
+    vertical-align: bottom;
+}
+
+.link a{
+    text-decoration: none;
+    color: var(--text-hover);
+    transition: 0.4s;
+}
+
+.link a:hover{
+    color: brown;
+}
+
+.link a:active{
+    text-decoration: underline;
+}
+
+.link{
+    margin-bottom: 0.5em;
+}
+
+@media (max-width: 350px) {
+	.form-buttons{
+        flex-direction: column;
+    }
+}
