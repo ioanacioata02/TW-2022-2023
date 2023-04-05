@@ -67,10 +67,34 @@
         <div class="filler"></div>
         <div class="main-content">
             <div class="filter-system">
-                <input class="filter-serach-bar" type="text" placeholder="&#128269Search for a problem">
-                <button class="filter-difficulty-button">Difficulty</button>
-                <button class="filter-tags-button">Tags</button>
-                <button class="filter-status-button">Status</button>
+                <input class="filter-serach-bar" type="text" placeholder="&#128269;Search for a problem">
+
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('difficulty-dropdown')"
+                        class="filter-difficulty-button">Difficulty</button>
+                    <div id="difficulty-dropdown" class="dropdown-menu">
+                        <a href="#">Difficulty 1</a>
+                        <a href="#">Difficulty 2</a>
+                        <a href="#">Difficulty 3</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('tags-dropdown')" class="filter-tags-button">Tags</button>
+                    <div id="tags-dropdown" class="dropdown-menu">
+                        <a href="#">Arrays </a>
+                        <a href="#">Sortying</a>
+                        <a href="#">Hash maps</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('status-dropdown')" class="filter-status-button">Status</button>
+                    <div id="status-dropdown" class="dropdown-menu">
+                        <a href="#">Terminate </a>
+                        <a href="#">Incercate</a>
+                        <a href="#">Neincercat</a>
+                    </div>
+                </div>
             </div>
             <div class="problems-header">
                 <span class="problems-header-content">Title</span>
@@ -79,42 +103,42 @@
                 <span class="problems-header-content">Difficulty</span>
             </div>
             <div class="problems">
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                <a class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
-             
-             
-                    
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+
+
+
             </div>
         </div>
 

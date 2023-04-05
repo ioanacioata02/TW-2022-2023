@@ -12,4 +12,3 @@ function opentab(id)
     new_tab.style.gridColumn ='span 3';
     current_tab=new_tab;
 }
-
