@@ -1,10 +1,12 @@
 
 body, html
 {
-    background-color: #84CEEB;
+    background-color:#3AAFA9;
   
    margin-left: 10px;
    margin-right: 10px;
+   color:#fff;
+   font-family: Roboto;
 }
 
 .container
@@ -54,7 +56,7 @@ a{
     justify-content: flex-start;
     margin-right:20px;
     object-fit: cover;
-    background-color:#5680E9;
+    background-color:#2B7A78;
     margin:12px;
     border-radius:12px;
 }
