@@ -19,23 +19,28 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/main-page-content.css">
 
-
+    <script src="../scripts/languageDisplay.js" defer></script>
+    <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/login.js" defer></script>
 </head>
 
 <body>
+
     <div class="bkg-login">
-        <form class="login-form" method="POST" action="myClasses_teacher.html">
+        <form class="login-form">
             <div class="imgcontainer">
-                <a class="close" href="myClasses_teacher.html" title="Close Form"> &#x2716;</a>
-                <h1>Add student&#129485;</h1>
+                <a class="close" href="createHomework.html" title="Close Form"> &#x2716;</a>
+                <h1>Add problem to homework</h1>
             </div>
             <div class="form-fields">
+                <b>Problem ID</b>
 
-                <b>Username</b>
+                <input class="login-input" type="text" placeholder="Type Problem Id" name="pid" required>
 
-                <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
 
-                <button class="login-button">Add</button>
+
+                <button class="login-button" onclick="document.location='createHomework.html'"> Add problem </button>
+
             </div>
         </form>
 

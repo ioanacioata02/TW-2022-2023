@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/utilities.css">
-    <link rel="stylesheet" href="../styles/viewStudents.css">
+    <link rel="stylesheet" href="../styles/viewStudentHomeworks.css">
     <link rel="stylesheet" href="../styles/viewPage_general.css">
     <link rel="stylesheet" href="../styles/general_admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
     <script src="../scripts/adminPagination.js" defer></script>
     <title>InformatiX</title>
 </head>
@@ -29,57 +29,47 @@
             <table class="table-admin">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Topic</th>
-                        <th>Deadline</th>
-                        <th>View problems</th>
+                        <th>Problem ID</th>
+                        <th>Name</th>
+                        <th>Solved</th>
+                        <th>View problem</th>
                     </tr>
                 </thead>
                 <tbody id="candidate-problems">
                     <tr>
                         <td>1</td>
                         <td>Arrays</td>
-                        <td>23.07.2023</td>
-
-                        <td><button class="add_button" onclick="document.location='viewProblems.html'">View
-                                problems</button></td>
-
+                        <td><button class="yes">yes</button></td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View problem</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Greedy</td>
-                        <td>25.07.2023</td>
-
-                        <td><button class="add_button" onclick="document.location='viewProblems.html'">View
-                                problems</button></td>
-
+                        <td><button class="no">no</button></td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View problem</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Arrays</td>
-                        <td>23.07.2023</td>
-
-                        <td><button class="add_button" onclick="document.location='viewProblems.html'">View
-                                problems</button></td>
-
+                        <td><button class="yes">yes</button></td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View problem</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Lists</td>
-                        <td>23.07.2023</td>
-
-                        <td><button class="add_button" onclick="document.location='viewProblems.html'">View
-                                problems</button></td>
-
+                        <td>Arrays</td>
+                        <td><button class="yes">yes</button></td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View problem</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Arrays</td>
-                        <td>23.07.2022</td>
-
-                        <td><button class="add_button" onclick="document.location='viewProblems.html'">View
-                                problems</button></td>
-
+                        <td>Graphs</td>
+                        <td><button class="no">no</button></td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View problem</button>
+                        </td>
                     </tr>
 
                 </tbody>

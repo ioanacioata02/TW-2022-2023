@@ -1,108 +1,135 @@
+body,
+html {
+    background-color: #3AAFA9;
 
-body, html
-{
-    background-color:#3AAFA9;
-  
-   margin-left: 10px;
-   margin-right: 10px;
-   color:#fff;
-   font-family: Roboto;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-family: Roboto;
 }
 
-.container
-{
+.container {
     margin-top: 0;
     display: flex;
     flex-direction: row;
-  justify-content: space-between;
-    
-   
+    justify-content: space-between;
+
+
 }
 
 
-.left-side-topbar
-{
-    margin:   0;
+.left-side-topbar {
+    margin: 0;
     width: 150px;
     height: 150px;
-    
-   
-   
+
+
+
 }
 
 
-a{
+.myLinks {
     display: flex;
     justify-content: flex-end;
 }
 
 
-.poza-home
-{
-    
-  
-   
+.poza-home {
+
+
+
     width: 25%;
-   
+
 
 
 
 }
-.paragraf
-{margin-top: 10px;
+
+.paragraf {
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-right:20px;
+    margin-right: 20px;
     object-fit: cover;
-    background-color:#2B7A78;
-    margin:12px;
-    border-radius:12px;
+    background-color: #2B7A78;
+    margin: 12px;
+    border-radius: 12px;
 }
-.column
-{
-    display:flex;
+
+.column {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    margin: 0;
+
 }
-p{
-    margin-left:20px;
+
+p {
+    margin-left: 20px;
     margin-top: 30px;
 }
 
 
-.poze{ width:150px;
-    height:190px;
-   border-top-left-radius:12px ;
-   border-bottom-left-radius:12px ;
+.poze {
+    width: 150px;
+    height: 190px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
 
 
 }
-.text-despreNoi
-{margin-top:0;
-    display:flex;
+
+.text-despreNoi {
+    margin-top: 0;
+    display: flex;
     flex-direction: column;
-    margin-left:30px;
-    color:white;
+    margin-left: 30px;
+    color: white;
 }
-.descriere-Informatix 
-{display:flex;
+
+.descriere-Informatix {
+    display: flex;
     flex-direction: column;
 
 }
-.paragraf-informatix{
+
+.paragraf-informatix {
     margin-top: 10px;
 
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
 }
-.poza-logo{width:15%;
-    height:5%;
-    margin-left:0;
+
+.poza-logo {
+    width: 15%;
+    height: 5%;
+    margin-left: 0;
 
 }
-h1{
-font-size: 60px;
+
+h1 {
+    font-size: 60px;
+}
+
+@media (max-width: 600px) {
+    .paragraf {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text-despreNoi {
+        margin: 0px;
+    }
+
+    .poze {
+        margin-left: 45px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    h3 {
+        margin-left: 45px;
+    }
 }
