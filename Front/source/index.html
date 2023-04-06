@@ -9,13 +9,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 
     <title>Informatix</title>
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
-    <link rel="stylesheet" href="../styles/main-page-content.css">
+    <link rel="stylesheet" href="../styles/index.css">
 
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
@@ -29,17 +29,16 @@
         </div>
         <!--<input type="text" class="search-bar" placeholder="Search"> -->
         <div class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" style="display:
-                    none;">
+            <input type="checkbox" id="checkbox_toggle" style="display:none;">
             <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
             <div class="menu">
                 <div>
                     <a class="menu-anchor" href="index.html">Home</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" href="problems.html">Problem</a>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
                 </div>
-                <div class="dropdown">
+                <!--<div class="dropdown">
                     <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
                         <a href="#">Decorator</a>
@@ -47,16 +46,15 @@
                         <a href="#">Link 3</a>
                     </div>
                 </div>
+                -->
                 <div>
                     <a class="menu-anchor" href="about.html">About</a>
                 </div>
                 <div>
-                    <a class="menu-anchor"
-                        id="log-in">Login</a>
-                    
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" id="sign-up">Sign Up</a>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
                 </div>
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
@@ -66,36 +64,46 @@
                         <img src="../assets/flag_ro.svg" id="language-ro" class="language-list" alt="">
                     </div>
                 </div>
+                <div class="help_ico help_smaller_screen">
+                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                </div>
             </div>
         </div>
     </nav>
     <div class="main-page-main-content">
-        <div class="filler"></div>
+        <div class="filler">
+            <div class="help_icon help_bigger_screen">
+                <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+            </div>
+        </div>
         <div class="main-content">
             <div class="problems">
                 <div class="problem-cards">
-                    <h2 class="problem-cards-title">Cele mai populare probleme:</h2>
+                    <h2 class="problem-cards-title">Popular problems:</h2>
                     <div class="cards">
-                        <a class="card">
+                        <a href="problem.html" class="card">
                             <h3 class="title-card">Two Sum</h3>
-                            <p class="description">Test de problema</p>
+                            <p class="description">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+                                You may assume that each input would have exactly one solution, and you may not use the same element twice.
+                                You can return the answer in any order.</p>
                             <span class="difficulty">Difficulty 1</span>
                         </a>
                         <a class="card">
                             <h3 class="title-card">Titlu 2</h3>
-                            <p class="description">Test de descriere sa vedem cum functioneaza, dar pare ca merge okay
-                                momentant.</p>
+                            <p class="description">Did I stutter? I said, MORE SKITTLES</p>
                             <span class="difficulty">Difficulty 1</span>
                         </a>
                         <a class="card">
                             <h3 class="title-card">titlu</h3>
-                            <p class="description">Test de problema</p>
+                            <p class="description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+                                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                             <span class="difficulty">Difficulty 1</span>
                         </a>
                         <a class="card">
                             <h3 class="title-card">titlu</h3>
-                            <p class="description">Test de problema</p>
-                            <span class="difficulty">Difficulty 1</span>
+                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <span class="difficulty">Difficulty 3</span>
                         </a>
                     </div>
                 </div>
@@ -103,9 +111,6 @@
         </div>
         <div class="filler"></div>
     </div>
-
-
-
 </body>
 
 </html>

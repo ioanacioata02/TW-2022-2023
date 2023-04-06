@@ -97,7 +97,9 @@ li {
 .language-display {
     width: 2em;
     margin: 0;
+    margin-bottom: 5px;
     padding-top: 5px;
+    padding-bottom: 1px;
     object-fit: fill;
     object-position: center;
 
@@ -202,4 +204,30 @@ li {
         border-radius: 15px;
         border: none;
     }
+}
+.help_smaller_screen
+{
+    display: none;
+}
+.help_icon
+{
+    font-size: 3em;
+}
+@media (max-width: 1200px) {
+.help_bigger_screen
+{
+    display: none;
+}
+.help_icon
+{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+}
+}
+@media (max-width: 1200px) {
+ .help_smaller_screen
+ {
+    display: block;
+ }
 }

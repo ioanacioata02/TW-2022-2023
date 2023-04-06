@@ -8,9 +8,8 @@
   }
   
   .login-button {
-    background-color:rgb(21, 41, 21);
+    background-color:#2B7A78;
     color: white;
-    margin: none;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -18,16 +17,19 @@
     font-size:18px;
     padding-bottom: 10px;
     padding-top:5px;
+    margin-top:10px;
   
   }
-  
+  .login-button:hover{
+    color:#4F4A41;
+  }
   
   
   .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-    color:black;
+    color:white;
   }
   
   
@@ -41,7 +43,6 @@
   }
   
   .bkg-login {
-    display: none; 
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -49,16 +50,16 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
+  color:white;
     padding-top: 60px;
     padding-left:20px;
   }
   
   .login-form {
      
-    background-color: #a3beb5;
+    background-color:#3AAFA9;
     margin: 5% auto 15% auto; 
-    border: 1px solid #888;
+    border: 1px solid #113338;
     width: 40%; 
   }
   
@@ -78,4 +79,12 @@
     .cancelbtn {
        width: 100%;
     }
+  }
+  .select_role
+  {
+
+    padding-top:3px;
+    padding-bottom:3px;
+    margin-bottom:10px;
+    margin-top:10px;
   }
