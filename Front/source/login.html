@@ -9,13 +9,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <title>Informatix</title>
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
-    <link rel="stylesheet" href="../styles/main-page-content.css">
+    <link rel="stylesheet" href="../styles/index.css">
 
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
@@ -34,24 +33,25 @@
             <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
             <div class="menu">
                 <div>
-                    <a class="menu-anchor" >Home</a>
+                    <a class="menu-anchor">Home</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" >Problem</a>
+                    <a class="menu-anchor">Problems</a>
                 </div>
+                <!--
                 <div class="dropdown">
-                    <a >Courses</a>
+                    <a>Courses</a>
+                </div>
+                -->
+
+                <div>
+                    <a class="menu-anchor">About</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" >About</a>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
                 </div>
                 <div>
-                    <a class="menu-anchor"
-                        id="log-in">Login</a>
-                    
-                </div>
-                <div>
-                    <a class="menu-anchor" id="sign-up">Sign Up</a>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
                 </div>
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
@@ -67,25 +67,22 @@
     <div class="bkg-login">
         <form class="login-form">
             <div class="imgcontainer">
-                <a class="close" href="index.html"
-                    title="Close Form"> &#x2716;</a>
+                <a class="close" href="javascript:history.back()" title="Close Form"> &#x2716;</a>
                 <h1>Login here!&#x1F464;</h1>
             </div>
             <div class="form-fields">
-                
-                    <b>Username</b>
-               
-                <input class="login-input" type="text" placeholder="Type Username" name="uname"
-                    required>
-               
-                    <b>Password</b>
-              
-                <input class="login-input" type="password" placeholder="Type Password" name="psw"
-                    required>
-                <button class="login-button">Login</button>
+
+                <b>Username</b>
+
+                <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
+
+                <b>Password</b>
+
+                <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
+                <button onclick="loggedIn()" class="login-button">Login</button>
             </div>
         </form>
-        
+
     </div>
 
 

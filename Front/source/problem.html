@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/problem.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
@@ -34,8 +34,9 @@
                     <a class="menu-anchor" href="index.html">Home</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" href="problems.html">Problem</a>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
                 </div>
+                <!--
                 <div class="dropdown">
                     <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
@@ -44,14 +45,15 @@
                         <a href="#">Link 3</a>
                     </div>
                 </div>
+                -->
                 <div>
                     <a class="menu-anchor" href="about.html">About</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" id="log-in">Login</a>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" id="sign-up">Sign Up</a>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
                 </div>
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
@@ -66,9 +68,10 @@
     </nav>
     <div class="container">
         <div class="left-container">
-            <button class="button-tab" onclick="opentab('description')">Descriere</button>
-            <button class="button-tab" onclick="opentab('comments')">Comentarii</button>
-            <button class="button-tab" onclick="opentab('solutions')">Solutii</button>
+            <button class="button-tab" onclick="opentab('description')">Description</button>
+            <button class="button-tab" onclick="opentab('comments')">Comments</button>
+            <button class="button-tab" onclick="opentab('solutions')">Solutions</button>
+
             <div id="description" class="description-tab tab-content">
                 <div class="problem-description-title">1.Two Sum</div>
                 <div class="problem-description-text"> Given an array of integers nums and an integer target, return
@@ -88,32 +91,6 @@
                     twice. indices of the two numbers such that they add up to target.<br>
                     You may assume that each input would have exactly one solution, and you may not use the same element
                     twice. indices of the two numbers such that they add up to target.<br>
-
-                    indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-
-                    indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-
-                    indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-                    You may assume that each input would have exactly one solution, and you may not use the same element
-                    twice. indices of the two numbers such that they add up to target.<br>
-
-
-
-                </div>
-                <div class="rating">
-                    <div class="acceptance-rate">Rata acceptare 64%</div>
-                    <div class="current-difficulty">Dificultate 1</div>
-                    <div class="subbmit-review"><a>Feedback</a></div>
                 </div>
             </div>
             <div id="comments" class="Comments-tab tab-content">
@@ -147,22 +124,39 @@
             </div>
             <div id="solutions" class="solution-tab tab-content">
                 <!-- maybe a list will be better idk, for know works -->
-                <div class="solution-format" >
+                <div class="solution-format">
                     <div class="solution-date">10.01.2022</div>
                     <div class="solution-status">failed</div>
-                    
                 </div>
-
+            </div>
+            
+            <div class="acceptance-rate rating">Acceptance Rate 64%</div>
+            <div class="current-difficulty rating">Difficulty 1</div>
+            <div class="rating"><a class="subbmit-review">Feedback</a></div>
         </div>
-    </div>
-    <div class="solving-area">
-        <div class="input-bar">
+        <div class="feed-back-from">
+            <h2 class="form-title">Feedback Form</h2>
+            <form>
+              <label for="difficulty">Difficulty (1-5):</label>
+              <input type="number" id="difficulty" name="difficulty" min="1" max="5" required>
+              <br>
+              <label for="justification">Justify your rating:</label><br>
+              <textarea id="justification" name="justification" required></textarea>
+              <br>
+              <button type="submit" class="general-button">Submit</button>
+            </form>
+            <a href="#" class="close">&times;</a>
+          </div>
 
+        <div class="solving-area">
+            <div class="solving-area-code-title">
+                Input your code here:
+            </div>
+            <textarea id="code" class="input-code"></textarea>
+            <button class="subbmit-code general-button">
+                Submit Code
+            </button>
         </div>
-        <textarea id="code" class="input-code">
-
-            </textarea>
-    </div>
     </div>
 
 </body>

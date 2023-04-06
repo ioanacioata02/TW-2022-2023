@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: 10fr 80fr 10fr;
   background-color: var(--background);
-  height: 90dvh;
+  
 
 }
 
@@ -33,17 +33,18 @@
   flex-direction: column;
   display: flex;
   padding-bottom: 4em;
+  height: 83dvh;
 }
 
 .problems {
   border-radius: 30px;
   background-color: var(--main-bar-color);
-  max-width: 800px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
   margin-top: 4em;
 }
-@media (max-width: 1000) {
+@media (max-width: 1600px) {
   .problems
   {
     margin-left: 10px;
