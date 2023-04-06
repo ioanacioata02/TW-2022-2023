@@ -1,0 +1,127 @@
+:root {
+  --main-bar-color: #3AAFA9;
+  --accent-color: #2B7A78;
+  --text-color: #fff;
+  --text-hover: #4F4A41;
+  --background: #DEF2F1;
+  --drop-down: #2B7A78;
+
+}
+
+.main-page-main-content {
+  display: grid;
+  grid-template-columns: 10fr 80fr 10fr;
+  background-color: var(--background);
+  
+
+}
+
+.filler {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  border-radius: 5px;
+  justify-content: center;
+  margin-top: 4em;
+  background-color: var(--accent-color);
+  flex-direction: column;
+  display: flex;
+  padding-bottom: 4em;
+  height: 83dvh;
+}
+
+.problems {
+  border-radius: 30px;
+  background-color: var(--main-bar-color);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 4em;
+}
+@media (max-width: 1600px) {
+  .problems
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+    
+  }
+}
+
+.problem-cards {
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.problem-cards-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+@media (max-width: 400px) {
+  .cards > * {
+    flex-basis: 100%;
+  }
+  
+}
+
+.card {
+  background-color: var(--background);
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-card {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.difficulty {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+@media (max-width: 800px) {
+  .main-page-main-content {
+    grid-template-columns: 100fr;
+  }
+
+  .filler {
+    background-color: red;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: none;
+  }
+}
