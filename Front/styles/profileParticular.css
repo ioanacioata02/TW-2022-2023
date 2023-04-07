@@ -1,0 +1,60 @@
+.profile-options li {
+	padding: 0.8em;
+}
+
+.profile-options li:last-child {
+	border-radius: 0 0 var(--border-rad) var(--border-rad);
+}
+
+.sidebar ul li a {
+	text-decoration: none;
+	color: var(--text-color-sidebar);
+	font-size: 1.2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.profile-item {
+	margin-left: 0.3em;
+}
+
+.sidebar ul.profile-options li:hover {
+	background-color: var(--accent-color);
+}
+
+.sidebar ul li:hover a {
+	color: #fff;
+}
+
+.photo-edit {
+	z-index: 1;
+	margin-left: calc(50% + 3em);
+	margin-top: -2em;
+}
+
+.photo-edit input[type="file"] {
+	display: none;
+}
+
+.photo-edit label {
+	background-color: white;
+	padding: 0.6em;
+	border-radius: 100%;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.photo-edit label:hover {
+	background-color: rgb(222, 220, 220);
+}
+
+#logout:active {
+	transition-duration: 0.3s;
+	background-color: #f45454;
+}

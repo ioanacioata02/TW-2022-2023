@@ -6,119 +6,205 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/pagination.css">
+    <script src="../scripts/adminAddLinks.js" defer></script>
     <script src="../scripts/adminPagination.js" defer></script>
     <title>InformatiX</title>
 </head>
 
 <body>
-
     <main>
         <section class="select-box">
-            <h5>Nr de randuri pe pagina</h5>
+            <h5>Number of rows per page</h5>
             <select name="rows-per-page" id="rows-per-page">
                 <option value="5">5</option>
                 <option value="10" selected>10</option>
                 <option value="15">15</option>
                 <option value="20">20</option>
             </select>
-            </div>
         </section>
-        <section class="table-admin">
-            <table>
+        <section>
+            <table class="table-admin">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Titlu</th>
-                        <th>Tag-uri</th>
-                        <th>Autor</th>
-                        <th>Accepta</th>
+                        <th>Title</th>
+                        <th>Tags</th>
+                        <th>Author</th>
+                        <th>Accept</th>
                     </tr>
                 </thead>
                 <tbody id="candidate-problems">
                     <tr>
                         <td>1</td>
-                        <td>Titlu 1</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 1</td>
+                        <td class="tags"><button>bkt</button><button>programare
+                                dinamica</button><button>arrays</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Titlu 2</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 2</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Titlu 3</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 3</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Titlu 4</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 4</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Titlu 5</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 5</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>Titlu 6</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 6</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>Titlu 7</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 7</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td>Titlu 8</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 8</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td>Titlu 9</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 9</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>Titlu 10</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 10</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>11</td>
-                        <td>Titlu 11</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 11</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                     <tr>
                         <td>12</td>
-                        <td>Titlu 12</td>
-                        <td>...</td>
-                        <td></td>
-                        <td><button class="yes">da</button><button class="no">nu</button></td>
+                        <td class="link-to-probl">Title 12</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td class="link-to-probl">Title 1</td>
+                        <td class="tags"><button>bkt</button><button>programare
+                                dinamica</button><button>arrays</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td class="link-to-probl">Title 2</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td class="link-to-probl">Title 3</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td class="link-to-probl">Title 4</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td class="link-to-probl">Title 5</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td class="link-to-probl">Title 6</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td class="link-to-probl">Title 7</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td class="link-to-probl">Title 8</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td class="link-to-probl">Title 9</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td class="link-to-probl">Title 10</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td class="link-to-probl">Title 11</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td class="link-to-probl">Title 12</td>
+                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
+                        <td>username</td>
+                        <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -120,15 +120,7 @@ function setCurrentPage(pageNum) {
 }
 
 function loadPage() {
-    //getPaginationNumbers();
     setCurrentPage(1);
-
-    document.querySelectorAll(".pagination-number").forEach((button) => {
-        let pageIndex = Number(button.getAttribute("page-index"));
-
-        //sa comentez asta
-        
-    });
 }
 
 function deleteAllNrBtns() {
@@ -149,4 +141,5 @@ function reloadPage() {
     reset();
     loadPage();
 }
+
 loadPage();

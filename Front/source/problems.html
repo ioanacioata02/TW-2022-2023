@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informatix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/problems.css">
@@ -32,8 +35,9 @@
                     <a class="menu-anchor" href="index.html">Home</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" href="problems.html">Problem</a>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
                 </div>
+                <!--
                 <div class="dropdown">
                     <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
@@ -42,14 +46,15 @@
                         <a href="#">Link 3</a>
                     </div>
                 </div>
+                -->
                 <div>
                     <a class="menu-anchor" href="about.html">About</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" id="log-in">Login</a>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
                 </div>
                 <div>
-                    <a class="menu-anchor" id="sign-up">Sign Up</a>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
                 </div>
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
@@ -67,54 +72,113 @@
         <div class="filler"></div>
         <div class="main-content">
             <div class="filter-system">
-                <input class="filter-serach-bar" type="text" placeholder="&#128269Search for a problem">
-                <button class="filter-difficulty-button">Difficulty</button>
-                <button class="filter-tags-button">Tags</button>
-                <button class="filter-status-button">Status</button>
+                <input class="filter-serach-bar" type="text" placeholder="&#128269;Search for a problem">
+
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('difficulty-dropdown')"
+                        class="filter-difficulty-button">Difficulty</button>
+                    <div id="difficulty-dropdown" class="dropdown-menu">
+                        <a href="#">Difficulty 1</a>
+                        <a href="#">Difficulty 2</a>
+                        <a href="#">Difficulty 3</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('tags-dropdown')" class="filter-tags-button">Tags</button>
+                    <div id="tags-dropdown" class="dropdown-menu">
+                        <a href="#">Arrays </a>
+                        <a href="#">Sortying</a>
+                        <a href="#">Hash maps</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button onclick="dropDownFunction('status-dropdown')" class="filter-status-button">Status</button>
+                    <div id="status-dropdown" class="dropdown-menu">
+                        <a href="#">Terminate </a>
+                        <a href="#">Incercate</a>
+                        <a href="#">Neincercat</a>
+                    </div>
+                </div>
             </div>
             <div class="problems-header">
                 <span class="problems-header-content">Title</span>
                 <span class="problems-header-content">Status</span>
-                <span class="problems-header-content">Acceptance</span>
+                <span class="problems-header-content acceptance">Acceptance</span>
                 <span class="problems-header-content">Difficulty</span>
             </div>
             <div class="problems">
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
-                    <a class="problem-list">
-                        <a class="problem">
-                            <div class="problem-main-start">
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
                             <span class="id">1</span>
                             <span class="title">.Two Sum</span>
-                            </div>
-                            <span class="problem-main">Done</span>
-                            <span class="problem-main">64%</span>
-                            <span class="problem-main-end">Difficulty 1</span>
-                        </a>
-                    </a>
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
+                            <span class="id">1</span>
+                            <span class="title">.Two Sum</span>
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
+                            <span class="id">1</span>
+                            <span class="title">.Two Sum</span>
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
+                <a href="problem.html" class="problem-list">
+                    <div class="problem">
+                        <div class="problem-main-start">
+                            <span class="id">1</span>
+                            <span class="title">.Two Sum</span>
+                        </div>
+                        <span class="problem-main">Done</span>
+                        <span class="problem-main acceptance-rate">64%</span>
+                        <span class="problem-main-end">Difficulty 1</span>
+                    </div>
+                </a>
              
              
-                    
+
+
+
             </div>
         </div>
 
