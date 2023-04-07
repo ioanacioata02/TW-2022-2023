@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/viewStudents.css">
+    <link rel="stylesheet" href="../styles/viewPage_general.css">
+    <link rel="stylesheet" href="../styles/general_admin.css">
+    <link rel="stylesheet" href="../styles/pagination.css">
+    <script src="../scripts/adminPagination.js" defer></script>
+    <title>InformatiX</title>
+</head>
+
+<body>
+    <main>
+        <section class="select-box">
+            <h5>Nr de randuri pe pagina</h5>
+            <select name="rows-per-page" id="rows-per-page">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </section>
+        <div>
+            <table class="table-admin">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>View student homeworks</th>
+                    </tr>
+                </thead>
+                <tbody id="candidate-problems">
+                    <tr>
+                        <td>1</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Andrei</td>
+                        <td>Popescu</td>
+                        <td>code_master2002</td>
+                        <td><button class="add_button" onclick="document.location='viewStudentHomeworks.html'">View
+                                homeworks</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav class="pagination-container">
+                <button class="pagination-button" id="prev-button">
+                    &laquo;
+                </button>
+                <div id="pagination-numbers">
+                </div>
+                <button class="pagination-button" id="next-button">
+                    &raquo;
+                </button>
+            </nav>
+        </div>
+    </main>
+</body>
+
+</html>

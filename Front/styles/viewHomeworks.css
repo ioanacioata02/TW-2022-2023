@@ -1,0 +1,26 @@
+.homeworkButton {
+    border: none;
+    color: var(--text-color);
+    background-color: var(--accent-color);
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: 1em;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+
+
+}
+
+.myButton {
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+
+.plusIcon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}

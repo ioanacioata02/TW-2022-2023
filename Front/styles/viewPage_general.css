@@ -1,0 +1,75 @@
+:root {
+
+
+  --border-rad: 20px;
+
+}
+
+
+
+body {
+  background-color: var(--background);
+}
+
+main {
+  padding: 1.2em;
+  margin: 0px 50px 0px 50px;
+}
+
+
+
+.table-admin {
+  width: 100%;
+  margin: 2px auto;
+  table-layout: auto;
+  background-color: #ffff;
+  border-collapse: collapse;
+  border-radius: var(--border-rad) var(--border-rad) 0 0;
+  font-size: 1em;
+}
+
+.table-admin tr th,
+.table-admin td {
+  padding: 0.5em;
+}
+
+.table-admin td {
+  text-align: center;
+}
+
+.table-admin thead {
+  background-color: var(--drop-down);
+}
+
+
+.table-admin thead th:first-child {
+  border-radius: var(--border-rad) 0 0 0;
+}
+
+.table-admin thead th:last-child {
+  border-radius: 0 var(--border-rad) 0 0;
+}
+
+
+.table-admin tr:nth-child(even) {
+  background-color: var(--lighter-main-bar-color);
+}
+
+
+.table-admin td:last-child button {
+  border: none;
+  color: whitesmoke;
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: var(--yes-no-border-radius);
+}
+
+
+#rows-per-page {
+  padding: 0.2em;
+  border-radius: 2px;
+}

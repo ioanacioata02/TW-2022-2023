@@ -1,0 +1,16 @@
+td:last-child button.add_button {
+  background-color: #16A085;
+  border: none;
+  color: whitesmoke;
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.myTitle {
+  text-align: center;
+}

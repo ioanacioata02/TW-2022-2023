@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/viewStudents.css">
+    <link rel="stylesheet" href="../styles/viewPage_general.css">
+    <link rel="stylesheet" href="../styles/general_admin.css">
+    <link rel="stylesheet" href="../styles/pagination.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <script src="../scripts/adminPagination.js" defer></script>
+    <title>InformatiX</title>
+</head>
+
+<body>
+    <main>
+        <section class="select-box">
+            <h5>Nr de randuri pe pagina</h5>
+            <select name="rows-per-page" id="rows-per-page">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </section>
+        <div>
+            <table class="table-admin">
+                <thead>
+                    <tr>
+                        <th>Problem ID</th>
+                        <th>Name</th>
+                        <th>View problem</th>
+
+                    </tr>
+                </thead>
+                <tbody id="candidate-problems">
+                    <tr>
+                        <td>#245</td>
+                        <td>Backtracking</td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View Problem</button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>#1234</td>
+                        <td>DFS</td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View Problem</button>
+                        </td>
+
+                    <tr>
+                        <td>#14</td>
+                        <td>Sum</td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View Problem</button>
+                        </td>
+
+                    <tr>
+                        <td>#990</td>
+                        <td>BFS</td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View Problem</button>
+                        </td>
+
+                    <tr>
+                        <td>#143</td>
+                        <td>Backtracking</td>
+                        <td><button class="add_button" onclick="document.location='problem.html'">View Problem</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <nav class="pagination-container">
+                <button class="pagination-button" id="prev-button">
+                    &laquo;
+                </button>
+                <div id="pagination-numbers">
+                </div>
+                <button class="pagination-button" id="next-button">
+                    &raquo;
+                </button>
+            </nav>
+        </div>
+    </main>
+</body>
+
+</html>
