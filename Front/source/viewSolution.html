@@ -9,49 +9,102 @@
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
-    <link rel="stylesheet" href="../styles/problem.css">
-
+    <link rel="stylesheet" href="../styles/solution.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
-    <script src="../scripts/problem.js" defer></script>
 
 
 </head>
 
 <body>
-
-    <div class="container">
-
-
-        <div id="description" class="description-tab tab-content">
-            <div class="problem-description-title">1.Two Sum</div>
-            <div class="problem-description-text">
-                <pre>
-                    int main()
-                    {cin>>n>>k;
-                    for(i=1;i &lt; n;i++)
-                    {cin>>x>>y;
-                    a[x][y]=1;
-                    a[y][x]=1;
-                    }
-                   function(k);
-                    for(i=1;i&lt;=n;i++)
-                        cout&lt;&lt;tata[i]&lt;&lt;" ";
-                        return 0;
-                    }
-                </pre>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <!--<input type="text" class="search-bar" placeholder="Search"> -->
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:
+                    none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
+                </div>
+                <!--
+                <div class="dropdown">
+                    <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
+                    <div id="myDropdown" class="dropdown-menu">
+                        <a href="#">Decorator</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+                -->
+                <div>
+                    <a class="menu-anchor" href="about.html">About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                </div>
+                <div class="dropdown">
+                    <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
+                        src="../assets/flag_en.svg" alt="">
+                    <div id="myDropdown2" class="dropdown-menu">
+                        <img src="../assets/flag_en.svg" id="language-eng" class="language-list" alt="">
+                        <img src="../assets/flag_ro.svg" id="language-ro" class="language-list" alt="">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="rating">
-            <div>Score 64%</div>
-            <div>Submit date:23.08.2022</div>
-            <div>Language:C++</div>
+    </nav>
+    <div class="container">
+        <div class="filler"> </div>
+        <div class="solution-container">
+            <div class="header">
+                <div class="data">
+                    <div class="problem-title">1.Two Sum</div>
+                    <div class="submit-date">10.10.2023 </div>
+                    <div class="status">Failed</div>
+                </div>
+                <div class="statistics">
+                    <div class="stiatistics-title">Statistics</div>
+                    <div class="mem">Memory: 1.24kb</div>
+                    <div class="time">Time: 2.3s</div>
+                </div>
+            </div>
+            <div class="solution-source-code">
+                <pre class="code">
+                    <span class="keyword">class</span> <span class="type">Solution</span> {
+                        <span class="keyword">public:</span>
+                          <span class="type">vector&lt;int&gt;</span> twoSum(<span class="type">vector&lt;int&gt;&amp;</span> nums, <span class="type">int</span> target) {
+                            <span class="type">map&lt;int, int&gt;</span> valueIndex;
+                            <span class="keyword">for</span>(<span class="type">int</span> i=0; i&lt;nums.size(); i++)
+                            {
+                              <span class="type">int</span> diffrence =  target-nums[i];
+                              <span class="keyword">if</span>(valueIndex.find(diffrence)!=valueIndex.end())
+                              {
+                                <span class="keyword">return</span> {valueIndex[diffrence], i};
+                              }
+                              valueIndex[nums[i]]=i;
+                            }
+                            <span class="keyword">return</span> {};
+                          }
+                      };
+                  </pre>
+            </div>
         </div>
-
-
+        <div class="filler"></div>
     </div>
-
 
 </body>
 
