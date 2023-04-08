@@ -14,6 +14,3 @@ else{
     myClass.setAttribute("href", "myClass_student.html");
     word.innerHTML="class";
 }
-
-let logout = document.getElementById("logout");
-logout.addEventListener("click", () => { loggedOut(); });
