@@ -7,11 +7,10 @@
     margin: 0;
 }
 
-body {
+main {
     width: 90%;
     margin: 10px auto;
     font-size: 1.2em;
-    background-color: var(--background);
     color: rgb(4, 6, 61);
 }
 
