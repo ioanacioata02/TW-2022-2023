@@ -203,7 +203,12 @@ body {
 
 @media (max-width: 400px) {
 	#statistici .item {
-		width: 165px;
+		width: 175px;
+	}
+
+	.main-box-profile{
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.main-box-profile .main-content {
