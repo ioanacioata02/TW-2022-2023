@@ -31,7 +31,7 @@
 
 .dropdown-menu a {
     color: var(--text-color);
-    padding: 4;
+    padding: 4px;
     text-decoration: none;
     display: block;
 }
