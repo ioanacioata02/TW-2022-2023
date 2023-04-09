@@ -257,6 +257,25 @@
 
 @media (max-width: 800px)
 {
+    .comment-text
+    {
+        font-size: 16px;
+    }
+
+    .problem-description-title
+    {
+        font-size: 25px;
+    }
+
+    .problem-description-text
+    {
+        font-size: 18px;
+    }
+   
+    .comment-title
+    {
+        font-size: 18px;
+    }
     .container
     {
         display: block;
@@ -293,6 +312,10 @@
 }
 @media (max-width: 600px)
 {
+    .button-tab
+    {
+        font-size: 13px;
+    }
     #justification
     {
         font-size: 20px;
