@@ -54,6 +54,7 @@ li {
     display: flex;
     gap: 3em;
     font-size: 18px;
+    z-index: 99999;
 }
 
 
