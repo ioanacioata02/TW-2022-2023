@@ -53,3 +53,9 @@ td:last-child button.no:hover {
 .link-to-probl:active{
   text-decoration: underline;
 }
+
+@media (max-width: 500px) {
+	.table-admin .tags{
+    display: none;
+  }
+}

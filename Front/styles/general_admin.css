@@ -3,6 +3,11 @@
   margin: 0;
 }
 
+main {
+  padding: 1.2em;
+  margin: 0px 50px 0px 50px;
+}
+
 .select-box {
   display: flex;
   align-content: center;
@@ -41,4 +46,25 @@ td {
 .pagination li a {
   text-decoration: none;
   padding: 2px 8px;
+}
+
+@media (max-width: 700px) {
+	main{
+    margin:0;
+  }
+}
+
+@media (max-width: 500px) {
+	body{
+    font-size: 0.9em;
+  }
+  main{
+    padding:2px;
+  }
+}
+
+@media (max-width: 400px) {
+	body{
+    font-size: 0.8em;
+  }
 }
