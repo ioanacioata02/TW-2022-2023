@@ -75,14 +75,19 @@ span.psw {
   font-size: 20px;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 450px) {
   span.psw {
     display: block;
     float: none;
   }
 
-  .cancelbtn {
-    width: 100%;
+  .close {
+   
+    margin-bottom: 5px;
+
+  }
+  .myText {
+    font-size: 20px;
   }
 }
 
