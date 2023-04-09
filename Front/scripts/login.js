@@ -10,6 +10,12 @@ console.log(Boolean(sessionStorage.getItem("myCat")))
     loggedIn();
   }
   
+
+  function setVariableTrue()
+  {
+     sessionStorage.setItem("myCat", true);
+  }
+
   function loggedIn() {
     let element1 = document.querySelector('#log-in');
     let element2 = document.querySelector('#sign-up');
