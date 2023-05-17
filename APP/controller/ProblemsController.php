@@ -28,13 +28,17 @@ class ProblemsController extends Controller
                 echo json_encode($this->model->getAll());
                 break;
             case "POST":
-                $data = (array) json_decode(file_get_contents("php://input"), true);
-                $id = $this->model->create($data);
-                echo json_encode(["message"=>"Problem created",
-                "id"=>$id]
-                );
-                break;
+               $this->handlePostRequest();
+               break;
         }
+    }
+    private function handlePostRequest():void
+    {
+        $data = (array) json_decode(file_get_contents("php://input"), true);
+        $id = $this->model->create($data);
+        if(Jwt::validateAuthorizationToken(2))
+            echo json_encode(["message"=>"Problem created", "id"=>$id]);
+
     }
 
 }

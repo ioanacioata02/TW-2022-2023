@@ -9,7 +9,7 @@ class ConnectionPoolSingleton
         if(!isset(self::$pool))
         {
             self::$pool =  new ConnectionPool(4, 2, 8);
-            self::$pool->init("127.0.0.1", 5432, "web", "pgusername", "pgpassword");
+            self::$pool->init("127.0.0.1", 5432, "web2", "pgusername", "pgpassword");
             return self::$pool;
         }
         else

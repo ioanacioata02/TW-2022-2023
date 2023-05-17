@@ -33,13 +33,10 @@ class ProblemsModel extends Model
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1,$data["name"], PDO::PARAM_STR);
         $stmt->bindValue(2,$data["description"]);
-        //$tags = Utils::toPostgresArray($data["tags"]);
-        $tags = implode(',', $data["tags"]);  // Convert array to a comma-separated string
-        //echo $tags."\n";
-        $stmt->bindValue(3, $tags, PDO::PARAM_STR);
-        $stmt->bindValue(4,$data["tests"]);
-        $stmt->bindValue(5,$data["nr_attempts"]);
-        $stmt->bindValue(6,$data["nr_successes"]);
+        $stmt->bindValue(3, json_encode($data["tags"]));
+        $stmt->bindValue(4,json_encode($data["tests"]));
+        $stmt->bindValue(5,0);
+        $stmt->bindValue(6,0);
         $stmt->execute();
         $id =  intval($connection->lastInsertId());
         return $id;

@@ -3,6 +3,34 @@
 class Jwt
 {
 
+
+    /**Will return a error code for the token
+     * @param $status
+     * @return bool
+     */
+    static public function validateAuthorizationToken($status): bool
+    {
+        if(!isset(getallheaders()["Authorization"])) {
+            http_response_code(400);
+            echo json_encode(["message"=>"Missing authorization token"]);
+            return false;
+        }
+        $token= getallheaders()["Authorization"];
+        $payload =  Jwt::validateToken($token, "secret");
+        if (!isset($payload))
+        {
+            http_response_code(400);
+            echo json_encode(["message"=>"Invalid authorization token"]);
+            return false;
+        }
+        if($payload["status"]<$status)
+        {
+            http_response_code(401);
+            echo json_encode(["message"=>"You don't have the permission to create a problem"]);
+            return false;
+        }
+        return true;
+    }
     /**
      * @param array $payload -> Is the data that we want to include in the token in our cause the data should be the username,
      * the creation date, the expiration date, and the status of the user (normal user, professor, admin)
@@ -11,34 +39,37 @@ class Jwt
      * @param int $hoursUntilExpiration how many hours the token is valid the default value is 24
      * @return string
      */
-        static public function generateToken(array $payload, string $secretKey, int $hoursUntilExpiration=24) : string
-        {
-                $secretKey =  getenv($secretKey);
-                $header =  base64_encode(json_encode(['alg' => 'HS256', 'typ' => 'JWT']));
-                $payload["creationDate"]=time();
-                $payload["expirationDate"]= $payload["creationDate"]  + $hoursUntilExpiration*3600;
-                $payload = base64_encode(json_encode($payload));
-                $signature =  hash_hmac('sha256',  "$header.$payload", $secretKey, true);
-                $signature = base64_encode($signature);
-                return "$header.$payload.$signature";
+    static public function generateToken(array $payload, string $secretKey, int $hoursUntilExpiration = 24): string
+    {
+        $secretKey = getenv($secretKey);
+        $header = base64_encode(json_encode(['alg' => 'HS256', 'typ' => 'JWT']));
+        $payload["creationDate"] = time();
+        $payload["expirationDate"] = $payload["creationDate"] + $hoursUntilExpiration * 3600;
+        $payload = base64_encode(json_encode($payload));
+        $signature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
+        $signature = base64_encode($signature);
+        return "$header.$payload.$signature";
+    }
+
+    /**This function will get the token from the header and if the token is valid will return is value
+     * @param string $token
+     * @param string $secretKey
+     * @return array|null
+     */
+    static private function validateToken(string $token, string $secretKey): ?array
+    {
+        $secretKey = getenv($secretKey);
+        list($header, $payload, $signature) = explode('.', $token);
+        $decodedSignature = base64_decode($signature);
+        $expectedSignature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
+        if (!hash_equals($decodedSignature, $expectedSignature)) {
+            //the token was modified
+            return null;
         }
-        //the function will return null if the jwt was tempered or the decoded data
-        static public function validateToken(string $token, string $secretKey) : ?array
-        {
-            $secretKey =  getenv($secretKey);
-            list($header, $payload, $signature) = explode('.', $token);
-            $decodedSignature = base64_decode($signature);
-            $expectedSignature=  hash_hmac('sha256', "$header.$payload", $secretKey, true);
-            if (!hash_equals($decodedSignature, $expectedSignature)) {
-                //the token was modified
-                return null;
-            }
-            $decodedPayload = json_decode(base64_decode($payload), true);
-            if(time()>$decodedPayload["expirationDate"])
-            {
-                //the token expired
-                return null;
-            }
-            return $decodedPayload;
+        $decodedPayload = json_decode(base64_decode($payload), true);
+        if (time() > $decodedPayload["expirationDate"]) {
+            return null;
         }
+        return $decodedPayload;
+    }
 }
