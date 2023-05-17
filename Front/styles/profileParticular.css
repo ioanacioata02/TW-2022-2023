@@ -128,3 +128,16 @@
 	padding: 0;
 	cursor: pointer;
 }
+
+
+@media (max-width: 800px) {
+	.popUp input[type=submit] {
+		width: 70%;
+	}
+}
+
+@media (max-width: 400px) {
+	.popUp input[type=submit] {
+		width: 90%;
+	}
+}
