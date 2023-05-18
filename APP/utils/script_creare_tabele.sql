@@ -37,16 +37,18 @@ CREATE TABLE proposed_problems(
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
 	tags JSON,
+	tests JSON NOT NULL,
 	id_author INT NOT NULL
 );
 
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
-	flag_prof BOOLEAN NOT NULL,
+	status INT NOT NULL,
 	img BYTEA,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	username TEXT NOT NULL,
+	email TEXT NOT NULL UNIQUE,
 	password BYTEA NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
