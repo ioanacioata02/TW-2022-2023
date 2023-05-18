@@ -15,10 +15,8 @@ else {
 
 function displayChangePassword() {
     popUpBox.classList.remove("hidden");
-    console.log("display");
 }
 
 function hideChangePassword() {
     popUpBox.classList.add("hidden");
-    console.log("hide");
 }
