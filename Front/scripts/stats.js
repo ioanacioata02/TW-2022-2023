@@ -20,5 +20,5 @@ for (let i = 0; i < numberIds.length; i++) {
     let myCircle = document.getElementById(allCircles[i]);
     let counterLimit = Number(number.innerHTML);
     let counter = 0;
-    loadProgressBar(number, counter, counterLimit, myCircle, 369);
+    loadProgressBar(number, counter, counterLimit, myCircle, 496);
 }

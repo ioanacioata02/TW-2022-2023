@@ -8,7 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
 
     <title>InformatiX</title>
 
@@ -26,7 +28,7 @@
 
     <script src="../scripts/profile.js" defer></script>
     <script src="../scripts/stats.js" defer></script>
-    
+
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
 </head>
@@ -85,15 +87,16 @@
         <div class="sidebar">
             <div class="up">
                 <div class="parent">
-                <img id="userPhoto" class="circle" src="https://randomuser.me/api/portraits/women/64.jpg" alt="user">
-                <form class="photo-edit">
-                    <input type='file' id="photoUpload" accept=".png, .jpg, .jpeg">
-                    <label for="photoUpload"><i class="fa fa-camera"></i></label>
-                </form>
+                    <img id="userPhoto" class="circle" src="https://randomuser.me/api/portraits/women/64.jpg"
+                        alt="user">
+                    <form class="photo-edit">
+                        <input type='file' id="photoUpload" accept=".png, .jpg, .jpeg">
+                        <label for="photoUpload"><i class="fa fa-camera"></i></label>
+                    </form>
+                </div>
+
             </div>
-                
-            </div>
-            <ul class ="top-txt">
+            <ul class="top-txt">
                 <li>
                     <h1>Username</h1>
                 </li>
@@ -108,11 +111,16 @@
                 </li>
             </ul>
             <ul class="profile-options">
-                <li><a id="link-to-class"><i class='fas fa-school'></i><span class="profile-item" id="singular-or-plural"></span></a></li>
+                <li><a id="link-to-class"><i class='fas fa-school'></i><span class="profile-item">classes</span></a>
+                </li>
                 <li id="propune-problema"><a href="formForProblem.html"><i class='fas fa-edit'></i><span
                             class="profile-item">propose problem</span></a>
                 </li>
-                <li id="logout" onclick="loggedOut()"><a href="index.html"><span class="icon"></span><span class="profile-item">logout</span></a></li>
+                <li><a id="change-password" onclick="displayChangePassword()"><i class='fas fa-key'></i><span
+                            class="profile-item">change
+                            password</span></a></li>
+                <li id="logout" onclick="loggedOut()"><a href="index.html"><i class="fas fa-sign-out-alt"></i><span
+                            class="profile-item">logout</span></a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -124,53 +132,28 @@
                             <span>%</span>
                         </div>
                         <svg>
-                            <circle id="all-svg" cx="80" cy="80" r="60"></circle>
+                            <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
                         </svg>
                     </div>
-                    <h3>all</h3>
+                    <h2>all</h2>
                     <span>500/1000</span>
-                </div>
-                <div class="item" id="easy">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number2">87</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="easy-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>easy</h3>
-                    <span>8700/10000</span>
-                </div>
-                <div class="item" id="medium">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number3">90</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="medium-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>medium</h3>
-                    <span>90/100</span>
-                </div>
-                <div class="item" id="hard">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number4">20</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="hard-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>hard</h3>
-                    <span>200/1000</span>
                 </div>
             </section>
         </div>
+        <div class="hidden" id="pop-up-box">
+            <form class="popUp">
+                <a class="close-popup" onclick="hideChangePassword()">&#x2716;</a>
+                <!--
+            <label for="old-password">Old password:</label>
+            <input type="password" id="old-password" name="old-password" required>
+            <label for="new-password">New password:</label>
+            <input type="password" id="new-password" name="new-password" required>-->
+                <label for="confirm-password">Confirm password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="submit" value="Change">
+            </form>
+        </div>
     </main>
 </body>
+
 </html>
