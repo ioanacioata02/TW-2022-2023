@@ -36,6 +36,7 @@ CREATE TABLE problems(
 CREATE TABLE proposed_problems(
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
+	description TEXT NOT NULL,
 	tags JSON,
 	tests JSON NOT NULL,
 	id_author INT NOT NULL
@@ -93,6 +94,25 @@ CREATE TABLE homework_members(
 	CONSTRAINT fk_homework2 FOREIGN KEY (id_homework_mb) REFERENCES homeworks(id) ON DELETE CASCADE,
 	CONSTRAINT fk_member FOREIGN KEY (id_member) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE OR REPLACE PROCEDURE accept_probl(id_proposed INT)
+LANGUAGE PLPGSQL
+AS $$
+DECLARE
+	 v_counter INT;
+BEGIN
+	SELECT COUNT(1) INTO v_counter FROM proposed_problems WHERE id = id_proposed;
+	
+	IF v_counter != 1 THEN
+		RAISE EXCEPTION '(Accept proposed problem): id doesn''t exist';
+	END IF;
+	
+	INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes)
+		SELECT name, description, tags, tests, 0, 0 FROM proposed_problems
+    	WHERE id = id_proposed;
+	
+	DELETE FROM proposed_problems WHERE id = id_proposed;
+END;$$;
 
 select usename from pg_user;
 SELECT current_database();
