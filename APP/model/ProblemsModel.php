@@ -12,14 +12,14 @@ class ProblemsModel extends Model
         $stmt =  $connection->prepare("select count(*) as cnt from problems where id=:id");
         $stmt->bindValue(":id", $id);
         $stmt->execute();
-
         if($stmt->fetch(PDO::FETCH_ASSOC)["cnt"]==0)
         {
             return false;
         }
-
         $columns = array_keys($data);
-        $sql =  "update problems set ".implode(" , ", array_map(function ($column){ return "$column = :$column";}, $columns))." where :id" ;
+
+        $sql =  "update problems set ".implode(" , ", array_map(function ($column){ return "$column = :$column";}, $columns))." where id = :id" ;
+
         $stmt =  $connection->prepare($sql);
         foreach ($data as $key => $value) {
             if($key=="tags" || $key=="tests")
@@ -30,7 +30,7 @@ class ProblemsModel extends Model
         }
         $stmt->bindValue(":id", $id );
         $stmt->execute();
-        $this->connectionPool($connection);
+        $this->connectionPool->closeConnection($connection);
         return true;
     }
 

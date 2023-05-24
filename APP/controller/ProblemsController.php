@@ -12,15 +12,17 @@ class ProblemsController extends Controller
     public function processRequest(string $method, ?string $actions): void
     {
 
+
         $params = $actions ? $this->processAction($actions) : null;
 
+        //if the id is set then this takes priority over anything else
         if (isset($params["id"])) {
             $this->processResourceRequest($method, intval($params["id"]));
             return;
         }
 
         $limit = $params["limit"] ?? 99999999;
-        if (isset($params["sort"])) {
+        if (isset($params["sort"]) && $method=="GET") {
             echo $this->sortLimit($params["sort"], $limit);
             return;
         }
@@ -28,8 +30,6 @@ class ProblemsController extends Controller
             echo json_encode($this->model->getAll($limit));
             return;
         }
-
-
         $this->processCollectionRequest($method);
     }
     private function sortLimit($sort,$limit)
@@ -102,11 +102,11 @@ class ProblemsController extends Controller
                 break;
             case "PUT":
                 http_response_code(400);
-                echo json_encode(["message" => "For updating a problem use PUT problems/id_problem"]);
+                echo json_encode(["message" => "For updating a problem use PUT problems/?id=problem_id"]);
                 break;
             case "DELETE":
                 http_response_code(400);
-                echo json_encode(["message" => "For deletion use DELETE problems/id_problem"]);
+                echo json_encode(["message" => "For deletion use DELETE problems/?id=problem_id"]);
                 break;
         }
     }
