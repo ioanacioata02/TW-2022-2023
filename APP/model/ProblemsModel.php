@@ -85,7 +85,14 @@ class ProblemsModel extends Model
         $row["id"] = intval($row["id"]);
         $row["nr_attempts"] = intval($row["nr_attempts"]);
         $row["nr_successes"] = intval($row["nr_successes"]);
-        $row["tags"]=json_decode($row["tags"]);
+        $tags = explode("," ,substr($row["tags"],1,-1));
+        foreach($tags as &$tag)
+        {
+            $tag=stripslashes($tag);
+            if($tag[0]=='"')
+                $tag=substr($tag, 1,-1);
+        }
+        $row["tags"]= $tags;
         $row["tests"]=json_decode($row["tests"]);
         return $row;
     }
@@ -106,7 +113,8 @@ class ProblemsModel extends Model
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1,$data["name"], PDO::PARAM_STR);
         $stmt->bindValue(2,$data["description"]);
-        $stmt->bindValue(3,json_encode($data["tags"]));
+        #echo var_dump($data["tests"]);
+        $stmt->bindValue(3,'{'.addslashes(implode(",",$data["tags"])).'}');
         $stmt->bindValue(4,json_encode($data["tests"]));
         $stmt->bindValue(5,0);
         $stmt->bindValue(6,0);

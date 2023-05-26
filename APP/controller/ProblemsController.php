@@ -43,6 +43,9 @@ class ProblemsController extends Controller
             CASE "NAME":
                 echo json_encode($this->model->sortLimit("name", $limit, "ASC"));
                 break;
+            CASE "ID":
+                echo json_encode($this->model->sortLimit("id", $limit,"ASC"));
+                break;
         }
     }
     private function processAction($actions)
