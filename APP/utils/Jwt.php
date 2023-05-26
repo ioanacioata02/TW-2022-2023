@@ -4,7 +4,7 @@ class Jwt
 {
 
 
-    /**Will return a error code for the token
+    /**Will return true if the token is valid, false otherwise and will send a error message to the client
      * @param $status
      * @return bool
      */
