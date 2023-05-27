@@ -17,17 +17,23 @@ class ProblemsModel extends Model
             return false;
         }
         $columns = array_keys($data);
-
         $sql =  "update problems set ".implode(" , ", array_map(function ($column){ return "$column = :$column";}, $columns))." where id = :id" ;
 
         $stmt =  $connection->prepare($sql);
         foreach ($data as $key => $value) {
-            if($key=="tags" || $key=="tests")
-            $stmt->bindValue(":$key", json_encode($value));
+            if($key=="tags"){
+                $stmt->bindValue(":$key", '{'.addslashes(implode(",",$data["tags"])).'}');
+
+            }
+            elseif ($key=="tests")
+            {
+                $stmt->bindValue(":$key", json_encode($value));
+            }
             else{
                 $stmt->bindValue(":$key", $value);
             }
         }
+
         $stmt->bindValue(":id", $id );
         $stmt->execute();
         $this->connectionPool->closeConnection($connection);
@@ -107,15 +113,14 @@ class ProblemsModel extends Model
     }
     public function create(array $data): int
     {
-
         $sql =  "INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes) values (?, ?,? ,?,?,?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
-        $stmt->bindValue(1,$data["name"], PDO::PARAM_STR);
-        $stmt->bindValue(2,$data["description"]);
+        $stmt->bindValue(1,strip_tags($data["name"]), PDO::PARAM_STR);
+        $stmt->bindValue(2,strip_tags($data["description"]));
         #echo var_dump($data["tests"]);
-        $stmt->bindValue(3,'{'.addslashes(implode(",",$data["tags"])).'}');
-        $stmt->bindValue(4,json_encode($data["tests"]));
+        $stmt->bindValue(3,strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
+        $stmt->bindValue(4, json_encode($data['tests']));
         $stmt->bindValue(5,0);
         $stmt->bindValue(6,0);
         $stmt->execute();

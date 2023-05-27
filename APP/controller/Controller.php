@@ -8,4 +8,5 @@ abstract class Controller
         $classModel = str_replace("Controller", "Model", get_class($this));
         $this->model= new $classModel();
     }
+    abstract protected function processRequest(string $method, ?string $actions);
 }
