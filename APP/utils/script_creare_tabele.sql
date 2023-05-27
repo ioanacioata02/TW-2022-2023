@@ -29,7 +29,7 @@ CREATE TABLE problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSON[] NOT NULL,
+	tests JSON NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
 );
@@ -39,7 +39,7 @@ CREATE TABLE proposed_problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSON[] NOT NULL,
+	tests JSON NOT NULL,
 	id_author INT NOT NULL
 );
 
