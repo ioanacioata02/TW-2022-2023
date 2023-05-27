@@ -16,19 +16,20 @@ CREATE DATABASE "InformatiX"
 DROP TABLE IF EXISTS problems CASCADE;
 DROP TABLE IF EXISTS proposed_problems CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS solved CASCADE;
+DROP TABLE IF EXISTS solutions CASCADE;
 DROP TABLE IF EXISTS classes CASCADE;
 DROP TABLE IF EXISTS class_members CASCADE;
 DROP TABLE IF EXISTS homeworks CASCADE;
 DROP TABLE IF EXISTS homework_problems CASCADE;
 DROP TABLE IF EXISTS homework_members CASCADE;
+DROP TABLE IF EXISTS all_comments CASCADE;
 
 CREATE TABLE problems(
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
-	tags JSON,
-	tests JSON NOT NULL,
+	tags TEXT[] NOT NULL,
+	tests JSON[] NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
 );
@@ -36,8 +37,9 @@ CREATE TABLE problems(
 CREATE TABLE proposed_problems(
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
-	tags JSON,
-	tests JSON NOT NULL,
+	description TEXT NOT NULL,
+	tags TEXT[] NOT NULL,
+	tests JSON[] NOT NULL,
 	id_author INT NOT NULL
 );
 
@@ -54,9 +56,12 @@ CREATE TABLE users(
 	nr_successes INT NOT NULL
 );
 
-CREATE TABLE solved(
+CREATE TABLE solutions(
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
+	solution TEXT NOT NULL,
+	success BOOLEAN NOT NULL,
+	moment TIMESTAMP DEFAULT NOW(),
 	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
 );
@@ -92,6 +97,15 @@ CREATE TABLE homework_members(
 	problem_nr INT NOT NULL,
 	CONSTRAINT fk_homework2 FOREIGN KEY (id_homework_mb) REFERENCES homeworks(id) ON DELETE CASCADE,
 	CONSTRAINT fk_member FOREIGN KEY (id_member) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE all_comments(
+	id_user INT NOT NULL,
+	id_problem INT NOT NULL,
+	comment_txt TEXT NOT NULL,
+	moment TIMESTAMP DEFAULT NOW(),
+	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
+	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
 );
 
 select usename from pg_user;
