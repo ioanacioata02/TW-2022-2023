@@ -18,9 +18,12 @@
 
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/login2.js" defer></script>
     <script src="../scripts/login.js" defer></script>
+    
 </head>
 
+<<<<<<< Updated upstream
 <body>
     <nav class="navbar ">
         <div class="logo">
@@ -64,6 +67,9 @@
             </div>
         </div>
     </nav>
+=======
+<body class="container">
+>>>>>>> Stashed changes
     <div class="bkg-login">
         <form class="login-form">
             <div class="imgcontainer">
@@ -74,12 +80,17 @@
 
                 <b>Username</b>
 
-                <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
+                <input class="login-input" id="username" type="text" placeholder="Type Username" name="uname" required>
 
                 <b>Password</b>
 
+<<<<<<< Updated upstream
                 <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
                 <button onclick="loggedIn()" class="login-button">Login</button>
+=======
+                <input class="login-input"  id="password" type="password" placeholder="Type Password" name="psw" required>
+                <button onclick="setVariableTrue()" class="login-button">Login</button>
+>>>>>>> Stashed changes
             </div>
         </form>
 
