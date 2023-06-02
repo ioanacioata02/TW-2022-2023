@@ -11,6 +11,7 @@ class PromoteController extends Controller{
         if(!isset($actions)){
             $this->notAllowed();
         }
+        
         else{
             $params = $this->processAction($actions);
         }
