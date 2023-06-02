@@ -60,7 +60,11 @@ class ProposedModel extends Model{
 
     private static function processRow($row):array{
         $row["id"] = intval($row["id"]);
-        $row["tags"]= isset($row["tags"]) ? json_decode($row["tags"]) : null;
+        $tags = explode(",", substr($row["tags"], 1, -1));
+        foreach($tags as &$tag){
+            $tag=stripslashes($tag);
+        }
+        $row["tags"]= $tags;
         $row["tests"]=json_decode($row["tests"]);
         $row["id_author"] = intval($row["id_author"]);
 
@@ -91,33 +95,18 @@ class ProposedModel extends Model{
     }
 
     public function create(array $data): int{
-        $result = -1;
-        if(! $this->checkData($data)){
-            return $result;
-        }
-
+        
         try{
             $connection = $this->connectionPool->getConnection();
 
-            if(isset($data["tags"])){
-                $sql =  "INSERT INTO proposed_problems (name, description, tags, tests, id_author) values (?, ?, ?, ?, ?)";
-                $stmt =  $connection->prepare($sql);
-                $stmt->bindValue(1, $data["name"], PDO::PARAM_STR);
-                $stmt->bindValue(2, $data["description"], PDO::PARAM_STR);
-                $stmt->bindValue(3, json_encode($data["tags"]));
-                $stmt->bindValue(4, json_encode($data["tests"]));
-                $stmt->bindValue(5, $data["id_author"], PDO::PARAM_INT);
-                $stmt->execute();
-            }
-            else{
-                $sql =  "INSERT INTO proposed_problems (name, description, tests, id_author) values (?, ?, ?, ?)";
-                $stmt =  $connection->prepare($sql);
-                $stmt->bindValue(1, $data["name"], PDO::PARAM_STR);
-                $stmt->bindValue(2, $data["description"], PDO::PARAM_STR);
-                $stmt->bindValue(3, json_encode($data["tests"]));
-                $stmt->bindValue(4, $data["id_author"], PDO::PARAM_INT);
-                $stmt->execute();
-            }
+            $sql =  "INSERT INTO proposed_problems (name, description, tags, tests, id_author) values (?, ?, ?, ?, ?)";
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $data["name"], PDO::PARAM_STR);
+            $stmt->bindValue(2, $data["description"], PDO::PARAM_STR);
+            $stmt->bindValue(3, '{'.addslashes(implode(",",$data["tags"])).'}');
+            $stmt->bindValue(4, json_encode($data['tests']));
+            $stmt->bindValue(5, $data["id_author"], PDO::PARAM_INT);
+            $stmt->execute();
         }catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
         }finally{
@@ -126,26 +115,25 @@ class ProposedModel extends Model{
         return intval($connection->lastInsertId());
     }
 
-    private static function checkData(array $data): bool{
-        $requiredKeys = ["name", "description", "tests", "id_author"];
-        $filteredData = array_intersect_key($data, array_flip($requiredKeys));
-        
-        if (count($filteredData) !== count($requiredKeys)) {
-            http_response_code(400);
-            echo json_encode(["message" => "Bad request"]);
-            return false;
-        }
-
-        return true;
-    }
-
     public function accept(int $id):bool{
         $response = true;
         try{
             $connection = $this->connectionPool->getConnection();
+
+            $sql="SELECT * FROM proposed_problems WHERE id = (?)";
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
             
+            if ($stmt->rowCount() === 0) {
+                http_response_code(404);
+                echo json_encode(["id" => $id, "message" => "Proposed problem not found"]);
+                $response = false;
+            }
+
+            $sql = "CALL accept_probl(?)";
             $connection->beginTransaction();
-            $stmt =  $connection->prepare("CALL accept_probl(?)");
+            $stmt =  $connection->prepare($sql);
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             $stmt->execute();
 
