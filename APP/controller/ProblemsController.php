@@ -8,11 +8,8 @@ class ProblemsController extends Controller
         parent::__construct();
 
     }
-
     public function processRequest(string $method, ?string $actions): void
     {
-
-
         $params = $actions ? $this->processAction($actions) : null;
 
         //if the id is set then this takes priority over anything else

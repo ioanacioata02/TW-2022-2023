@@ -8,29 +8,23 @@ class Jwt
      * @param $status
      * @return bool
      */
-    static public function validateAuthorizationToken($status): bool
+    static public function validateAuthorizationToken($secret, $status=-1): bool
     {
         if(!isset(getallheaders()["Authorization"])) {
-            http_response_code(400);
-            echo json_encode(["message"=>"Missing authorization token"]);
             return false;
         }
         $token= getallheaders()["Authorization"];
-<<<<<<< Updated upstream:utils/Jwt.php
-        $payload =  Jwt::validateToken($token, "secret");
-=======
         if($token==null)
             return false;
         $payload =  Jwt::validateToken($token, $secret);
->>>>>>> Stashed changes:APP/utils/Jwt.php
         if (!isset($payload))
         {
-            http_response_code(400);
-            echo json_encode(["message"=>"Invalid authorization token"]);
             return false;
         }
         if($payload["status"]<$status)
         {
+
+
             http_response_code(401);
             echo json_encode(["message"=>"You don't have the permission to create a problem"]);
             return false;
@@ -74,6 +68,7 @@ class Jwt
         }
         $decodedPayload = json_decode(base64_decode($payload), true);
         if (time() > $decodedPayload["expirationDate"]) {
+
             return null;
         }
         return $decodedPayload;
