@@ -16,64 +16,13 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
 
-    <script src="../scripts/languageDisplay.js" defer></script>
-    <script src="../scripts/dropdown.js" defer></script>
-    <script src="../scripts/login2.js" defer></script>
-    <script src="../scripts/login.js" defer></script>
-<<<<<<< Updated upstream
     
-=======
-    <script src="../scripts/auth.js" defer></script>
->>>>>>> Stashed changes
+    <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/login.js" defer></script>
+    <script src="../scripts/auth.js" async></script>
 </head>
 
-<<<<<<< Updated upstream
-<body>
-    <nav class="navbar ">
-        <div class="logo">
-            <img class="image-logo" src="../assets/logo.svg" alt="">
-        </div>
-        <!--<input type="text" class="search-bar" placeholder="Search"> -->
-        <div class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" style="display:
-                    none;">
-            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
-            <div class="menu">
-                <div>
-                    <a class="menu-anchor">Home</a>
-                </div>
-                <div>
-                    <a class="menu-anchor">Problems</a>
-                </div>
-                <!--
-                <div class="dropdown">
-                    <a>Courses</a>
-                </div>
-                -->
-
-                <div>
-                    <a class="menu-anchor">About</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
-                </div>
-                <div class="dropdown">
-                    <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
-                        src="../assets/flag_en.svg" alt="">
-                    <div id="myDropdown2" class="dropdown-menu">
-                        <img src="../assets/flag_en.svg" id="language-eng" class="language-list" alt="">
-                        <img src="../assets/flag_ro.svg" id="language-ro" class="language-list" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-=======
 <body class="container">
->>>>>>> Stashed changes
     <div class="bkg-login">
         <form class="login-form"  action="#" method="post" id="log-in">
             <div class="imgcontainer">
@@ -84,25 +33,15 @@
 
                 <b>Email</b>
 
-<<<<<<< Updated upstream
-                <input class="login-input" id="username" type="text" placeholder="Type Username" name="uname" required>
-=======
                 <input class="login-input" type="email" placeholder="Type Email" name="email" required>
->>>>>>> Stashed changes
 
                 <b>Password</b>
 
-<<<<<<< Updated upstream
-                <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
-<<<<<<< Updated upstream
-                <button onclick="loggedIn()" class="login-button">Login</button>
-=======
+            
+
                 <input class="login-input"  id="password" type="password" placeholder="Type Password" name="psw" required>
-                <button onclick="setVariableTrue()" class="login-button">Login</button>
->>>>>>> Stashed changes
-=======
-                <button onclick="validateOnSubmit()" class="login-button" type="submit">Login</button>
->>>>>>> Stashed changes
+                <button class="login-button" type="submit">Login</button>
+
             </div>
         </form>
 
