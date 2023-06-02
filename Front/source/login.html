@@ -20,7 +20,11 @@
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login2.js" defer></script>
     <script src="../scripts/login.js" defer></script>
+<<<<<<< Updated upstream
     
+=======
+    <script src="../scripts/auth.js" defer></script>
+>>>>>>> Stashed changes
 </head>
 
 <<<<<<< Updated upstream
@@ -71,25 +75,33 @@
 <body class="container">
 >>>>>>> Stashed changes
     <div class="bkg-login">
-        <form class="login-form">
+        <form class="login-form"  action="#" method="post" id="log-in">
             <div class="imgcontainer">
                 <a class="close" href="javascript:history.back()" title="Close Form"> &#x2716;</a>
                 <h1>Login here!&#x1F464;</h1>
             </div>
             <div class="form-fields">
 
-                <b>Username</b>
+                <b>Email</b>
 
+<<<<<<< Updated upstream
                 <input class="login-input" id="username" type="text" placeholder="Type Username" name="uname" required>
+=======
+                <input class="login-input" type="email" placeholder="Type Email" name="email" required>
+>>>>>>> Stashed changes
 
                 <b>Password</b>
 
 <<<<<<< Updated upstream
                 <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
+<<<<<<< Updated upstream
                 <button onclick="loggedIn()" class="login-button">Login</button>
 =======
                 <input class="login-input"  id="password" type="password" placeholder="Type Password" name="psw" required>
                 <button onclick="setVariableTrue()" class="login-button">Login</button>
+>>>>>>> Stashed changes
+=======
+                <button onclick="validateOnSubmit()" class="login-button" type="submit">Login</button>
 >>>>>>> Stashed changes
             </div>
         </form>

@@ -16,7 +16,13 @@ class Jwt
             return false;
         }
         $token= getallheaders()["Authorization"];
+<<<<<<< Updated upstream:utils/Jwt.php
         $payload =  Jwt::validateToken($token, "secret");
+=======
+        if($token==null)
+            return false;
+        $payload =  Jwt::validateToken($token, $secret);
+>>>>>>> Stashed changes:APP/utils/Jwt.php
         if (!isset($payload))
         {
             http_response_code(400);
