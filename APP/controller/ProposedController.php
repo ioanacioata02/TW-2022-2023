@@ -60,6 +60,10 @@ class ProposedController extends Controller{
     private function processResourceRequest(string $method, int $id): void{
         
         switch ($method) {
+            case "OPTIONS":
+                http_response_code(200);
+                break;
+
             case "GET":
                 $row = $this->model->get($id);
                 if(isset($row)){
