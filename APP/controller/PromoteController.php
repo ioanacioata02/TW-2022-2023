@@ -11,7 +11,6 @@ class PromoteController extends Controller{
         if(!isset($actions)){
             $this->notAllowed();
         }
-        
         else{
             $params = $this->processAction($actions);
         }
@@ -40,6 +39,9 @@ class PromoteController extends Controller{
 
     private function processResourceRequest(string $method, int $status): void{
         switch ($method) {
+            case "OPTIONS":
+                http_response_code(200);
+                break;
 
             case "PATCH":
                 
@@ -70,15 +72,11 @@ class PromoteController extends Controller{
     }
 
     private static function checkData(array $data): bool{
-        $requiredKeys = ["email"];
-        $differentKeys = array_diff(array_keys($data), $requiredKeys);
-
-        if (!empty($differentKeys)) {
-            http_response_code(400);
-            echo json_encode(["message" => "Bad request"]);
-            return false;
-        }
-
-        return true;
+        if(count($data) === 1 && array_key_exists("email", $data))
+            return true;
+        
+        http_response_code(400);
+        echo json_encode(["message" => "Bad request"]);
+        return false;
     }
 }

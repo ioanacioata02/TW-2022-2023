@@ -16,16 +16,6 @@ CREATE DATABASE "InformatiX"
 DROP TABLE IF EXISTS problems CASCADE;
 DROP TABLE IF EXISTS proposed_problems CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS solved CASCADE;
-DROP TABLE IF EXISTS classes CASCADE;
-DROP TABLE IF EXISTS class_members CASCADE;
-DROP TABLE IF EXISTS homeworks CASCADE;
-DROP TABLE IF EXISTS homework_problems CASCADE;
-DROP TABLE IF EXISTS homework_members CASCADE;
-
-DROP TABLE IF EXISTS problems CASCADE;
-DROP TABLE IF EXISTS proposed_problems CASCADE;
-DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS solutions CASCADE;
 DROP TABLE IF EXISTS classes CASCADE;
 DROP TABLE IF EXISTS class_members CASCADE;
@@ -44,15 +34,6 @@ CREATE TABLE problems(
 	nr_successes INT NOT NULL
 );
 
-CREATE TABLE proposed_problems(
-	id SERIAL PRIMARY KEY,
-	name TEXT NOT NULL,
-	description TEXT NOT NULL,
-	tags TEXT[] NOT NULL,
-	tests JSONB NOT NULL,
-	id_author INT NOT NULL
-);
-
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	status INT NOT NULL,
@@ -64,6 +45,16 @@ CREATE TABLE users(
 	password BYTEA NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
+);
+
+CREATE TABLE proposed_problems(
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	description TEXT NOT NULL,
+	tags TEXT[] NOT NULL,
+	tests JSONB NOT NULL,
+	id_author INT NOT NULL,
+	CONSTRAINT fk_author_user FOREIGN KEY (id_author) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE solutions(

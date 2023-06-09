@@ -7,34 +7,35 @@ class ProposedController extends Controller{
     }
 
     public function processRequest(string $method, ?string $actions): void{
-
+        
         if(!isset($actions)){
             $this->processSimpleRequest($method);
-        }
-        else{
-            $params = $this->processAction($actions);
+            return;
         }
 
+        // with parameters
+        // admin status
         if(!Jwt::validateAuthorizationToken(2))
+            return;
+
+        $params = $this->processAction($actions);
+        if($params === null) // params are not the expected ones
             return;
 
         if (isset($params["id"]))
             $this->processResourceRequest($method, intval($params["id"]));
 
-        else if(isset($params['page']) && isset($params["limit"])){
-            if(!filter_var($params['page'], FILTER_VALIDATE_INT) || $params['page'] <= 0){
-                http_response_code(400);
-                echo json_encode(["message" => "Page must be a natural number"]);
-            }
-            else if(!filter_var($params['limit'], FILTER_VALIDATE_INT) || $params['limit'] <= 0){
-                http_response_code(400);
-                echo json_encode(["message" => "Limit must be a natural number"]);
-            }
-            else
-                echo json_encode($this->model->getPage($params));
+        else if(!is_numeric($params['page']) || $params['page'] <= 0){
+            http_response_code(400);
+            echo json_encode(["message" => "Page must be a natural number"]);
         }
+        else if(!is_numeric($params['limit']) || $params['limit'] <= 0){
+            http_response_code(400);
+            echo json_encode(["message" => "Limit must be a natural number"]);
+        }
+        else
+            $this->processViewAllRequest($method, $params); 
             
-        return;
     }
 
     private function processAction($actions): ?array{
@@ -57,6 +58,21 @@ class ProposedController extends Controller{
         return null;
     }
 
+    private function processViewAllRequest(string $method, array $params): void{
+
+        switch ($method){
+            case "GET":
+                echo json_encode($this->model->getPage($params));
+                break;
+            
+            default:
+                http_response_code(405);
+                echo json_encode(["message" => "Method not allowed with this parameters"]);
+                break;
+        }
+    }
+    
+
     private function processResourceRequest(string $method, int $id): void{
         
         switch ($method) {
@@ -66,15 +82,13 @@ class ProposedController extends Controller{
 
             case "GET":
                 $row = $this->model->get($id);
-                if(isset($row)){
-                    if(!empty($row)){
-                        http_response_code(200);
-                        echo json_encode($row);
-                    }
-                    else{
-                        http_response_code(404);
-                        echo json_encode(["id" => $id, "message" => "Proposed problem not found"]);
-                    }
+                if(!empty($row)){
+                    http_response_code(200);
+                    echo json_encode($row);
+                }
+                else{
+                    http_response_code(404);
+                    echo json_encode(["id" => $id, "message" => "Proposed problem not found"]);
                 }
                 break;
 
@@ -106,12 +120,18 @@ class ProposedController extends Controller{
     }
 
     private function processSimpleRequest($method): void{
+        // at least teacher
+        if(!Jwt::validateAuthorizationToken(1)){
+            return;
+        }
 
         switch ($method) {
+            case "OPTIONS":
+                http_response_code(200);
+                break;
+
+
             case "POST":
-                if(!Jwt::validateAuthorizationToken(1)){
-                    return;
-                }
                 $data = (array)json_decode(file_get_contents("php://input"), true);
 
                 if(self::checkData($data)){
@@ -120,6 +140,10 @@ class ProposedController extends Controller{
                         http_response_code(200);
                         echo json_encode(["id" => $id, "message" => "Problem created"]);
                     }
+                }
+                else{
+                    http_response_code(400);
+                    echo json_encode(["message" => "Bad request"]);
                 }
 
                 break;
@@ -133,8 +157,6 @@ class ProposedController extends Controller{
 
     private static function checkData(array $data): bool{
         if($data === null){
-            http_response_code(400);
-            echo json_encode(["message" => "Bad request"]);
             return false;
         }
 
@@ -146,49 +168,35 @@ class ProposedController extends Controller{
             }
         }
 
-        if (count($requiredKeys) !== count($data) ||
-        !empty($differentKeys) || 
-        !filter_var($data['name'], FILTER_SANITIZE_SPECIAL_CHARS) || 
-        !filter_var($data['description'], FILTER_SANITIZE_SPECIAL_CHARS) || 
-        !filter_var($data['id_author'], FILTER_VALIDATE_INT)
-        ) {
-            http_response_code(400);
-            echo json_encode(["message" => "Bad request"]);
+        if (count($requiredKeys) !== count($data) || !empty($differentKeys))
             return false;
-        }
+
+        
+        if(!is_numeric($data['id_author']))
+            return false;
+
         //tags
         if(empty($data['tags'])){
-            {
-                http_response_code(400);
-                echo json_encode(["message" => "Bad request"]);
-                return false;
-            }
+            return false;
         }
-        #var_dump($data['tags']);
-        foreach ($data['tags'] as $tag) {
-            if (!filter_var($tag, FILTER_SANITIZE_SPECIAL_CHARS)) {
-                http_response_code(400);
-                echo json_encode(["message" => "Bad request"]);
-                return false;
-            }
-        }
+        
+        //tests
         if(empty($data['tests'])){
-            {
-                http_response_code(400);
-                echo json_encode(["message" => "Bad request"]);
-                return false;
-            }
+            return false;
         }
+
         #var_dump($data['tests']);
         $requiredKeys = ["input", "output"];
         foreach ($data['tests'] as $test) {
             if (count($requiredKeys) !== count($test)){
-                http_response_code(400);
-                echo json_encode(["message" => "Bad request"]);
                 return false;
             }
-
+            foreach($requiredKeys as $key){
+                if(!array_key_exists($key, $test))
+                    return false;
+            }
         }
+
         return true;
     }
 }

@@ -33,7 +33,7 @@ class ProposedModel extends Model{
     }
 
     public function get(int $id):array{
-        $row = null;
+        $row=[];
 
         try{
             $sql = "SELECT * FROM proposed_problems WHERE id = (?)";
@@ -46,9 +46,6 @@ class ProposedModel extends Model{
             if($rowCount === 1){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $row=$this->processRow($row);
-            }
-            else{
-                $row=[];
             }
         } catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -64,6 +61,7 @@ class ProposedModel extends Model{
         foreach($tags as &$tag){
             $tag=stripslashes($tag);
         }
+
         $row["tags"]= $tags;
         $row["tests"]=json_decode($row["tests"]);
         $row["id_author"] = intval($row["id_author"]);
@@ -95,17 +93,21 @@ class ProposedModel extends Model{
     }
 
     public function create(array $data): int{
-        
+        $id_auth = $data["id_author"];
+        if(!$this->authorExists($id_auth)){
+            return -1;
+        }
+
         try{
             $connection = $this->connectionPool->getConnection();
 
             $sql =  "INSERT INTO proposed_problems (name, description, tags, tests, id_author) values (?, ?, ?, ?, ?)";
             $stmt =  $connection->prepare($sql);
-            $stmt->bindValue(1, $data["name"], PDO::PARAM_STR);
-            $stmt->bindValue(2, $data["description"], PDO::PARAM_STR);
-            $stmt->bindValue(3, '{'.addslashes(implode(",",$data["tags"])).'}');
-            $stmt->bindValue(4, json_encode($data['tests']));
-            $stmt->bindValue(5, $data["id_author"], PDO::PARAM_INT);
+            $stmt->bindValue(1, htmlspecialchars($data['name'], ENT_NOQUOTES), PDO::PARAM_STR);
+            $stmt->bindValue(2, htmlspecialchars($data['description'], ENT_NOQUOTES), PDO::PARAM_STR);
+            $stmt->bindValue(3, htmlspecialchars('{'.addslashes(implode(",",$data["tags"])).'}', ENT_NOQUOTES));
+            $stmt->bindValue(4, htmlspecialchars(json_encode($data['tests']), ENT_NOQUOTES));
+            $stmt->bindValue(5, $id_auth, PDO::PARAM_INT);
             $stmt->execute();
         }catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -113,6 +115,29 @@ class ProposedModel extends Model{
             $this->connectionPool->closeConnection($connection);
         }
         return intval($connection->lastInsertId());
+    }
+
+    private function authorExists(int $id): bool{
+        $response = true;
+        try{
+            $sql = "select * from users where id= (?)";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 0) {
+                http_response_code(404);
+                echo json_encode(["id" => $id, "message" => "Author doesn't exist"]);
+                $response = false;
+            }
+        }catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+            $response = false;
+        }finally{
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $response;
     }
 
     public function accept(int $id):bool{
