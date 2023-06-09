@@ -14,6 +14,7 @@ if (!empty($urlParts)) {
     $controller = ucfirst($urlParts[1]) . "Controller";
     $actions = $urlParts[2] ?? null;
     $controllerUnit = new $controller();
+    //the action is whatever is after problems/ for example
     $controllerUnit->processRequest($_SERVER["REQUEST_METHOD"], $actions);
 
 }

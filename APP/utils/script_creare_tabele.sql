@@ -119,3 +119,5 @@ BEGIN
 	
 	DELETE FROM proposed_problems WHERE id = id_proposed;
 END;$$;
+select usename from pg_user;
+SELECT current_database();

@@ -12,25 +12,31 @@ class ProblemsModel extends Model
         $stmt =  $connection->prepare("select count(*) as cnt from problems where id=:id");
         $stmt->bindValue(":id", $id);
         $stmt->execute();
-
         if($stmt->fetch(PDO::FETCH_ASSOC)["cnt"]==0)
         {
             return false;
         }
-
         $columns = array_keys($data);
-        $sql =  "update problems set ".implode(" , ", array_map(function ($column){ return "$column = :$column";}, $columns))." where :id" ;
+        $sql =  "update problems set ".implode(" , ", array_map(function ($column){ return "$column = :$column";}, $columns))." where id = :id" ;
+
         $stmt =  $connection->prepare($sql);
         foreach ($data as $key => $value) {
-            if($key=="tags" || $key=="tests")
-            $stmt->bindValue(":$key", json_encode($value));
+            if($key=="tags"){
+                $stmt->bindValue(":$key", '{'.addslashes(implode(",",$data["tags"])).'}');
+
+            }
+            elseif ($key=="tests")
+            {
+                $stmt->bindValue(":$key", json_encode($value));
+            }
             else{
                 $stmt->bindValue(":$key", $value);
             }
         }
+
         $stmt->bindValue(":id", $id );
         $stmt->execute();
-        $this->connectionPool($connection);
+        $this->connectionPool->closeConnection($connection);
         return true;
     }
 
@@ -85,7 +91,14 @@ class ProblemsModel extends Model
         $row["id"] = intval($row["id"]);
         $row["nr_attempts"] = intval($row["nr_attempts"]);
         $row["nr_successes"] = intval($row["nr_successes"]);
-        $row["tags"]=json_decode($row["tags"]);
+        $tags = explode("," ,substr($row["tags"],1,-1));
+        foreach($tags as &$tag)
+        {
+            $tag=stripslashes($tag);
+            if($tag[0]=='"')
+                $tag=substr($tag, 1,-1);
+        }
+        $row["tags"]= $tags;
         $row["tests"]=json_decode($row["tests"]);
         return $row;
     }
@@ -100,14 +113,14 @@ class ProblemsModel extends Model
     }
     public function create(array $data): int
     {
-
         $sql =  "INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes) values (?, ?,? ,?,?,?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
-        $stmt->bindValue(1,$data["name"], PDO::PARAM_STR);
-        $stmt->bindValue(2,$data["description"]);
-        $stmt->bindValue(3,json_encode($data["tags"]));
-        $stmt->bindValue(4,json_encode($data["tests"]));
+        $stmt->bindValue(1,strip_tags($data["name"]), PDO::PARAM_STR);
+        $stmt->bindValue(2,strip_tags($data["description"]));
+        #echo var_dump($data["tests"]);
+        $stmt->bindValue(3,strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
+        $stmt->bindValue(4, json_encode($data['tests']));
         $stmt->bindValue(5,0);
         $stmt->bindValue(6,0);
         $stmt->execute();
