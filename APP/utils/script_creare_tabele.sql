@@ -29,18 +29,9 @@ CREATE TABLE problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSON NOT NULL,
+	tests JSONB NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
-);
-
-CREATE TABLE proposed_problems(
-	id SERIAL PRIMARY KEY,
-	name TEXT NOT NULL,
-	description TEXT NOT NULL,
-	tags TEXT[] NOT NULL,
-	tests JSON NOT NULL,
-	id_author INT NOT NULL
 );
 
 CREATE TABLE users(
@@ -54,6 +45,16 @@ CREATE TABLE users(
 	password BYTEA NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
+);
+
+CREATE TABLE proposed_problems(
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	description TEXT NOT NULL,
+	tags TEXT[] NOT NULL,
+	tests JSONB NOT NULL,
+	id_author INT NOT NULL,
+	CONSTRAINT fk_author_user FOREIGN KEY (id_author) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE solutions(
@@ -108,5 +109,15 @@ CREATE TABLE all_comments(
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
 );
 
+CREATE OR REPLACE PROCEDURE accept_probl(id_proposed INT)
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+	INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes)
+		SELECT name, description, tags, tests, 0, 0 FROM proposed_problems
+    	WHERE id = id_proposed;
+	
+	DELETE FROM proposed_problems WHERE id = id_proposed;
+END;$$;
 select usename from pg_user;
 SELECT current_database();
