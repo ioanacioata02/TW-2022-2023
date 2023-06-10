@@ -9,3 +9,8 @@
 #tags #write:focus {
     outline: none;
 }
+
+#write #tagsPlaceholder{
+    color: grey;
+    font-size: 0.8rem;
+}

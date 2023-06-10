@@ -1,12 +1,12 @@
 var tagsInput = document.getElementById("write");
 var tagsArea = document.getElementById("tags");
 
-tagsInput.innerHTML = "Press enter tag to accept tag";
-
 var nrClicks = 0;
-tagsInput.addEventListener("click", () => {
-    if (nrClicks === 0)
-        tagsInput.innerText = "";
+tagsArea.addEventListener("click", () => {
+    if (nrClicks === 0){
+        var placeholder = document.getElementById("tagsPlaceholder");
+        placeholder.remove();
+    }
     else nrClicks++;
 });
 
