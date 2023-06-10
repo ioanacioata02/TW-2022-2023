@@ -25,7 +25,7 @@ body h2{
 }
 
 .container input[type=text],
-.container textarea {
+.container textarea, .container #tags {
     width: 100%;
     padding: 1em;
     border: 4px solid var(--main-bar-color);
@@ -35,13 +35,22 @@ body h2{
     margin-bottom: 1.1em;
     outline: none;
 }
+.container #tags{
+    background-color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
 
-.container textarea{
+.container textarea, .container #tags{
     resize: vertical;
 }
 
 .container input[type=text]:focus,
-.container textarea:focus{
+.container textarea:focus, 
+.container #tags:focus{
     transition: 0.5s;
     transition-property: border;
     border-color: #195c70;
@@ -117,6 +126,40 @@ input[type=submit]:active, .form-buttons .back-to-profile:active {
 
 .link{
     margin-bottom: 0.5em;
+}
+
+#tags .tag {
+    border: none;
+    color: black;
+    padding: 0.2em 0.4em;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: var(--submit-btn-rad);
+    margin: 0 4px;
+    background-color: #ebc474;
+    max-width: fit-content;
+    font-size: 0.8em;
+    overflow-wrap:break-word;
+    display: flex;
+    word-break: break-all;
+}
+
+#tags .tag .close-btn{
+    align-self: flex-end;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+    padding-left: 3px;
+}
+
+#tags #write {
+    flex-grow: 1;
+}
+
+#tags #write:focus {
+    outline: none;
 }
 
 @media (max-width: 350px) {

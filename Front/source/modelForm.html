@@ -84,7 +84,7 @@
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title" readonly>
 
-
+                <!--
                 <label>Tags</label>
                 <details open>
                     <summary>Options</summary>
@@ -110,6 +110,13 @@
                                 for="elementaryAlgorithms">elementary algorithms</label></li>
                     </ul>
                 </details>
+            -->
+
+                <label for="tags">Tags</label>
+                <div id="tags">
+                    <div class="tag" contenteditable="false">elementary algorithms<div class="close-btn">&#x2716;</div></div>
+                    <div class="tag" contenteditable="false">arrays<div class="close-btn">&#x2716;</div></div>
+                </div>
                 <br>
                 <label for="description">Description</label>
                 <textarea id="description" name="description" rows="6" readonly></textarea>
