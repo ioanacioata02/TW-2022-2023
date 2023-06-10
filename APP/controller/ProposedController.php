@@ -62,7 +62,7 @@ class ProposedController extends Controller{
 
         switch ($method){
             case "GET":
-                echo json_encode($this->model->getPage($params));
+                echo json_encode(["problems"=>$this->model->getPage($params), "nrOfProblems" => $this->model->getNrOfProblems()]);
                 break;
             
             default:
@@ -133,6 +133,7 @@ class ProposedController extends Controller{
 
             case "POST":
                 $data = (array)json_decode(file_get_contents("php://input"), true);
+                $data["id_author"] = self::getIdFromToken();
 
                 if(self::checkData($data)){
                     $id = $this->model->create($data);
@@ -153,6 +154,13 @@ class ProposedController extends Controller{
                 echo json_encode(["message" => "Method not allowed"]);
                 break;
         }
+    }
+
+    private static function getIdFromToken(): int{
+        $token= getallheaders()["Authorization"];
+        $tokenParts = explode('.', $token);
+        $decodedPayload = json_decode(base64_decode($tokenParts[1]), true);
+        return $decodedPayload["id"];
     }
 
     private static function checkData(array $data): bool{

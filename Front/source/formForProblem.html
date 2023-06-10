@@ -79,16 +79,16 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main id="main">
         <h2>Propose new problem</h2>
 
         <div class="container">
-            <form onsubmit="return validate();">
+            <form onsubmit="trySend(event);">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title" placeholder="Title" required>
 
 
-                <label for="tags">Tags</label>
+                <label>Tags</label>
                 <!--
                 <details>
                     <summary>Options</summary>
@@ -113,7 +113,9 @@
                 </details>
             -->
                 <div id="tags">
-                    <div id="write" contenteditable="true"><div id="tagsPlaceholder">Press enter to accept tag</div></div>
+                    <div id="write" contenteditable="true">
+                        <div id="tagsPlaceholder">Press enter to accept tag</div>
+                    </div>
                 </div>
                 <br>
                 <label for="description">Description</label>
@@ -133,6 +135,17 @@
             </form>
         </div>
     </main>
+    <div class="hidden" id="pop-up-box">
+        <div class="popUp">
+            <a class="close-popup" href="profile-stats.html">&#x2716;</a>
+            <p>Problem successfully proposed!</p>
+            <!--
+        <label for="old-password">Old password:</label>
+        <input type="password" id="old-password" name="old-password" required>
+        <label for="new-password">New password:</label>
+        <input type="password" id="new-password" name="new-password" required>-->
+        </div>
+    </div>
 </body>
 
 </html>

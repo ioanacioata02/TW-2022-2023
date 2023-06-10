@@ -18,13 +18,12 @@
     <link rel="stylesheet" href="../styles/admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
 
-    <script src="../scripts/adminAddLinks.js" defer></script>
     <script src="../scripts/adminPagination.js" defer></script>
     <script src="../scripts/admin.js" defer></script>
     <title>InformatiX</title>
 </head>
 
-<body>
+<body class="hidden">
     <main>
         <button id="promote" onclick="displayPromote()">Promote</button>
         <section class="select-box">
@@ -43,11 +42,12 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th class="tags">Tags</th>
-                        <th>Author</th>
+                        <th>Id author</th>
                         <th>Accept</th>
                     </tr>
                 </thead>
                 <tbody id="candidate-problems">
+                    <!--
                     <tr>
                         <td>1</td>
                         <td class="link-to-probl">Title 1</td>
@@ -218,6 +218,7 @@
                         <td>username</td>
                         <td><button class="yes">yes</button><button class="no">no</button></td>
                     </tr>
+                    -->
                 </tbody>
             </table>
             <nav class="pagination-container">

@@ -162,6 +162,7 @@ input[type=submit]:active, .form-buttons .back-to-profile:active {
     outline: none;
 }
 
+
 @media (max-width: 350px) {
 	.form-buttons{
         flex-direction: column;
