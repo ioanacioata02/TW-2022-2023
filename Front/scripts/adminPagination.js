@@ -27,9 +27,7 @@ function disableButton(button) {
 
 function getProblems() {
     nrOfRows = selectedNr.value;
-    //console.log(nrOfRows);
-    //console.log("...........")
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJpb2FuYSIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY0MTAyNDAsImV4cGlyYXRpb25EYXRlIjoxNjg5MDAyMjQwfQ==.bT5LMv2YoEbbNsYhIDuUDu3vm2/pJNU2coVaIbCjHVk=";
+    let token = localStorage.getItem('token');
     fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
         method: 'GET',
         headers: {
@@ -48,9 +46,6 @@ function getProblems() {
             console.log(problems);
             console.log(nrOfProblems);
             pageCount = Math.ceil(nrOfProblems / nrOfRows);
-
-            //console.log(pageCount);
-            //console.log("###");
 
             deleteAllNrBtns();
             setAllButtons();
