@@ -1,0 +1,11 @@
+.container input[type=text]:focus,
+.container textarea:focus{
+    transition: 0.5s;
+    transition-property: border;
+    border-color: #195c70;
+}
+
+
+#tags #write:focus {
+    outline: none;
+}

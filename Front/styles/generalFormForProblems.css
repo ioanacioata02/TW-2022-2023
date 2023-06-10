@@ -1,0 +1,157 @@
+:root{
+    --form-border-rad: 5px;
+    --submit-btn-rad: 4px;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 90%;
+    margin: 10px auto;
+    font-size: 1.2em;
+    color: rgb(4, 6, 61);
+}
+
+body h2{
+    text-align: center;
+    padding: 0.4em;
+    color: black;
+}
+
+.container form>label::after{
+    content: ":";
+}
+
+.container input[type=text],
+.container textarea, .container #tags {
+    width: 100%;
+    padding: 1em;
+    border: 4px solid var(--main-bar-color);
+    border-radius: var(--form-border-rad);
+    box-sizing: border-box;
+    margin-top: 0.4em;
+    margin-bottom: 1.1em;
+    outline: none;
+}
+.container #tags{
+    background-color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.container textarea, .container #tags{
+    resize: vertical;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: space-between;
+    row-gap: 1em;
+}
+
+input[type=submit], .form-buttons .back-to-profile {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 1em 1.4em;
+    border-radius: var(--submit-btn-rad);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+input[type=submit]:hover {
+    background-color: #195c70;
+}
+
+input[type=submit]:active, .form-buttons .back-to-profile:active {
+    transform: scale(0.9);
+}
+
+.form-buttons .back-to-profile{
+    background-color: var(--main-bar-color);
+}
+
+.form-buttons .back-to-profile:hover{
+    background-color: #195c70;
+}
+
+.container {
+    border-radius: var(--form-border-rad);
+    background-color: var(--accent-color);
+    padding: 1.2em;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.45);
+}
+
+.container details ul{
+    list-style-type: none;
+}
+
+.container details ul li{
+    padding: 0.15em;
+}
+
+.container input[type=checkbox]{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.4em;
+    vertical-align: bottom;
+}
+
+.link a{
+    text-decoration: none;
+    color: var(--text-hover);
+    transition: 0.4s;
+}
+
+.link a:hover{
+    color: brown;
+}
+
+.link a:active{
+    text-decoration: underline;
+}
+
+.link{
+    margin-bottom: 0.5em;
+}
+
+#tags .tag {
+    border: none;
+    color: black;
+    padding: 0.2em 0.4em;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: var(--submit-btn-rad);
+    margin: 0 4px;
+    background-color: #ebc474;
+    max-width: fit-content;
+    font-size: 0.8em;
+    overflow-wrap:break-word;
+    display: flex;
+    word-break: break-all;
+}
+
+#tags .tag .close-btn{
+    align-self: flex-end;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+    padding-left: 3px;
+}
+
+#tags #write {
+    flex-grow: 1;
+}
+
+@media (max-width: 350px) {
+	.form-buttons{
+        flex-direction: column;
+    }
+}

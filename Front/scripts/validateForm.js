@@ -1,42 +1,45 @@
 var tagsInput = document.getElementById("write");
 var tagsArea = document.getElementById("tags");
 
-tagsInput.innerHTML="Press enter tag to accept tag";
+tagsInput.innerHTML = "Press enter tag to accept tag";
 
 var nrClicks = 0;
-tagsInput.addEventListener("click", ()=>{
-    if(nrClicks === 0)
-        tagsInput.innerText="";
+tagsInput.addEventListener("click", () => {
+    if (nrClicks === 0)
+        tagsInput.innerText = "";
     else nrClicks++;
 });
 
-tagsInput.addEventListener("keypress", function(event) {
+tagsInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
 
-        //first div
-        var tag = document.createElement("div");
-        tag.className = "tag";
-        tag.setAttribute("contenteditable", "false");
+        var tagTxt = tagsInput.innerText.trim();
+        if (tagTxt !== '') {
 
-        // content
-        tag.innerText = tagsInput.innerText;
+            //first div
+            var tag = document.createElement("div");
+            tag.className = "tag";
+            tag.setAttribute("contenteditable", "false");
 
-        // X btn
-        var xBtn = document.createElement("div");
-        xBtn.className = "close-btn";
-        xBtn.innerText = "\u2716";
+            // content
+            tag.innerText = tagTxt;
 
-        //appends
-        tag.appendChild(xBtn);        
-        tagsArea.insertBefore(tag, tagsInput);
+            // X btn
+            var xBtn = document.createElement("div");
+            xBtn.className = "close-btn";
+            xBtn.innerText = "\u2716";
+
+            //appends
+            tag.appendChild(xBtn);
+            tagsArea.insertBefore(tag, tagsInput);
 
 
-        xBtn.addEventListener("click", ()=>{
-            tag.remove();
-        });
-
-        tagsInput.innerText = "On click tag is accepted";
+            xBtn.addEventListener("click", () => {
+                tag.remove();
+            });
+        }
+        tagsInput.innerText = "";
     }
 });
 
@@ -53,6 +56,6 @@ function validateTests() {
     }
 }
 
-function validate(){
+function validate() {
     return validateTests();
 }
