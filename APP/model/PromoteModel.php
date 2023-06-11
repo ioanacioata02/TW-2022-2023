@@ -29,7 +29,7 @@ class PromoteModel extends Model{
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    http_response_code(400);
+                    http_response_code(409);
                     echo json_encode(["email" => $email, "status" => $status, "message" => "User already has this role"]);
                     $response = false;
                 }

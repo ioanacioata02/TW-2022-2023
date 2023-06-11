@@ -10,11 +10,12 @@ class ProposedModel extends Model{
         $data = null;
 
         try {
+
             $limit = intval($params['limit']);
             $page = intval($params['page']);
             $offset = ($page - 1) * $limit;
 
-            $sql = "SELECT * FROM proposed_problems ORDER BY id LIMIT (?) OFFSET (?)";
+            $sql = "SELECT id, name, description, tags, id_author FROM proposed_problems ORDER BY id LIMIT (?) OFFSET (?)";
             $connection = $this->connectionPool->getConnection();
             $stmt =  $connection->prepare($sql);
             $stmt->bindValue(1, $limit, PDO::PARAM_INT);
@@ -22,7 +23,7 @@ class ProposedModel extends Model{
             $stmt->execute();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $data[] = $this->processRow($row);
+                $data[] = $this->processRow($row, false);
             }
         } catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -30,6 +31,23 @@ class ProposedModel extends Model{
             $this->connectionPool->closeConnection($connection);
         }
         return $data ?? [];
+    }
+
+    public function getNrOfProblems(): int{
+        $nrOfProblems = 0;
+        try {
+            $sql = "SELECT COUNT(*) FROM proposed_problems";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->execute();
+            
+            $nrOfProblems = intval($stmt->fetchColumn());
+        } catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+        } finally {
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $nrOfProblems;
     }
 
     public function get(int $id):array{
@@ -45,7 +63,7 @@ class ProposedModel extends Model{
             $rowCount = $stmt->rowCount();
             if($rowCount === 1){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $row=$this->processRow($row);
+                $row=$this->processRow($row, true);
             }
         } catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -55,24 +73,25 @@ class ProposedModel extends Model{
         return $row;
     }
 
-    private static function processRow($row):array{
+    private static function processRow(array $row, bool $withTests):array{
         $row["id"] = intval($row["id"]);
         $tags = explode(",", substr($row["tags"], 1, -1));
         foreach($tags as &$tag){
             $tag=stripslashes($tag);
         }
-
         $row["tags"]= $tags;
-        $row["tests"]=json_decode($row["tests"]);
-        $row["id_author"] = intval($row["id_author"]);
 
+        if($withTests)
+            $row["tests"] = json_decode($row["tests"]);
+
+        $row["id_author"] = intval($row["id_author"]);
         return $row;
     }
 
     public function reject(int $id):bool{
         $response = true;
         try{
-            $sql = "delete from proposed_problems where id= (?)";
+            $sql = "DELETE FROM proposed_problems WHERE id= (?)";
             $connection = $this->connectionPool->getConnection();
             $stmt =  $connection->prepare($sql);
             $stmt->bindValue(1, $id, PDO::PARAM_INT);

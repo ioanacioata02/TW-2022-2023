@@ -1,4 +1,3 @@
-/*
 :root{
     --form-border-rad: 5px;
     --submit-btn-rad: 4px;
@@ -47,14 +46,6 @@ body h2{
 
 .container textarea, .container #tags{
     resize: vertical;
-}
-
-.container input[type=text]:focus,
-.container textarea:focus, 
-.container #tags:focus{
-    transition: 0.5s;
-    transition-property: border;
-    border-color: #195c70;
 }
 
 .form-buttons{
@@ -159,14 +150,8 @@ input[type=submit]:active, .form-buttons .back-to-profile:active {
     flex-grow: 1;
 }
 
-#tags #write:focus {
-    outline: none;
-}
-
-
 @media (max-width: 350px) {
 	.form-buttons{
         flex-direction: column;
     }
 }
-*/

@@ -47,9 +47,9 @@ class PromoteController extends Controller{
                 
                 $data = (array)json_decode(file_get_contents("php://input"), true);
                 if(self::checkData($data)){
-                    $email = $data["email"];
+                    $email = htmlspecialchars($data["email"]);
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        http_response_code(400);
+                        http_response_code(422);
                         echo json_encode(["message" => "Invalid email"]);
                         break;
                     }
