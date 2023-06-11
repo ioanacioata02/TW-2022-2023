@@ -8,6 +8,7 @@ let currentPage = 1;
 let pageCount;
 let nrOfProblems;
 let problems;
+let token = localStorage.getItem('token');
 
 prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
@@ -24,10 +25,23 @@ function disableButton(button) {
     button.setAttribute("disabled", true);
 }
 
+tBody.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.classList.contains("yes")) {
+        const row = target.parentNode.parentNode;
+        let id = row.childNodes[0].innerText;
+        accept(id);
+    } else if (target.classList.contains("no")) {
+        const row = target.parentNode.parentNode;
+        let id = row.childNodes[0].innerText;
+        reject(id);
+    }
+});
 
 function getProblems() {
     nrOfRows = selectedNr.value;
-    let token = localStorage.getItem('token');
+    //console.log(nrOfRows);
+    //console.log("...........")
     fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
         method: 'GET',
         headers: {
@@ -36,7 +50,9 @@ function getProblems() {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error('An error occurred:', response.status);
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
             }
             return response.json();
         })
@@ -46,6 +62,9 @@ function getProblems() {
             console.log(problems);
             console.log(nrOfProblems);
             pageCount = Math.ceil(nrOfProblems / nrOfRows);
+
+            //console.log(pageCount);
+            //console.log("###");
 
             deleteAllNrBtns();
             setAllButtons();
@@ -95,11 +114,9 @@ function createRow(problem) {
     });
 
     // event listeners
-    title.addEventListener("click",()=>{
+    title.addEventListener("click", () => {
         window.location = `proposedProblem.html?id=${problem.id}`;
     })
-    yesBtn.addEventListener("click", accept);
-    noBtn.addEventListener("click", reject);
 
     // append
     line.appendChild(id);
@@ -224,12 +241,62 @@ function reloadPage() {
     loadPage();
 }*/
 
-function accept(){
-    console.log("accepted");
+function accept(id) {
+
+    fetch(`http://localhost/proposed/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if (currentPage > 1 && problems.length === 1)
+                setCurrentPage(currentPage - 1);
+            else
+                setCurrentPage(currentPage);
+        })
+        .catch(error => {
+            console.error('An error occurred:', error.message);
+        });
 }
 
-function reject(){
+function reject(id) {
     console.log("rejected");
+    fetch(`http://localhost/proposed/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if (currentPage > 1 && problems.length === 1)
+                setCurrentPage(currentPage - 1);
+            else
+                setCurrentPage(currentPage);
+        })
+        .catch(error => {
+            console.error('An error occurred:', error.message);
+        });
 }
 
 loadPage();

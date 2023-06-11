@@ -2,6 +2,7 @@ var tagsInput = document.getElementById("write");
 var tagsArea = document.getElementById("tags");
 
 var nrClicks = 0;
+
 tagsArea.addEventListener("click", () => {
     if (nrClicks === 0) {
         let placeholder = document.getElementById("tagsPlaceholder");
@@ -17,7 +18,6 @@ tagsInput.addEventListener("keypress", function (event) {
 
         var tagTxt = tagsInput.innerText.trim();
         if (tagTxt !== '') {
-
             //first div
             var tag = document.createElement("div");
             tag.className = "tag";
@@ -54,6 +54,7 @@ function validateTests() {
     {[input](output)}/
     */
     var regex = /(\{\[.+\]\(.+\)\}\.)*\{\[.+\]\(.+\)\}\//;
+
     if (regex.test(testsContent)) {
         tests.style.borderColor = "#3AAFA9"; // in case it was red before
         return true;
@@ -89,12 +90,7 @@ async function sendProblem() {
     let jsonProblem = prepareData();
 
     let token = localStorage.getItem('token');
-    //console.log(token);
 
-    if (token === null) {
-        window.location.href = 'index.html'; //login/sign up
-        return;
-    }
     try {
         const response = await fetch('http://localhost/proposed', {
             method: 'POST',
@@ -126,6 +122,7 @@ function prepareData() {
     let title = document.getElementById("title").value;
     let description = document.getElementById("description").value;
 
+    //tags
     var tags = tagsArea.querySelectorAll('.tag');
     let tagsArray = [];
     for (const tag of tags) {
@@ -133,8 +130,8 @@ function prepareData() {
         copy.removeChild(copy.querySelector('.close-btn'));
         tagsArray.push(copy.innerText);
     }
-    console.log(tagsArray);
 
+    //tests
     const tests = document.getElementById("tests").value;
     let regex = /(\{\[.+\]\(.+\)\}\.)/g;
     let firstTests = tests.match(regex);
