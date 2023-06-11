@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="../styles/admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
 
-    <script src="../scripts/adminPagination.js" defer></script>
     <script src="../scripts/admin.js" defer></script>
     <title>InformatiX</title>
 </head>
@@ -233,15 +232,16 @@
             </nav>
         </section>
         <div class="hidden" id="pop-up-box">
-            <form class="popUp">
+            <form class="popUp" onsubmit="trySend(event);">
                 <a class="close-popup" onclick="hidePromote()">&#x2716;</a>
                 <label for="enter-email">User's email:</label>
                 <input type="email" id="enter-email" name="enter-email" required>
                 <select id="user-type" required>
                     <option value="" selected disabled>Choose role</option>
-                    <option value="admin">Admin</option>
-                    <option value="profesor">Proffesor</option>
+                    <option value="2">Admin</option>
+                    <option value="1">Proffesor</option>
                 </select>
+                <div class="hidden" id="feedback"><p></p></div>
                 <input type="submit" value="Promote">
             </form>
         </div>

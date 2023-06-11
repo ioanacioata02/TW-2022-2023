@@ -1,140 +1,27 @@
 let paginationNumbers = document.getElementById("pagination-numbers");
-let tBody = document.getElementById("candidate-problems");
+let tbody = document.getElementById("candidate-problems");
+let rows = tbody.querySelectorAll("tr");
 let nextButton = document.getElementById("next-button");
 let prevButton = document.getElementById("prev-button");
 let selectedNr = document.getElementById("rows-per-page");
-let nrOfRows;
+let nrOfRows = selectedNr.value;
+let pageCount = Math.ceil(rows.length / nrOfRows);
 let currentPage = 1;
-let pageCount;
-let nrOfProblems;
-let problems;
-let token = localStorage.getItem('token');
 
 prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
 })
 
+
 nextButton.addEventListener("click", () => {
     setCurrentPage(currentPage + 1);
 })
 
-selectedNr.onchange = getProblems;
+selectedNr.onchange = reloadPage;
 
 function disableButton(button) {
     button.classList.add("disabled");
     button.setAttribute("disabled", true);
-}
-
-tBody.addEventListener("click", (event) => {
-    const target = event.target;
-    if (target.classList.contains("yes")) {
-        const row = target.parentNode.parentNode;
-        let id = row.childNodes[0].innerText;
-        accept(id);
-    } else if (target.classList.contains("no")) {
-        const row = target.parentNode.parentNode;
-        let id = row.childNodes[0].innerText;
-        reject(id);
-    }
-});
-
-function getProblems() {
-    nrOfRows = selectedNr.value;
-    //console.log(nrOfRows);
-    //console.log("...........")
-    fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': token
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.message);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            nrOfProblems = data.nrOfProblems;
-            problems = data.problems;
-            console.log(problems);
-            console.log(nrOfProblems);
-            pageCount = Math.ceil(nrOfProblems / nrOfRows);
-
-            //console.log(pageCount);
-            //console.log("###");
-
-            deleteAllNrBtns();
-            setAllButtons();
-            setActiveButton();
-            setLeftRightButtons();
-
-            deleteAllRows();
-
-            problems.map((problem) => {
-                createRow(problem);
-            });
-            document.body.classList.remove("hidden");
-        })
-        .catch(error => {
-            console.error('An error occurred:', error.message);
-        });
-}
-
-function createRow(problem) {
-    // create almost all elements
-    let line = document.createElement("tr");
-    let id = document.createElement("td");
-    let title = document.createElement("td");
-    title.classList.add("link-to-probl");
-    let tags = document.createElement("td");
-    tags.classList.add("tags");
-    let user_id = document.createElement("td");
-    let actions = document.createElement("td");
-    let yesBtn = document.createElement("button");
-    yesBtn.classList.add("yes");
-    let noBtn = document.createElement("button");
-    noBtn.classList.add("no");
-
-    // add data
-    id.innerText = problem.id;
-    title.innerText = problem.name;
-    user_id.innerText = problem.id_author;
-    yesBtn.innerText = "yes";
-    noBtn.innerText = "no";
-
-    // add all tags
-    let allTags = problem.tags;
-    allTags.map((tag) => {
-        let tagBtn = document.createElement("button");
-        tagBtn.innerText = tag;
-        tags.appendChild(tagBtn);
-    });
-
-    // event listeners
-    title.addEventListener("click", () => {
-        window.location = `proposedProblem.html?id=${problem.id}`;
-    })
-
-    // append
-    line.appendChild(id);
-    line.appendChild(title);
-    line.appendChild(tags);
-    line.appendChild(user_id);
-
-    actions.appendChild(yesBtn);
-    actions.appendChild(noBtn);
-
-    line.appendChild(actions);
-    tBody.appendChild(line);
-}
-
-function deleteAllRows() {
-    while (tBody.firstChild) {
-        tBody.removeChild(tBody.firstChild);
-    }
 }
 
 function enableButton(button) {
@@ -174,7 +61,7 @@ function setActiveButton() {
 function appendDots() {
     let pageDots = document.createElement("button");
     pageDots.className = "pagination-dots";
-    pageDots.innerText = "...";
+    pageDots.innerHTML = "...";
 
     paginationNumbers.appendChild(pageDots);
 }
@@ -182,7 +69,7 @@ function appendDots() {
 function appendPageNumber(index) {
     let pageNumber = document.createElement("button");
     pageNumber.className = "pagination-number";
-    pageNumber.innerText = index;
+    pageNumber.innerHTML = index;
     pageNumber.setAttribute("page-index", index);
 
     pageNumber.addEventListener("click", () => {
@@ -193,29 +80,43 @@ function appendPageNumber(index) {
 }
 
 function setAllButtons() {
-    if (currentPage >= 3)
+    if(currentPage >= 3)
         appendPageNumber(1);
-    if (currentPage >= 4)
+    if (currentPage  >= 4)
         appendDots();
 
-    if (currentPage - 1 >= 1)
+    if(currentPage - 1 >= 1)
         appendPageNumber(currentPage - 1);
     appendPageNumber(currentPage);
-    if (currentPage + 1 <= pageCount)
-        appendPageNumber(currentPage + 1);
-
-    if (currentPage + 2 < pageCount) {
+    if(currentPage + 1 <= pageCount)
+        appendPageNumber(currentPage+1);
+    
+    if(currentPage + 2 < pageCount){
         appendDots();
         appendPageNumber(pageCount);
     }
-    if (currentPage + 2 === pageCount)
+    if(currentPage + 2 === pageCount)
         appendPageNumber(pageCount);
 
 }
 
 function setCurrentPage(pageNum) {
     currentPage = pageNum;
-    getProblems();
+
+    deleteAllNrBtns();
+    setAllButtons();
+    setActiveButton();
+    setLeftRightButtons();
+
+    let prevRange = (pageNum - 1) * nrOfRows;
+    let currRange = pageNum * nrOfRows;
+
+    rows.forEach((row, index) => {
+        row.classList.add("hidden");
+        if (index >= prevRange && index < currRange) {
+            row.classList.remove("hidden");
+        }
+    });
 }
 
 function loadPage() {
@@ -229,74 +130,16 @@ function deleteAllNrBtns() {
         btnFirstChild = paginationNumbers.firstChild;
     }
 }
-/*
+
 function reset() {
     deleteAllNrBtns();
     nrOfRows = Number(selectedNr.value);
-    pageCount = Math.ceil(nrOfProblems / nrOfRows);
+    pageCount = Math.ceil(rows.length / nrOfRows);
 }
 
 function reloadPage() {
     reset();
     loadPage();
-}*/
-
-function accept(id) {
-
-    fetch(`http://localhost/proposed/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.message);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            if (currentPage > 1 && problems.length === 1)
-                setCurrentPage(currentPage - 1);
-            else
-                setCurrentPage(currentPage);
-        })
-        .catch(error => {
-            console.error('An error occurred:', error.message);
-        });
-}
-
-function reject(id) {
-    console.log("rejected");
-    fetch(`http://localhost/proposed/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.message);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            if (currentPage > 1 && problems.length === 1)
-                setCurrentPage(currentPage - 1);
-            else
-                setCurrentPage(currentPage);
-        })
-        .catch(error => {
-            console.error('An error occurred:', error.message);
-        });
 }
 
 loadPage();
