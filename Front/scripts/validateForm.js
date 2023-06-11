@@ -132,20 +132,33 @@ function prepareData() {
     }
 
     //tests
-    const tests = document.getElementById("tests").value;
+    let tests = document.getElementById("tests").value;
     let regex = /(\{\[.+\]\(.+\)\}\.)/g;
     let firstTests = tests.match(regex);
-    let len = firstTests.length;
     let testArray = [];
-    for (let i = 0; i < len; i++) {
-        let lineRegex = /\{\[(.+)\]\((.+)\)\}/;
-        let test = firstTests[i].match(lineRegex);
-        test = {
-            "input": test[1],
-            "output": test[2]
+    if (firstTests !== null) {
+        let len = firstTests.length;
+        for (let i = 0; i < len; i++) {
+            let lineRegex = /\{\[(.+)\]\((.+)\)\}/;
+            let test = firstTests[i].match(lineRegex);
+            test = {
+                "input": test[1],
+                "output": test[2]
+            }
+            testArray.push(test);
         }
-        testArray.push(test);
     }
+    let lineRegex = /\{\[.+\]\(.+\)\}\//;
+    let test = tests.match(lineRegex);
+    lineRegex = /\{\[(.+)\]\((.+)\)\}/;
+    test = test[0].match(lineRegex);
+    test = {
+        "input": test[1],
+        "output": test[2]
+    }
+    testArray.push(test);
+    //console.log(testArray);
+
     let jsonProblem = {
         "name": title,
         "description": description,
