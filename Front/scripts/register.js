@@ -49,7 +49,7 @@ registerForm.addEventListener('submit', async (event) => {
         localStorage.setItem('token', token);
         if (token) {
             let status = parseJwt(token).status;
-            if (status === 0 || status === 1)
+            if (status === "0" || status === "1")
                 window.location.href = 'index.html';
             else
                 window.location.href = 'admin.html';
