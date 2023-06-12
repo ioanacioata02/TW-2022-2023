@@ -9,7 +9,10 @@ class RegisterController extends Controller
 
 
     public function processRequest(string $method, ?string $action):void
-    {
+    {   if($method== "OPTIONS"){
+        // Setează codul de stare 200 și antetele CORS pentru cererile OPTIONS
+        http_response_code(200);
+        return;}
         if($method!="POST")
         {
             Utils::notAllowed();

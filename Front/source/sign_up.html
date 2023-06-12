@@ -18,10 +18,13 @@
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/messageDisplay.css">
 
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/register.js" defer></script>
     <script src="../scripts/login.js" defer></script>
+    <script src="../scripts/displayMessageBox.js" defer></script>
 </head>
 
 <body>
@@ -101,6 +104,12 @@
                     <option value="teacher">Teacher</option>
                 </select>
                 <button onclick="loggedIn()" class="login-button">Sign up</button>
+                <div class="error">
+                   Email already used!
+                  </div>
+                  <div class="error2">
+                    Email is invalid!
+                   </div>
             </div>
         </form>
 

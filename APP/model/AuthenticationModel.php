@@ -21,7 +21,7 @@ class AuthenticationModel extends Model
             return null;
         }
         $data  = $stmt->fetch(PDO::FETCH_ASSOC);
-        $passwordDatabase =  pg_unescape_bytea ( stream_get_contents( $data["password"]));
+        $passwordDatabase =   $data["password"];
         if(password_verify($password, $passwordDatabase))
         {
             return $data;
