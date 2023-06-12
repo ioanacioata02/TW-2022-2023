@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/messageDisplay.css">
 
 
     <link rel="stylesheet" href="../styles/utilities.css">
@@ -26,6 +27,8 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
+    <script src="../scripts/profileStandard.js" defer></script>
+    <script src="../scripts/displayMessageBox.js" defer></script>
     <script src="../scripts/profile.js" defer></script>
     <script src="../scripts/stats.js" defer></script>
 
@@ -87,10 +90,10 @@
         <div class="sidebar">
             <div class="up">
                 <div class="parent">
-                    <img id="userPhoto" class="circle" src="https://randomuser.me/api/portraits/women/64.jpg"
-                        alt="user">
+                    <img id="userPhoto" class="circle">
                     <form class="photo-edit">
-                        <input type='file' id="photoUpload" accept=".png, .jpg, .jpeg">
+                        <input type='file' id="photoUpload" accept="image/png, image/jpg, image/jpeg"
+                            onchange="sendImg(this)">
                         <label for="photoUpload"><i class="fa fa-camera"></i></label>
                     </form>
                 </div>
@@ -98,15 +101,14 @@
             </div>
             <ul class="top-txt">
                 <li>
-                    <h1>Username</h1>
+                    <h1></h1>
                 </li>
                 <li class="full-name">
-                    <h3>First name</h3>
-                    <h3>Last name</h3>
+                    <h3></h3>
+                    <h3></h3>
                 </li>
                 <li>
                     <h2 id="rol">
-                        Teacher
                     </h2>
                 </li>
             </ul>
@@ -128,7 +130,7 @@
                 <div class="item" id="all">
                     <div class="progress-bar">
                         <div class="text">
-                            <span id="number1">50</span>
+                            <span id="number1"></span>
                             <span>%</span>
                         </div>
                         <svg>
@@ -136,20 +138,20 @@
                         </svg>
                     </div>
                     <h2>all</h2>
-                    <span>500/1000</span>
+                    <span><span></span>/<span></span></span>
                 </div>
             </section>
         </div>
         <div class="hidden" id="pop-up-box">
-            <form class="popUp">
+            <form class="popUp" onsubmit="changePass(event);">
                 <a class="close-popup" onclick="hideChangePassword()">&#x2716;</a>
-                <!--
-            <label for="old-password">Old password:</label>
-            <input type="password" id="old-password" name="old-password" required>
-            <label for="new-password">New password:</label>
-            <input type="password" id="new-password" name="new-password" required>-->
+                <label for="new-password">New password:</label>
+                <input type="password" id="new-password" name="new-password" required>
                 <label for="confirm-password">Confirm password:</label>
                 <input type="password" id="confirm-password" name="confirm-password" required>
+                <div class="hidden" id="feedback">
+                    <p></p>
+                </div>
                 <input type="submit" value="Change">
             </form>
         </div>

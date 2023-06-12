@@ -37,12 +37,12 @@ CREATE TABLE problems(
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	status INT NOT NULL,
-	img BYTEA,
+	img TEXT,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	username TEXT NOT NULL,
 	email TEXT NOT NULL UNIQUE,
-	password BYTEA NOT NULL,
+	password TEXT NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
 );

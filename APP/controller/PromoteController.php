@@ -14,8 +14,13 @@ class PromoteController extends Controller{
         else{
             $params = $this->processAction($actions);
         }
+
+        if($method === "OPTIONS"){
+            http_response_code(200);
+            return;
+        }
         
-        if(!Jwt::validateAuthorizationToken(2))
+        if(!Jwt::validateAuthorizationToken(getenv("secret"), 2))
             return;
 
         if (isset($params["status"]))
@@ -39,9 +44,6 @@ class PromoteController extends Controller{
 
     private function processResourceRequest(string $method, int $status): void{
         switch ($method) {
-            case "OPTIONS":
-                http_response_code(200);
-                break;
 
             case "PATCH":
                 

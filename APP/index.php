@@ -16,5 +16,4 @@ if (!empty($urlParts)) {
     $controllerUnit = new $controller();
     //the action is whatever is after problems/ for example
     $controllerUnit->processRequest($_SERVER["REQUEST_METHOD"], $actions);
-
 }

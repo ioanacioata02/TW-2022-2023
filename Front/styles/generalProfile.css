@@ -88,6 +88,7 @@ body {
 	border: 1px solid #03BFCB;
 	border-radius: 50%;
 	padding: 0.4em;
+	object-fit: cover;
 }
 
 #statistici {
@@ -140,6 +141,7 @@ body {
 	fill: none;
 	stroke-width: 20px;
 	stroke-dasharray: 496;
+	stroke-opacity: 0;
 	stroke-linecap: round;
 }
 
