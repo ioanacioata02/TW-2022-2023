@@ -1,7 +1,6 @@
 let token = localStorage.getItem('token');
 
 async function loadProposed(id) {
-    console.log("aici");
     try {
         const response = await fetch(`http://localhost/proposed/${id}`, {
             method: 'GET',

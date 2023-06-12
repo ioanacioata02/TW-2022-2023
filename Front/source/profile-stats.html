@@ -27,6 +27,8 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
+    <script src="../scripts/profileStandard.js" defer></script>
+    <script src="../scripts/displayMessageBox.js" defer></script>
     <script src="../scripts/profile.js" defer></script>
     <script src="../scripts/stats.js" defer></script>
 
@@ -88,8 +90,7 @@
         <div class="sidebar">
             <div class="up">
                 <div class="parent">
-                    <img id="userPhoto" class="circle" src="https://randomuser.me/api/portraits/women/64.jpg"
-                        alt="user">
+                    <img id="userPhoto" class="circle">
                     <form class="photo-edit">
                         <input type='file' id="photoUpload" accept="image/png, image/jpg, image/jpeg"
                             onchange="sendImg(this)">
@@ -129,7 +130,7 @@
                 <div class="item" id="all">
                     <div class="progress-bar">
                         <div class="text">
-                            <span id="number1">50</span>
+                            <span id="number1"></span>
                             <span>%</span>
                         </div>
                         <svg>
@@ -137,7 +138,7 @@
                         </svg>
                     </div>
                     <h2>all</h2>
-                    <span>500/1000</span>
+                    <span><span></span>/<span></span></span>
                 </div>
             </section>
         </div>

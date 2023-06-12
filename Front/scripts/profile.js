@@ -3,7 +3,6 @@ let myClass = document.getElementById("link-to-class");
 let popUpBox = document.getElementById("pop-up-box");
 let token = localStorage.getItem('token');
 
-
 proposeProblem.classList.add("hidden");
 
 async function changePass(event) {
@@ -40,22 +39,7 @@ async function changePass(event) {
     }
 }
 
-function displayMessage(message, isError) {
-    let errorBox = document.getElementById("feedback");
-    if (isError)
-        errorBox.style.backgroundColor = "red";
-    else {
-        errorBox.style.backgroundColor = "yellow";
-    }
-    let txt = errorBox.querySelector("p");
-    txt.innerText = message;
-
-    errorBox.appendChild(txt);
-    errorBox.classList.remove("hidden");
-}
-
 async function getDetails() {
-    console.log("aici");
     try {
         const response = await fetch('http://localhost/profile', {
             method: 'GET',
@@ -80,19 +64,8 @@ async function getDetails() {
 getDetails();
 
 function displayDetails(user) {
-    const username = document.querySelector(".top-txt h1");
-    username.innerText = user.username;
 
-
-    const firstName = document.querySelector(".full-name h3:first-child");
-    firstName.innerText = user.first_name;
-
-    const lastName = document.querySelector(".full-name h3:last-child");
-    lastName.innerText = user.last_name;
-
-    const role = document.getElementById("rol");
-    role.innerText = user.role;
-
+    profileBoxPart(user);
 
     if (user.role.toLocaleLowerCase() === "student") {
         myClass.setAttribute("href", "myClass_student.html");
@@ -101,29 +74,10 @@ function displayDetails(user) {
         proposeProblem.classList.remove("hidden");
         myClass.setAttribute("href", "myClasses_teacher.html");
     }
-    
-    
-    let number = document.getElementById("number1");
-    let myCircle = document.getElementById("all-svg");
-    let counterLimit = Number(number.innerText);
-    let counter = 0;
-    loadProgressBar(number, counter, counterLimit, myCircle, 496);
-    
-    
+    statsPart(user);
+
 }
 
-function loadProgressBar(procentValue, counter, counterLimit, progressBar, length) {
-    setInterval(() => {
-        if (counter == counterLimit) {
-            clearInterval();
-        }
-        else {
-            counter += 1;
-            procentValue.innerHTML = counter;
-            progressBar.style.strokeDashoffset = length - length / 100 * counter;
-        }
-    }, 25)
-}
 
 function displayChangePassword() {
     popUpBox.classList.remove("hidden");
@@ -133,7 +87,6 @@ function hideChangePassword() {
     popUpBox.classList.add("hidden");
 }
 
-/*
 function sendImg(input) {
     let file = input.files[0];
 
@@ -141,26 +94,30 @@ function sendImg(input) {
 
     reader.onload = function () {
         let imageContent = reader.result;
+        console.log(imageContent);
 
-        const formData = new FormData();
-        formData.append('file', file);
-
-        fetch('http://localhost/profile', {
+        fetch('http://localhost/profile/upload-img', {
             method: 'PATCH',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify({ "image": imageContent })
         })
             .then(response => {
-                if (response.ok) {
-                    console.log(response);
-                } else {
+                if (!response.ok) {
                     throw new Error('File upload failed');
                 }
+                return response.json();
+            })
+            .then(data => {
+                //console.log(data);
+                userPhoto.src = imageContent;
             })
             .catch(error => {
                 console.error('Error uploading file:', error);
             });
     };
 
-    reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
 }
-*/

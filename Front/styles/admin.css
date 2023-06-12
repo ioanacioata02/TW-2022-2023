@@ -51,12 +51,12 @@ td:last-child button.no:hover {
   padding-top: 0;
 }
 
-.link-to-probl:hover {
+.link:hover {
   font-weight: bold;
   color: rgb(166, 0, 255);
 }
 
-.link-to-probl:active {
+.link:active {
   text-decoration: underline;
 }
 

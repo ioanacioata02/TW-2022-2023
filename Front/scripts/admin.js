@@ -89,10 +89,11 @@ function createRow(problem) {
     let line = document.createElement("tr");
     let id = document.createElement("td");
     let title = document.createElement("td");
-    title.classList.add("link-to-probl");
+    title.classList.add("link");
     let tags = document.createElement("td");
     tags.classList.add("tags");
     let user_id = document.createElement("td");
+    user_id.classList.add("link");
     let actions = document.createElement("td");
     let yesBtn = document.createElement("button");
     yesBtn.classList.add("yes");
@@ -117,6 +118,10 @@ function createRow(problem) {
     // event listeners
     title.addEventListener("click", () => {
         window.location = `proposedProblem.html?id=${problem.id}`;
+    })
+
+    user_id.addEventListener("click", () => {
+        window.location = `otherProfile.html?id=${problem.id_author}`;
     })
 
     // append
