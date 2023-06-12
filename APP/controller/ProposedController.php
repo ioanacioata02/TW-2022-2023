@@ -15,7 +15,12 @@ class ProposedController extends Controller{
 
         // with parameters
         // admin status
-        if(!Jwt::validateAuthorizationToken(2))
+        if($method === "OPTIONS"){
+            http_response_code(200);
+            return;
+        }
+
+        if(!Jwt::validateAuthorizationToken(getenv("secret"), 2))
             return;
 
         $params = $this->processAction($actions);
@@ -76,9 +81,6 @@ class ProposedController extends Controller{
     private function processResourceRequest(string $method, int $id): void{
         
         switch ($method) {
-            case "OPTIONS":
-                http_response_code(200);
-                break;
 
             case "GET":
                 $row = $this->model->get($id);
@@ -121,19 +123,16 @@ class ProposedController extends Controller{
 
     private function processSimpleRequest($method): void{
         // at least teacher
-        if(!Jwt::validateAuthorizationToken(1)){
+        if(!Jwt::validateAuthorizationToken(getenv("secret"), 1)){
             return;
         }
 
         switch ($method) {
-            case "OPTIONS":
-                http_response_code(200);
-                break;
 
 
             case "POST":
                 $data = (array)json_decode(file_get_contents("php://input"), true);
-                $data["id_author"] = self::getIdFromToken();
+                $data["id_author"] = Jwt::getIdFromToken();
 
                 if(self::checkData($data)){
                     $id = $this->model->create($data);
@@ -154,13 +153,6 @@ class ProposedController extends Controller{
                 echo json_encode(["message" => "Method not allowed"]);
                 break;
         }
-    }
-
-    private static function getIdFromToken(): int{
-        $token= getallheaders()["Authorization"];
-        $tokenParts = explode('.', $token);
-        $decodedPayload = json_decode(base64_decode($tokenParts[1]), true);
-        return $decodedPayload["id"];
     }
 
     private static function checkData(array $data): bool{

@@ -49,7 +49,6 @@ class ProfileModel extends Model{
         unset($row['status']);
         $row["nr_attempts"] = intval($row["nr_attempts"]);
         $row["nr_successes"] = intval($row["nr_successes"]);
-        //$row["password"] = stream_get_contents($row["password"]);
         return $row;
     }
 
@@ -74,8 +73,8 @@ class ProfileModel extends Model{
                 $sql = "UPDATE users SET password = (?) WHERE id = (?)";
                 $stmt =  $connection->prepare($sql);
                 $hash = password_hash($data["password"], PASSWORD_DEFAULT);
-                #echo password_verify($data["password"], $row["password"]);
-                $stmt->bindValue(1, $hash, PDO::PARAM_LOB);
+                //echo password_verify($data["password"], $row["password"]);
+                $stmt->bindValue(1, $hash, PDO::PARAM_STR);
                 $stmt->bindValue(2, $data["id"], PDO::PARAM_INT);
                 $stmt->execute();
             }

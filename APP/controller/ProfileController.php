@@ -7,12 +7,17 @@ class ProfileController extends Controller{
     }
 
     public function processRequest(string $method, ?string $actions): void{
+        if($method === "OPTIONS"){
+            http_response_code(200);
+            return;
+        }
         
-        if(!JWT::validateAuthorizationToken(getenv("secret"))){
+        if(!Jwt::validateAuthorizationToken(getenv("secret"))){
             return;
         }
 
         if(!isset($actions)){
+            
             $this->processSimpleRequest($method);
             return;
         }
@@ -78,7 +83,7 @@ class ProfileController extends Controller{
         switch ($method) {
 
             case "GET":
-                $row = $this->model->get(self::getIdFromToken());
+                $row = $this->model->get(Jwt::getIdFromToken());
                 if(!empty($row)){
                     http_response_code(200);
                     echo json_encode($row);
@@ -98,9 +103,6 @@ class ProfileController extends Controller{
 
     private function processImg($method): void{
         switch ($method) {
-            case "OPTIONS":
-                http_response_code(200);
-                break;
 
             case "PATCH":
                 $data = (array)json_decode(file_get_contents("php://input"), true);
@@ -118,7 +120,6 @@ class ProfileController extends Controller{
                     http_response_code(400);
                     echo json_encode(["message" => "Bad request"]);
                 }
-                
                 break;
 
             default:
@@ -130,9 +131,6 @@ class ProfileController extends Controller{
 
     private function processChangePass($method): void{
         switch ($method) {
-            case "OPTIONS":
-                http_response_code(200);
-                break;
 
             case "PATCH":
                 $data = (array)json_decode(file_get_contents("php://input"), true);
@@ -158,13 +156,6 @@ class ProfileController extends Controller{
                 echo json_encode(["message" => "Method not allowed"]);
                 break;
         }
-    }
-
-    private static function getIdFromToken(): int{
-        $token= getallheaders()["Authorization"];
-        $tokenParts = explode('.', $token);
-        $decodedPayload = json_decode(base64_decode($tokenParts[1]), true);
-        return $decodedPayload["id"];
     }
 
     private static function checkData(array $data, array $requiredKeys): bool{
