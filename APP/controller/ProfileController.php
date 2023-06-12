@@ -118,9 +118,7 @@ class ProfileController extends Controller{
                     http_response_code(400);
                     echo json_encode(["message" => "Bad request"]);
                 }
-                break;
-                //http_response_code(200);
-                //echo json_encode(["image"=>$data["image"]]);
+                
                 break;
 
             default:
