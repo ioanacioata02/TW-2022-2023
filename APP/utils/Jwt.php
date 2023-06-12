@@ -63,7 +63,6 @@ class Jwt
         list($header, $payload, $signature) = explode('.', $token);
         $decodedSignature = base64_decode($signature);
         $expectedSignature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
-
         if (!hash_equals($decodedSignature, $expectedSignature)) {
             //the token was modified
             return null;

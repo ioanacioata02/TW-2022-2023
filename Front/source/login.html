@@ -20,25 +20,29 @@
     
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
+    <script src="../scripts/auth.js" async></script>
 </head>
 
-<body>
+<body class="container">
     <div class="bkg-login">
-        <form class="login-form">
+        <form class="login-form"  action="#" method="post" id="log-in">
             <div class="imgcontainer">
                 <a class="close" href="index.html" title="Close Form"> &#x2716;</a>
                 <h1 class="myText">Login here!&#x1F464;</h1>
             </div>
             <div class="form-fields">
 
-                <b>Username</b>
+                <b>Email</b>
 
-                <input class="login-input" type="text" placeholder="Type Username" name="uname" required>
+                <input class="login-input" type="email" placeholder="Type Email" name="email" required>
 
                 <b>Password</b>
 
-                <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
-                <button onclick="setVariableTrue()" class="login-button">Login</button>
+            
+
+                <input class="login-input"  id="password" type="password" placeholder="Type Password" name="password" required>
+                <button class="login-button" type="submit">Login</button>
+
             </div>
         </form>
 
