@@ -20,7 +20,7 @@ class ProposedController extends Controller{
             return;
         }
 
-        if(!Jwt::validateAuthorizationToken(getenv("secret"), 2))
+        if(!Jwt::validateAuthorizationToken("secret", 2))
             return;
 
         $params = $this->processAction($actions);
@@ -123,7 +123,7 @@ class ProposedController extends Controller{
 
     private function processSimpleRequest($method): void{
         // at least teacher
-        if(!Jwt::validateAuthorizationToken(getenv("secret"), 1)){
+        if(!Jwt::validateAuthorizationToken("secret", 1)){
             return;
         }
 

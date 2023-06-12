@@ -20,7 +20,7 @@ class PromoteController extends Controller{
             return;
         }
         
-        if(!Jwt::validateAuthorizationToken(getenv("secret"), 2))
+        if(!Jwt::validateAuthorizationToken("secret", 2))
             return;
 
         if (isset($params["status"]))

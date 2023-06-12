@@ -12,7 +12,7 @@ class ProfileController extends Controller{
             return;
         }
         
-        if(!Jwt::validateAuthorizationToken(getenv("secret"))){
+        if(!Jwt::validateAuthorizationToken("secret")){
             return;
         }
 
