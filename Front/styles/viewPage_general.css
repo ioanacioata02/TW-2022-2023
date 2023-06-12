@@ -11,11 +11,6 @@ body {
   background-color: var(--background);
 }
 
-main {
-  padding: 1.2em;
-  margin: 0px 50px 0px 50px;
-}
-
 
 
 .table-admin {

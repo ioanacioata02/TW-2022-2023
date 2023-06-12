@@ -5,33 +5,101 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <title>InformatiX</title>
+
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/drop-downs.css">
+    <link rel="stylesheet" href="../styles/login.css">
+
+    <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/generalProfile.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script src="../scripts/profileStandard.js" defer></script>
+    <script src="../scripts/otherProfile.js" defer></script>
+    <script src="../scripts/displayMessageBox.js" defer></script>
+    <script src="../scripts/dropdown.js" defer></script>
+    <script src="../scripts/login.js" defer></script>
+
     <script src="../scripts/stats.js" defer></script>
-    <title>InformatiX</title>
 </head>
 
 <body>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <!--<input type="text" class="search-bar" placeholder="Search"> -->
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
+                </div>
+                <!--<div class="dropdown">
+                    <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
+                    <div id="myDropdown" class="dropdown-menu">
+                        <a href="#">Decorator</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+                -->
+                <div>
+                    <a class="menu-anchor" href="about.html">About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                </div>
+                <!--
+                <div class="dropdown">
+                    <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
+                        src="../assets/flag_en.svg" alt="">
+                    <div id="myDropdown2" class="dropdown-menu">
+                        <img src="../assets/flag_en.svg" id="language-eng" class="language-list" alt="">
+                        <img src="../assets/flag_ro.svg" id="language-ro" class="language-list" alt="">
+                    </div>
+                </div>
+                -->
+                <div class="help_ico help_smaller_screen">
+                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <main class="main-box-profile">
         <div class="sidebar">
             <div class="up">
                 <div class="parent">
-                <img id="userPhoto" class="circle" src="https://randomuser.me/api/portraits/women/64.jpg" alt="user">
+                    <img id="userPhoto" class="circle">
+                </div>
+
             </div>
-                
-            </div>
-            <ul class ="top-txt">
+            <ul class="top-txt">
                 <li>
-                    <h1>Username</h1>
+                    <h1></h1>
                 </li>
                 <li class="full-name">
-                    <h3>First name</h3>
-                    <h3>Last name</h3>
+                    <h3></h3>
+                    <h3></h3>
                 </li>
                 <li>
                     <h2 id="rol">
-                        Student
                     </h2>
                 </li>
             </ul>
@@ -41,57 +109,19 @@
                 <div class="item" id="all">
                     <div class="progress-bar">
                         <div class="text">
-                            <span id="number1">50</span>
+                            <span id="number1"></span>
                             <span>%</span>
                         </div>
                         <svg>
-                            <circle id="all-svg" cx="80" cy="80" r="60"></circle>
+                            <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
                         </svg>
                     </div>
-                    <h3>all</h3>
-                    <span>500/1000</span>
-                </div>
-                <div class="item" id="easy">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number2">87</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="easy-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>easy</h3>
-                    <span>8700/10000</span>
-                </div>
-                <div class="item" id="medium">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number3">90</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="medium-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>medium</h3>
-                    <span>90/100</span>
-                </div>
-                <div class="item" id="hard">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number4">20</span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="hard-svg" cx="80" cy="80" r="60"></circle>
-                        </svg>
-                    </div>
-                    <h3>hard</h3>
-                    <span>200/1000</span>
+                    <h2>all</h2>
+                    <span><span></span>/<span></span></span>
                 </div>
             </section>
         </div>
     </main>
 </body>
+
 </html>

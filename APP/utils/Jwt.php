@@ -11,20 +11,21 @@ class Jwt
     static public function validateAuthorizationToken($secret, $status=-1): bool
     {
         if(!isset(getallheaders()["Authorization"])) {
+            /*
+            http_response_code(401);
+            echo json_encode(["message"=>"Please provide a token"]);*/
             return false;
         }
         $token= getallheaders()["Authorization"];
-        if($token==null)
-            return false;
         $payload =  Jwt::validateToken($token, $secret);
         if (!isset($payload))
         {
+            http_response_code(401);
+            echo json_encode(["message"=>"Invalid token"]);
             return false;
         }
         if($payload["status"]<$status)
         {
-
-
             http_response_code(401);
             echo json_encode(["message"=>"You don't have the permission to create a problem"]);
             return false;
@@ -68,9 +69,15 @@ class Jwt
         }
         $decodedPayload = json_decode(base64_decode($payload), true);
         if (time() > $decodedPayload["expirationDate"]) {
-
             return null;
         }
         return $decodedPayload;
+    }
+
+    static public function getIdFromToken(): int{
+        $token= getallheaders()["Authorization"];
+        $tokenParts = explode('.', $token);
+        $decodedPayload = json_decode(base64_decode($tokenParts[1]), true);
+        return $decodedPayload["id"];
     }
 }

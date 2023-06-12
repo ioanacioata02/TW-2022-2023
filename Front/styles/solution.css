@@ -1,0 +1,127 @@
+.filler {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 10fr 80fr 10fr;
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.solution-container {
+    display: grid;
+    margin-top: 4em;
+    border-radius: 5px;
+    height: 80dvh;
+    background-color: var(--accent-color);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    overflow: auto;
+
+}
+
+.data {
+    padding-left: 1em;
+}
+
+.problem-title,
+.title-tags,
+.stiatistics-title {
+    margin-bottom: 0.25em;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.submit-date,
+.tags,
+.mem,
+.time {
+    margin-bottom: 0.25em;
+    padding-left: 1px;
+    font-size: 22px;
+}
+
+.data,
+.problem-tags,
+.statistics {
+    /*
+    background-color: #369c97;
+    border-radius: 5px;
+    */
+}
+
+.status {
+    font-size: 20px;
+    background: rgb(255, 0, 0);
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 248, 0, 1) 13%, rgba(25, 238, 0, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 1px;
+}
+
+.solution-source-code {
+    overflow: auto;
+}
+
+.code {
+
+    background-color: var(--background);
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    overflow: scroll;
+}
+
+.keyword {
+    color: #008000;
+    font-weight: bold;
+}
+
+.type {
+    color: #0000ff;
+}
+
+.comment {
+    color: #808080;
+    font-style: italic;
+}
+
+.number {
+    color: #ff00ff;
+}
+
+.string {
+    color: #a020f0;
+}
+
+.function {
+    color: #000080;
+}
+
+@media (max-width: 500px) {
+  
+ 
+
+    .problem-title,
+    .title-tags,
+    .stiatistics-title {
+        font-size: 22px;
+    }
+
+    .submit-date,
+    .tags,
+    .mem,
+    .time {
+        font-size: 16px
+    }
+}

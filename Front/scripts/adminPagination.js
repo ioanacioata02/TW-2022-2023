@@ -73,7 +73,7 @@ function appendPageNumber(index) {
     pageNumber.setAttribute("page-index", index);
 
     pageNumber.addEventListener("click", () => {
-        setCurrentPage(pageIndex);
+        setCurrentPage(index);
     });
 
     paginationNumbers.appendChild(pageNumber);

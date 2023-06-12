@@ -14,11 +14,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto;
 }
 
 body {
-    font-family: cursive;
     background-color: var(--background);
 }
 
@@ -54,6 +52,7 @@ li {
     display: flex;
     gap: 3em;
     font-size: 18px;
+    z-index: 99999;
 }
 
 

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scholarly.css">
+    <title>Scholarly</title>
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>Informatix</h1>
+    </header>
+
+    <section id="introduction" role="doc-introduction">
+        <h2>1. Introduction</h2>
+        <section id="purpose">
+            <h3>1.1 Purpose</h3>
+            <p>
+                The purpose of this document is to present in detail the specifications of the web aplication
+                Informatix, based on the requirements
+                of the Course Project in Web Technologies. The document will offer information about the requirements
+                this project meets and how where
+                those implemented.
+
+
+            </p>
+            <p>
+                This product is meant to be of use for students and teachers that want to solve and propose problems
+                related to computer
+                science. Teachers can use the apllication to create classes end evaluate their students, based on
+                assigned homeworks.
+            </p>
+        </section>
+        <section id="scope">
+            <h3>1.2 Product Scope</h3>
+            <p>
+                The product is a web application designed for high school students to learn programming through
+                problems. The application allows registered users to create, submit, and approve programming problems.
+                The problems are tagged according to their difficulty level and programming concepts, such as dynamic
+                programming and backtracking.
+                The application allows teachers to create classes and add students, who have existing accounts, using
+                their email or username. Teachers can also assign homework by selecting problems from the existing
+                collection or proposing new ones.
+                Students can solve the assigned problems and submit their solutions for evaluation by the teacher. They
+                can also leave comments to provide hints or rate the problems using a star rating system.
+            </p>
+        </section>
+    </section>
+    <section id="description">
+        <h2>2. Overall Description</h2>
+        <section id="functions">
+            <h3>2.1 Product Functions</h3>
+            <p>
+                Informatix web application is supposed to offer the following functionalities:
+            </p>
+            <ul>
+                <li>Give teachers the opportunity to propose computer science problems</li>
+                <li>Give users the opportunity to solve computer science problems</li>
+                <li>Provide users with feedback for their submitted solutions</li>
+                <li>Provide users with statistics based on their overall performance on the application</li>
+                <li>Login and SignUp forms. Users can choose a role beetween student and teacher</li>
+                <li>Teachers can create classes made up of users on this application</li>
+                <li>Teachers can assign homeworks to their classes</li>
+                <li>Teachers can evaluate the submits of the students in their classes</li>
+                <li>Users can change their profile picture.</li>
+
+            </ul>
+
+        </section>
+        <section id="user-characteristics">
+            <h3>2.2 User Classes and Characteristics</h3>
+            <p>
+                The users can be divided into four main categories, which are as follows:
+            </p>
+            <ol>
+                <li>Guest users:
+                    <ul>
+                        <li>Have access to pages but cannot submit problems.</li>
+                    </ul>
+                </li>
+                <li>Registered users, who can either be students or professors:
+                    <ul>
+                        <li>
+                            Students
+                            <ul>
+                                <li>Can join classes.</li>
+                                <li>Can complete homework assignments.</li>
+                                <li>Can solve problems on their own.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Professors
+                            <ul>
+                                <li>Can create classes.</li>
+                                <li>Can assign homework assignments.</li>
+                                <li>Can review homework assignments.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Admins:
+                    <ul>
+                        <li>Can accept problem suggestions.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        <section id="operating-environment">
+            <h3>2.3 Operating Environment</h3>
+            <p>The following technologies have been used. It is important to mention that no
+                frameworks have been used, according to the <code>Web Technologies</code> requirements.
+            </p>
+            <p>Front-end technologies: HTML, CSS, JavaScript</p>
+            <!-- <p>Back-end technologies:</p>
+            <p>Database Management System:</p>
+            <p>Server-side development stack:</p>
+            <p>APIs: </p> -->
+        </section>
+        <section id="Usage-manual">
+            <h3>2.4 Usage Manual</h3>
+            <ol>
+                <li>Overview
+                    <p>
+                        Our platform is designed to help users solve programming problems through a community-driven
+                        approach. Upon accessing the platform, you will be welcomed by the main page, which contains
+                        links to almost every other page. The top menu includes buttons for Home, Problems, About,
+                        Login, and Sign-up, while the left bottom corner of the page has a Help button.
+                    </p>
+                </li>
+                <li>Login/Register
+                    <p>
+                        To create an account or login to an existing one, click on the Login/Sign-up button in the top
+                        menu. You will then be taken to a form to register/enter your account information. Once you are
+                        done filling out the form, the buttons in the top menu will be replaced by the Profile page.
+                    </p>
+                </li>
+                <li>Problems Page
+                    <p>
+                        To access the Problems page, click on the Problems button in the top menu. This page contains a
+                        list of all the problems available on the platform.
+                    </p>
+                </li>
+                <li>Problem Page
+                    <p>
+                        If you click on any problem from the Problems page, you will be taken to that specific problem
+                        page. Here, you can see the problem description, comments left by other users, a solution page
+                        where you can see your past solutions, and a coding area where you can write your solution.
+                    </p>
+                </li>
+                <li>Your profile Page
+                    <p>
+                        To access this page, click on the Profile button from the top menu. Here, you can see your
+                        profile picture and you
+                        have the opportunity to change it at any time. Also, here you can view other information related
+                        to your account.
+                        From this page you can see the statistics based on your overall performance. They are divided
+                        into 4 categories,
+                        depending on the difficulty of the problems solved: all, easy, medium and hard. <br> Below the
+                        role there are some links. <br>
+                        If you are a student, then you have 2 buttons. One is called "class" and it takes you to the
+                        page related to the class you belong to,
+                        and the other one is called "logout", it takes you to the main page and the button Profile from
+                        the top menu will be replaced by the Login/Sign-up buttons.<br>
+                        If you are a teacher, then you have 3 buttons. The logout button works the same. Instead of the
+                        "class" button, you have the "classes"
+                        button that takes you to the page related to the classes you have. In addition, you have the
+                        button "propose problem".
+                    </p>
+                </li>
+                <li>Propose problem Page
+                    <p>
+                        You can reach this page only if you are a teacher and press the "propose problem" button on the
+                        page related to your profile.
+                        Here you have a form that you can fill in with the details about the problem you want to
+                        propose.
+                        At the bottom you have 2 buttons, one for submit and one for going back. Above the submit button
+                        you have a link called "See model"
+                        which takes you to a page where you can find an already completed form.
+                    </p>
+                </li>
+                <li>Model propose problem Page
+                    <p>
+                        Here you can see a model to help you complete the problem proposal form. This page can only be
+                        accessed from the Propose problem Page.
+                    </p>
+                </li>
+                <li>Admin Page
+                    <p>
+                        This page can only be accessed by administrators. Here I can see a table with the proposed
+                        problems,
+                        and by pressing the title of a problem they can see a form completed with the details related to
+                        the problem.
+                        At the end of each line in the table, there are 2 buttons through which the administrators can
+                        approve or disapprove a proposed problem.
+                    </p>
+                </li>
+                <li>Another user's profile Page
+                    <p>
+                        You can reach this page from the viewStudents and myClass_student pages. Here you can see
+                        general information about another user as well as statistics about his/her performance.
+                    </p>
+                </li>
+                <li>About us Page
+                    <p>
+                        This page gives users some background regarding what the concept behind Informatix is and who
+                        are its creators.
+                    </p>
+                </li>
+                <li>Help Page
+                    <p>
+                        This page answers some of the most asked questions of users and for those who want to find out
+                        more, allows them to access our Scholarly
+                        in order to read more about the usage of this app.
+                    </p>
+                </li>
+                <li>My classes Page
+                    <p>
+                        This page is accessible only from a teacher account and allows the user to see their classes, to
+                        add student to these and
+                        to access information about them such as their students or their assigned homeworks.
+                    </p>
+                </li>
+                <li>My class Page
+                    <p>
+                        This page is accessible only from a student account and allows the user to see their classmates
+                        and allows them to access their profiles.
+                    </p>
+                </li>
+                <li>View Students Page
+                    <p>
+                        This page is accessible from My classes Page and allows a teacher user to view details about the
+                        students in a certain class, as well as to see the homework status
+                        for each.
+                    </p>
+                </li>
+                <li>View Student Homeworks Page
+                    <p>
+                        This page is accessible from View Students Page and allows a teacher user to view the assigned
+                        homeworks for a student,
+                        the homework status (solved yes/no), and allows the user to access View Submits Page.
+                    </p>
+                </li>
+                <li>View Submits Page
+                    <p>
+                        This page is accessible from View Student Homework Page and allows a teacher user to view the
+                        solutions a student has submited
+                        for the problems in their homeworks.
+                    </p>
+                </li>
+                <li>View Solution Page
+                    <p>
+                        This page is accessible from View Submits Page and allows a teacher user to view the code of a
+                        solution a student has submited
+                        for a problem in one of their homeworks.
+                    </p>
+                </li>
+                <li>Add Student Page
+                    <p>
+                        This page is accessible from My Classes Page and allows a teacher user to complete a form in
+                        order to add a student in one of their
+                        classes, using the username of the student.
+                    </p>
+                </li>
+                <li>View Homeworks Page
+                    <p>
+                        This page is accessible from My Classes Page and allows a teacher user to view the homeworks
+                        assigned to a certain class,
+                        as well as to access the View Problems Page. This Page also has a button for creating a new
+                        homework.
+                    </p>
+                </li>
+                <li>View Problems Page
+                    <p>
+                        This page is accessible from View Homeworks Page and allows a teacher user to view the problems
+                        that a certain homeworks is made of.
+                    </p>
+                </li>
+                <li>View Problem Page
+                    <p>
+                        This page is accessible from View Problems Page and Problems Page and allows a user to view
+                        description of a problem.
+                    </p>
+                </li>
+                <li>Create Homework Page
+                    <p>
+                        This page is accessible from View Homeworks Page and allows a teacher user
+                        to complete a form in order to create a new homework. The form allows the user to name the
+                        homework,
+                        to give it a deadline, as well as adding problems to it,based on the id of the problems.
+                    </p>
+                </li>
+            </ol>
+        </section>
+    </section>
+    <section id="interfaces">
+        <h2>3. External Interface</h2>
+        <section id="ui">
+            <h3>3.1 User Interfaces</h3>
+            <ol>
+                <li><h3>Index</h3>
+                    <img class="ig" src="imgs/index.png" alt="">
+                </li>
+                <li>Problems
+                    <img class="ig" src="imgs/problems.png" alt="">
+                </li>
+                <li>Problem
+                    <img class="ig" src="imgs/problem.png" alt="">
+                </li>
+                <li>Profile
+                    <img class="ig" src="imgs/profile.png" alt="">
+                </li>
+                <li>Sign up
+                    <img class="ig" src="imgs/login.png" alt="">
+                </li>
+                <li>Login
+                    <img class="ig" src="imgs/login2.png" alt="">
+                </li>
+                <li>Proposed problem
+                    <img class="ig" src="imgs/proposed_problem.png" alt="">
+                </li>
+                <li>Student class
+                    <img class="ig" src="imgs/student_class.png" alt="">
+                </li>
+                <li>Teacher class
+                    <img class="ig" src="imgs/profesor_class.png" alt="">
+                </li>
+                <li>Homework
+                    <img class="ig" src="imgs/class_homework.png" alt="">
+                </li>
+                <li>About
+                    <img class="ig" src="imgs/about.png" alt="">
+                </li>
+                <li>Admin
+                    <img class="ig" src="imgs/admin.png" alt="">
+                </li>
+                <li>Help
+                    <img class="ig" src="imgs/help.png" alt="">
+                </li>
+                <li>View Homework 
+                    <img class="ig" src="imgs/viewhomework.png" alt="">
+                </li>
+                <li>Solution 
+                    <img class="ig" src="imgs/solution.png" alt="">
+                </li>
+            </ol>
+        </section>
+    </section>
+
+    <section id="features">
+        <h2>4. System Features</h2>
+        <section id="registration">
+            <h3>4.1 Registration</h3>
+            <p>
+                The registration feature provides it's users to registrate to the platform using an valid
+                e-Mail.
+            </p>
+        </section>
+        <section id="login">
+            <h3>4.2 Authentication</h3>
+            <p>
+                This is a basic authentication form that checks the validity of the username and the password and
+                redirects the user to the home page. It also unlocks the possibility of viewing the profil page and
+                solve problems.
+            </p>
+        </section>
+        <section id="propose-problem">
+            <h3>4.3 Propose problem</h3>
+            <p>
+                This is a form that verifies that all fields are filled in before submitting. Also, for the last field
+                there is a suplimentary check of the content, more precisely of the proposed tests that must respect a
+                certain structure.
+            </p>
+        </section>
+    </section>
+
+
+    <section id="contentInfo">
+        <h2>5. Authors & Contributors</h2>
+        <div>
+            <section typeof="sa:AuthorsList">
+                <h3>5.1 Authors</h3>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Ioana">
+                            <meta property="schema:additionalName" content="Larisa">
+                            <meta property="schema:familyName" content="Cioata">
+                            <span property="schema:name">Ioana-Larisa Cioata</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:mailioana" property="schema:email">ioana.larisa.29@gmail.com</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Alexandru">
+                            <meta property="schema:additionalName" content="Vicentiu">
+                            <meta property="schema:familyName" content="Farcasi">
+                            <span property="schema:name">Alexandru-Vicentiu V. Farcasi</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:farcasialexandruvicentiu@gmail.com"
+                                    property="schema:email">farcasialexandruvicentiu@gmail.com</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Raluca">
+                            <meta property="schema:additionalName" content="Petronela">
+                            <meta property="schema:familyName" content="Sandu">
+                            <span property="schema:name">Raluca P. Sandu</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:sanduraluca0808@gmail.com"
+                                    property="schema:email">sanduraluca0808@gmail.com</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <section id="contributions">
+                    <h3>5.2 Contribution</h3>
+                    <h4>Cioata Ioana-Larisa:</h4>
+                    <ul>
+                        <li>Site design projection</li>
+                        <li>User's profile page</li>
+                        <li>Another user's profile page</li>
+                        <li>Admin page</li>
+                        <li>Propose problem page</li>
+                        <li>Model propose problem Page</li>
+                        <li>Javascript for propose problem page</li>
+                        <li>Documentation</li>
+                    </ul>
+                    <h4>Farcasi Alexandru-Vicentiu:</h4>
+                    <ul>
+                        <li>Site design projection</li>
+                        <li>Index page</li>
+                        <li>Problems page</li>
+                        <li>Individual problem page</li>
+                        <li>Solution page</li>
+                        <li>Javascript for authentication</li>
+                        <li>Documentation</li>
+                    </ul>
+                    <h4>Sandu Raluca-Petronela:</h4>
+                    <ul>
+                        <li>Site design projection</li>
+                        <li>SignUp page</li>
+                        <li>Login page</li>
+                        <li>About page</li>
+                        <li>Help page</li>
+                        <li>Classes viewer for teacher page</li>
+                        <li>Class viewer for students page</li>
+                        <li>Homework creation page for teacher</li>
+                        <li>Homework viewer page</li>
+                        <li>Documentation</li>
+                    </ul>
+                </section>
+            </section>
+        </div>
+    </section>
+
+</body>
+
+</html>
