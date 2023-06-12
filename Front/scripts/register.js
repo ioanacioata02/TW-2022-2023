@@ -32,13 +32,12 @@ registerForm.addEventListener('submit', async (event) => {
         });
 
         if (!response.ok) {
-            return response.json().then(data => {
+         
                 if (response.status === 409 || response.status === 400) {
-                    displayMessage(data.message, true);
+                    displayMessage("Invalid email", true);
+                    
                 }
-                throw new Error(data.message);
-            });
-       
+                return;
         }
         
 

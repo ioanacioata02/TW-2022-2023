@@ -27,6 +27,7 @@ function parseJwt(token) {
   
 	  if (!response.ok) {
 		if (response.status === 401) {
+			console.log("cv nu eok la register");
 		  let err = document.querySelector('form.login .error');
 		  err.classList.add('show');
 		}
@@ -40,7 +41,7 @@ function parseJwt(token) {
 	  localStorage.setItem('token', token);
 	  if (token) {
 		let status = parseJwt(token).status;
-		if (status == 0||status==1)
+		if (status == "0"||status=="1")
 		  window.location.href = 'index.html';
 		else
 		  window.location.href = 'admin.html';
