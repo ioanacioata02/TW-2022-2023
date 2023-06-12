@@ -38,7 +38,7 @@ registerForm.addEventListener('submit', async (event) => {
                 }
                 throw new Error(data.message);
             });
-            return;
+       
         }
         
 
