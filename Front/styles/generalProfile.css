@@ -158,6 +158,11 @@ body {
 	font-size: 1.5em;
 }
 
+#email, #id{
+	font-size: 1.25em;
+	color:var(--text-color-sidebar)
+}
+
 @media (max-width: 1150px) {
 	.main-box-profile {
 		margin-left: 50px;
