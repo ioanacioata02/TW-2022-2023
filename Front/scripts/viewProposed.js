@@ -8,11 +8,12 @@ async function loadProposed(id) {
                 'Authorization': token
             }
         });
-        const data = await response.json();
+        
         if (!response.ok) {
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
+            const data = await response.json();
             console.log(data);
             loadData(data);
 
