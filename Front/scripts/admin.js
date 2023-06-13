@@ -52,12 +52,10 @@ function getProblems() {
         .then(response => {
             if (!response.ok) {
                 if(response.status === 403){
-                    let forbidden = document.getElementById("forbidden");
-                    displayForbidden(forbidden);
+                    displayForbidden();
                 }
                 if(response.status === 401){
-                    let forbidden = document.getElementById("forbidden");
-                    displayUnauthorized(forbidden);
+                    displayUnauthorized();
                 }
                 return response.json().then(data => {
                     throw new Error(data.message);

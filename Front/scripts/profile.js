@@ -26,12 +26,14 @@ async function changePass(event) {
             },
             body: JSON.stringify({ "password": password })
         });
+
+        const data = await response.json();
+
         if (!response.ok) {
             console.log('An error occurred:', data.message);
             displayMessage('Something went wrong. Please try again later.', true);
             return;
         } else {
-            //const data = await response.json();
             displayMessage('Password changed!', false);
         }
     } catch (error) {
@@ -47,11 +49,13 @@ async function getDetails() {
                 'Authorization': token
             }
         });
+
+        const data = await response.json();
+
         if (!response.ok) {
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
-            const data = await response.json();
             console.log(data);
             displayDetails(data);
         }

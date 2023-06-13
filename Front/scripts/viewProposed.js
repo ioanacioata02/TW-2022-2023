@@ -8,22 +8,22 @@ async function loadProposed(id) {
                 'Authorization': token
             }
         });
-        
+        const data = await response.json();
         if (!response.ok) {
             if(response.status === 403){
-                let forbidden = document.getElementById("forbidden");
-                displayForbidden(forbidden);
-                return;
+                displayForbidden();
             }
+
             if(response.status === 401){
-                let forbidden = document.getElementById("forbidden");
-                displayUnauthorized(forbidden);
-                return;
+                displayUnauthorized();
+            }
+
+            if(response.status === 404){
+                displayNotFound();
             }
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
-            const data = await response.json();
             console.log(data);
             loadData(data);
             document.getElementById("content").classList.remove("hidden");
