@@ -48,7 +48,7 @@ class RegisterController extends Controller
                "id"=>$id,
                "username"=>$username,
                "status"=>$type,
-               ],"secret",30*24),]);
+               ],"secret", 30*24)]);
         }
 
 

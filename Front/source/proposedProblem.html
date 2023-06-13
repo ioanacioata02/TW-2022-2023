@@ -16,13 +16,15 @@
 
 
     <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/forbidden.css">
     <link rel="stylesheet" href="../styles/generalFormForProblems.css">
 
     <script src="../scripts/viewProposed.js" defer></script>
+    <script src="../scripts/error.js" defer></script>
 </head>
 
 <body>
-    <main>
+    <main id="content" class="hidden">
         <h2>Proposed problem</h2>
 
         <div class="container">
@@ -32,10 +34,10 @@
 
                 <label>Tags</label>
                 <div id="tags">
-                    
+
                 </div>
                 <br>
-                
+
                 <label for="description">Description</label>
                 <textarea id="description" name="description" rows="6" readonly></textarea>
                 <label for="tests">Tests</label>
