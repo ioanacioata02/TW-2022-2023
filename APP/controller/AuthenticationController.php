@@ -2,7 +2,7 @@
 
 class AuthenticationController extends Controller
 {
-    public function __consstruct()
+    public function __construct()
     { 
         
         parent::__construct();
