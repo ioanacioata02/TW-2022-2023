@@ -13,18 +13,38 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/forbidden.css">
     <link rel="stylesheet" href="../styles/viewPage_general.css">
     <link rel="stylesheet" href="../styles/general_admin.css">
     <link rel="stylesheet" href="../styles/admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
     <link rel="stylesheet" href="../styles/messageDisplay.css">
 
+    <script src="../scripts/displayMessageBox.js" defer></script>
+    <script src="../scripts/error.js" defer></script>
     <script src="../scripts/admin.js" defer></script>
     <title>InformatiX</title>
 </head>
 
-<body class="hidden">
-    <main>
+<body>
+    <div class="hidden">
+        <div id="forbidden">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50" fill="red" />
+                <line x1="25" y1="25" x2="75" y2="75" stroke="white" stroke-width="15" stroke-linecap="round" />
+                <line x1="25" y1="75" x2="75" y2="25" stroke="#FFF" stroke-width="15" stroke-linecap="round" />
+            </svg>
+            <div class="text">
+                <h1></h1>
+                <p></p>
+                <p></p>
+                <button></button>
+            </div>
+        </div>
+    </div>
+
+
+    <main class="hidden" id="content">
         <button id="promote" onclick="displayPromote()">Promote</button>
         <section class="select-box">
             <h5>Number of rows per page</h5>
@@ -47,178 +67,7 @@
                     </tr>
                 </thead>
                 <tbody id="candidate-problems">
-                    <!--
-                    <tr>
-                        <td>1</td>
-                        <td class="link">Title 1</td>
-                        <td class="tags"><button>bkt</button><button>programare
-                                dinamica</button><button>arrays</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td class="link">Title 2</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class="link">Title 3</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td class="link">Title 4</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td class="link">Title 5</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td class="link">Title 6</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td class="link">Title 7</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td class="link">Title 8</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td class="link">Title 9</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td class="link">Title 10</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td class="link">Title 11</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td class="link">Title 12</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td class="link">Title 1</td>
-                        <td class="tags"><button>bkt</button><button>programare
-                                dinamica</button><button>arrays</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td class="link">Title 2</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td class="link">Title 3</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td class="link">Title 4</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td class="link">Title 5</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td class="link">Title 6</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td class="link">Title 7</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td class="link">Title 8</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td class="link">Title 9</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td class="link">Title 10</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td class="link">Title 11</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td class="link">Title 12</td>
-                        <td class="tags"><button>bkt</button><button>dynamic programming</button></td>
-                        <td>username</td>
-                        <td><button class="yes">yes</button><button class="no">no</button></td>
-                    </tr>
-                    -->
+
                 </tbody>
             </table>
             <nav class="pagination-container">
@@ -242,7 +91,9 @@
                     <option value="2">Admin</option>
                     <option value="1">Proffesor</option>
                 </select>
-                <div class="hidden" id="feedback"><p></p></div>
+                <div class="hidden" id="feedback">
+                    <p></p>
+                </div>
                 <input type="submit" value="Promote">
             </form>
         </div>

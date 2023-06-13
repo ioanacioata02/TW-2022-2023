@@ -67,13 +67,10 @@ class ProfileModel extends Model{
                 $response = false;
             }
             else{
-                //$row = $stmt->fetch(PDO::FETCH_ASSOC);
-                //$row = $this->processRow($row);
 
                 $sql = "UPDATE users SET password = (?) WHERE id = (?)";
                 $stmt =  $connection->prepare($sql);
                 $hash = password_hash($data["password"], PASSWORD_DEFAULT);
-                //echo password_verify($data["password"], $row["password"]);
                 $stmt->bindValue(1, $hash, PDO::PARAM_STR);
                 $stmt->bindValue(2, $data["id"], PDO::PARAM_INT);
                 $stmt->execute();

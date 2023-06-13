@@ -10,13 +10,23 @@ async function loadProposed(id) {
         });
         
         if (!response.ok) {
+            if(response.status === 403){
+                let forbidden = document.getElementById("forbidden");
+                displayForbidden(forbidden);
+                return;
+            }
+            if(response.status === 401){
+                let forbidden = document.getElementById("forbidden");
+                displayUnauthorized(forbidden);
+                return;
+            }
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
             const data = await response.json();
             console.log(data);
             loadData(data);
-
+            document.getElementById("content").classList.remove("hidden");
         }
     } catch (error) {
         console.error('An error occurred:', error.message);

@@ -59,7 +59,7 @@ class AuthenticationController extends Controller
                    "id"=>$data["id"],
                    "username"=>$data["username"],
                    "status"=>$data["status"],
-               ], 30*24),
+               ], "secret", 30*24),
                "message"=>"success"
            ];
        }

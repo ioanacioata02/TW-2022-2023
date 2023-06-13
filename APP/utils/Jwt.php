@@ -26,7 +26,7 @@ class Jwt
         }
         if($payload["status"]<$status)
         {
-            http_response_code(401);
+            http_response_code(403);
             echo json_encode(["message"=>"You don't have the permission to create a problem"]);
             return false;
         }
@@ -64,11 +64,13 @@ class Jwt
         $decodedSignature = base64_decode($signature);
         $expectedSignature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
         if (!hash_equals($decodedSignature, $expectedSignature)) {
+            //echo "signature";
             //the token was modified
             return null;
         }
         $decodedPayload = json_decode(base64_decode($payload), true);
         if (time() > $decodedPayload["expirationDate"]) {
+            //echo "time";
             return null;
         }
         return $decodedPayload;
