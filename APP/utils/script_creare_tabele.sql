@@ -72,6 +72,7 @@ CREATE TABLE class_members(
 create table homeworks(
     id serial PRIMARY KEY,
     topic TEXT not NULL,
+    author INT not null,
     deadline DATE NOT NULL,
     problems_id INT[] NOT NULL
 );
