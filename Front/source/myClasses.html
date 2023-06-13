@@ -8,19 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/utilities.css">
-    <link rel="stylesheet" href="../styles/viewStudents.css">
-    <link rel="stylesheet" href="../styles/viewPage_general.css">
+    <link rel="stylesheet" href="../styles/myClasses.css">
     <link rel="stylesheet" href="../styles/general_admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+    <link rel="stylesheet" href="../styles/viewPage_general.css">
     <script src="../scripts/adminPagination.js" defer></script>
-    <script src="../scripts/class_student.js" defer></script>
+    <script src="../scripts/classes.js" defer></script>
     <title>InformatiX</title>
 </head>
 
 <body>
     <main>
-        <h1 class="myTitle">My class- <b>2B1</b></h1>
         <section class="select-box">
             <h5>Nr de randuri pe pagina</h5>
             <select name="rows-per-page" id="rows-per-page">
@@ -35,13 +34,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Number of students</th>
+                     <th>View Class</th>
                     </tr>
                 </thead>
-                <tbody id="class-members">
-                    
+                <tbody id="candidate-problems">
                 </tbody>
             </table>
             <nav class="pagination-container">

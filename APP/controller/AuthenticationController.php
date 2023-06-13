@@ -55,13 +55,13 @@ class AuthenticationController extends Controller
                 
            }
            return [
-               "JWT"=>Jwt::generateToken([
-                   "id"=>$data["id"],
-                   "username"=>$data["username"],
-                   "status"=>$data["status"],
-               ], 30*24),
-               "message"=>"success"
-           ];
+            "JWT"=>Jwt::generateToken([
+                "id"=>$data["id"],
+                "username"=>$data["username"],
+                "status"=>$data["status"],
+            ], "secret",30*24),
+            "message"=>"success"
+        ];
        }
        else
        {
