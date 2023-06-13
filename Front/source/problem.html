@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/problem.css">
+    <script src="../scripts/problemLogic.js" defer></script>
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
@@ -78,8 +79,8 @@
             <button class="button-tab" onclick="opentab('solutions')">Solutions</button>
 
             <div id="description" class="description-tab tab-content">
-                <div class="problem-description-title">1.Two Sum</div>
-                <div class="problem-description-text"> Given an array of integers nums and an integer target, return
+                <div id="title-text" class="problem-description-title">1.Two Sum</div>
+                <div id="description-text" class="problem-description-text"> Given an array of integers nums and an integer target, return
                     indices of the two numbers such that they add up to target.<br>
                     You may assume that each input would have exactly one solution, and you may not use the same element
                     twice. indices of the two numbers such that they add up to target.<br>
@@ -135,8 +136,8 @@
                 </a>
             </div>
             
-            <div class="acceptance-rate rating">Acceptance Rate 64%</div>
-            <div class="current-difficulty rating">Difficulty 1</div>
+            <div class="acceptance-rate rating">Acceptance Rate <span id="rating-text">64%</span></div>
+            <div  class="current-difficulty rating">Difficulty <span id="difficulty-text">1</span></div>
             <div class="rating"><a class="subbmit-review">Feedback</a></div>
         </div>
         <div class="feed-back-from">
