@@ -60,6 +60,10 @@
         2px 2px 1px #1b5a57;
 }
 
+#not-found h2 {
+    font-size: 2em;
+}
+
 #not-found p {
     font-size: 1.4em;
 }

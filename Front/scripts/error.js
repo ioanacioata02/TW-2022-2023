@@ -132,6 +132,9 @@ function displayNotFound() {
     let number = document.createElement("h1");
     number.innerText = "404";
 
+    let bigTxt = document.createElement("h2");
+    bigTxt.innerText = "Not found";
+
     let paragraph = document.createElement("p");
     paragraph.innerText = "The page you are looking for may have been moved, deleted or possibly never existed.";
 
@@ -139,6 +142,7 @@ function displayNotFound() {
 
     //append
     notFound.appendChild(number);
+    notFound.appendChild(bigTxt);
     notFound.appendChild(paragraph);
     document.body.appendChild(notFound);
 }
