@@ -47,7 +47,7 @@ function getId() {
   }
   
   function viewUser(id) {
-    document.location = `otherProfile.html?classId=${id}`;
+    document.location = `otherProfile.html?id=${id}`;
   }
   
   fetchMembers();
