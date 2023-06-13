@@ -53,9 +53,13 @@ async function getDetails() {
         const data = await response.json();
 
         if (!response.ok) {
+            if(response.status === 404){
+                displayNotFound();
+            }
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
+            document.getElementById("main-box-profile").parentNode.classList.remove("hidden");
             console.log(data);
             displayDetails(data);
         }
