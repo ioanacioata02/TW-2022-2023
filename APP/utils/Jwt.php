@@ -66,11 +66,13 @@ class Jwt
 
         $expectedSignature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
         if (!hash_equals($decodedSignature, $expectedSignature)) {
+            //echo "signature";
             //the token was modified
             return null;
         }
         $decodedPayload = json_decode(base64_decode($payload), true);
         if (time() > $decodedPayload["expirationDate"]) {
+            //echo "time";
             return null;
         }
         Jwt::$payload=$decodedPayload;

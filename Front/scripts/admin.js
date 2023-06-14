@@ -51,6 +51,12 @@ function getProblems() {
     })
         .then(response => {
             if (!response.ok) {
+                if(response.status === 403){
+                    displayForbidden();
+                }
+                if(response.status === 401){
+                    displayUnauthorized();
+                }
                 return response.json().then(data => {
                     throw new Error(data.message);
                 });
@@ -77,7 +83,8 @@ function getProblems() {
             problems.map((problem) => {
                 createRow(problem);
             });
-            document.body.classList.remove("hidden");
+            let content = document.getElementById("content");
+            content.classList.remove("hidden");
         })
         .catch(error => {
             console.error('An error occurred:', error.message);
@@ -348,18 +355,4 @@ function trySend(event) {
         .catch(error => {
             console.error('An error occurred:', error.message);
         });
-}
-
-function displayMessage(message, isError) {
-    let errorBox = document.getElementById("feedback");
-    if (isError)
-        errorBox.style.backgroundColor = "red";
-    else{
-        errorBox.style.backgroundColor = "yellow";
-    }
-    let txt = errorBox.querySelector("p");
-    txt.innerText = message;
-
-    errorBox.appendChild(txt);
-    errorBox.classList.remove("hidden");
 }

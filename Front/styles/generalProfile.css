@@ -16,14 +16,14 @@ body {
 	background-color: var(--background);
 }
 
-.main-box-profile {
+#main-box-profile {
 	margin: 10px 120px 10px 120px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1em;
 }
 
-.main-box-profile .sidebar {
+#main-box-profile .sidebar {
 	flex: 1;
 	position: -webkit-sticky;
 	position: sticky;
@@ -64,7 +64,7 @@ body {
 	list-style-type: none;
 }
 
-.main-box-profile .main-content {
+#main-box-profile .main-content {
 	margin-top: 0;
 	background-color: var(--accent-color);
 	flex: 2;
@@ -158,13 +158,14 @@ body {
 	font-size: 1.5em;
 }
 
-#email, #id{
+#email,
+#id {
 	font-size: 1.25em;
-	color:var(--text-color-sidebar)
+	color: var(--text-color-sidebar)
 }
 
 @media (max-width: 1150px) {
-	.main-box-profile {
+	#main-box-profile {
 		margin-left: 50px;
 		margin-right: 50px;
 	}
@@ -172,12 +173,12 @@ body {
 
 @media (max-width: 900px) {
 
-	.main-box-profile .sidebar,
-	.main-box-profile .main-content {
+	#main-box-profile .sidebar,
+	#main-box-profile .main-content {
 		flex: 100%;
 	}
 
-	.main-box-profile .sidebar {
+	#main-box-profile .sidebar {
 		position: static;
 	}
 }
@@ -190,17 +191,17 @@ body {
 		height: 100%;
 	}
 
-	.main-box-profile {
+	#main-box-profile {
 		padding: 0;
 	}
 
-	.main-box-profile .main-content {
+	#main-box-profile .main-content {
 		padding: 0;
 	}
 }
 
 @media (max-width: 360px) {
-	.main-box-profile {
+	#main-box-profile {
 		margin-left: 0;
 		margin-right: 0;
 	}

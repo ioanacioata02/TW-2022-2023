@@ -83,7 +83,8 @@ class ProfileController extends Controller{
         switch ($method) {
 
             case "GET":
-                $row = $this->model->get(Jwt::getIdFromToken());
+                $id = Jwt::getIdFromToken();
+                $row = $this->model->get($id);
                 if(!empty($row)){
                     http_response_code(200);
                     echo json_encode($row);

@@ -1,0 +1,87 @@
+#forbidden,
+#not-found {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#forbidden {
+    display: flex;
+    flex-direction: column;
+}
+
+#forbidden svg {
+    display: block;
+    padding-bottom: 2em;
+    width: 10em;
+    height: auto;
+    margin: auto;
+}
+
+#forbidden .text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+
+#forbidden button {
+    padding: 10px 5px;
+    background-color: #04AA6D;
+    max-width: fit-content;
+    border: none;
+    color: white;
+    padding: 1em 1.4em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#forbidden button:hover {
+    background-color: #3AAFA9;
+}
+
+.hidden {
+    display: none;
+}
+
+#not-found {
+    text-align: center;
+}
+
+#not-found h1 {
+    font-size: 10em;
+    color: #3AAFA9;
+    text-shadow:
+        1px 1px 1px #2d8782,
+        2px 2px 1px #1b5a57;
+}
+
+#not-found h2 {
+    font-size: 2em;
+}
+
+#not-found p {
+    font-size: 1.4em;
+}
+
+@media (max-width: 400px) {
+    #forbidden svg {
+        width: 7em;
+    }
+    #not-found h1{
+        font-size: 8em;
+    }
+    #not-found p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 250px) {
+    #not-found h1{
+        font-size: 6em;
+    }
+}
