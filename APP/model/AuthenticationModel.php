@@ -22,6 +22,7 @@ class AuthenticationModel extends Model
         }
         $data  = $stmt->fetch(PDO::FETCH_ASSOC);
         $passwordDatabase =   $data["password"];
+        //echo $passwordDatabase;
         if(password_verify($password, $passwordDatabase))
         {
             return $data;

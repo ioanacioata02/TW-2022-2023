@@ -1,6 +1,16 @@
 -- Database: InformatiX
 
+-- DROP DATABASE IF EXISTS "InformatiX";
 
+CREATE DATABASE "InformatiX"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
 	
 	
 DROP TABLE IF EXISTS problems CASCADE;
@@ -69,26 +79,28 @@ CREATE TABLE class_members(
 	CONSTRAINT fk_class_id FOREIGN KEY (id_class) REFERENCES classes(id) ON DELETE CASCADE
 );
 
-create table homeworks(
-    id serial PRIMARY KEY,
-    topic TEXT not NULL,
-    author INT not null,
-    deadline DATE NOT NULL,
-    problems_id INT[] NOT NULL
+CREATE TABLE homeworks(
+	id SERIAL PRIMARY KEY,
+	topic TEXT NOT NULL,
+	deadline DATE NOT NULL
 );
 
-
-create table homework_members(
-    id_homework INT not NULL,
-    id_student INT NOT NULL,
-    solved_problems JSONB NOT NULL,
-    CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
-    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES students (id),
-    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
-
+CREATE TABLE homework_problems(
+	id_homework INT NOT NULL,
+	id_problem_hw INT NOT NULL,
+	CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks(id) ON DELETE CASCADE,
+	CONSTRAINT fk_problem FOREIGN KEY (id_problem_hw) REFERENCES problems(id) ON DELETE CASCADE
+);
+CREATE TABLE homework_members(
+	id_homework_mb INT NOT NULL,
+	id_member INT NOT NULL,
+	solved_nr INT NOT NULL,
+	problem_nr INT NOT NULL,
+	CONSTRAINT fk_homework2 FOREIGN KEY (id_homework_mb) REFERENCES homeworks(id) ON DELETE CASCADE,
+	CONSTRAINT fk_member FOREIGN KEY (id_member) REFERENCES users(id) ON DELETE CASCADE
 );
 
-create TABLE all_comments(
+CREATE TABLE all_comments(
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
 	comment_txt TEXT NOT NULL,

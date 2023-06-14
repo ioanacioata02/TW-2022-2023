@@ -90,7 +90,7 @@ class ProfileController extends Controller{
                 }
                 else{
                     http_response_code(404);
-                    echo json_encode(["id" => $id, "message" => "User not found"]);
+                    echo json_encode(["id" => Jwt::getIdFromToken(), "message" => "User not found"]);
                 }
                 break;
 

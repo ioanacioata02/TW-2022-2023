@@ -42,7 +42,7 @@ class ProblemsModel extends Model
 
     public function getAll($limit = 9999999):array
     {
-        $sql = "select * from problems LIMIT (?)";
+        $sql = "select id, name, description, tags, nr_attempts, nr_successes from problems LIMIT (?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1, $limit);
@@ -59,7 +59,7 @@ class ProblemsModel extends Model
 
     public function sortLimit($field, $limit, $order)
     {
-        $sql = "select * from problems order by ".$field." ". $order." limit :limit";
+        $sql = "select id, name, description, tags, nr_attempts, nr_successes from problems order by ".$field." ". $order." limit :limit";
         $connection=  $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(":limit", $limit);
@@ -76,7 +76,7 @@ class ProblemsModel extends Model
     }
     public function get(int $id):array
     {
-        $sql = "select * from problems where id= (?)";
+        $sql = "select id, name, description, tags, nr_attempts, nr_successes from problems where id= (?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1, $id);
@@ -99,7 +99,7 @@ class ProblemsModel extends Model
                 $tag=substr($tag, 1,-1);
         }
         $row["tags"]= $tags;
-        $row["tests"]=json_decode($row["tests"]);
+
         return $row;
     }
     public function delete(int $id):void

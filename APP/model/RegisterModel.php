@@ -33,9 +33,10 @@ class RegisterModel extends Model
         $stmt->bindValue(6,0);
         $stmt->bindValue(7,0);
         $stmt->bindValue(8, $type);
-        $stmt->bindValue(9, "");
+        $stmt->bindValue(9, NULL);
         $stmt->execute();
+        $lastId = intval($connection->lastInsertId());
         $this->connectionPool->closeConnection($connection);
-        return intval($connection->lastInsertId());
+        return $lastId;
     }
 }
