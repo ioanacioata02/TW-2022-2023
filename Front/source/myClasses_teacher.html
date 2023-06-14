@@ -13,12 +13,45 @@
     <link rel="stylesheet" href="../styles/pagination.css">
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/viewPage_general.css">
+    <link rel="stylesheet" href="../styles/viewHomeworks.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/drop-downs.css">
     <script src="../scripts/adminPagination.js" defer></script>
+    <script src="../scripts/class_teacher.js" defer></script>
     <title>InformatiX</title>
 </head>
 
 <body>
-    <main>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="about.html">About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                </div>
+                <div class="help_ico help_smaller_screen">
+                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="mySection">
         <section class="select-box">
             <h5>Nr de randuri pe pagina</h5>
             <select name="rows-per-page" id="rows-per-page">
@@ -33,278 +66,14 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Student No.</th>
-                        <th>Add student</th>
-                        <th>View students</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>View members</th>
                         <th>Homeworks</th>
                     </tr>
                 </thead>
-                <tbody id="candidate-problems">
-                    <tr>
-                        <td>1</td>
-                        <td>2B1</td>
-                        <td>23</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>3A6</td>
-                        <td>24</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2A1</td>
-                        <td>14</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>1A2</td>
-                        <td>34</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2A5</td>
-                        <td>27</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>3A2</td>
-                        <td>5</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>1A9</td>
-                        <td>13</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>1A3</td>
-                        <td>29</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>1A4</td>
-                        <td>33</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>2A5</td>
-                        <td>31</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>1A6</td>
-                        <td>7</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>3A3</td>
-                        <td>23</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>1A6</td>
-                        <td>7</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>3A6</td>
-                        <td>12</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>2A8</td>
-                        <td>7</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>3A4</td>
-                        <td>37</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td>2A5</td>
-                        <td>16</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td>1A6</td>
-                        <td>7</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>1A4</td>
-                        <td>15</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td>1A8</td>
-                        <td>47</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>1A3</td>
-                        <td>17</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td>2A3</td>
-                        <td>57</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td>1A6</td>
-                        <td>39</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td>1A5</td>
-                        <td>7</td>
-                        <td><button class="add_button" onclick="document.location='addStudent.html'">Add
-                                student</button></td>
-                        <td><button class="add_button" onclick="document.location='viewStudents.html'">View
-                                students</button></td>
-                        <td><button class="add_button" onclick="document.location='viewHomeworks.html'">View
-                                homeworks</button></td>
-                    </tr>
+                <tbody id="class-members">
+                   
                 </tbody>
             </table>
             <nav class="pagination-container">
@@ -318,7 +87,12 @@
                 </button>
             </nav>
         </div>
-    </main>
+        <section class="myButton">
+                <h1 class="plusIcon">&#65291;</h1>
+                <button class="homeworkButton" onclick="redirectPage()">Add student</button>
+            </section>
+        </div>
+        
 </body>
 
 </html>

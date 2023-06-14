@@ -67,16 +67,11 @@ class ClassesController extends Controller
                 }
                 break;
             case "POST":
-                // Handle creating a new class for the user
-                // ...
+                $this->handlePost($userId);
                 break;
             case "PUT":
-                // Handle updating a class for the user
-                // ...
                 break;
             case "DELETE":
-                // Handle deleting a class for the user
-                // ...
                 break;
             default:
                 http_response_code(405);
@@ -99,11 +94,45 @@ class ClassesController extends Controller
                     echo json_encode(["id" => $id, "message" => "No classes were found"]);
                 }
                 break;
+                case "POST":
+                    $requestData = json_decode(file_get_contents('php://input'), true);
+                    if (isset($requestData['userId']) ) 
+                        $param1 = $requestData['userId'];
+                    $success = $this->model->addMember($id, $param1);
+                    if ($success) {
+                        http_response_code(200);
+                        echo json_encode(["message" => "Member added to the class successfully"]);
+                    } else {
+                        http_response_code(400);
+                        echo json_encode(["message" => "Failed to add member to the class"]);
+                    }
+                
+                    break;
             default:
                 http_response_code(405);
                 echo json_encode(["message" => "Method not allowed"]);
                 break;
         }
     }
+
+    private function handlePost(int $id)
+    {
+        $payload = Utils::getBody();
+        $className = htmlspecialchars($this->fieldExists($payload, "className"));
+        
+           $success = $this->model->createClass($className,$id);
+           if ($success) {
+            http_response_code(200);
+            echo json_encode(["message" => "Class added successfully"]);
+        } else {
+            http_response_code(400);
+            echo json_encode(["message" => "Failed to add class"]);
+        }
+    
+           
+        }
+
+
+    
 
 }

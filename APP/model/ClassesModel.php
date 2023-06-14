@@ -138,6 +138,66 @@ class ClassesModel extends Model{
     return 0;
 }
 
+public function addMember(int $classId, int $userId): bool {
+    try {
+        $sql = "INSERT INTO class_members (id_class, id_user) VALUES (?, ?)";
+        $connection = $this->connectionPool->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(1, $classId, PDO::PARAM_INT);
+        $stmt->bindValue(2, $userId, PDO::PARAM_INT);
+        $success = $stmt->execute();
+        return $success;
+    } catch (Throwable $exception) {
+        ErrorHandler::handleException($exception);
+    } finally {
+        $this->connectionPool->closeConnection($connection);
+    }
+
+    return false;
+}
+
+public function createClass(string $className,int $userId): bool {
+    try {echo("incerc sa adaug");
+        $sql = "INSERT INTO classes (name) VALUES (?)";
+        $connection = $this->connectionPool->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(1, $className, PDO::PARAM_STR);
+        if($className==="error")
+        return false;
+       $success= $stmt->execute();
+        if($success)
+        {  $classId = $connection->lastInsertId();//functie oferita de pdo
+            $success = $this->addCreator($classId, $userId);
+        }
+       
+        return $success;
+    } catch (Throwable $exception) {
+        ErrorHandler::handleException($exception);
+    } finally {
+        $this->connectionPool->closeConnection($connection);
+    }
+
+    return false;
+}
+
+public function addCreator(int $classId,int $userId): bool {
+   
+
+    try {
+        $sql = "INSERT INTO class_members (id_class, id_user) VALUES (?, ?)";
+        $connection = $this->connectionPool->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(1, $classId, PDO::PARAM_INT);
+        $stmt->bindValue(2, $userId, PDO::PARAM_INT);
+        return $stmt->execute();
+    } catch (Throwable $exception) {
+        ErrorHandler::handleException($exception);
+    } finally {
+        $this->connectionPool->closeConnection($connection);
+    }
+    
+    return false;
+}
 
 
     

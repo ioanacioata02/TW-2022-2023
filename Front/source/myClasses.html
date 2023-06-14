@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +15,45 @@
     <link rel="stylesheet" href="../styles/pagination.css">
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/viewPage_general.css">
+    <link rel="stylesheet" href="../styles/viewHomeworks.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/drop-downs.css">
     <script src="../scripts/adminPagination.js" defer></script>
     <script src="../scripts/classes.js" defer></script>
     <title>InformatiX</title>
 </head>
 
 <body>
-    <main>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="about.html">About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                </div>
+                <div class="help_ico help_smaller_screen">
+                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="mySection">
         <section class="select-box">
             <h5>Nr de randuri pe pagina</h5>
             <select name="rows-per-page" id="rows-per-page">
@@ -35,7 +69,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Number of students</th>
+                        <th>Number of members</th>
                      <th>View Class</th>
                     </tr>
                 </thead>
@@ -53,7 +87,11 @@
                 </button>
             </nav>
         </div>
-    </main>
+        <section class="myButton">
+                <button class="homeworkButton" onclick="redirectPage()">Create new class</button>
+            </section>
+        </div>
+        
 </body>
 
 </html>

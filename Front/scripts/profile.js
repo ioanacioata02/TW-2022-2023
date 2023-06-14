@@ -72,7 +72,7 @@ function displayDetails(user) {
     }
     else {
         proposeProblem.classList.remove("hidden");
-        myClass.setAttribute("href", "myClasses_teacher.html");
+        myClass.setAttribute("href", "myClasses.html");
     }
     statsPart(user);
 
