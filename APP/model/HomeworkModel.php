@@ -16,19 +16,25 @@ public function postSolution($solution, $id_problem, $id_homework, $id_student)
     $stmt->bindValue(1, $id_homework);
     $stmt->bindValue(2, $id_student);
     $stmt->execute();
+    $result =$stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeof($result)==0)
+    {
+        return ["message"=>"Something went wrong"];
+    }
 
-    $result =  $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+
+    $result =  $result[0];
     $result["problems"]= (get_object_vars(json_decode($result["problems"])));
     //result =  get_object_vars(json_decode($stmt->fetchAll()["problems"]));
     //echo  var_dump(   $result["problems"][$id_problem]);
-    $result["problems"][$id_problem]= get_object_vars($result["problems"][$id_problem]);
+    $result["problems"][$id_problem]= get_object_vars( $result["problems"][$id_problem]);
     if($result["problems"][$id_problem]["status"]=="complete")
     {
-        return ["message"=>"Time has expired"];
+        return ["message"=>"you already submited this solution"];
     }
     if(time()>$result["deadline"])
     {
-        return ["message"=>"The solution was not posted because the deadline was "];
+        return ["message"=>"Time expired"];
     }
     $result["problems"][$id_problem]["status"]="complete";
     $result["problems"][$id_problem]["solution"]=htmlspecialchars($solution);
@@ -53,7 +59,7 @@ public function getProblems($id, $payload)
     public function getStudentProblems($id_homework, $id_student)
     {
         $connection  = $this->connectionPool->getConnection();
-        $stmt =  $connection->prepare("select u.username as username_student, hm.id_homework, hm.id_student, hm.problems  from homework_members hm join users u on u.id=hm.id_student where hm.id_homework=? AND hm.id_student=?");
+        $stmt =  $connection->prepare("select u.username as username_student, hm.id_homework, hm.id_student, hm.problems, hm.deadline  from homework_members hm join users u on u.id=hm.id_student where hm.id_homework=? AND hm.id_student=?");
         $stmt->bindValue(1, $id_homework);
         $stmt->bindValue(2, $id_student);
         $stmt->execute();
@@ -61,11 +67,17 @@ public function getProblems($id, $payload)
         $result["problems"]=get_object_vars(json_decode($result["problems"]));
         foreach (array_keys($result["problems"]) as $key)
         {
-            $result["problems"][$key]= get_object_vars($result["problems"][$key]);
+            if(gettype($result["problems"][$key])=="string")
+            {
+                $result["problems"][$key]= get_object_vars( json_decode( $result["problems"][$key]));
+            }
+            else
+                $result["problems"][$key]= get_object_vars($result["problems"][$key]);
             $stmt =  $connection->prepare("select name from problems where id=? ");
             $stmt->bindValue(1, $key);
             $stmt->execute();
             $result["problems"][$key]["name"]=$stmt->fetchColumn(0);
+
         }
         return $result;
     }
@@ -91,7 +103,7 @@ public function getProblems($id, $payload)
         }
         if($payload["status"]==1)
         {
-           
+
             return $this->getTeacherHomeworks($payload["id"]);
         }
     }
@@ -103,6 +115,7 @@ public function getProblems($id, $payload)
 
     private function getStudentHomeworks($id)
     {
+
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare("SELECT h.id, h.topic, h.author, h.deadline
                                             FROM homeworks h
@@ -151,12 +164,14 @@ public function getProblems($id, $payload)
             $students = array_values( $stmt->fetchAll(PDO::FETCH_ASSOC));
             foreach ($students as $id_student)
             {
+
                 $stmt =  $connection->prepare("insert into homework_members (id_homework, id_student, problems, deadline ) values (? , ? , ?,?)");
                 $stmt->bindValue(1, $homework_id);
                 $stmt->bindValue(2, $id_student["id_user"]);
                 $stmt->bindValue(3, $map);
                 $stmt->bindValue(4, time() + 3600 * $data["deadline"]);
                 $stmt->execute();
+
             }
 
         }

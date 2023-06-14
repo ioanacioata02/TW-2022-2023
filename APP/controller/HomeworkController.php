@@ -60,16 +60,23 @@ class HomeworkController extends Controller
 
     private function processSolutionsAction($id, $method)
     {
+
+
         if ($method == 'GET') {
             $body = Utils::getBody();
-            if (isset($body["id_student"])) {
+                if (isset($body["id_student"])) {
                 if (Jwt::validateAuthorizationToken("secret", 1)) {
+
                     $result = $this->model->getStudentProblems($id, $body["id_student"]);
                     echo json_encode($result);
                 }
             } else {
                 $this->respondBadRequest();
             }
+        }
+        else
+        {
+            $this->respondMethodNotAllowed();
         }
     }
 
