@@ -9,9 +9,13 @@ async function getDetails(id) {
             }
         });
         if (!response.ok) {
+            if(response.status === 404){
+                displayNotFound();
+            }
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
+            document.getElementById("main-box-profile").parentNode.classList.remove("hidden");
             const data = await response.json();
             console.log(data);
             displayDetails(data);

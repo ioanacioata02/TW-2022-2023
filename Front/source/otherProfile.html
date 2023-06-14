@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/forbidden.css">
 
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/generalProfile.css">
@@ -30,6 +31,7 @@
     <script src="../scripts/login.js" defer></script>
 
     <script src="../scripts/stats.js" defer></script>
+    <script src="../scripts/error.js" defer></script>
 </head>
 
 <body>
@@ -82,44 +84,54 @@
             </div>
         </div>
     </nav>
-    <main class="main-box-profile">
-        <div class="sidebar">
-            <div class="up">
-                <div class="parent">
-                    <img id="userPhoto" class="circle">
-                </div>
-
-            </div>
-            <ul class="top-txt">
-                <li>
-                    <h1></h1>
-                </li>
-                <li class="full-name">
-                    <h3></h3>
-                    <h3></h3>
-                </li>
-                <li>
-                    <h2 id="rol">
-                    </h2>
-                </li>
-            </ul>
-        </div>
-        <div class="main-content">
-            <section id="statistici">
-                <div class="item" id="all">
-                    <div class="progress-bar">
-                        <div class="text">
-                            <span id="number1"></span>
-                            <span>%</span>
-                        </div>
-                        <svg>
-                            <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
-                        </svg>
+    <main class="hidden">
+        <div id="main-box-profile">
+            <div class="sidebar">
+                <div class="up">
+                    <div class="parent">
+                        <img id="userPhoto" class="circle">
                     </div>
-                    <h2>all</h2>
-                    <span><span></span>/<span></span></span>
+
                 </div>
-            </section>
+                <ul class="top-txt">
+                    <li>
+                        <h1></h1>
+                    </li>
+                    <li>
+                        <h2 id="id">
+                        </h2>
+                    </li>
+                    <li class="full-name">
+                        <h3></h3>
+                        <h3></h3>
+                    </li>
+                    <li>
+                        <h2 id="email">
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 id="rol">
+                        </h2>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <section id="statistici">
+                    <div class="item" id="all">
+                        <div class="progress-bar">
+                            <div class="text">
+                                <span id="number1"></span>
+                                <span>%</span>
+                            </div>
+                            <svg>
+                                <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
+                            </svg>
+                        </div>
+                        <h2>all</h2>
+                        <span><span></span>/<span></span></span>
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
 </body>

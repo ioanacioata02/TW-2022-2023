@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
 class Jwt
 {
 
-
+    private static $payload;
     /**Will return true if the token is valid, false otherwise and will send a error message to the client
      * @param $status
      * @return bool
      */
-    static public function validateAuthorizationToken($secret, $status=-1): bool
+    static public function validateAuthorizationToken(string $secret, int $status=-1): bool
     {
         if(!isset(getallheaders()["Authorization"])) {
             /*
@@ -27,7 +28,7 @@ class Jwt
         if($payload["status"]<$status)
         {
             http_response_code(401);
-            echo json_encode(["message"=>"You don't have the permission to create a problem"]);
+            echo json_encode(["message"=>"You don't have the permission for this action"]);
             return false;
         }
         return true;
@@ -62,6 +63,7 @@ class Jwt
         $secretKey = getenv($secretKey);
         list($header, $payload, $signature) = explode('.', $token);
         $decodedSignature = base64_decode($signature);
+
         $expectedSignature = hash_hmac('sha256', "$header.$payload", $secretKey, true);
         if (!hash_equals($decodedSignature, $expectedSignature)) {
             //the token was modified
@@ -71,7 +73,12 @@ class Jwt
         if (time() > $decodedPayload["expirationDate"]) {
             return null;
         }
+        Jwt::$payload=$decodedPayload;
         return $decodedPayload;
+    }
+    static public function getPayload()
+    {
+        return Jwt::$payload;
     }
 
     static public function getIdFromToken(): int{

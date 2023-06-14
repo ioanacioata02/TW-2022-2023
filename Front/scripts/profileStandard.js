@@ -35,6 +35,8 @@ function profileBoxPart(user) {
     const username = document.querySelector(".top-txt h1");
     username.innerText = user.username;
 
+    const idUser = document.getElementById("id");
+    idUser.innerText = "#" + user.id;
 
     const firstName = document.querySelector(".full-name h3:first-child");
     firstName.innerText = user.first_name;
@@ -44,6 +46,9 @@ function profileBoxPart(user) {
 
     const role = document.getElementById("rol");
     role.innerText = user.role;
+
+    const email = document.getElementById("email");
+    email.innerText = user.email;
 
     if (user.img === null) {
         userPhoto.src = "https://static.vecteezy.com/system/resources/previews/007/167/661/original/user-blue-icon-isolated-on-white-background-free-vector.jpg"

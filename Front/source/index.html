@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
 
+    <script src="../scripts/indexLogic.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
   
@@ -80,34 +81,36 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="problems">
+            <div id="problemsDelay" class="problems">
                 <div class="problem-cards">
                     <h2 class="problem-cards-title">Popular problems:</h2>
-                    <div class="cards">
-                        <a href="problem.html" class="card">
-                            <h3 class="title-card">Two Sum</h3>
-                            <p class="description">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-                                You may assume that each input would have exactly one solution, and you may not use the same element twice.
-                                You can return the answer in any order.</p>
-                            <span class="difficulty">Difficulty 1</span>
-                        </a>
-                        <a class="card">
-                            <h3 class="title-card">Titlu 2</h3>
-                            <p class="description">Did I stutter? I said, MORE SKITTLES</p>
-                            <span class="difficulty">Difficulty 1</span>
-                        </a>
-                        <a class="card">
-                            <h3 class="title-card">titlu</h3>
-                            <p class="description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                    <div id="popular_problems" class="cards">
+                        <!--
+                       <a id="_1" href="problem.html" class="card">
+                           <h3 class="title-card">Two Sum</h3>
+                           <p class="description">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+                               You may assume that each input would have exactly one solution, and you may not use the same element twice.
+                               You can return the answer in any order.</p>
+                           <span class="difficulty">Difficulty 1</span>
+                       </a>
+                       <a id="_2" class="card">
+                           <h3 class="title-card">Titlu 2</h3>
+                           <p class="description">Did I stutter? I said, MORE SKITTLES</p>
+                           <span class="difficulty">Difficulty 1</span>
+                       </a>
+                       <a id="_3" class="card">
+                           <h3 class="title-card">titlu</h3>
+                           <p class="description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-                                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                            <span class="difficulty">Difficulty 1</span>
-                        </a>
-                        <a class="card">
-                            <h3 class="title-card">titlu</h3>
-                            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            <span class="difficulty">Difficulty 3</span>
-                        </a>
+                               The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                           <span class="difficulty">Difficulty 1</span>
+                       </a>
+                       <a id="_4" class="card">
+                           <h3 class="title-card">titlu</h3>
+                           <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                           <span class="difficulty">Difficulty 3</span>
+                       </a>
+                       -->
                     </div>
                 </div>
             </div>

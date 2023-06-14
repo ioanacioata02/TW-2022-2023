@@ -90,7 +90,7 @@ class ProfileController extends Controller{
                 }
                 else{
                     http_response_code(404);
-                    echo json_encode(["id" => $id, "message" => "User not found"]);
+                    echo json_encode(["id" => Jwt::getIdFromToken(), "message" => "User not found"]);
                 }
                 break;
 
@@ -108,7 +108,7 @@ class ProfileController extends Controller{
                 $data = (array)json_decode(file_get_contents("php://input"), true);
                 if(self::checkData($data, ["image"])){
 
-                    $data["id"] = self::getIdFromToken();
+                    $data["id"] = Jwt::getIdFromToken();
                     $data["image"]=htmlspecialchars($data["image"]);
                     
                     if($this->model->changeImg($data)){
@@ -137,7 +137,7 @@ class ProfileController extends Controller{
 
                 if(self::checkData($data, ["password"])){
 
-                    $data["id"] = self::getIdFromToken();
+                    $data["id"] = Jwt::getIdFromToken();
                     $data["password"]=htmlspecialchars($data["password"]);
                     
                     if($this->model->changePass($data)){
