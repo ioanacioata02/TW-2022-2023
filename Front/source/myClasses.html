@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +19,7 @@
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <script src="../scripts/adminPagination.js" defer></script>
-    <script src="../scripts/class_teacher.js" defer></script>
+    <script src="../scripts/classes.js" defer></script>
     <title>InformatiX</title>
 </head>
 
@@ -66,14 +68,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>View members</th>
-                        <th>Homeworks</th>
+                        <th>Name</th>
+                        <th>Number of members</th>
+                     <th>View Class</th>
                     </tr>
                 </thead>
-                <tbody id="class-members">
-                   
+                <tbody id="candidate-problems">
                 </tbody>
             </table>
             <nav class="pagination-container">
@@ -88,8 +88,7 @@
             </nav>
         </div>
         <section class="myButton">
-                <h1 class="plusIcon">&#65291;</h1>
-                <button class="homeworkButton" onclick="redirectPage()">Add student</button>
+                <button class="homeworkButton" onclick="redirectPage()">Create new class</button>
             </section>
         </div>
         

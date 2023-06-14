@@ -65,6 +65,7 @@ CREATE TABLE classes(
 CREATE TABLE class_members(
 	id_class INT NOT NULL,
 	id_user INT NOT NULL,
+	CONSTRAINT pk_class_members PRIMARY KEY (id_class, id_user),
 	CONSTRAINT fk_member_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_class_id FOREIGN KEY (id_class) REFERENCES classes(id) ON DELETE CASCADE
 );

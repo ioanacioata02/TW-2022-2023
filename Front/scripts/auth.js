@@ -6,7 +6,6 @@ function parseJwt(token) {
 	return JSON.parse(window.atob(base64));
   }
   
-  // Login
   loginForm = document.getElementById("log-in");
   loginForm.addEventListener('submit', async (event) => {
 	event.preventDefault();
@@ -28,8 +27,7 @@ function parseJwt(token) {
 	  if (!response.ok) {
 		if (response.status === 401) {
 			console.log("cv nu eok la register");
-		  let err = document.querySelector('form.login .error');
-		  err.classList.add('show');
+			displayMessage("Email or password is incorrect",true);
 		}
 		return;
 	  }

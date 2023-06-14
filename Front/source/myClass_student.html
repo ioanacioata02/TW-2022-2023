@@ -13,12 +13,44 @@
     <link rel="stylesheet" href="../styles/viewPage_general.css">
     <link rel="stylesheet" href="../styles/general_admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/drop-downs.css">
     <script src="../scripts/adminPagination.js" defer></script>
+    <script src="../scripts/class_student.js" defer></script>
     <title>InformatiX</title>
 </head>
 
 <body>
-    <main>
+    <nav class="navbar ">
+        <div class="logo">
+            <img class="image-logo" src="../assets/logo.svg" alt="">
+        </div>
+        <div class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" style="display:none;">
+            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+            <div class="menu">
+                <div>
+                    <a class="menu-anchor" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="problems.html">Problems</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="about.html">About</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                </div>
+                <div>
+                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                </div>
+                <div class="help_ico help_smaller_screen">
+                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="mySection">
         <h1 class="myTitle">My class- <b>2B1</b></h1>
         <section class="select-box">
             <h5>Nr de randuri pe pagina</h5>
@@ -39,191 +71,8 @@
                         <th>Username</th>
                     </tr>
                 </thead>
-                <tbody id="candidate-problems">
-                    <tr>
-                        <td><b>TEACHER</b></td>
-                        <td>Sabin Corneliu</td>
-                        <td>Buraga</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">teacher_profile</button></td>
-
-
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td>Andrei</td>
-                        <td>Popescu</td>
-                        <td><button class="add_button"
-                                onclick="document.location='otherProfile.html'">code_master2002</button></td>
-                    </tr>
+                <tbody id="class-members">
+                    
                 </tbody>
             </table>
             <nav class="pagination-container">
@@ -237,7 +86,7 @@
                 </button>
             </nav>
         </div>
-    </main>
+    </div>
 </body>
 
 </html>
