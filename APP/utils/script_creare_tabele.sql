@@ -2,6 +2,7 @@
 
 -- Database: InformatiX
 
+
 --DROP DATABASE IF EXISTS "InformatiX";
 
 CREATE DATABASE "InformatiX"
@@ -14,6 +15,15 @@ CREATE DATABASE "InformatiX"
 	
 \c "InformatiX"
 
+CREATE DATABASE "InformatiX"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
 	
 	
 DROP TABLE IF EXISTS problems CASCADE;
@@ -76,18 +86,16 @@ CREATE TABLE classes(
 CREATE TABLE class_members(
 	id_class INT NOT NULL,
 	id_user INT NOT NULL,
-	CONSTRAINT pk_class_members PRIMARY KEY (id_class, id_user),
 	CONSTRAINT fk_member_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_class_id FOREIGN KEY (id_class) REFERENCES classes(id) ON DELETE CASCADE
 );
 
-create table homeworks(
-    id serial PRIMARY KEY,
-    topic TEXT not NULL,
-    author INT not null,
-    deadline int NOT NULL,
-    problems_id INT[] NOT NULL
+CREATE TABLE homeworks(
+	id SERIAL PRIMARY KEY,
+	topic TEXT NOT NULL,
+	deadline DATE NOT NULL
 );
+
 
 
 create table homework_members(
@@ -97,14 +105,14 @@ create table homework_members(
 	deadline int NOT NULL,
     CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
     CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES users (id),
-    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
-
+    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student
 );
 
-create TABLE all_comments(
+CREATE TABLE all_comments(
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
 	comment_txt TEXT NOT NULL,
+	title TEXT NOT NULL,
 	moment TIMESTAMP DEFAULT NOW(),
 	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE

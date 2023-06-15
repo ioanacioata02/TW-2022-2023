@@ -29,22 +29,23 @@ function getId() {
       console.error('Error during fetch:', error);
     }
   }
-  
   function displayMembers(members) {
-    const tableBody = document.getElementById('class-members');
-    tableBody.innerHTML = '';
-  
-    members.forEach((member) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${member.id}</td>
-        <td>${member.first_name}</td>
-        <td>${member.last_name}</td>
-        <td><button class="add_button" onclick="viewUser(${member.id})">${member.username}</button></td>
-      `;
-      tableBody.appendChild(row);
-    });
+    table="<table>";
+    for(let i=0;i<members.length;i++)
+    {const member = members[i];
+      table+="<tr>";
+      table+="<td>"+member.id+"</td>";
+      table+="<td>"+member.first_name+"</td>";
+      table+="<td>"+member.last_name+"</td>";
+      table+="<td><button class=\"add_button\" onclick=\"viewUser("+member.id+")\">"+member.username+"</button></td>";
+      table+="</tr>"
+    }
+    table+="</table>";
+    document.getElementById("class-members").innerHTML=table;
+    updatePagination();
   }
+
+
   
   function viewUser(id) {
     document.location = `otherProfile.html?id=${id}`;
