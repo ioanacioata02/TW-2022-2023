@@ -16,8 +16,10 @@
         <link rel="stylesheet" href="../styles/menu.css">
         <link rel="stylesheet" href="../styles/drop-downs.css">
         <link rel="stylesheet" href="../styles/login.css">
-        <script src="../scripts/addStudent.js" defer></script>
+        <link rel="stylesheet" href="../styles/addClass.css">
+        <script src="../scripts/addClass.js" defer></script>
         <script src="../scripts/displayMessageBox.js" defer></script>
+    
     <title>Informatix</title>
    
 
@@ -55,18 +57,18 @@
         </div>
     </nav>
     <div class="bkg-login">
-        <form class="login-form" action="#" method="post" id="add-student">
+        <form class="login-form" action="#" method="post" id="add-class">
             <div class="imgcontainer">
                 <a class="close" onclick="redirectOnClose()" title="Close Form"> &#x2716;</a>
-                <h1>Add student&#129485;</h1>
+                <h1>Create a new class</h1>
             </div>
             <div class="form-fields">
 
-                <b>User Id</b>
+                <b>Class Name</b>
 
-                <input class="login-input" type="text" placeholder="Type ID" name="userId" required>
+                <input class="login-input" type="text" placeholder="Type class name" name="className" required>
 
-                <button class="login-button" type="submit">Add</button>
+                <button class="login-button" type="submit">Create </button>
             </div>
             <div class="hidden" id="feedback">
                 <p></p>

@@ -76,11 +76,11 @@ function displayDetails(user) {
     profileBoxPart(user);
 
     if (user.role.toLocaleLowerCase() === "student") {
-        myClass.setAttribute("href", "myClass_student.html");
+        myClass.setAttribute("href", "myClasses.html");
     }
     else {
         proposeProblem.classList.remove("hidden");
-        myClass.setAttribute("href", "myClasses_teacher.html");
+        myClass.setAttribute("href", "myClasses.html");
     }
     statsPart(user);
 
