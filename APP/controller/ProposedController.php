@@ -7,7 +7,12 @@ class ProposedController extends Controller{
     }
 
     public function processRequest(string $method, ?string $actions): void{
-        
+
+        if($method === "OPTIONS"){
+            http_response_code(200);
+            return;
+        }
+
         if(!isset($actions)){
             $this->processSimpleRequest($method);
             return;
@@ -15,11 +20,6 @@ class ProposedController extends Controller{
 
         // with parameters
         // admin status
-        if($method === "OPTIONS"){
-            http_response_code(200);
-            return;
-        }
-
         if(!Jwt::validateAuthorizationToken("secret", 2))
             return;
 
@@ -44,7 +44,6 @@ class ProposedController extends Controller{
     }
 
     public function processAction($actions): ?array{
-
         $pattern = '/^\d+$/';
         if(preg_match($pattern, $actions, $matches) === 1 && count($matches) === 1){
             $params['id'] = $matches[0];
@@ -160,7 +159,7 @@ class ProposedController extends Controller{
             return false;
         }
 
-        $requiredKeys = ["name", "description", "tags", "tests", "id_author"];
+        $requiredKeys = ["name", "description", "tags", /*"tests",*/ "id_author"];
 
         foreach ($requiredKeys as $key) {
             if (!array_key_exists($key, $data)) {
@@ -181,6 +180,7 @@ class ProposedController extends Controller{
         }
         
         //tests
+        /*
         if(empty($data['tests'])){
             return false;
         }
@@ -195,7 +195,7 @@ class ProposedController extends Controller{
                 if(!array_key_exists($key, $test))
                     return false;
             }
-        }
+        }*/
 
         return true;
     }

@@ -69,6 +69,7 @@ CREATE TABLE proposed_problems(
 );
 
 CREATE TABLE solutions(
+	id SERIAL PRIMARY KEY,
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
 	solution TEXT NOT NULL,
@@ -86,16 +87,18 @@ CREATE TABLE classes(
 CREATE TABLE class_members(
 	id_class INT NOT NULL,
 	id_user INT NOT NULL,
+	CONSTRAINT pk_class_members PRIMARY KEY (id_class, id_user),
 	CONSTRAINT fk_member_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_class_id FOREIGN KEY (id_class) REFERENCES classes(id) ON DELETE CASCADE
 );
 
-CREATE TABLE homeworks(
-	id SERIAL PRIMARY KEY,
-	topic TEXT NOT NULL,
-	deadline DATE NOT NULL
+create table homeworks(
+    id serial PRIMARY KEY,
+    topic TEXT not NULL,
+    author INT not null,
+    deadline int NOT NULL,
+    problems_id INT[] NOT NULL
 );
-
 
 
 create table homework_members(
@@ -105,8 +108,9 @@ create table homework_members(
 	deadline int NOT NULL,
     CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
     CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES users (id),
-    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student
+    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
 );
+
 
 CREATE TABLE all_comments(
 	id_user INT NOT NULL,
@@ -117,6 +121,8 @@ CREATE TABLE all_comments(
 	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
 );
+
+
 
 CREATE OR REPLACE PROCEDURE accept_probl(id_proposed INT)
 LANGUAGE PLPGSQL

@@ -29,7 +29,7 @@
 <body>
     <main class="hidden" id="content">
         <button id="promote" onclick="displayPromote()">Promote</button>
-        <section class="select-box">
+        <section class="select-box" id="admin-select-box">
             <h5>Number of rows per page</h5>
             <select name="rows-per-page" id="rows-per-page">
                 <option value="5">5</option>
@@ -38,7 +38,7 @@
                 <option value="20">20</option>
             </select>
         </section>
-        <section>
+        <div id="admin-table">
             <table class="table-admin">
                 <thead>
                     <tr>
@@ -63,7 +63,7 @@
                     &raquo;
                 </button>
             </nav>
-        </section>
+        </div>
         <div class="hidden" id="pop-up-box">
             <form class="popUp" onsubmit="trySend(event);">
                 <a class="close-popup" onclick="hidePromote()">&#x2716;</a>

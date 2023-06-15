@@ -16,15 +16,17 @@ tagsInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
 
-        var tagTxt = tagsInput.innerText.trim();
+        let tagTxt = tagsInput.innerText.trim();
         if (tagTxt !== '') {
             //first div
-            var tag = document.createElement("div");
+            let tag = document.createElement("div");
             tag.className = "tag";
             tag.setAttribute("contenteditable", "false");
 
+            let tagSpan = document.createElement("span");
+
             // content
-            tag.innerText = tagTxt;
+            tagSpan.innerText = tagTxt;
 
             // X btn
             let xBtn = document.createElement("div");
@@ -32,6 +34,7 @@ tagsInput.addEventListener("keypress", function (event) {
             xBtn.innerText = "\u2716";
 
             //appends
+            tag.appendChild(tagSpan);
             tag.appendChild(xBtn);
             tagsArea.insertBefore(tag, tagsInput);
 
@@ -43,16 +46,11 @@ tagsInput.addEventListener("keypress", function (event) {
         tagsInput.innerText = "";
     }
 });
-
+/*
 function validateTests() {
     var tests = document.getElementById("tests");
     var testsContent = tests.value;
-    /*
-    Valid example:
-    {[input](output)}.
-    {[input](output)}.
-    {[input](output)}/
-    */
+
     var regex = /(\{\[.+\]\(.+\)\}\.)*\{\[.+\]\(.+\)\}\//;
 
     if (regex.test(testsContent)) {
@@ -64,7 +62,7 @@ function validateTests() {
         return false;
     }
 }
-
+*/
 function atLeastOneTag() {
     var tags = tagsArea.querySelectorAll('.tag');
     var len = tags.length;
@@ -80,7 +78,7 @@ function atLeastOneTag() {
 
 function trySend(event) {
     event.preventDefault();
-    let ok = atLeastOneTag() && validateTests();
+    let ok = atLeastOneTag();
     if (ok) {
         sendProblem();
     }
@@ -100,11 +98,11 @@ async function sendProblem() {
             },
             body: jsonProblem
         });
+        const data = await response.json();
         if (!response.ok) {
             console.log('An error occurred:', data.message);
             return;
         } else {
-            const data = await response.json();
             
             let mainForm = document.getElementById("main");
             mainForm.classList.add("hidden");
@@ -127,12 +125,13 @@ function prepareData() {
     var tags = tagsArea.querySelectorAll('.tag');
     let tagsArray = [];
     for (const tag of tags) {
-        let copy = tag.cloneNode(true);
-        copy.removeChild(copy.querySelector('.close-btn'));
-        tagsArray.push(copy.innerText);
+        let tagSpan = tag.querySelector("span");
+        console.log(tagSpan.innerText);
+        tagsArray.push(tagSpan.innerText);
     }
 
     //tests
+    /*
     let tests = document.getElementById("tests").value;
     let regex = /(\{\[.+\]\(.+\)\}\.)/g;
     let firstTests = tests.match(regex);
@@ -157,15 +156,15 @@ function prepareData() {
         "input": test[1],
         "output": test[2]
     }
-    testArray.push(test);
+    testArray.push(test);*/
     //console.log(testArray);
 
     let jsonProblem = {
         "name": title,
         "description": description,
-        "tags": tagsArray,
-        "tests": testArray
+        "tags": tagsArray
     };
     jsonProblem = JSON.stringify(jsonProblem);
+    //console.log(jsonProblem);
     return jsonProblem;
 }
