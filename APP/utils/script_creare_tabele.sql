@@ -29,7 +29,6 @@ CREATE TABLE problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSONB NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
 );
@@ -52,7 +51,6 @@ CREATE TABLE proposed_problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSONB NOT NULL,
 	id_author INT NOT NULL,
 	CONSTRAINT fk_author_user FOREIGN KEY (id_author) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -75,30 +73,31 @@ CREATE TABLE classes(
 CREATE TABLE class_members(
 	id_class INT NOT NULL,
 	id_user INT NOT NULL,
+	CONSTRAINT pk_class_members PRIMARY KEY (id_class, id_user),
 	CONSTRAINT fk_member_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_class_id FOREIGN KEY (id_class) REFERENCES classes(id) ON DELETE CASCADE
 );
 
-CREATE TABLE homeworks(
-	id SERIAL PRIMARY KEY,
-	topic TEXT NOT NULL,
-	deadline DATE NOT NULL
+create table homeworks(
+    id serial PRIMARY KEY,
+    topic TEXT not NULL,
+    author INT not null,
+    deadline int NOT NULL,
+    problems_id INT[] NOT NULL
 );
 
-CREATE TABLE homework_problems(
-	id_homework INT NOT NULL,
-	id_problem_hw INT NOT NULL,
-	CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks(id) ON DELETE CASCADE,
-	CONSTRAINT fk_problem FOREIGN KEY (id_problem_hw) REFERENCES problems(id) ON DELETE CASCADE
+
+create table homework_members(
+    id_homework INT not NULL,
+    id_student INT NOT NULL,
+    problems JSONB NOT NULL,
+	deadline int NOT NULL,
+    CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
+    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES students (id),
+    CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
+
 );
-CREATE TABLE homework_members(
-	id_homework_mb INT NOT NULL,
-	id_member INT NOT NULL,
-	solved_nr INT NOT NULL,
-	problem_nr INT NOT NULL,
-	CONSTRAINT fk_homework2 FOREIGN KEY (id_homework_mb) REFERENCES homeworks(id) ON DELETE CASCADE,
-	CONSTRAINT fk_member FOREIGN KEY (id_member) REFERENCES users(id) ON DELETE CASCADE
-);
+
 
 CREATE TABLE all_comments(
 	id_user INT NOT NULL,
@@ -109,12 +108,14 @@ CREATE TABLE all_comments(
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
 );
 
+
+
 CREATE OR REPLACE PROCEDURE accept_probl(id_proposed INT)
 LANGUAGE PLPGSQL
 AS $$
 BEGIN
-	INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes)
-		SELECT name, description, tags, tests, 0, 0 FROM proposed_problems
+	INSERT INTO problems (name, description, tags, nr_attempts, nr_successes)
+		SELECT name, description, tags, 0, 0 FROM proposed_problems
     	WHERE id = id_proposed;
 	
 	DELETE FROM proposed_problems WHERE id = id_proposed;

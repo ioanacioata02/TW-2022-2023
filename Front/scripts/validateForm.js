@@ -98,11 +98,11 @@ async function sendProblem() {
             },
             body: jsonProblem
         });
+        const data = await response.json();
         if (!response.ok) {
             console.log('An error occurred:', data.message);
             return;
         } else {
-            const data = await response.json();
             
             let mainForm = document.getElementById("main");
             mainForm.classList.add("hidden");

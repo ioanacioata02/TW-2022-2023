@@ -14,6 +14,7 @@ async function getDetails(id) {
                 'Authorization': token
             }
         });
+        const data = await response.json();
         if (!response.ok) {
             if (response.status === 404) {
                 displayNotFound();
@@ -22,7 +23,6 @@ async function getDetails(id) {
             return;
         } else {
             document.getElementById("main-box-profile").parentNode.classList.remove("hidden");
-            const data = await response.json();
             console.log(data);
             displayDetails(data);
         }
