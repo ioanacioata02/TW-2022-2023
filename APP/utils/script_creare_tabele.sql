@@ -1,5 +1,18 @@
+
+
 -- Database: InformatiX
 
+--DROP DATABASE IF EXISTS "InformatiX";
+
+CREATE DATABASE "InformatiX"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+\c "InformatiX"
 
 	
 	

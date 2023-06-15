@@ -109,14 +109,14 @@ class ProblemsModel extends Model
     }
     public function create(array $data): int
     {
-        $sql =  "INSERT INTO problems (name, description, tags, nr_attempts, nr_successes) values (?, ? ,?,?,?)";
+        $sql =  "INSERT INTO problems (name, description, tags,tests, nr_attempts, nr_successes) values (?, ?,? ,?,?,?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1,strip_tags($data["name"]), PDO::PARAM_STR);
         $stmt->bindValue(2,strip_tags($data["description"]));
         #echo var_dump($data["tests"]);
         $stmt->bindValue(3,strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
-        //$stmt->bindValue(4, json_encode($data['tests']));
+        $stmt->bindValue(4, json_encode([" "=>' ']));
         $stmt->bindValue(5,0);
         $stmt->bindValue(6,0);
         $stmt->execute();
