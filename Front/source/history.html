@@ -33,22 +33,23 @@
 </head>
 
 <body>
-    <nav class="navbar ">
-        <div class="logo">
-            <img class="image-logo" src="../assets/logo.svg" alt="">
-        </div>
-        <!--<input type="text" class="search-bar" placeholder="Search"> -->
-        <div class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" style="display:none;">
-            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
-            <div class="menu">
-                <div>
-                    <a class="menu-anchor" href="index.html">Home</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="problems.html">Problems</a>
-                </div>
-                <!--<div class="dropdown">
+    <div class="hidden" id="content-all">
+        <nav class="navbar ">
+            <div class="logo">
+                <img class="image-logo" src="../assets/logo.svg" alt="">
+            </div>
+            <!--<input type="text" class="search-bar" placeholder="Search"> -->
+            <div class="nav-links">
+                <input type="checkbox" id="checkbox_toggle" style="display:none;">
+                <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+                <div class="menu">
+                    <div>
+                        <a class="menu-anchor" href="index.html">Home</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="problems.html">Problems</a>
+                    </div>
+                    <!--<div class="dropdown">
                     <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
                         <a href="#">Decorator</a>
@@ -57,16 +58,16 @@
                     </div>
                 </div>
                 -->
-                <div>
-                    <a class="menu-anchor" href="about.html">About</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
-                </div>
-                <!--
+                    <div>
+                        <a class="menu-anchor" href="about.html">About</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                    </div>
+                    <!--
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
                         src="../assets/flag_en.svg" alt="">
@@ -76,21 +77,22 @@
                     </div>
                 </div>
                 -->
-                <div class="help_ico help_smaller_screen">
-                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                    <div class="help_ico help_smaller_screen">
+                        <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-    <main id="content">
-        <div class="containter">
-            <div id="user-problems">
+        </nav>
+        <main id="content">
+            <div class="containter">
+                <div id="user-problems">
+                </div>
+                <button id="more" class="hidden">
+                    load More
+                </button>
             </div>
-            <button id="more" class="hidden">
-                load More
-            </button>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>

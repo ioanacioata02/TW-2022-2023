@@ -34,22 +34,23 @@
 </head>
 
 <body>
-    <nav class="navbar ">
-        <div class="logo">
-            <img class="image-logo" src="../assets/logo.svg" alt="">
-        </div>
-        <!--<input type="text" class="search-bar" placeholder="Search"> -->
-        <div class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" style="display:none;">
-            <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
-            <div class="menu">
-                <div>
-                    <a class="menu-anchor" href="index.html">Home</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="problems.html">Problems</a>
-                </div>
-                <!--<div class="dropdown">
+    <div class="hidden" id="content">
+        <nav class="navbar ">
+            <div class="logo">
+                <img class="image-logo" src="../assets/logo.svg" alt="">
+            </div>
+            <!--<input type="text" class="search-bar" placeholder="Search"> -->
+            <div class="nav-links">
+                <input type="checkbox" id="checkbox_toggle" style="display:none;">
+                <label for="checkbox_toggle" class="menu-icon-phones">&#9776;</label>
+                <div class="menu">
+                    <div>
+                        <a class="menu-anchor" href="index.html">Home</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="problems.html">Problems</a>
+                    </div>
+                    <!--<div class="dropdown">
                     <a onclick="dropDownFunction('myDropdown')" class="dropbtn menu-anchor">Courses</a>
                     <div id="myDropdown" class="dropdown-menu">
                         <a href="#">Decorator</a>
@@ -58,16 +59,16 @@
                     </div>
                 </div>
                 -->
-                <div>
-                    <a class="menu-anchor" href="about.html">About</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="login.html" id="log-in">Login</a>
-                </div>
-                <div>
-                    <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
-                </div>
-                <!--
+                    <div>
+                        <a class="menu-anchor" href="about.html">About</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="login.html" id="log-in">Login</a>
+                    </div>
+                    <div>
+                        <a class="menu-anchor" href="sign_up.html" id="sign-up">Sign Up</a>
+                    </div>
+                    <!--
                 <div class="dropdown">
                     <img onclick="dropDownFunction('myDropdown2')" class="language-display dropbtn" id="displayed-image"
                         src="../assets/flag_en.svg" alt="">
@@ -77,66 +78,69 @@
                     </div>
                 </div>
                 -->
-                <div class="help_ico help_smaller_screen">
-                    <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <main class="hidden">
-        <div id="main-box-profile">
-            <div class="sidebar">
-                <div class="up">
-                    <div class="parent">
-                        <img id="userPhoto" class="circle">
+                    <div class="help_ico help_smaller_screen">
+                        <a class="menu-anchor" href="help.html" id="help">&#128712;</a>
                     </div>
-
                 </div>
-                <ul class="top-txt">
-                    <li>
-                        <h1></h1>
-                    </li>
-                    <li>
-                        <h2 id="id">
-                        </h2>
-                    </li>
-                    <li class="full-name">
-                        <h3></h3>
-                        <h3></h3>
-                    </li>
-                    <li>
-                        <h2 id="email">
-                        </h2>
-                    </li>
-                    <li>
-                        <h2 id="rol">
-                        </h2>
-                    </li>
-                </ul>
-                <ul class="profile-options">
-                    <li><a id="history"><i class="fa fa-history" aria-hidden="true"></i><span
-                                class="profile-item">history</span></a></li>
-                </ul>
             </div>
-            <div class="main-content">
-                <section id="statistici">
-                    <div class="item" id="all">
-                        <div class="progress-bar">
-                            <div class="text">
-                                <span id="number1"></span>
-                                <span>%</span>
-                            </div>
-                            <svg>
-                                <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
-                            </svg>
+        </nav>
+        <main>
+            <div id="main-box-profile">
+                <div class="sidebar">
+                    <div class="up">
+                        <div class="parent">
+                            <img id="userPhoto" class="circle"
+                                src="https://static.vecteezy.com/system/resources/previews/007/167/661/original/user-blue-icon-isolated-on-white-background-free-vector.jpg"
+                                alt="">
                         </div>
-                        <h2>all</h2>
-                        <span><span></span>/<span></span></span>
+
                     </div>
-                </section>
+                    <ul class="top-txt">
+                        <li>
+                            <h1></h1>
+                        </li>
+                        <li>
+                            <h2 id="id">
+                            </h2>
+                        </li>
+                        <li class="full-name">
+                            <h3></h3>
+                            <h3></h3>
+                        </li>
+                        <li>
+                            <h2 id="email">
+                            </h2>
+                        </li>
+                        <li>
+                            <h2 id="rol">
+                            </h2>
+                        </li>
+                    </ul>
+                    <ul class="profile-options">
+                        <li><a id="history"><i class="fa fa-history" aria-hidden="true"></i><span
+                                    class="profile-item">history</span></a></li>
+                    </ul>
+                </div>
+                <div class="main-content">
+                    <section id="statistici">
+                        <div class="item" id="all">
+                            <div class="progress-bar">
+                                <div class="text">
+                                    <span id="number1"></span>
+                                    <span>%</span>
+                                </div>
+                                <svg>
+                                    <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
+                                </svg>
+                            </div>
+                            <h2>all</h2>
+                            <span><span></span>/<span></span></span>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>

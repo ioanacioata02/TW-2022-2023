@@ -35,6 +35,8 @@ async function getOwnHistory() {
                 btn.classList.add("hidden");
             else if (btn.classList.contains("hidden"))
                 btn.classList.remove("hidden");
+
+            showAll();
         }
     } catch (error) {
         console.error('An error occurred:', error.message);
@@ -68,18 +70,29 @@ async function getOtherHistory(id) {
             let submits = data.submits;
             let total = data.nrOfSubmits;
             let length = submits.length;
+
             for (let i = 0; i < length; i++) {
                 displayOtherHistory(submits[i]);
             }
+
             if (nrSubmitsDisplayed === total)
                 btn.classList.add("hidden");
             else if (btn.classList.contains("hidden"))
                 btn.classList.remove("hidden");
+
+            showAll();
         }
     } catch (error) {
         console.error('An error occurred:', error.message);
     }
 
+}
+
+function showAll() {
+    let allContent = document.getElementById("content-all");
+
+    if (allContent.classList.contains("hidden"))
+        allContent.classList.remove("hidden");
 }
 
 function displayOwnHistory(problem) {
@@ -151,8 +164,8 @@ function displayUsername(username, me) {
     usernameDiv.classList.add("username");
 
     let text = document.createElement("h1");
-    if (!me){
-        if(username !== null)
+    if (!me) {
+        if (username !== null)
             text.innerText = username + "'s history:";
         else
             text.innerText = "History:";

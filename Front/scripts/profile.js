@@ -60,7 +60,7 @@ async function getDetails() {
             console.log('An error occurred:', response.status, data.message);
             return;
         } else {
-            document.getElementById("main-box-profile").parentNode.classList.remove("hidden");
+            document.getElementById("content").classList.remove("hidden");
             console.log(data);
             displayDetails(data);
         }

@@ -50,10 +50,7 @@ function profileBoxPart(user) {
     const email = document.getElementById("email");
     email.innerText = user.email;
 
-    if (user.img === null) {
-        userPhoto.src = "https://static.vecteezy.com/system/resources/previews/007/167/661/original/user-blue-icon-isolated-on-white-background-free-vector.jpg"
-    }
-    else{
+    if (user.img !== null){
         userPhoto.src = user.img;
     }
 }
