@@ -43,7 +43,7 @@ class ProposedController extends Controller{
             
     }
 
-    private function processAction($actions): ?array{
+    public function processAction($actions): ?array{
 
         $pattern = '/^\d+$/';
         if(preg_match($pattern, $actions, $matches) === 1 && count($matches) === 1){

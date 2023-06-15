@@ -8,7 +8,7 @@ class HomeworkController extends Controller
         'solutions' => 'processSolutionsAction',
         'submit' => 'processSubmitAction'
     ];
-
+    private $params;
     public function __construct()
     {
         parent::__construct();
@@ -16,13 +16,13 @@ class HomeworkController extends Controller
 
     public function processRequest(string $method, ?string $actions)
     {
-        $params = $actions ? $this->processAction($actions) : null;
-        if ($params) {
+        $this->params = $actions ? $this->processAction($actions) : null;
+        if ($this->params) {
             foreach ($this->dispatchTable as $key => $action) {
-                if (isset($params[$key])) {
+                if (isset($this->params[$key])) {
                     if (method_exists($this, $action)) {
                         if ($method == 'GET' || $method == 'POST') {
-                            $this->$action($params[$key], $method);
+                            $this->$action($this->params[$key], $method);
                         } else {
                             $this->respondMethodNotAllowed();
                         }
@@ -63,11 +63,11 @@ class HomeworkController extends Controller
 
 
         if ($method == 'GET') {
-            $body = Utils::getBody();
-                if (isset($body["id_student"])) {
+
+                if (isset($this->params["student"])) {
                 if (Jwt::validateAuthorizationToken("secret", 1)) {
 
-                    $result = $this->model->getStudentProblems($id, $body["id_student"]);
+                    $result = $this->model->getStudentProblems($id, $this->params["id_student"]);
                     echo json_encode($result);
                 }
             } else {
