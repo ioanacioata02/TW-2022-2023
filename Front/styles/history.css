@@ -23,31 +23,22 @@ body {
 
 .problem {
 	display: grid;
-	grid-template-columns: 40% 20% 40%;
+	grid-template-columns: 50% 50%;
 	padding: 0.3em 0em;
 }
 
-.problem[data-success="true"] {
+.problem {
 	background-color: var(--accent-color);
 	border-top: 0.5px solid var(--darker);
 	border-bottom: 0.5px solid var(--darker);
 }
 
-.problem[data-success="false"] {
-	background-color: rgb(128, 128, 128);
-	border-top: 0.5px solid rgb(105, 105, 105);
-	border-bottom: 0.5px solid rgb(105, 105, 105);
-}
 
-.problem[data-success="true"]:hover {
+.problem:hover {
 	background-color: #348d8a;
 	border-color: #225c5a;
 }
 
-.problem[data-success="false"]:hover {
-	background-color: rgb(145, 145, 145);
-	border-color: rgb(90, 90, 90);
-}
 
 .problem:hover {
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -88,6 +79,16 @@ body {
 #user-problems .problem:last-child {
 	border-bottom-left-radius: var(--history-rad);
 	border-bottom-right-radius: var(--history-rad);
+}
+
+.username{
+	margin-top: 1em;
+	text-align: center;
+}
+
+.username h1{
+	font-size: 1.4em;
+	
 }
 
 @media (max-width: 1000px) {

@@ -5,10 +5,6 @@ let btn = document.getElementById("more");
 let nrSubmitsDisplayed = 0;
 let solutions = [];
 
-btn.addEventListener("click", () => {
-    pageNr++;
-    getOwnHistory();
-})
 
 async function getOwnHistory() {
     try {
@@ -92,45 +88,104 @@ function displayOwnHistory(problem) {
 }
 
 function displayOtherHistory(problem) {
-    displayHistory(problem);
+    let container = displayHistory(problem);
+    container.addEventListener("click", () => {
+        getProblem(problem.id_problem)
+    });
 }
 
 function displayHistory(problem) {
 
     let container = document.createElement("div");
     container.classList.add("problem");
-    container.setAttribute('data-probl', problem.id_problem);
-    container.setAttribute('data-nr-row', nrSubmitsDisplayed);
-    container.setAttribute('data-success', problem.success);
+    //container.setAttribute('data-probl', problem.id_problem);
+    //container.setAttribute('data-nr-row', nrSubmitsDisplayed);
     nrSubmitsDisplayed++;
 
     let title = document.createElement("div");
     title.innerText = problem.name_probl;
 
-    let success = document.createElement("div");
-    success.innerText = problem.success === true ? "Success" : "Failure";
 
     let moment = document.createElement("div");
     let date = new Date(problem.moment);
     moment.innerText = date.toLocaleString();
 
     container.appendChild(title);
-    container.appendChild(success);
     container.appendChild(moment);
     solutionArea.append(container);
 
+    return container;
 }
 
 function loadUserId() {
     const url = window.location.href;
     const urlParams = new URL(url).searchParams;
+
+    const username = urlParams.get('username');
+
     const id = urlParams.get('id');
     if (id === null) {
+        displayUsername(username, true);
+
+        btn.addEventListener("click", () => {
+            pageNr++;
+            getOwnHistory();
+        });
+
         getOwnHistory();
     }
     else {
+        displayUsername(username, false);
+
+        btn.addEventListener("click", () => {
+            pageNr++;
+            getOtherHistory(id);
+        });
+
         getOtherHistory(id);
     }
+}
+
+function displayUsername(username, me) {
+    let usernameDiv = document.createElement("div");
+    usernameDiv.classList.add("username");
+
+    let text = document.createElement("h1");
+    if (!me){
+        if(username !== null)
+            text.innerText = username + "'s history:";
+        else
+            text.innerText = "History:";
+    }
+    else
+        text.innerText = "Your history:";
+
+    let main = document.getElementById("content");
+
+    usernameDiv.appendChild(text);
+    main.insertBefore(usernameDiv, main.firstChild);
+}
+
+function getProblem(id) {
+    fetch(`http://localhost/problems/?id=${id}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            let diff = data.nr_attempts / (1 + data.nr_successes);
+            window.location = "problem.html?id=" + data.id + "&name=" + data.name + "&description=" + data.description + "&acceptance=" + diff * 100 + "%" + "&difficulty=" + diff * 5;
+        })
+        .catch(error => {
+            console.error('An error occurred:', error.message);
+        });
 }
 
 loadUserId();

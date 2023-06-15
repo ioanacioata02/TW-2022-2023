@@ -12,9 +12,6 @@ class ProfileController extends Controller{
             return;
         }
         
-        if(!Jwt::validateAuthorizationToken("secret")){
-            return;
-        }
 
         if(!isset($actions)){
             
@@ -104,6 +101,10 @@ class ProfileController extends Controller{
 
     private function processSimpleRequest($method): void{
 
+        if(!Jwt::validateAuthorizationToken("secret")){
+            return;
+        }
+
         switch ($method) {
 
             case "GET":
@@ -127,6 +128,9 @@ class ProfileController extends Controller{
     }
 
     private function processOwnHistory(string $method, array $data): void{
+        if(!Jwt::validateAuthorizationToken("secret")){
+            return;
+        }
 
         switch ($method) {
 
@@ -172,6 +176,10 @@ class ProfileController extends Controller{
     }
 
     private function processImg($method): void{
+        if(!Jwt::validateAuthorizationToken("secret")){
+            return;
+        }
+
         switch ($method) {
 
             case "PATCH":
@@ -200,6 +208,10 @@ class ProfileController extends Controller{
     }
 
     private function processChangePass($method): void{
+        if(!Jwt::validateAuthorizationToken("secret")){
+            return;
+        }
+        
         switch ($method) {
 
             case "PATCH":
