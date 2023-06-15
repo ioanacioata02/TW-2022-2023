@@ -63,30 +63,60 @@ function getProblems() {
         })
         .then(data => {
             nrOfProblems = data.nrOfProblems;
-            problems = data.problems;
-            console.log(problems);
-            console.log(nrOfProblems);
-            pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-            //console.log(pageCount);
-            //console.log("###");
+            if (nrOfProblems === 0) {
+                noProposedProb();
+            }
+            else {
 
-            deleteAllNrBtns();
-            setAllButtons();
-            //setActiveButton();
-            setLeftRightButtons();
+                problems = data.problems;
+                console.log(problems);
+                console.log(nrOfProblems);
+                pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-            deleteAllRows();
+                //console.log(pageCount);
+                //console.log("###");
 
-            problems.map((problem) => {
-                createRow(problem);
-            });
+                deleteAllNrBtns();
+                setAllButtons();
+                //setActiveButton();
+                setLeftRightButtons();
+
+                deleteAllRows();
+
+                problems.map((problem) => {
+                    createRow(problem);
+                });
+            }
             let content = document.getElementById("content");
             content.classList.remove("hidden");
         })
         .catch(error => {
             console.error('An error occurred:', error.message);
         });
+}
+
+
+function noProposedProb() {
+    let selectBox = document.getElementById("admin-select-box");
+    selectBox.classList.add("hidden");
+
+    let tableArea = document.getElementById("admin-table");
+    tableArea.classList.add("hidden");
+
+    displayNoContent("There are currently no proposed problems to view")
+}
+
+
+function displayNoContent(text){
+    let area = document.createElement("div");
+    area.classList.add("nothing");
+
+    let txt = document.createElement("h1");
+    txt.innerText = text;
+
+    area.appendChild(txt);
+    document.body.appendChild(area);
 }
 
 function createRow(problem) {

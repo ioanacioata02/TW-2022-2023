@@ -162,6 +162,14 @@ td:last-child button.no:hover {
 }
 
 
+.nothing{
+  font-size: 1.2em;
+  width: 100%;
+  text-align: center;
+  padding-top: 5em;
+}
+
+
 @media (max-width: 800px) {
   .popUp input[type=submit] {
     width: 70%;
