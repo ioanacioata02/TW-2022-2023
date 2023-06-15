@@ -56,7 +56,7 @@ CREATE TABLE proposed_problems(
 );
 
 CREATE TABLE solutions(
-	
+	id SERIAL PRIMARY KEY,
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
 	solution TEXT NOT NULL,

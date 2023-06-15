@@ -3,7 +3,6 @@ let solutionArea = document.getElementById("user-problems");
 let pageNr = 1;
 let btn = document.getElementById("more");
 let nrSubmitsDisplayed = 0;
-let solutions = [];
 
 
 async function getOwnHistory() {
@@ -36,22 +35,18 @@ async function getOwnHistory() {
             else if (btn.classList.contains("hidden"))
                 btn.classList.remove("hidden");
 
+            console.log(submits);
             showAll();
         }
     } catch (error) {
         console.error('An error occurred:', error.message);
     }
-    console.log(solutions);
-
 }
 
 async function getOtherHistory(id) {
     try {
         const response = await fetch(`http://localhost/profile/history?id=${id}&page=${pageNr}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': token
-            }
+            method: 'GET'
         });
 
         const data = await response.json();
@@ -95,32 +90,34 @@ function showAll() {
         allContent.classList.remove("hidden");
 }
 
-function displayOwnHistory(problem) {
-    solutions.push(problem.solution);
-    displayHistory(problem);
-}
-
-function displayOtherHistory(problem) {
-    let container = displayHistory(problem);
+function displayOwnHistory(submit) {
+    let container = displayHistory(submit);
     container.addEventListener("click", () => {
-        getProblem(problem.id_problem)
+        window.location.href = `viewSolution.html?id=${submit.id}`;
     });
 }
 
-function displayHistory(problem) {
+function displayOtherHistory(submit) {
+    let container = displayHistory(submit);
+    container.addEventListener("click", () => {
+        getProblem(submit.id_problem)
+    });
+}
+
+function displayHistory(submit) {
 
     let container = document.createElement("div");
     container.classList.add("problem");
-    //container.setAttribute('data-probl', problem.id_problem);
+    //container.setAttribute('data-probl', submit.id_problem);
     //container.setAttribute('data-nr-row', nrSubmitsDisplayed);
     nrSubmitsDisplayed++;
 
     let title = document.createElement("div");
-    title.innerText = problem.name_probl;
+    title.innerText = submit.name;
 
 
     let moment = document.createElement("div");
-    let date = new Date(problem.moment);
+    let date = new Date(submit.moment);
     moment.innerText = date.toLocaleString();
 
     container.appendChild(title);

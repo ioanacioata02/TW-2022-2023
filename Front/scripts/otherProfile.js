@@ -1,4 +1,3 @@
-let token = localStorage.getItem('token');
 let id = getId();
 
 let history = document.getElementById("history");
@@ -10,10 +9,7 @@ history.addEventListener("click", () => {
 async function getDetails(id) {
     try {
         const response = await fetch(`http://localhost/profile/${id}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': token
-            }
+            method: 'GET'
         });
         const data = await response.json();
         if (!response.ok) {
