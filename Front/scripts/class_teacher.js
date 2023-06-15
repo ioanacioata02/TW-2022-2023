@@ -44,6 +44,7 @@ function getId() {
     }
     table+="</table>";
     document.getElementById("class-members").innerHTML=table;
+    updatePagination();
   }
   
   function viewUser(id) {

@@ -37,6 +37,7 @@ async function fetchClasses() {
     }
     table+="</table>";
     document.getElementById("candidate-problems").innerHTML=table;
+    updatePagination();
   }
   function displayCreateClass() {
     const token = localStorage.getItem('token');
