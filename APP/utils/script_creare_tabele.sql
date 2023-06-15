@@ -1,6 +1,19 @@
+
+
 -- Database: InformatiX
 
--- DROP DATABASE IF EXISTS "InformatiX";
+
+--DROP DATABASE IF EXISTS "InformatiX";
+
+CREATE DATABASE "InformatiX"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+\c "InformatiX"
 
 CREATE DATABASE "InformatiX"
     WITH
@@ -94,9 +107,8 @@ create table homework_members(
     problems JSONB NOT NULL,
 	deadline int NOT NULL,
     CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
-    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES students (id),
+    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES users (id),
     CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
-
 );
 
 
@@ -104,6 +116,7 @@ CREATE TABLE all_comments(
 	id_user INT NOT NULL,
 	id_problem INT NOT NULL,
 	comment_txt TEXT NOT NULL,
+	title TEXT NOT NULL,
 	moment TIMESTAMP DEFAULT NOW(),
 	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE

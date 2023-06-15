@@ -16,8 +16,6 @@ class Utils
        $data = json_decode(file_get_contents('php://input'), true);
        if($data==null)
        {
-
-
            self::throwError(400, ["message"=>"Body invalid"]);
            exit(0);
        }

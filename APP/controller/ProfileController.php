@@ -108,15 +108,14 @@ class ProfileController extends Controller{
         switch ($method) {
 
             case "GET":
-                $id = Jwt::getIdFromToken();
-                $row = $this->model->get($id);
+                $row = $this->model->get(Jwt::getIdFromToken());
                 if(!empty($row)){
                     http_response_code(200);
                     echo json_encode($row);
                 }
                 else{
                     http_response_code(404);
-                    echo json_encode(["id" => $id, "message" => "User not found"]);
+                    echo json_encode(["id" => Jwt::getIdFromToken(), "message" => "User not found"]);
                 }
                 break;
 

@@ -2,7 +2,7 @@ function parseJwt(token) {
 	if (!token) {
 	  return;
 	}
-	const base64 = token.split('.')[1]; // extracting payload
+	const base64 = token.split('.')[1]; 
 	return JSON.parse(window.atob(base64));
   }
   
@@ -12,7 +12,8 @@ registerForm = document.querySelector('.login-form');
 registerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(registerForm);
-    const role = formData.get('role') === 'teacher' ? 1 : 0;
+    var role = document.getElementById('selection').value ==='student' ? 0 : 1;
+    console.log(role);
     const registerData = {
         "username": formData.get('uname'),
         "lastName": formData.get('lname'),

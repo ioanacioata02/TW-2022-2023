@@ -45,13 +45,7 @@ class ProblemsController extends Controller
                 break;
         }
     }
-    private function processAction($actions)
-    {
 
-        $query = parse_url($actions, PHP_URL_QUERY);
-        parse_str($query, $params);
-        return $params;
-    }
 
     private function processResourceRequest(string $method, int $id): void
     {
@@ -93,7 +87,7 @@ class ProblemsController extends Controller
                 echo json_encode($this->model->getAll());
                 break;
             case "POST":
-                if (Jwt::validateAuthorizationToken(2)) {
+                if (Jwt::validateAuthorizationToken("secret", 2)) {
                     $data = (array)json_decode(file_get_contents("php://input"), true);
                     $id = $this->model->create($data);
                     http_response_code(201);

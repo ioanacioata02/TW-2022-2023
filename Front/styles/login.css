@@ -103,3 +103,6 @@ span.psw {
 .error.show {
   display: block;
 }
+.hidden {
+	display: none;
+}

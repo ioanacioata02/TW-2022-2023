@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/messageDisplay.css">
 
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/register.js" defer></script>
@@ -55,14 +54,17 @@
 
                 <input class="login-input" type="password" placeholder="Type Password" name="psw" required>
                 <label class="select_role"><b>Choose a role:</b></label>
-                <select>
+                <select id="selection">
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
                 </select>
                 <button onclick="setVariableTrue()" class="login-button">Sign up</button>
             </div>
+            <div class="hidden" id="feedback">
+                <p></p>
+            </div>
         </form>
-
+        
     </div>
 
 

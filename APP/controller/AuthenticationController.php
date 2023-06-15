@@ -2,7 +2,7 @@
 
 class AuthenticationController extends Controller
 {
-    public function __consstruct()
+    public function __construct()
     { 
         
         parent::__construct();
@@ -54,12 +54,13 @@ class AuthenticationController extends Controller
                 return ["JWT"=> "","message"=>"failed"];
                 
            }
+           //var_dump($data);
            return [
                "JWT"=>Jwt::generateToken([
                    "id"=>$data["id"],
                    "username"=>$data["username"],
                    "status"=>$data["status"],
-               ], "secret", 30*24),
+               ], "secret",30*24),
                "message"=>"success"
            ];
        }
