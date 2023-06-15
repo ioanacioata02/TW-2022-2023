@@ -104,7 +104,6 @@ create table homework_members(
     CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
     CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES users (id),
     CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
-
 );
 
 CREATE TABLE all_comments(
