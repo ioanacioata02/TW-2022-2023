@@ -23,36 +23,40 @@ async function fetchClasses() {
     }
   }
   
+
   function displayClasses(classes) {
-    const tableBody = document.getElementById('candidate-problems');
-    tableBody.innerHTML = '';
-  
-    classes.forEach((classItem) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${classItem.id}</td>
-        <td>${classItem.name}</td>
-        <td>${classItem.numMembers}</td>
-        <td><button class="add_button" onclick="viewClass(${classItem.id})">View Class</button></td>
-      `;
-      tableBody.appendChild(row);
-    });
-  }
-  function displayCreateClass()
-  {
-    const token = localStorage.getItem('token');
-    const status = parseJwt(token).status;
-    const myButton = document.querySelector('.myButton');
-    const homeworkButton = myButton.querySelector('.homeworkButton');
-    console.log(status);
-    if (status === 1) {
-      myButton.style.display = 'block';
-    homeworkButton.style.display = 'block';
-    } else {
-      myButton.style.display = 'none';
-      homeworkButton.style.display = 'none';
+    table="<table>";
+    for(let i=0;i<classes.length;i++)
+    {const myClass = classes[i];
+      table+="<tr>";
+      table+="<td>"+myClass.id+"</td>";
+      table+="<td>"+myClass.name+"</td>";
+      table+="<td>"+myClass.numMembers+"</td>";
+      table+="<td><button class=\"add_button\" onclick=\"viewClass("+myClass.id+")\">View Class</button></td>";
+      table+="</tr>"
     }
-}
+    table+="</table>";
+    document.getElementById("candidate-problems").innerHTML=table;
+  }
+  function displayCreateClass() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const status = parseJwt(token).status;
+      const myButton = document.querySelector('.myButton');
+      const homeworkButton = myButton.querySelector('.homeworkButton');
+      console.log(status);
+      if (status === 1) {
+        myButton.style.display = 'block';
+        homeworkButton.style.display = 'block';
+      } else {
+        myButton.style.display = 'none';
+        homeworkButton.style.display = 'none';
+      }
+    } else {
+      console.log('Token does not exist');
+    }
+  }
+  
   function parseJwt(token) {
     if (!token) {
       return;

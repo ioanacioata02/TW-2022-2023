@@ -1,23 +1,22 @@
 let paginationNumbers = document.getElementById("pagination-numbers");
 let tbody = document.getElementById("candidate-problems");
-let rows = tbody.querySelectorAll("tr");
+let rows = tbody ? tbody.querySelectorAll("tr") : null;
 let nextButton = document.getElementById("next-button");
 let prevButton = document.getElementById("prev-button");
 let selectedNr = document.getElementById("rows-per-page");
 let nrOfRows = selectedNr.value;
-let pageCount = Math.ceil(rows.length / nrOfRows);
+let pageCount = rows ? Math.ceil(rows.length / nrOfRows) : 0;
 let currentPage = 1;
 
 prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
-})
-
+});
 
 nextButton.addEventListener("click", () => {
     setCurrentPage(currentPage + 1);
-})
+});
 
-selectedNr.onchange = reloadPage;
+selectedNr.addEventListener("change", reloadPage);
 
 function disableButton(button) {
     button.classList.add("disabled");
@@ -36,7 +35,7 @@ function setLeftRightButtons() {
         enableButton(prevButton);
     }
 
-    if (pageCount === currentPage) {
+    if (currentPage === pageCount) {
         disableButton(nextButton);
     } else {
         enableButton(nextButton);
@@ -44,16 +43,12 @@ function setLeftRightButtons() {
 }
 
 function setActiveButton() {
-    document.querySelectorAll(".pagination-number").forEach((button) => {
+    let buttons = paginationNumbers.querySelectorAll(".pagination-number");
+    buttons.forEach((button) => {
         button.classList.remove("active");
         let pageIndex = Number(button.getAttribute("page-index"));
-        if (pageIndex == currentPage) {
+        if (pageIndex === currentPage) {
             button.classList.add("active");
-        }
-        if (pageIndex) {
-            button.addEventListener("click", () => {
-                setCurrentPage(pageIndex);
-            });
         }
     });
 }
@@ -80,66 +75,67 @@ function appendPageNumber(index) {
 }
 
 function setAllButtons() {
-    if(currentPage >= 3)
+    if (currentPage >= 3) {
         appendPageNumber(1);
-    if (currentPage  >= 4)
+    }
+    if (currentPage >= 4) {
         appendDots();
+    }
 
-    if(currentPage - 1 >= 1)
+    if (currentPage - 1 >= 1) {
         appendPageNumber(currentPage - 1);
+    }
     appendPageNumber(currentPage);
-    if(currentPage + 1 <= pageCount)
-        appendPageNumber(currentPage+1);
-    
-    if(currentPage + 2 < pageCount){
+    if (currentPage + 1 <= pageCount) {
+        appendPageNumber(currentPage + 1);
+    }
+
+    if (currentPage + 2 < pageCount) {
         appendDots();
         appendPageNumber(pageCount);
     }
-    if(currentPage + 2 === pageCount)
+    if (currentPage + 2 === pageCount) {
         appendPageNumber(pageCount);
-
+    }
 }
 
 function setCurrentPage(pageNum) {
     currentPage = pageNum;
 
-    deleteAllNrBtns();
-    setAllButtons();
+    resetButtons();
     setActiveButton();
     setLeftRightButtons();
 
     let prevRange = (pageNum - 1) * nrOfRows;
     let currRange = pageNum * nrOfRows;
 
-    rows.forEach((row, index) => {
-        row.classList.add("hidden");
-        if (index >= prevRange && index < currRange) {
-            row.classList.remove("hidden");
-        }
-    });
+    if (rows) {
+        rows.forEach((row, index) => {
+            row.style.display = "none";
+            if (index >= prevRange && index < currRange) {
+                row.style.display = "";
+            }
+        });
+    }
+}
+
+function resetButtons() {
+    paginationNumbers.innerHTML = "";
+    if (rows) {
+        pageCount = Math.ceil(rows.length / nrOfRows);
+    } else {
+        pageCount = 0;
+    }
+    setAllButtons();
+}
+
+function reloadPage() {
+    nrOfRows = Number(selectedNr.value);
+    setCurrentPage(1);
 }
 
 function loadPage() {
     setCurrentPage(1);
-}
-
-function deleteAllNrBtns() {
-    let btnFirstChild = paginationNumbers.firstChild;
-    while (btnFirstChild) {
-        paginationNumbers.removeChild(btnFirstChild);
-        btnFirstChild = paginationNumbers.firstChild;
-    }
-}
-
-function reset() {
-    deleteAllNrBtns();
-    nrOfRows = Number(selectedNr.value);
-    pageCount = Math.ceil(rows.length / nrOfRows);
-}
-
-function reloadPage() {
-    reset();
-    loadPage();
 }
 
 loadPage();
