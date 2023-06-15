@@ -46,16 +46,11 @@ tagsInput.addEventListener("keypress", function (event) {
         tagsInput.innerText = "";
     }
 });
-
+/*
 function validateTests() {
     var tests = document.getElementById("tests");
     var testsContent = tests.value;
-    /*
-    Valid example:
-    {[input](output)}.
-    {[input](output)}.
-    {[input](output)}/
-    */
+
     var regex = /(\{\[.+\]\(.+\)\}\.)*\{\[.+\]\(.+\)\}\//;
 
     if (regex.test(testsContent)) {
@@ -67,7 +62,7 @@ function validateTests() {
         return false;
     }
 }
-
+*/
 function atLeastOneTag() {
     var tags = tagsArea.querySelectorAll('.tag');
     var len = tags.length;
@@ -83,7 +78,7 @@ function atLeastOneTag() {
 
 function trySend(event) {
     event.preventDefault();
-    let ok = atLeastOneTag() && validateTests();
+    let ok = atLeastOneTag();
     if (ok) {
         sendProblem();
     }
@@ -136,6 +131,7 @@ function prepareData() {
     }
 
     //tests
+    /*
     let tests = document.getElementById("tests").value;
     let regex = /(\{\[.+\]\(.+\)\}\.)/g;
     let firstTests = tests.match(regex);
@@ -160,14 +156,13 @@ function prepareData() {
         "input": test[1],
         "output": test[2]
     }
-    testArray.push(test);
+    testArray.push(test);*/
     //console.log(testArray);
 
     let jsonProblem = {
         "name": title,
         "description": description,
-        "tags": tagsArray,
-        "tests": testArray
+        "tags": tagsArray
     };
     jsonProblem = JSON.stringify(jsonProblem);
     //console.log(jsonProblem);

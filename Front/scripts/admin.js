@@ -114,6 +114,7 @@ function createRow(problem) {
 
     // add all tags
     let allTags = problem.tags;
+    console.log(allTags);
     allTags.map((tag) => {
         let tagBtn = document.createElement("button");
         if (tag.startsWith('"') && tag.endsWith('"')) {

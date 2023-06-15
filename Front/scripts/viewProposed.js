@@ -73,6 +73,7 @@ function loadData(problem) {
 
 
     // tests
+    /*
     let allTests = problem.tests;
     let nrOfTests = allTests.length;
     let tests = "";
@@ -91,7 +92,7 @@ function loadData(problem) {
     tests = tests + testLine;
 
     let testsArea = document.getElementById("tests");
-    testsArea.value = tests;
+    testsArea.value = tests;*/
 }
 
 function loadProposedProblem() {
