@@ -19,7 +19,6 @@ CREATE TABLE problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSONB NOT NULL,
 	nr_attempts INT NOT NULL,
 	nr_successes INT NOT NULL
 );
@@ -42,7 +41,6 @@ CREATE TABLE proposed_problems(
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	tags TEXT[] NOT NULL,
-	tests JSONB NOT NULL,
 	id_author INT NOT NULL,
 	CONSTRAINT fk_author_user FOREIGN KEY (id_author) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -85,7 +83,7 @@ create table homework_members(
     problems JSONB NOT NULL,
 	deadline int NOT NULL,
     CONSTRAINT fk_homework FOREIGN KEY (id_homework) REFERENCES homeworks (id),
-    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES students (id),
+    CONSTRAINT fk_student FOREIGN KEY (id_student) REFERENCES users (id),
     CONSTRAINT pk_homework_member PRIMARY KEY (id_homework, id_student)
 
 );
@@ -103,8 +101,8 @@ CREATE OR REPLACE PROCEDURE accept_probl(id_proposed INT)
 LANGUAGE PLPGSQL
 AS $$
 BEGIN
-	INSERT INTO problems (name, description, tags, tests, nr_attempts, nr_successes)
-		SELECT name, description, tags, tests, 0, 0 FROM proposed_problems
+	INSERT INTO problems (name, description, tags, nr_attempts, nr_successes)
+		SELECT name, description, tags, 0, 0 FROM proposed_problems
     	WHERE id = id_proposed;
 	
 	DELETE FROM proposed_problems WHERE id = id_proposed;
