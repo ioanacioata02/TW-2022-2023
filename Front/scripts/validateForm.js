@@ -16,15 +16,17 @@ tagsInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
 
-        var tagTxt = tagsInput.innerText.trim();
+        let tagTxt = tagsInput.innerText.trim();
         if (tagTxt !== '') {
             //first div
-            var tag = document.createElement("div");
+            let tag = document.createElement("div");
             tag.className = "tag";
             tag.setAttribute("contenteditable", "false");
 
+            let tagSpan = document.createElement("span");
+
             // content
-            tag.innerText = tagTxt;
+            tagSpan.innerText = tagTxt;
 
             // X btn
             let xBtn = document.createElement("div");
@@ -32,6 +34,7 @@ tagsInput.addEventListener("keypress", function (event) {
             xBtn.innerText = "\u2716";
 
             //appends
+            tag.appendChild(tagSpan);
             tag.appendChild(xBtn);
             tagsArea.insertBefore(tag, tagsInput);
 
@@ -127,9 +130,9 @@ function prepareData() {
     var tags = tagsArea.querySelectorAll('.tag');
     let tagsArray = [];
     for (const tag of tags) {
-        let copy = tag.cloneNode(true);
-        copy.removeChild(copy.querySelector('.close-btn'));
-        tagsArray.push(copy.innerText);
+        let tagSpan = tag.querySelector("span");
+        console.log(tagSpan.innerText);
+        tagsArray.push(tagSpan.innerText);
     }
 
     //tests
@@ -167,5 +170,6 @@ function prepareData() {
         "tests": testArray
     };
     jsonProblem = JSON.stringify(jsonProblem);
+    //console.log(jsonProblem);
     return jsonProblem;
 }

@@ -1,5 +1,6 @@
 let proposeProblem = document.getElementById("propune-problema");
 let myClass = document.getElementById("link-to-class");
+let myHomeworks = document.getElementById("link-to-homeworks");
 let popUpBox = document.getElementById("pop-up-box");
 let token = localStorage.getItem('token');
 
@@ -77,10 +78,12 @@ function displayDetails(user) {
 
     if (user.role.toLocaleLowerCase() === "student") {
         myClass.setAttribute("href", "myClass_student.html");
+        //myHomeworks.setAttribute("href", )
     }
     else {
         proposeProblem.classList.remove("hidden");
         myClass.setAttribute("href", "myClasses_teacher.html");
+        //myHomeworks.setAttribute("href", )
     }
     statsPart(user);
 

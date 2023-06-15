@@ -1,27 +1,114 @@
 :root {
-	--border-rad: 20px;
+	--history-rad: 4px;
+	--darker: #266765;
 }
 
 body {
 	background-color: var(--background);
 }
 
-#user-problems {
-	margin: 10px 120px 10px 120px;
+.containter {
 	display: flex;
-	gap: 1em;
+	flex-direction: column;
 }
 
-#user-problems .main-content {
-	margin-top: 0;
+#user-problems {
+	margin: 10px 250px 10px 250px;
 	background-color: var(--accent-color);
-	padding: 1.5em;
 	display: flex;
-	border-radius: var(--border-rad);
+	flex-direction: column;
+	border-radius: var(--history-rad);
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.45);
 }
 
-.problem{
-    display: flex;
-    justify-content: space-around;
+.problem {
+	display: grid;
+	grid-template-columns: 40% 20% 40%;
+	padding: 0.3em 0em;
+}
+
+.problem[data-success="true"] {
+	background-color: var(--accent-color);
+	border-top: 0.5px solid var(--darker);
+	border-bottom: 0.5px solid var(--darker);
+}
+
+.problem[data-success="false"] {
+	background-color: rgb(128, 128, 128);
+	border-top: 0.5px solid rgb(105, 105, 105);
+	border-bottom: 0.5px solid rgb(105, 105, 105);
+}
+
+.problem[data-success="true"]:hover {
+	background-color: #348d8a;
+	border-color: #225c5a;
+}
+
+.problem[data-success="false"]:hover {
+	background-color: rgb(145, 145, 145);
+	border-color: rgb(90, 90, 90);
+}
+
+.problem:hover {
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#user-problems .problem:first-child {
+	border-top-left-radius: var(--history-rad);
+	border-top-right-radius: var(--history-rad);
+
+}
+
+.problem div {
+	padding: 0 0.5em;
+	text-align: center;
+	word-wrap: break-word;
+}
+
+#more {
+	margin: auto;
+	background-color: #04AA6D;
+	border: none;
+	color: white;
+	padding: 1em 1.4em;
+	border-radius: 7px;
+	cursor: pointer;
+	transition: 0.1s;
+	margin-bottom: 10px;
+}
+
+#more:hover {
+	background-color: #3AAFA9;
+}
+
+#more:active {
+	transform: scale(0.9);
+}
+
+#user-problems .problem:last-child {
+	border-bottom-left-radius: var(--history-rad);
+	border-bottom-right-radius: var(--history-rad);
+}
+
+@media (max-width: 1000px) {
+	#user-problems {
+		margin: 10px 100px 10px 100px;
+	}
+}
+
+@media (max-width: 700px) {
+	#user-problems {
+		margin: 10px 10px 10px 10px;
+	}
+}
+
+@media (max-width: 550px) {
+	.problem {
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
+
+	.problem div:nth-child(2) {
+		display: none;
+	}
 }

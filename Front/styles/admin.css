@@ -28,6 +28,10 @@ main {
   border-radius: var(--yes-no-border-radius);
 }
 
+td:first-child::before, td:nth-child(4)::before{
+  content: "#";
+}
+
 td:last-child button.yes {
   background-color: #16A085;
 }

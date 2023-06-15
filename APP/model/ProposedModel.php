@@ -74,7 +74,6 @@ class ProposedModel extends Model{
     }
 
     private static function processRow(array $row, bool $withTests):array{
-        $row["id"] = intval($row["id"]);
         $tags = explode(",", substr($row["tags"], 1, -1));
         foreach($tags as &$tag){
             $tag=stripslashes($tag);
@@ -84,7 +83,6 @@ class ProposedModel extends Model{
         if($withTests)
             $row["tests"] = json_decode($row["tests"]);
 
-        $row["id_author"] = intval($row["id_author"]);
         return $row;
     }
 

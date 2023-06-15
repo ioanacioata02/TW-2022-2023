@@ -1,4 +1,10 @@
 let token = localStorage.getItem('token');
+let id = getId();
+
+let history = document.getElementById("history");
+history.addEventListener("click", () => {
+    window.location = `history.html?id=${id}`;
+})
 
 async function getDetails(id) {
     try {
@@ -9,7 +15,7 @@ async function getDetails(id) {
             }
         });
         if (!response.ok) {
-            if(response.status === 404){
+            if (response.status === 404) {
                 displayNotFound();
             }
             console.log('An error occurred:', response.status, data.message);
@@ -33,11 +39,11 @@ function displayDetails(user) {
 
 }
 
-function loadUser() {
+function getId() {
     const url = window.location.href;
     const urlParams = new URL(url).searchParams;
     const id = urlParams.get('id');
-    getDetails(id);
+    return id;
 }
 
-loadUser();
+getDetails(id);
