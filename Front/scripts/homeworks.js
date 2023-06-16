@@ -72,7 +72,7 @@ async function fetchHomeworks() {
 
     console.log(status);
     if (status === 0) {
-      document.location = `myHomeworks_student.html?id=${homeworkId}`;
+      document.location = `myHomework_student.html?hwId=${homeworkId}`;
     } else if (status === 1) {
       document.location = `myHomeworks_teacher.html?id=${homeworkId}`;
     } else {
