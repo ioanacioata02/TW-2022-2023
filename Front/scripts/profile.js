@@ -5,7 +5,6 @@ let popUpBox = document.getElementById("pop-up-box");
 let token = localStorage.getItem('token');
 
 proposeProblem.classList.add("hidden");
-
 async function changePass(event) {
     event.preventDefault();
 
@@ -77,13 +76,23 @@ function displayDetails(user) {
     profileBoxPart(user);
 
     if (user.role.toLocaleLowerCase() === "student") {
-        myClass.setAttribute("href", "myClass_student.html");
-        //myHomeworks.setAttribute("href", )
+        myClass.addEventListener("click", ()=>{
+            window.location.href = "myClass_student.html";
+        });
+        /*
+        myHomeworks.addEventListener("click", ()=>{
+            window.location.href = "";
+        });*/
     }
     else {
         proposeProblem.classList.remove("hidden");
-        myClass.setAttribute("href", "myClasses_teacher.html");
-        //myHomeworks.setAttribute("href", )
+        myClass.addEventListener("click", ()=>{
+            window.location.href = "myClass_student.html";
+        });
+        /*
+        myHomeworks.addEventListener("click", ()=>{
+            window.location.href = "";
+        });*/
     }
     statsPart(user);
 

@@ -3,7 +3,7 @@ let id = getId();
 let history = document.getElementById("history");
 history.addEventListener("click", () => {
     const username = document.querySelector(".top-txt h1").innerText;
-    window.location = `history.html?id=${id}&username=${username}`;
+    window.location.href = `history.html?id=${id}&username=${username}`;
 })
 
 async function getDetails(id) {
