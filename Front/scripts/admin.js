@@ -19,7 +19,7 @@ nextButton.addEventListener("click", () => {
     setCurrentPage(currentPage + 1);
 })
 
-selectedNr.onchange = getProblems;
+selectedNr.onchange = loadPage;
 
 function disableButton(button) {
     button.classList.add("disabled");
@@ -41,8 +41,6 @@ tBody.addEventListener("click", (event) => {
 
 function getProblems() {
     nrOfRows = selectedNr.value;
-    //console.log(nrOfRows);
-    //console.log("...........")
     fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
         method: 'GET',
         headers: {
@@ -51,10 +49,10 @@ function getProblems() {
     })
         .then(response => {
             if (!response.ok) {
-                if(response.status === 403){
+                if (response.status === 403) {
                     displayForbidden();
                 }
-                if(response.status === 401){
+                if (response.status === 401) {
                     displayUnauthorized();
                 }
                 return response.json().then(data => {
@@ -65,30 +63,60 @@ function getProblems() {
         })
         .then(data => {
             nrOfProblems = data.nrOfProblems;
-            problems = data.problems;
-            console.log(problems);
-            console.log(nrOfProblems);
-            pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-            //console.log(pageCount);
-            //console.log("###");
+            if (nrOfProblems === 0) {
+                noProposedProb();
+            }
+            else {
 
-            deleteAllNrBtns();
-            setAllButtons();
-            setActiveButton();
-            setLeftRightButtons();
+                problems = data.problems;
+                console.log(problems);
+                console.log(nrOfProblems);
+                pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-            deleteAllRows();
+                //console.log(pageCount);
+                //console.log("###");
 
-            problems.map((problem) => {
-                createRow(problem);
-            });
+                deleteAllNrBtns();
+                setAllButtons();
+                //setActiveButton();
+                setLeftRightButtons();
+
+                deleteAllRows();
+
+                problems.map((problem) => {
+                    createRow(problem);
+                });
+            }
             let content = document.getElementById("content");
             content.classList.remove("hidden");
         })
         .catch(error => {
             console.error('An error occurred:', error.message);
         });
+}
+
+
+function noProposedProb() {
+    let selectBox = document.getElementById("admin-select-box");
+    selectBox.classList.add("hidden");
+
+    let tableArea = document.getElementById("admin-table");
+    tableArea.classList.add("hidden");
+
+    displayNoContent("There are currently no proposed problems to view")
+}
+
+
+function displayNoContent(text){
+    let area = document.createElement("div");
+    area.classList.add("nothing");
+
+    let txt = document.createElement("h1");
+    txt.innerText = text;
+
+    area.appendChild(txt);
+    document.body.appendChild(area);
 }
 
 function createRow(problem) {
@@ -116,8 +144,14 @@ function createRow(problem) {
 
     // add all tags
     let allTags = problem.tags;
+    console.log(allTags);
     allTags.map((tag) => {
         let tagBtn = document.createElement("button");
+        if (tag.startsWith('"') && tag.endsWith('"')) {
+            tag = tag.slice(1);
+            tag = tag.slice(0, -1);
+        }
+
         tagBtn.innerText = tag;
         tags.appendChild(tagBtn);
     });
@@ -162,6 +196,7 @@ function setLeftRightButtons() {
         enableButton(prevButton);
     }
 
+
     if (pageCount === currentPage) {
         disableButton(nextButton);
     } else {
@@ -169,20 +204,22 @@ function setLeftRightButtons() {
     }
 }
 
+/*
 function setActiveButton() {
     document.querySelectorAll(".pagination-number").forEach((button) => {
         button.classList.remove("active");
         let pageIndex = Number(button.getAttribute("page-index"));
-        if (pageIndex == currentPage) {
+        if (pageIndex === currentPage) {
             button.classList.add("active");
+            button.removeEventListener("click", buttonAction);
         }
-        if (pageIndex) {
-            button.addEventListener("click", () => {
-                setCurrentPage(pageIndex);
-            });
+        else {
+            button.addEventListener("click", buttonAction);
         }
     });
 }
+*/
+
 
 function appendDots() {
     let pageDots = document.createElement("button");
@@ -198,9 +235,17 @@ function appendPageNumber(index) {
     pageNumber.innerText = index;
     pageNumber.setAttribute("page-index", index);
 
-    pageNumber.addEventListener("click", () => {
-        setCurrentPage(index);
-    });
+    if (index === currentPage) {
+        pageNumber.classList.add("active");
+        pageNumber.removeEventListener("click", () => {
+            setCurrentPage(index);
+        });
+    }
+    else {
+        pageNumber.addEventListener("click", () => {
+            setCurrentPage(index);
+        });
+    }
 
     paginationNumbers.appendChild(pageNumber);
 }
@@ -213,6 +258,7 @@ function setAllButtons() {
 
     if (currentPage - 1 >= 1)
         appendPageNumber(currentPage - 1);
+
     appendPageNumber(currentPage);
     if (currentPage + 1 <= pageCount)
         appendPageNumber(currentPage + 1);
@@ -348,7 +394,7 @@ function trySend(event) {
                     throw new Error(data.message);
                 });
             }
-            else{
+            else {
                 displayMessage("User promoted", false);
             }
         })
