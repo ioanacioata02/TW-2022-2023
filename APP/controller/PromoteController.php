@@ -7,17 +7,17 @@ class PromoteController extends Controller{
     }
 
     public function processRequest(string $method, ?string $actions): void{
+        
+        if($method === "OPTIONS"){
+            http_response_code(200);
+            return;
+        }
 
         if(!isset($actions)){
             $this->notAllowed();
         }
         else{
             $params = $this->processAction($actions);
-        }
-
-        if($method === "OPTIONS"){
-            http_response_code(200);
-            return;
         }
         
         if(!Jwt::validateAuthorizationToken("secret", 2))
