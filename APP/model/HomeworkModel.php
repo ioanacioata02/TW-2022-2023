@@ -92,8 +92,9 @@ public function getProblems($id, $payload)
                                             WHERE h.id = ?");
         $stmt->bindValue(1, $id);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+       
+      $stmt= $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt;
     }
     public function getHomeworks($payload)
     {
