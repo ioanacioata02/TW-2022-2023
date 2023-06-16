@@ -70,8 +70,12 @@ td:last-child button.no:hover {
   }
 }
 
-#promote {
-  padding: 10px 5px;
+.top-area-admin{
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-area-admin button {
   background-color: #04AA6D;
   border: none;
   color: white;
@@ -79,10 +83,9 @@ td:last-child button.no:hover {
   border-radius: var(--yes-no-border-radius);
   cursor: pointer;
   transition: 0.1s;
-  align-self: flex-end;
 }
 
-#promote:hover {
+.top-area-admin button:hover {
   background-color: #3AAFA9;
 }
 
