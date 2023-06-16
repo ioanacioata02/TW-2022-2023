@@ -29,7 +29,7 @@ class PromoteController extends Controller{
         return;
     }
 
-    private function processAction($actions){
+    public function processAction($actions){
         
         if($actions === '1' || $actions === '2'){
             $params['status'] = intval($actions);
