@@ -30,7 +30,9 @@ console.log(Boolean(sessionStorage.getItem("myCat")))
   function loggedOut() {
     let element1 = document.querySelector('#profile-button');
     let element2 = document.querySelector('#sign-up');
-    element2.style.display="block";
+    if (element2) {
+      element2.style.display = "none";
+    }
     const newItem = document.createElement('div');
     newItem.id='profile-button';
     newItem.innerHTML = '<a class="menu-anchor" href="login.html" id="log-in">Login</a>';

@@ -2,11 +2,11 @@ function parseJwt(token) {
 	if (!token) {
 	  return;
 	}
-	const base64 = token.split('.')[1]; // extracting payload
+	const base64 = token.split('.')[1]; 
 	return JSON.parse(window.atob(base64));
   }
   
-  loginForm = document.getElementById("log-in");
+  loginForm = document.getElementById('log-in');
   loginForm.addEventListener('submit', async (event) => {
 	event.preventDefault();
 	const formData = new FormData(loginForm);
