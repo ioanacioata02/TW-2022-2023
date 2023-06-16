@@ -16,23 +16,27 @@ console.log(Boolean(sessionStorage.getItem("myCat")))
      sessionStorage.setItem("myCat", true);
   }
 
-  function loggedIn() {
-    let element1 = document.querySelector('#log-in');
-    let element2 = document.querySelector('#sign-up');
-    element2.style.display="none";
+function loggedIn() {
+  let element1 = document.querySelector('#log-in');
+  let element2 = document.querySelector('#sign-up');
+
+  if (element1 && element2) {
+    element2.style.display = "none";
     const newItem = document.createElement('div');
-    newItem.id='profile-button';
-    newItem.innerHTML='<a href="profile-stats.html">Profile</a>';
+    newItem.id = 'profile-button';
+    newItem.innerHTML = '<a href="profile-stats.html">Profile</a>';
     element1.parentNode.replaceChild(newItem, element1);
     sessionStorage.setItem("myCat", true);
+  } else {
+    console.log("Element '#log-in' or '#sign-up' not found.");
   }
-  
+}
+
+
   function loggedOut() {
     let element1 = document.querySelector('#profile-button');
     let element2 = document.querySelector('#sign-up');
-    if (element2) {
-      element2.style.display = "none";
-    }
+    element2.style.display="block";
     const newItem = document.createElement('div');
     newItem.id='profile-button';
     newItem.innerHTML = '<a class="menu-anchor" href="login.html" id="log-in">Login</a>';

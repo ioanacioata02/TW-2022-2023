@@ -21,20 +21,20 @@
     
     
     <script src="../scripts/login.js" defer></script>
+    <script src="../scripts/createHomework.js" defer></script>
+    <script src="../scripts/displayMessageBox.js" async></script>
 </head>
 
 <body>
 
     <div class="bkg-login">
-        <form class="login-form">
+        <form class="login-form" action="#" method="post" id="log-in">
             <div class="imgcontainer">
-                <a class="close" href="viewHomeworks.html" title="Close Form"> &#x2716;</a>
+                <a class="close" href="myHomeworks.html" title="Close Form"> &#x2716;</a>
                 <h1>Create new homework&#128218;</h1>
             </div>
             <div class="form-fields">
-                <b>Homework name</b>
-
-                <input class="login-input" type="text" placeholder="Type Homework Name" name="hname" required>
+                
 
                 <b>Topic</b>
 
@@ -42,12 +42,22 @@
 
                 <b>Deadline</b>
 
-                <input class="login-input" type="date" name="dline" required>
+                <input class="login-input" type="text" placeholder="Nr. of hours" name="dline" required>
+
+                <b>Classes</b>
+
+                <input class="login-input" type="text" placeholder="Introduce classes id ex:1,2,3" name="classes" required>
 
 
-                <button class="login-button" onclick="document.location='addProblem.html'">Add problem </button>
-                <button class="login-button">Submit homework</button>
+                <b>Problems</b>
 
+                <input class="login-input" type="text" placeholder="Introduce problems id ex:1,2,3" name="problems" required>
+ 
+                <button class="login-button" type="submit">Submit</button>
+
+            </div>
+            <div class="hidden" id="feedback">
+                <p></p>
             </div>
         </form>
 

@@ -85,7 +85,7 @@ public function getProblems($id, $payload)
     {
         $connection = $this->connectionPool->getConnection();
 
-        $stmt = $connection->prepare("SELECT u.username, u.id
+        $stmt = $connection->prepare("SELECT u.id, u.first_name, u.last_name,u.username
                                             FROM users u
                                             JOIN homework_members hm ON u.id = hm.id_student
                                             JOIN homeworks h ON hm.id_homework = h.id

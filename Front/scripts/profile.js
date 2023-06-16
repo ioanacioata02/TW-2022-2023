@@ -77,13 +77,13 @@ function displayDetails(user) {
     profileBoxPart(user);
 
     if (user.role.toLocaleLowerCase() === "student") {
-        myClass.setAttribute("href", "myClass_student.html");
-        //myHomeworks.setAttribute("href", )
+        myClass.setAttribute("href", "myClasses.html");
+        myHomeworks.setAttribute("href","myHomeworks.html");
     }
     else {
         proposeProblem.classList.remove("hidden");
-        myClass.setAttribute("href", "myClasses_teacher.html");
-        //myHomeworks.setAttribute("href", )
+        myClass.setAttribute("href", "myClasses.html");
+        myHomeworks.setAttribute("href","myHomeworks.html");
     }
     statsPart(user);
 

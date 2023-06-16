@@ -1,19 +1,19 @@
 function getId() {
     const urlParams = new URLSearchParams(window.location.search);
-    const classId = urlParams.get('classId');
-    return classId;
+    const id = urlParams.get('id');
+    return id;
   }
   
   async function fetchMembers() {
     try {
       const token = localStorage.getItem('token');
-      const classId = getId();
-      const url = `http://localhost/classes/${classId}`;
+      const homeworkId = getId();
+      const url=`http://localhost/homework/?students=${homeworkId}`;
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': token
         },
       });
   
@@ -38,7 +38,7 @@ function getId() {
       table+="<td>"+member.id+"</td>";
       table+="<td>"+member.first_name+"</td>";
       table+="<td>"+member.last_name+"</td>";
-      table+="<td><button class=\"add_button\" onclick=\"viewUser("+member.id+")\">"+member.username+"</button></td>";
+      table+="<td><button class=\"add_button\" onclick=\"viewSolutions("+member.id+")\">"+member.username+"</button></td>";
       table+="</tr>"
     }
     table+="</table>";
@@ -46,13 +46,11 @@ function getId() {
     updatePagination();
   }
   
-  function viewUser(id) {
-    document.location = `otherProfile.html?id=${id}`;
+  function viewSolutions(id) {
+    const homeworkId = getId();
+    document.location = `viewSolutions_teacher.html?studentId=${id}&hwId=${homeworkId}`;
   }
-  function redirectPage()
-  {const classId = getId();
-    document.location = `addStudent.html?id=${classId}`;
-  }
+
   
   fetchMembers();
   

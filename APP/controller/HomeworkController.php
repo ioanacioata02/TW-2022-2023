@@ -15,7 +15,11 @@ class HomeworkController extends Controller
     }
 
     public function processRequest(string $method, ?string $actions)
-    {
+    { if($method === "OPTIONS"){
+        http_response_code(200);
+        return;
+    }
+
         $this->params = $actions ? $this->processAction($actions) : null;
         if ($this->params) {
             foreach ($this->dispatchTable as $key => $action) {
