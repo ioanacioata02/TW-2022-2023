@@ -127,6 +127,7 @@ class ProfileController extends Controller{
     }
 
     private function processOwnHistory(string $method, array $data): void{
+
         if(!Jwt::validateAuthorizationToken("secret")){
             return;
         }
@@ -135,11 +136,7 @@ class ProfileController extends Controller{
 
             case "GET":
                 $data['id'] = Jwt::getIdFromToken();
-                if(!$this->model->userExists($data['id'])){
-                    http_response_code(404);
-                    echo json_encode(["id" => $data['id'], "message" => "User not found"]);
-                }
-                else{
+                if($this->model->userExists($data['id'])){
                     http_response_code(200);
                     echo json_encode(["submits"=>$this->model->getOwnSubmits($data), "nrOfSubmits" => $this->model->getNrOfSubmits($data['id'])]);
                 }
@@ -157,11 +154,7 @@ class ProfileController extends Controller{
         switch ($method) {
 
             case "GET":
-                if(!$this->model->userExists($data['id'])){
-                    http_response_code(404);
-                    echo json_encode(["id" => $data['id'], "message" => "User not found"]);
-                }
-                else{
+                if($this->model->userExists($data['id'])){
                     http_response_code(200);
                     echo json_encode(["submits"=>$this->model->getSubmits($data), "nrOfSubmits" => $this->model->getNrOfSubmits($data['id'])]);
                 }
