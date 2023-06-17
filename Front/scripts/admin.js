@@ -39,9 +39,8 @@ tBody.addEventListener("click", (event) => {
     }
 });
 
-function getProblems() {
-    nrOfRows = selectedNr.value;
-    fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
+function getAll() {
+    fetch(`http://localhost/stats`, {
         method: 'GET',
         headers: {
             'Authorization': token
@@ -62,36 +61,64 @@ function getProblems() {
             return response.json();
         })
         .then(data => {
-            nrOfProblems = data.nrOfProblems;
+            console.log(data);
 
-            if (nrOfProblems === 0) {
-                noProposedProb();
-            }
-            else {
+            // proposed problems part
+            nrOfRows = selectedNr.value;
+            fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': token
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 403) {
+                            displayForbidden();
+                        }
+                        if (response.status === 401) {
+                            displayUnauthorized();
+                        }
+                        return response.json().then(data => {
+                            throw new Error(data.message);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    nrOfProblems = data.nrOfProblems;
 
-                problems = data.problems;
-                console.log(problems);
-                console.log(nrOfProblems);
-                pageCount = Math.ceil(nrOfProblems / nrOfRows);
+                    if (nrOfProblems === 0) {
+                        noProposedProb();
+                    }
+                    else {
 
-                //console.log(pageCount);
-                //console.log("###");
+                        problems = data.problems;
+                        console.log(problems);
+                        console.log(nrOfProblems);
+                        pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-                deleteAllNrBtns();
-                setAllButtons();
-                //setActiveButton();
-                setLeftRightButtons();
+                        //console.log(pageCount);
+                        //console.log("###");
 
-                deleteAllRows();
+                        deleteAllNrBtns();
+                        setAllButtons();
+                        //setActiveButton();
+                        setLeftRightButtons();
 
-                problems.map((problem) => {
-                    createRow(problem);
+                        deleteAllRows();
+
+                        problems.map((problem) => {
+                            createRow(problem);
+                        });
+                    }
+                    let content = document.getElementById("content");
+                    content.classList.remove("hidden");
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error.message);
                 });
-            }
-            let content = document.getElementById("content");
-            content.classList.remove("hidden");
-        })
-        .catch(error => {
+        }).catch(error => {
             console.error('An error occurred:', error.message);
         });
 }
@@ -108,7 +135,7 @@ function noProposedProb() {
 }
 
 
-function displayNoContent(text){
+function displayNoContent(text) {
     let area = document.createElement("div");
     area.classList.add("nothing");
 
@@ -274,7 +301,7 @@ function setAllButtons() {
 
 function setCurrentPage(pageNum) {
     currentPage = pageNum;
-    getProblems();
+    getAll();
 }
 
 function loadPage() {
@@ -359,7 +386,6 @@ function reject(id) {
 }
 
 loadPage();
-
 
 let popUpBox = document.getElementById("pop-up-box");
 let selectedRole = document.getElementById("user-type");
