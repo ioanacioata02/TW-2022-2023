@@ -6,7 +6,7 @@ class CommentsModel extends Model
         parent::__construct();
 
     }
-    
+
 
 
     public function get(int $id):array
@@ -27,38 +27,38 @@ class CommentsModel extends Model
         $row["id_problem"] = intval($row["id_problem"]);
         $row["comments_txt"] = $row["comments_txt"];
         $row["text"] = $row["text"];
-       
         return $row;
     }
-    
+
     private function processRows(array $rows): array
     {
         $processedRows = [];
-    
+
         foreach ($rows as $row) {
             $processedRow = [
                 "id_user" => intval($row["id_user"]),
                 "id_problem" => intval($row["id_problem"]),
-               "comment_txt" => strval($row["comment_txt"]),
-               "title" => strval($row["title"]),
-               "moment" => date("Y-m-d H:i:s", strtotime($row["moment"]))
-               
+                "comment_txt" => strval($row["comment_txt"]),
+                "title" => strval($row["title"]),
+                "moment" => date("Y-m-d H:i:s", strtotime($row["moment"])),
+                "grade"=>intval($row["grade"])
             ];
-        
+
             $processedRows[] = $processedRow;
 
         }
         return $processedRows;
     }
-    public function addComment($id,$userId,$title,$comment_txt): bool {
+    public function addComment($id,$userId,$title,$comment_txt, $grade): bool {
         try {
-            $sql = "INSERT INTO all_comments (id_user, id_problem,comment_txt,title) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO all_comments (id_user, id_problem,comment_txt,title, grade) VALUES (?, ?, ?, ?, ?)";
             $connection = $this->connectionPool->getConnection();
             $stmt = $connection->prepare($sql);
-            $stmt->bindValue(1, $id, PDO::PARAM_INT);
-            $stmt->bindValue(2, $userId, PDO::PARAM_INT);
+            $stmt->bindValue(1, $userId, PDO::PARAM_INT);
+            $stmt->bindValue(2, $id, PDO::PARAM_INT);
             $stmt->bindValue(3, $title, PDO::PARAM_STR);
             $stmt->bindValue(4, $comment_txt, PDO::PARAM_STR);
+            $stmt->bindValue(5, $grade);
             $success = $stmt->execute();
             return $success;
         } catch (Throwable $exception) {
@@ -66,7 +66,7 @@ class CommentsModel extends Model
         } finally {
             $this->connectionPool->closeConnection($connection);
         }
-    
+
         return false;
     }
 }
