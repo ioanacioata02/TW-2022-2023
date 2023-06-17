@@ -72,7 +72,9 @@ async   function solutionPage(id) {
       console.log(data);
       const member = data;
       console.log(member);
-      document.location = `solutionPage.html?id=${id}&name=${member.name}&description=${member.description}&acceptance=0%&difficulty=0`;
+      const hwId=getHomeworkId();
+      document.location = `solutionPage.html?hwId=${hwId}&id=${id}&name=${member.name}&description=${member.description}&acceptance=0%&difficulty=0&tags=${member.tags.join(',')}`;
+
     } else {
       console.error('Failed to fetch problem', response.status);
     }

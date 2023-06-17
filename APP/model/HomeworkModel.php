@@ -27,7 +27,12 @@ public function postSolution($solution, $id_problem, $id_homework, $id_student)
     $result["problems"]= (get_object_vars(json_decode($result["problems"])));
     //result =  get_object_vars(json_decode($stmt->fetchAll()["problems"]));
     //echo  var_dump(   $result["problems"][$id_problem]);
-    $result["problems"][$id_problem]= get_object_vars( $result["problems"][$id_problem]);
+    if(gettype($result["problems"][$id_problem])=="string")
+    {
+        $result["problems"][$id_problem]= get_object_vars( json_decode( $result["problems"][$id_problem]));
+    }
+    else
+        $result["problems"][$id_problem]= get_object_vars($result["problems"][$id_problem]);
     if($result["problems"][$id_problem]["status"]=="complete")
     {
         return ["message"=>"you already submited this solution"];
