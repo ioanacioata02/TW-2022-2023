@@ -39,8 +39,9 @@ tBody.addEventListener("click", (event) => {
     }
 });
 
-function getAll() {
-    fetch(`http://localhost/stats`, {
+function getProblems() {
+    nrOfRows = selectedNr.value;
+    fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
         method: 'GET',
         headers: {
             'Authorization': token
@@ -62,63 +63,36 @@ function getAll() {
         })
         .then(data => {
             console.log(data);
+            nrOfProblems = data.nrOfProblems;
 
-            // proposed problems part
-            nrOfRows = selectedNr.value;
-            fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': token
-                }
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        if (response.status === 403) {
-                            displayForbidden();
-                        }
-                        if (response.status === 401) {
-                            displayUnauthorized();
-                        }
-                        return response.json().then(data => {
-                            throw new Error(data.message);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    nrOfProblems = data.nrOfProblems;
+            if (nrOfProblems === 0) {
+                noProposedProb();
+            }
+            else {
 
-                    if (nrOfProblems === 0) {
-                        noProposedProb();
-                    }
-                    else {
+                problems = data.problems;
+                console.log(problems);
+                console.log(nrOfProblems);
+                pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
-                        problems = data.problems;
-                        console.log(problems);
-                        console.log(nrOfProblems);
-                        pageCount = Math.ceil(nrOfProblems / nrOfRows);
+                //console.log(pageCount);
+                //console.log("###");
 
-                        //console.log(pageCount);
-                        //console.log("###");
+                deleteAllNrBtns();
+                setAllButtons();
+                //setActiveButton();
+                setLeftRightButtons();
 
-                        deleteAllNrBtns();
-                        setAllButtons();
-                        //setActiveButton();
-                        setLeftRightButtons();
+                deleteAllRows();
 
-                        deleteAllRows();
-
-                        problems.map((problem) => {
-                            createRow(problem);
-                        });
-                    }
-                    let content = document.getElementById("content");
-                    content.classList.remove("hidden");
-                })
-                .catch(error => {
-                    console.error('An error occurred:', error.message);
+                problems.map((problem) => {
+                    createRow(problem);
                 });
-        }).catch(error => {
+            }
+            let content = document.getElementById("content");
+            content.classList.remove("hidden");
+        })
+        .catch(error => {
             console.error('An error occurred:', error.message);
         });
 }
@@ -301,7 +275,7 @@ function setAllButtons() {
 
 function setCurrentPage(pageNum) {
     currentPage = pageNum;
-    getAll();
+    getProblems();
 }
 
 function loadPage() {
