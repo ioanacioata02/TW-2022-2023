@@ -69,10 +69,12 @@ function getProblems() {
                 noProposedProb();
             }
             else {
-
                 problems = data.problems;
                 console.log(problems);
                 console.log(nrOfProblems);
+
+                displayStats(data.stats);
+
                 pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
                 //console.log(pageCount);
@@ -95,6 +97,17 @@ function getProblems() {
         .catch(error => {
             console.error('An error occurred:', error.message);
         });
+}
+
+function displayStats(stats){
+    let nrUsers = document.getElementById("nr-users");
+    nrUsers.innerText = stats.nr_users.toLocaleString();
+
+    let nrProblems = document.getElementById("nr-problems");
+    nrProblems.innerText = stats.nr_probl.toLocaleString();
+
+    let nrAttempts = document.getElementById("nr-attempted-problems");
+    nrAttempts.innerText = stats.nr_attempted_probl.toLocaleString();
 }
 
 

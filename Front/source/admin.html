@@ -28,7 +28,30 @@
 
 <body>
     <main class="hidden" id="content">
-        <div class="top-area-admin"><button onclick="window.location.href = 'index.html'">Go home</button><button id="promote" onclick="displayPromote()">Promote</button></div>
+        <div class="top-area-admin"><button onclick="window.location.href = 'index.html'">Go home</button><button
+                id="promote" onclick="displayPromote()">Promote</button></div>
+        <div class="stats">
+            <div class="card">
+                <div>
+                    <div id="nr-users" class="number">1,504</div>
+                    <div class="text">Users</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div id="nr-problems" class="number">80</div>
+                    <div class="text">Problems</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div id="nr-attempted-problems" class="number">284</div>
+                    <div class="text">Attempted problems</div>
+                </div>
+            </div>
+        </div>
         <section class="select-box" id="admin-select-box">
             <h5>Number of rows per page</h5>
             <select name="rows-per-page" id="rows-per-page">
