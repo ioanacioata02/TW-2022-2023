@@ -10,15 +10,15 @@ async function loadProposed(id) {
         });
         const data = await response.json();
         if (!response.ok) {
-            if(response.status === 403){
+            if (response.status === 403) {
                 displayForbidden();
             }
 
-            if(response.status === 401){
+            if (response.status === 401) {
                 displayUnauthorized();
             }
 
-            if(response.status === 404){
+            if (response.status === 404) {
                 displayNotFound();
             }
             console.log('An error occurred:', response.status, data.message);
@@ -50,8 +50,15 @@ function loadData(problem) {
         tag.className = "tag";
         tag.setAttribute("contenteditable", "false");
 
+        let tagSpan = document.createElement("span");
+
         // content
-        tag.innerText = tags[i];
+        if (tags[i].startsWith('"') && tags[i].endsWith('"')) {
+            tags[i] = tags[i].slice(1);
+            tags[i] = tags[i].slice(0, -1);
+        }
+
+        tagSpan.innerText = tags[i];
 
         // X btn
         let xBtn = document.createElement("div");
@@ -59,12 +66,14 @@ function loadData(problem) {
         xBtn.innerText = "\u2716";
 
         //appends
+        tag.appendChild(tagSpan);
         tag.appendChild(xBtn);
         tagsArea.appendChild(tag);
     }
 
 
     // tests
+    /*
     let allTests = problem.tests;
     let nrOfTests = allTests.length;
     let tests = "";
@@ -83,7 +92,7 @@ function loadData(problem) {
     tests = tests + testLine;
 
     let testsArea = document.getElementById("tests");
-    testsArea.value = tests;
+    testsArea.value = tests;*/
 }
 
 function loadProposedProblem() {

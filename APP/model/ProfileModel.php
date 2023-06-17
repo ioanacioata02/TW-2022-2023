@@ -1,6 +1,7 @@
 <?php
 
 class ProfileModel extends Model{
+    public static $nrOfProbPerPage = 30;
 
     public function __construct(){
         parent::__construct();
@@ -31,7 +32,6 @@ class ProfileModel extends Model{
 
     private static function processRow(array $row):array{
 
-        $row["id"] = intval($row["id"]);
         $status = intval($row["status"]);
         switch($status){
             case 0:
@@ -47,9 +47,96 @@ class ProfileModel extends Model{
                 break; 
         }
         unset($row['status']);
-        $row["nr_attempts"] = intval($row["nr_attempts"]);
-        $row["nr_successes"] = intval($row["nr_successes"]);
         return $row;
+    }
+
+    public function getOwnSubmits(array $input):array{
+        $data=[];
+        
+        try{
+            $offset = ($input['page'] - 1) * self::$nrOfProbPerPage;
+            $sql = "SELECT s.id, s.id_problem, p.name, s.moment FROM solutions s JOIN problems p on s.id_problem = p.id WHERE id_user = (?) ORDER BY moment DESC LIMIT (?) OFFSET (?)";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $input['id'], PDO::PARAM_INT);
+            $stmt->bindValue(2, self::$nrOfProbPerPage, PDO::PARAM_INT);
+            $stmt->bindValue(3, $offset, PDO::PARAM_INT);
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        } catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+        } finally {
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $data;
+    }
+
+    public function getSubmits(array $input):array{
+        $data=[];
+
+        try{
+            $offset = ($input['page'] - 1) * self::$nrOfProbPerPage;
+            $sql = "SELECT s.id_problem, p.name, s.moment FROM solutions s JOIN problems p on s.id_problem = p.id WHERE id_user = (?) ORDER BY moment DESC LIMIT (?) OFFSET (?)";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $input['id'], PDO::PARAM_INT);
+            $stmt->bindValue(2, self::$nrOfProbPerPage, PDO::PARAM_INT);
+            $stmt->bindValue(3, $offset, PDO::PARAM_INT);
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        } catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+        } finally {
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $data;
+    }
+
+    public function getNrOfSubmits($id): int{
+        $nrOfSubmits = -1;
+        try {
+            $sql = "SELECT COUNT(*) FROM solutions WHERE id_user = (?)";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $nrOfSubmits = intval($stmt->fetchColumn());
+        } catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+        } finally {
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $nrOfSubmits;
+    }
+
+    public function userExists(int $id): bool{
+        $response = true;
+        try{
+            $sql = "select * from users where id= (?)";
+            $connection = $this->connectionPool->getConnection();
+            $stmt =  $connection->prepare($sql);
+            $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 0) {
+                http_response_code(404);
+                echo json_encode(["id" => $id, "message" => "User doesn't exist"]);
+                $response = false;
+            }
+        }catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+            $response = false;
+        }finally{
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $response;
     }
 
     public function changePass(array $data):bool{
@@ -67,13 +154,10 @@ class ProfileModel extends Model{
                 $response = false;
             }
             else{
-                //$row = $stmt->fetch(PDO::FETCH_ASSOC);
-                //$row = $this->processRow($row);
 
                 $sql = "UPDATE users SET password = (?) WHERE id = (?)";
                 $stmt =  $connection->prepare($sql);
                 $hash = password_hash($data["password"], PASSWORD_DEFAULT);
-                //echo password_verify($data["password"], $row["password"]);
                 $stmt->bindValue(1, $hash, PDO::PARAM_STR);
                 $stmt->bindValue(2, $data["id"], PDO::PARAM_INT);
                 $stmt->execute();

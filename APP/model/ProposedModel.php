@@ -23,7 +23,7 @@ class ProposedModel extends Model{
             $stmt->execute();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $data[] = $this->processRow($row, false);
+            $data[] = $this->processRow($row/*, false*/);
             }
         } catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -63,7 +63,7 @@ class ProposedModel extends Model{
             $rowCount = $stmt->rowCount();
             if($rowCount === 1){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $row=$this->processRow($row, true);
+            $row=$this->processRow($row/*, true*/);
             }
         } catch (Throwable $exception) {
             ErrorHandler::handleException($exception);
@@ -73,18 +73,16 @@ class ProposedModel extends Model{
         return $row;
     }
 
-    private static function processRow(array $row, bool $withTests):array{
-        $row["id"] = intval($row["id"]);
+    private static function processRow(array $row/*, bool $withTests*/):array{
         $tags = explode(",", substr($row["tags"], 1, -1));
         foreach($tags as &$tag){
             $tag=stripslashes($tag);
         }
         $row["tags"]= $tags;
-
+        /*
         if($withTests)
-            $row["tests"] = json_decode($row["tests"]);
+            $row["tests"] = json_decode($row["tests"]);*/
 
-        $row["id_author"] = intval($row["id_author"]);
         return $row;
     }
 
@@ -120,13 +118,13 @@ class ProposedModel extends Model{
         try{
             $connection = $this->connectionPool->getConnection();
 
-            $sql =  "INSERT INTO proposed_problems (name, description, tags, tests, id_author) values (?, ?, ?, ?, ?)";
+            $sql =  "INSERT INTO proposed_problems (name, description, tags, id_author) values (?, ?, ?, ?)";
             $stmt =  $connection->prepare($sql);
-            $stmt->bindValue(1, htmlspecialchars($data['name'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(2, htmlspecialchars($data['description'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(3, htmlspecialchars('{'.addslashes(implode(",",$data["tags"])).'}', ENT_NOQUOTES));
-            $stmt->bindValue(4, htmlspecialchars(json_encode($data['tests']), ENT_NOQUOTES));
-            $stmt->bindValue(5, $id_auth, PDO::PARAM_INT);
+            $stmt->bindValue(1, strip_tags($data["name"]), PDO::PARAM_STR);
+            $stmt->bindValue(2, strip_tags($data["description"]), PDO::PARAM_STR);
+            $stmt->bindValue(3, strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
+            //$stmt->bindValue(4, htmlspecialchars(json_encode($data['tests']), ENT_NOQUOTES));
+            $stmt->bindValue(4, $id_auth, PDO::PARAM_INT);
             $stmt->execute();
         }catch (Throwable $exception) {
             ErrorHandler::handleException($exception);

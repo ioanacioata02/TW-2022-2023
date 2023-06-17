@@ -19,22 +19,21 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/forbidden.css">
 
+
     <link rel="stylesheet" href="../styles/utilities.css">
-    <link rel="stylesheet" href="../styles/generalProfile.css">
+    <link rel="stylesheet" href="../styles/history.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <script src="../scripts/profileStandard.js" defer></script>
-    <script src="../scripts/otherProfile.js" defer></script>
-    <script src="../scripts/displayMessageBox.js" defer></script>
+
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
-
     <script src="../scripts/error.js" defer></script>
+    <script src="../scripts/history.js" defer></script>
 </head>
 
 <body>
-    <div class="hidden" id="content">
+    <div class="hidden" id="content-all">
         <nav class="navbar ">
             <div class="logo">
                 <img class="image-logo" src="../assets/logo.svg" alt="">
@@ -84,60 +83,13 @@
                 </div>
             </div>
         </nav>
-        <main>
-            <div id="main-box-profile">
-                <div class="sidebar">
-                    <div class="up">
-                        <div class="parent">
-                            <img id="userPhoto" class="circle"
-                                src="https://static.vecteezy.com/system/resources/previews/007/167/661/original/user-blue-icon-isolated-on-white-background-free-vector.jpg"
-                                alt="">
-                        </div>
-
-                    </div>
-                    <ul class="top-txt">
-                        <li>
-                            <h1></h1>
-                        </li>
-                        <li>
-                            <h2 id="id">
-                            </h2>
-                        </li>
-                        <li class="full-name">
-                            <h3></h3>
-                            <h3></h3>
-                        </li>
-                        <li>
-                            <h2 id="email">
-                            </h2>
-                        </li>
-                        <li>
-                            <h2 id="rol">
-                            </h2>
-                        </li>
-                    </ul>
-                    <ul class="profile-options">
-                        <li><div class="link" id="history"><i class="fa fa-history" aria-hidden="true"></i><span
-                                    class="profile-item">history</span></div></li>
-                    </ul>
+        <main id="content">
+            <div class="containter">
+                <div id="user-problems">
                 </div>
-                <div class="main-content">
-                    <section id="statistici">
-                        <div class="item" id="all">
-                            <div class="progress-bar">
-                                <div class="text">
-                                    <span id="number1"></span>
-                                    <span>%</span>
-                                </div>
-                                <svg>
-                                    <circle id="all-svg" cx="50%" cy="50%" r="40%"></circle>
-                                </svg>
-                            </div>
-                            <h2>all</h2>
-                            <span><span></span>/<span></span></span>
-                        </div>
-                    </section>
-                </div>
+                <button id="more" class="hidden">
+                    load More
+                </button>
             </div>
         </main>
     </div>

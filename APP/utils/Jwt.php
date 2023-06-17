@@ -18,6 +18,11 @@ class Jwt
             return false;
         }
         $token= getallheaders()["Authorization"];
+        if($token === null || empty($token)){
+            http_response_code(401);
+            echo json_encode(["message"=>"Missing token"]);
+            return false;
+        }
         $payload =  Jwt::validateToken($token, $secret);
         if (!isset($payload))
         {
@@ -27,7 +32,7 @@ class Jwt
         }
         if($payload["status"]<$status)
         {
-            http_response_code(401);
+            http_response_code(403);
             echo json_encode(["message"=>"You don't have the permission for this action"]);
             return false;
         }
