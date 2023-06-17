@@ -64,7 +64,7 @@ function getProblems() {
         .then(data => {
             console.log(data);
             nrOfProblems = data.nrOfProblems;
-
+            displayStats(data.stats);
             if (nrOfProblems === 0) {
                 noProposedProb();
             }
@@ -72,8 +72,6 @@ function getProblems() {
                 problems = data.problems;
                 console.log(problems);
                 console.log(nrOfProblems);
-
-                displayStats(data.stats);
 
                 pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
