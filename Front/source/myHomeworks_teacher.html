@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
     <script src="../scripts/adminPagination.js" defer></script>
-    <script src="../scripts/class_teacher.js" defer></script>
+    <script src="../scripts/homework_teacher.js" defer></script>
     <title>InformatiX</title>
 </head>
 
@@ -61,14 +61,15 @@
                 <option value="20">20</option>
             </select>
         </section>
+        <h3 class="titlu"> This homework was assigned to:</h3>
         <div>
             <table class="table-admin">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>ID Student</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>View members</th>
+                        <th>View solutions</th>
                     </tr>
                 </thead>
                 <tbody id="class-members">
@@ -85,11 +86,6 @@
                     &raquo;
                 </button>
             </nav>
-        </div>
-        <section class="myButton">
-                <h1 class="plusIcon">&#65291;</h1>
-                <button class="homeworkButton" onclick="redirectPage()">Add student</button>
-            </section>
         </div>
         
 </body>

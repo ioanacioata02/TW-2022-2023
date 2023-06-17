@@ -15,13 +15,25 @@ class HomeworkController extends Controller
     }
 
     public function processRequest(string $method, ?string $actions)
-    {
+    { if($method === "OPTIONS"){
+       
+        http_response_code(200);
+        return;
+    }
+   
+
         $this->params = $actions ? $this->processAction($actions) : null;
-        if ($this->params) {
+    
+        
+        if ($this->params) { 
             foreach ($this->dispatchTable as $key => $action) {
+               
+                
                 if (isset($this->params[$key])) {
+            
                     if (method_exists($this, $action)) {
                         if ($method == 'GET' || $method == 'POST') {
+                          
                             $this->$action($this->params[$key], $method);
                         } else {
                             $this->respondMethodNotAllowed();
@@ -43,6 +55,7 @@ class HomeworkController extends Controller
             } else {
                 $this->respondUnauthorized();
             }
+            
         }
     }
 
@@ -64,7 +77,7 @@ class HomeworkController extends Controller
 
         if ($method == 'GET') {
 
-                if (isset($this->params["student"])) {
+                if (isset($this->params["solutions"])) {
                 if (Jwt::validateAuthorizationToken("secret", 1)) {
 
                     $result = $this->model->getStudentProblems($id, $this->params["id_student"]);

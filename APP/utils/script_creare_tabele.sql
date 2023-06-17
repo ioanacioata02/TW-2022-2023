@@ -2,7 +2,6 @@
 
 -- Database: InformatiX
 
-
 --DROP DATABASE IF EXISTS "InformatiX";
 
 CREATE DATABASE "InformatiX"
