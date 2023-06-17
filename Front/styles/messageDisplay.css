@@ -12,3 +12,9 @@
 #feedback p {
     font-size: 1.28em;
 }
+
+@media (max-width: 400px) {
+	#feedback p {
+        font-size: 1em;
+    }
+}
