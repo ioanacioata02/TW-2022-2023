@@ -43,7 +43,7 @@
           table += "<td>" + key + "</td>";
           table += "<td>" + member.name + "</td>";
           table += "<td>" + member.status + "</td>";
-          table += "<td><button class=\"add_button\" onclick=\"viewSolution('" + member.solution + "')\">View Solution</button></td>";
+          table += "<td><button class=\"add_button\" onclick=\"solutionPage('" + key + "')\">Solve problem</button></td>";
           table += "</tr>";
         }
       }
@@ -52,9 +52,35 @@
     updatePagination();
   }
   
-  function viewSolutions(solution) {
-    const homeworkId = getId();
-    document.location = `ViewSolution.html?solution=${solution}`;
+async   function solutionPage(id) {
+
+    try {
+      const token = localStorage.getItem('token');
+  let studentId = parseJwt(token).id;
+    const homeworkId=getHomeworkId();
+    const url=`http://localhost/problems/?id=${id}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      const member = data;
+      console.log(member);
+      document.location = `solutionPage.html?id=${id}&name=${member.name}&description=${member.description}&acceptance=0%&difficulty=0`;
+    } else {
+      console.error('Failed to fetch problem', response.status);
+    }
+  } catch (error) {
+    console.error('Error during fetch:', error);
+  }
+
+   
   }
 
   
