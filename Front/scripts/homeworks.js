@@ -46,7 +46,8 @@ async function fetchHomeworks() {
       const myButton = document.querySelector('.myButton');
       const homeworkButton = myButton.querySelector('.homeworkButton');
       console.log(status);
-      if (status === 1) {
+      console.log("ma actualizez");
+      if (status === '1') {
         myButton.style.display = 'block';
         homeworkButton.style.display = 'block';
       } else {
