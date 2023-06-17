@@ -120,9 +120,9 @@ class ProposedModel extends Model{
 
             $sql =  "INSERT INTO proposed_problems (name, description, tags, id_author) values (?, ?, ?, ?)";
             $stmt =  $connection->prepare($sql);
-            $stmt->bindValue(1, htmlspecialchars($data['name'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(2, htmlspecialchars($data['description'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(3, htmlspecialchars('{'.addslashes(implode(",",$data["tags"])).'}', ENT_NOQUOTES));
+            $stmt->bindValue(1, strip_tags($data["name"]), PDO::PARAM_STR);
+            $stmt->bindValue(2, strip_tags($data["description"]), PDO::PARAM_STR);
+            $stmt->bindValue(3, strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
             //$stmt->bindValue(4, htmlspecialchars(json_encode($data['tests']), ENT_NOQUOTES));
             $stmt->bindValue(4, $id_auth, PDO::PARAM_INT);
             $stmt->execute();

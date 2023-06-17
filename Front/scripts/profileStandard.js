@@ -16,6 +16,12 @@ function statsPart(user) {
     let counterLimit = Number(number.innerText);
     let counter = 0;
     loadProgressBar(number, counter, counterLimit, myCircle, 496);
+
+    let successes = document.getElementById("successes");
+    successes.innerText = "Successes: " + user.nr_successes;
+
+    let attempts = document.getElementById("attempts");
+    attempts.innerText = "Attempts: " + user.nr_attempts;
 }
 
 function loadProgressBar(procentValue, counter, counterLimit, progressBar, length) {

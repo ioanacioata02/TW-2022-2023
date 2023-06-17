@@ -74,17 +74,19 @@
         <div class="filler"></div>
         <div class="main-content">
             <div class="filter-system">
-                <input class="filter-serach-bar" type="text" placeholder="&#128269;Search for a problem">
-
+                <input id="searchTEXT" class="filter-serach-bar" type="text" placeholder="&#128269;Search for a problem">
+                <div>
+                    <button onclick="sortByText()" class="filter-tags-button">Search</button>
+                </div>
                 <div class="dropdown">
                     <button onclick="dropDownFunction('difficulty-dropdown')"
                         class="filter-difficulty-button">Difficulty</button>
                     <div id="difficulty-dropdown" class="dropdown-menu">
-                        <a href="#">Difficulty 1</a>
-                        <a href="#">Difficulty 2</a>
-                        <a href="#">Difficulty 3</a>
+                        <a onclick="sortByDifficulty('1')" href="#">Easy to hard</a>
+                        <a onclick="sortByDifficulty('0')" href="#">Hard to easy</a>
                     </div>
                 </div>
+               
 		<!--
                 <div class="dropdown">
                     <button onclick="dropDownFunction('tags-dropdown')" class="filter-tags-button">Tags</button>
@@ -94,7 +96,7 @@
                         <a href="#">Hash maps</a>
                     </div>
                 </div>
-		-->
+		
                 <div class="dropdown">
                     <button onclick="dropDownFunction('status-dropdown')" class="filter-status-button">Status</button>
                     <div id="status-dropdown" class="dropdown-menu">
@@ -103,11 +105,12 @@
                         <a href="#">Neincercat</a>
                     </div>
                 </div>
+            -->
             </div>
             <div class="problems-header">
                 <span class="problems-header-content">Title</span>
-                <span class="problems-header-content">Status</span>
-                <span class="problems-header-content acceptance">Acceptance</span>
+                <span class="problems-header-content"></span>
+                <span class="problems-header-content acceptance"></span>
                 <span class="problems-header-content">Difficulty</span>
             </div>
             <div id="problems-list-display" class="problems">

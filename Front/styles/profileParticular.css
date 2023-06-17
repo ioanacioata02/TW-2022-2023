@@ -118,3 +118,9 @@
 		width: 90%;
 	}
 }
+
+@media (max-width: 300px) {
+	.popUp {
+		width: 80%;
+	}
+}

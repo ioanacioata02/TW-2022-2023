@@ -99,7 +99,7 @@ body {
 	border-radius: 0 0 var(--border-rad) var(--border-rad);
 }
 
-.sidebar ul li a {
+.sidebar ul li a, .sidebar ul li .link {
 	text-decoration: none;
 	color: var(--text-color-sidebar);
 	font-size: 1.2em;
@@ -112,10 +112,12 @@ body {
 	background-color: var(--accent-color);
 }
 
-.sidebar ul li:hover a {
+.sidebar ul li:hover a, .sidebar ul li:hover .link {
 	color: #fff;
 }
-
+.sidebar ul li:hover .link {
+	cursor: pointer;
+}
 
 
 #statistici {
@@ -177,12 +179,21 @@ body {
 }
 
 #all h2,
-#all>span:last-child {
+#all>span{
 	color: var(--all-color);
 }
 
-#all>span:last-child {
+#all>span{
 	font-size: 1.5em;
+}
+
+#all .extra{
+	color: rgb(213, 213, 213);
+	font-size: 1.2em;
+}
+
+#successes{
+	margin-top: 4px;
 }
 
 #email,

@@ -8,7 +8,9 @@
     <title>Informatix</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles/utilities.css">
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/drop-downs.css">
@@ -75,12 +77,13 @@
     <div class="container">
         <div class="left-container">
             <button class="button-tab" onclick="opentab('description')">Description</button>
-            <button class="button-tab" onclick="opentab('comments')">Comments</button>
-            <button class="button-tab" onclick="opentab('solutions')">Solutions</button>
+            <button class="button-tab" onclick="opentab('comments');  getComments()">Comments</button>
+            <button class="button-tab" onclick="opentab('solutions'); getSolutions()">Solutions</button>
 
             <div id="description" class="description-tab tab-content">
                 <div id="title-text" class="problem-description-title">1.Two Sum</div>
-                <div id="description-text" class="problem-description-text"> Given an array of integers nums and an integer target, return
+                <pre id="description-text" class="problem-description-text"> Given an array of integers nums and an
+                    integer target, return
                     indices of the two numbers such that they add up to target.<br>
                     You may assume that each input would have exactly one solution, and you may not use the same element
                     twice. indices of the two numbers such that they add up to target.<br>
@@ -97,21 +100,22 @@
                     twice. indices of the two numbers such that they add up to target.<br>
                     You may assume that each input would have exactly one solution, and you may not use the same element
                     twice. indices of the two numbers such that they add up to target.<br>
-                </div>
+                </pre>
             </div>
             <div id="comments" class="Comments-tab tab-content">
                 <!-- maybe a list will be better idk, for know works -->
+<!--
                 <div class="comment-format">
                     <div class="comment-title">
                         O(1) solution never seen before
                     </div>
                     <div class="author-date">
-                        <div class="comment-author">Troller01</div>
                         <div class="date-comment">10.01.2000</div>
-                        <div class="likes-comment">1300&#9825;</div>
+                        <div class="grade">1300&#9825;</div>
                     </div>
                     <div class="comment-text">Am rezolvat prin puterea prieteniei.</div>
                 </div>
+
                 <div class="comment-format">
                     <div class="comment-title">
                         O(1) solution asdasfore
@@ -124,42 +128,58 @@
                     <div class="comment-text">
                         Am rezolvat prin puterea prieteniei.
                     </div>
-
+                  
                 </div>
-
+  -->
             </div>
             <div id="solutions" class="solution-tab tab-content">
-                <!-- maybe a list will be better idk, for know works -->
+                <!-- maybe a list will be better idk, for know works 
                 <a href="viewSolution.html" class="solution-format">
                     <div class="solution-date">10.01.2022</div>
-                    <div class="solution-status">failed</div>
                 </a>
+                <br>
+                <a href="viewSolution.html" class="solution-format">
+                    <div class="solution-date">10.01.2022</div>
+                </a>
+            -->
             </div>
-            
+
             <div class="acceptance-rate rating">Acceptance Rate <span id="rating-text">64%</span></div>
-            <div  class="current-difficulty rating">Difficulty <span id="difficulty-text">1</span></div>
-            <div class="rating"><a class="subbmit-review">Feedback</a></div>
+            <div class="current-difficulty rating">Difficulty <span id="difficulty-text">1</span></div>
+            <div class="rating"><a class="subbmit-review">Comment</a></div>
         </div>
         <div class="feed-back-from">
-            <h2 class="form-title">Feedback Form</h2>
+            <h2 class="form-title">Comment Form</h2>
             <form>
-              <label for="difficulty">Difficulty (1-5):</label>
-              <input type="number" id="difficulty" name="difficulty" min="1" max="5" required>
-              <br>
-              <label for="justification">Justify your rating:</label><br>
-              <textarea id="justification" name="justification" required></textarea>
-              <br>
-              <button type="submit" class="general-button">Submit</button>
+                <label for="difficulty">Difficulty (1-5):</label>
+                <input type="number" id="difficulty" name="difficulty" min="1" max="5" required>
+                <br>
+
+
+                <label for="justification">
+                    <br>Title
+                </label><br>
+                <textarea id="title" name="title" required></textarea>
+
+
+
+                <label for="justification">
+                    <br>Tell us your opinion:
+                </label><br>
+
+                <textarea id="justification" name="justification" required></textarea>
+                <br><br>
+                <a onclick="makeComment()" href="#" class="submit">Submit</a>
             </form>
             <a href="#" class="close">&times;</a>
-          </div>
+        </div>
 
         <div class="solving-area">
             <div class="solving-area-code-title">
                 Input your code here:
             </div>
             <textarea id="code" class="input-code"></textarea>
-            <button class="subbmit-code general-button">
+            <button onclick="submitSolution()" class="subbmit-code general-button">
                 Submit Code
             </button>
         </div>

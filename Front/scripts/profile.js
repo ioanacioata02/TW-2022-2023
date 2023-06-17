@@ -5,7 +5,6 @@ let popUpBox = document.getElementById("pop-up-box");
 let token = localStorage.getItem('token');
 
 proposeProblem.classList.add("hidden");
-
 async function changePass(event) {
     event.preventDefault();
 

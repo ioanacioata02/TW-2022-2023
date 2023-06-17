@@ -34,6 +34,7 @@ function loggedIn() {
 
 
   function loggedOut() {
+    localStorage.clear();
     let element1 = document.querySelector('#profile-button');
     let element2 = document.querySelector('#sign-up');
     element2.style.display="block";

@@ -17,7 +17,12 @@
     <script src="../scripts/languageDisplay.js" defer></script>
     <script src="../scripts/dropdown.js" defer></script>
     <script src="../scripts/login.js" defer></script>
+  <head>
+  <!-- Other head elements -->
+  <link href="../styles/prism.css" rel="stylesheet" />
+</head>
 
+</head>
 
 </head>
 
@@ -73,7 +78,9 @@
     <div class="container">
         <div class="filler"> </div>
         <div class="solution-container">
+       
             <div class="header">
+             <!--
                 <div class="data">
                     <div class="problem-title">1.Two Sum</div>
                     <div class="submit-date">10.10.2023 </div>
@@ -84,27 +91,30 @@
                     <div class="mem">Memory: 1.24kb</div>
                     <div class="time">Time: 2.3s</div>
                 </div>
+                  -->
             </div>
+          
             <div class="solution-source-code">
                 <pre class="code">
-                    <span class="keyword">class</span> <span class="type">Solution</span> {
-                        <span class="keyword">public:</span>
-                          <span class="type">vector&lt;int&gt;</span> twoSum(<span class="type">vector&lt;int&gt;&amp;</span> nums, <span class="type">int</span> target) {
-                            <span class="type">map&lt;int, int&gt;</span> valueIndex;
-                            <span class="keyword">for</span>(<span class="type">int</span> i=0; i&lt;nums.size(); i++)
-                            {
-                              <span class="type">int</span> diffrence =  target-nums[i];
-                              <span class="keyword">if</span>(valueIndex.find(diffrence)!=valueIndex.end())
-                              {
-                                <span class="keyword">return</span> {valueIndex[diffrence], i};
-                              }
-                              valueIndex[nums[i]]=i;
-                            }
-                            <span class="keyword">return</span> {};
-                          }
-                      };
-                  </pre>
+                    <code class="language-cpp ">
+                    class abc
+                    {
+                        abc()
+                        {
+                            cout&lt&lt this is a consturctor;
+                        }
+                    }
+
+                    int main()
+                    {
+                        int a=10;
+                        main();
+                    }
+                    </code>
+                </pre>
             </div>
+           <script src="../scripts/prism.js"></script>
+     
         </div>
         <div class="filler"></div>
     </div>
