@@ -116,6 +116,7 @@ CREATE TABLE all_comments(
 	id_problem INT NOT NULL,
 	comment_txt TEXT NOT NULL,
 	title TEXT NOT NULL,
+	grade int not null, 
 	moment TIMESTAMP DEFAULT NOW(),
 	CONSTRAINT fk_solved_user FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solved_pb FOREIGN KEY (id_problem) REFERENCES problems(id) ON DELETE CASCADE
