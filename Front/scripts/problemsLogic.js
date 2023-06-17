@@ -66,7 +66,7 @@ function sortByDifficulty(ORDER)
 function processItem(element, contianer)
 {
     console.log(element.name)
-    let diff=element.nr_attempts/(1+element.nr_successes);
+    let diff=(element.average_grade*5).toFixed(2);
     let a = document.createElement('a');
     a.href = "./problem.html?id="+element.id+"&name="+element.name+"&description="+element.description+"&acceptance="+diff*100+"%"+"&difficulty="+diff*5+"&tags="+element.tags;
     a.classList.add('problem-list');

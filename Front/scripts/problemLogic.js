@@ -38,6 +38,7 @@ function getComments()
         .then(data => {
             //console.log(data);
             container = document.getElementById("comments");
+            container.innerHTML="";
             data.forEach(element => appendComment(element, container));
         })
         .catch(error => {console.error('Error:', error);});
@@ -103,6 +104,7 @@ function getSolutions()
         .then(data => {
             //console.log(data);
             container = document.getElementById("solutions");
+            container.innerHTML="";
             data.forEach(element => appendSolution(element, container));
         })
         .catch(error => {console.error('Error:', error);});
