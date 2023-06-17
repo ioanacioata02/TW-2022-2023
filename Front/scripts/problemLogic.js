@@ -1,6 +1,5 @@
 
 
-
 const urlParams =  new URLSearchParams(window.location.search);
 popualteData();
 
@@ -207,3 +206,41 @@ function makeComment() {
       console.error('An error occurred:', error);
     });
   }
+
+  function submitToHomework()
+{
+    const url = 'http://localhost/homework/?submit='+urlParams.get("hwId");
+    let text=  document.getElementById("code").value;
+    if(text == "")
+    {displayMessage("No code to submit!",true);
+        return;
+    }
+    const body = JSON.stringify({ solution: text, id_problem: urlParams.get("id")});
+    console.log(body);
+
+    const token = localStorage.getItem('token');
+  
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':  token
+      },
+      body: body
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Request failed.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Response:', data);
+        displayMessage(data.message,false);
+      })
+      .catch(error => {displayMessage("Error while submiting the solution",true);
+        console.error('Error:', error);
+        // Handle any error that occurred during the request
+      });
+}
+
