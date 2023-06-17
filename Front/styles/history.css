@@ -102,14 +102,3 @@ body {
 		margin: 10px 10px 10px 10px;
 	}
 }
-
-@media (max-width: 550px) {
-	.problem {
-		display: grid;
-		grid-template-columns: 50% 50%;
-	}
-
-	.problem div:nth-child(2) {
-		display: none;
-	}
-}
