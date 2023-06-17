@@ -52,7 +52,12 @@ function getComments()
 function submitSolution()
 {
     const url = 'http://localhost/solutions/?id='+urlParams.get("id");
-    const body = JSON.stringify({ solution: document.getElementById("code").value});
+    let text=  document.getElementById("code").value;
+    if(text == "")
+    {
+        return;
+    }
+    const body = JSON.stringify({ solution:text});
     const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJBRE1JTiIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY5MTgyNjcsImV4cGlyYXRpb25EYXRlIjoxNjg5NTEwMjY3fQ==.0tcrRiYYa2wq0X+fYE/gs1zzlEcIrSEWlY0GATnSKhk=" //localStorage.getItem('token');
 
   

@@ -15,7 +15,7 @@
 }
 
 .solution-container {
-    display: grid;
+   
     margin-top: 4em;
     border-radius: 5px;
     height: 80dvh;
@@ -71,13 +71,16 @@
 
 .solution-source-code {
     overflow: auto;
+    
 }
 
 .code {
-
+    
     background-color: var(--background);
+    padding: 1em; 
+    height: 50vh;
     color: black;
-    margin: 1em;
+    margin: 3em;
     border-radius: 5px;
     overflow: scroll;
 }
