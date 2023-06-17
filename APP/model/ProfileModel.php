@@ -55,7 +55,7 @@ class ProfileModel extends Model{
 
         try{
             $offset = ($input['page'] - 1) * self::$nrOfProbPerPage;
-            $sql = "SELECT s.id, s.id_problem, p.name, s.moment FROM solutions s JOIN problems p on s.id_problem = p.id WHERE id_user = (?) ORDER BY moment DESC LIMIT (?) OFFSET (?)";
+            $sql = "SELECT s.id, s.id_problem, p.name, s.moment, s.solution FROM solutions s JOIN problems p on s.id_problem = p.id WHERE id_user = (?) ORDER BY moment DESC LIMIT (?) OFFSET (?)";
             $connection = $this->connectionPool->getConnection();
             $stmt =  $connection->prepare($sql);
             $stmt->bindValue(1, $input['id'], PDO::PARAM_INT);

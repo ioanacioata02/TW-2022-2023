@@ -93,7 +93,7 @@ function showAll() {
 function displayOwnHistory(submit) {
     let container = displayHistory(submit);
     container.addEventListener("click", () => {
-        window.location.href = `viewSolution.html?id=${submit.id}`;
+        window.location.href = "viewSolution.html?solution="+encodeURIComponent(submit.solution);
     });
 }
 

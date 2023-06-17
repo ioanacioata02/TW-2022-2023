@@ -117,7 +117,7 @@ function getSolutions()
 function appendSolution(json, container)
 {   
     let anchor = document.createElement('a');
-    anchor.href = "viewSolution.html?solution="+json.solution;
+    anchor.href = "viewSolution.html?solution="+encodeURIComponent(json.solution);
     anchor.classList.add('solution-format');
   
     // Create div element
