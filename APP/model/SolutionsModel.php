@@ -21,7 +21,6 @@ class SolutionsModel extends Model
 
     }
 
-
     public function create($id_problem, $solution, $studentID)
     {
         $solution=htmlspecialchars($solution);
@@ -36,6 +35,9 @@ class SolutionsModel extends Model
         $stmt->execute();
         $stmt= $connection->prepare(   "update problems set nr_attempts = nr_attempts + 1 where id=?" );
         $stmt->bindValue(1, $id_problem);
+        $stmt->execute();
+        $stmt= $connection->prepare("update users set nr_attempts =nr_attempts +1 where id= ?");
+        $stmt->bindValue(1,$studentID);
         $stmt->execute();
         $connection->commit();
         $this->connectionPool->closeConnection($connection);
