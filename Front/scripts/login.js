@@ -6,7 +6,6 @@ if(!sessionStorage.getItem("myCat")) {
 console.log(sessionStorage.getItem("myCat"))
 console.log(Boolean(sessionStorage.getItem("myCat")))
   if(sessionStorage.getItem("myCat") === "true") {
-    console.log('Am setat logged')
     loggedIn();
   }
   

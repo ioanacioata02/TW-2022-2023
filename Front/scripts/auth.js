@@ -6,8 +6,8 @@ function parseJwt(token) {
 	return JSON.parse(window.atob(base64));
   }
   
-  loginForm = document.getElementById('log-in');
-  loginForm.addEventListener('submit', async (event) => {
+    loginForm = document.getElementById('log-in');
+    loginForm.addEventListener('submit', async (event) => {
 	event.preventDefault();
 	const formData = new FormData(loginForm);
 	const loginData = {
@@ -26,12 +26,11 @@ function parseJwt(token) {
   
 	  if (!response.ok) {
 		if (response.status === 401) {
-			console.log("cv nu eok la register");
+			//console.log("cv nu eok la register");
 			displayMessage("Email or password is incorrect",true);
 		}
 		return;
 	  }
-  
 	  const data = await response.json();
 	  console.log(data);
 	  const token = data.JWT;
@@ -40,9 +39,13 @@ function parseJwt(token) {
 	  if (token) {
 		let status = parseJwt(token).status;
 		if (status == "0"||status=="1")
-		  window.location.href = 'index.html';
+		  { setVariableTrue();
+			window.location.href = 'index.html';
+		}
 		else
-		  window.location.href = 'admin.html';
+		  { setVariableTrue();
+			window.location.href = 'admin.html';
+		 }
 	  } else {
 		const err = document.querySelector('form.login .error');
 		err.classList.add('show');
