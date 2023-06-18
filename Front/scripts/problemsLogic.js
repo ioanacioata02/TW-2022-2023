@@ -69,7 +69,7 @@ function processItem(element, contianer)
     console.log(element);
     let diff=(element.average_grade);
     let a = document.createElement('a');
-    a.href = "./problem.html?id="+element.id+"&name="+element.name+"&description="+encodeURIComponent(element.description)+"&acceptance="+diff*100+"%"+"&difficulty="+diff*5+"&tags="+element.tags;
+    a.href = "./problem.html?id="+element.id+"&name="+element.name+"&description="+encodeURIComponent(element.description)+"&acceptance="+diff*100+"%"+"&difficulty="+diff+"&tags="+element.tags;
     a.classList.add('problem-list');
     let div = document.createElement('div');
     div.classList.add('problem');
@@ -91,7 +91,7 @@ function processItem(element, contianer)
  
     let spanMainEnd = document.createElement('span');
     spanMainEnd.classList.add('problem-main-end');
-    spanMainEnd.textContent = diff*5;
+    spanMainEnd.textContent = diff;
     divMainStart.appendChild(spanId);
     divMainStart.appendChild(spanTitle);
     div.appendChild(divMainStart);
