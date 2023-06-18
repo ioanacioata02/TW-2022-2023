@@ -55,9 +55,9 @@ function getStudentId() {
     updatePagination();
   }
   
-  function viewSolutions(solution) {
-    const homeworkId = getId();
-    document.location = `ViewSolution.html?solution=${solution}`;
+  function viewSolution(solution) {
+    const homeworkId = getHomeworkId();
+    document.location = `viewSolution.html?solution=${solution}`;
   }
 
   
