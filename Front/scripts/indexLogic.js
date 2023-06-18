@@ -25,7 +25,7 @@ function processItem(element,container)
 {
     // Create the <a> element
     let cardLink = document.createElement("a");
-    let diff=element.nr_attempts/(1+element.nr_successes);
+    let diff=Number.parseFloat(element.average_grade).toFixed(2);;
     cardLink.href =  "./problem.html?id="+element.id+"&name="+element.name+"&description="+element.description+"&acceptance="+diff*100+"%"+"&difficulty="+diff*5;
     cardLink.className = "card";
     let title = document.createElement("h3");
@@ -37,7 +37,7 @@ function processItem(element,container)
     description.innerHTML = element.description;
     let difficulty = document.createElement("span");
     difficulty.className = "difficulty";
-    difficulty.innerHTML = "Difficuly " + element.nr_attempts/(element.nr_successes+1) * 5;
+    difficulty.innerHTML = "Difficulty " + Number.parseFloat(element.average_grade).toFixed(2);;
     cardLink.appendChild(title);
     cardLink.appendChild(description);
     cardLink.appendChild(difficulty);

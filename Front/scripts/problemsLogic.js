@@ -67,7 +67,7 @@ function processItem(element, contianer)
 {
     console.log(element.name)
     console.log(element);
-    let diff=(element.average_grade);
+    let diff=Number.parseFloat(element.average_grade).toFixed(2);;
     let a = document.createElement('a');
     a.href = "./problem.html?id="+element.id+"&name="+element.name+"&description="+encodeURIComponent(element.description)+"&acceptance="+diff*100+"%"+"&difficulty="+diff+"&tags="+element.tags;
     a.classList.add('problem-list');

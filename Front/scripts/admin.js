@@ -11,6 +11,34 @@ let pageCount;
 let nrOfProblems;
 let problems;
 
+
+function downloadData() {
+    fetch('http://130.61.233.19:4446/problems')
+      .then(response => response.json())
+      .then(data => {
+        const jsonData = JSON.stringify(data);
+        const blob = new Blob([jsonData], { type: 'application/json' });
+  
+        // Create a temporary anchor element
+        const a = document.createElement('a');
+        const url = window.URL.createObjectURL(blob);
+  
+        a.href = url;
+        a.download = 'data.json';
+  
+        // Append the anchor to the body and trigger the download
+        document.body.appendChild(a);
+        a.click();
+  
+        // Clean up
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
 prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
 })
