@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../styles/admin.css">
     <link rel="stylesheet" href="../styles/pagination.css">
     <link rel="stylesheet" href="../styles/messageDisplay.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <script src="../scripts/displayMessageBox.js" defer></script>
     <script src="../scripts/error.js" defer></script>
@@ -28,8 +30,10 @@
 
 <body>
     <main class="hidden" id="content">
-        <div class="top-area-admin"><button onclick="window.location.href = 'index.html'">Go home</button><button
-                id="promote" onclick="displayPromote()">Promote</button></div>
+        <div class="top-area-admin"><button onclick="window.location.href = 'index.html'">Go home</button>
+            <button id="download" onclick="download()"><i class="fas fa-download" aria-hidden="true"></i>Downloadproblems</button>
+            <button id="promote" onclick="displayPromote()">Promote</button>
+        </div>
         <div class="stats">
             <div class="card">
                 <div>
