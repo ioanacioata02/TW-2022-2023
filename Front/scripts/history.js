@@ -194,8 +194,7 @@ function getProblem(id) {
         })
         .then(data => {
             console.log(data);
-            let diff = data.nr_attempts / (1 + data.nr_successes);
-            window.location = "problem.html?id=" + data.id + "&name=" + data.name + "&description=" + encodeURIComponent(data.description) + "&acceptance=" + diff * 100 + "%" + "&difficulty=" + diff + +"&tags="+data.tags;
+            window.location = "problem.html?id=" + data.id + "&name=" + data.name + "&description=" + encodeURIComponent(data.description) + "&acceptance=" + 0+ "%" + "&difficulty=" + 0 + "&tags="+data.tags;
         })
         .catch(error => {
             console.error('An error occurred:', error.message);
