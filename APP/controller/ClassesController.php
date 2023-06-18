@@ -69,10 +69,6 @@ class ClassesController extends Controller
             case "POST":
                 $this->handlePost($userId);
                 break;
-            case "PUT":
-                break;
-            case "DELETE":
-                break;
             default:
                 http_response_code(405);
                 echo json_encode(["message" => "Method not allowed"]);
