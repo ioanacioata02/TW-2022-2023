@@ -73,12 +73,9 @@ async function fetchClasses() {
     console.log(status);
     if (status === 0) {
       document.location = `myClass_student.html?classId=${classId}`;
-    } else if (status === 1) {
+    } else  {
       document.location = `myClasses_teacher.html?classId=${classId}`;
-    } else {
-      document.location = `index.html`;
-    }
- 
+    } 
   }
   function redirectPage()
   {
