@@ -37,5 +37,5 @@ form = document.getElementById("add-class");
   });
   function redirectOnClose()
   {
-    document.location = `MyClasses.html`;
+    document.location = `myClasses.html`;
   }

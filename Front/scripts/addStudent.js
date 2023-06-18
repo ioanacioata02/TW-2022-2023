@@ -46,5 +46,5 @@ function getId() {
   function redirectOnClose()
   {
     const classId = getId();
-    document.location = `MyClasses_teacher.html?classId=${classId}`;
+    document.location = `myClasses_teacher.html?classId=${classId}`;
   }
