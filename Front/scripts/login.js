@@ -1,18 +1,47 @@
-console.log(Boolean( sessionStorage.getItem("myCat")))
-if(!sessionStorage.getItem("myCat")) {
-    sessionStorage.setItem("myCat", false);
+console.log(Boolean( localStorage.getItem("myCat")))
+if(!localStorage.getItem("myCat")) {
+    localStorage.setItem("myCat", false);
     console.log('Am setat myCat')
   }
-console.log(sessionStorage.getItem("myCat"))
-console.log(Boolean(sessionStorage.getItem("myCat")))
-  if(sessionStorage.getItem("myCat") === "true") {
-    loggedIn();
+console.log(localStorage.getItem("myCat"))
+console.log(Boolean(localStorage.getItem("myCat")))
+  if(localStorage.getItem("myCat") === "true") {
+
+	  makePostRequest();
   }
-  
+  function makePostRequest() {
+  if (localStorage.getItem("myCat") === "true") {
+    const token = localStorage.getItem("token");
+    const url = "http://130.61.233.19:4446/authentication";
+    const data = {
+      u: "",
+      p: ""
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        loggedIn();
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+  }
+}
+
+
 
   function setVariableTrue()
   {
-     sessionStorage.setItem("myCat", true);
+     localStorage.setItem("myCat", true);
   }
 
 function loggedIn() {
@@ -25,7 +54,7 @@ function loggedIn() {
     newItem.id = 'profile-button';
     newItem.innerHTML = '<a href="profile-stats.html">Profile</a>';
     element1.parentNode.replaceChild(newItem, element1);
-    sessionStorage.setItem("myCat", true);
+    localStorage.setItem("myCat", true);
   } else {
     console.log("Element '#log-in' or '#sign-up' not found.");
   }
@@ -41,6 +70,5 @@ function loggedIn() {
     newItem.id='profile-button';
     newItem.innerHTML = '<a class="menu-anchor" href="login.html" id="log-in">Login</a>';
     element1.parentNode.replaceChild(newItem, element1);
-    sessionStorage.setItem("myCat", false);
+    localStorage.setItem("myCat", false);
   }
-  
