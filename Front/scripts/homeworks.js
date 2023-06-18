@@ -14,7 +14,9 @@ async function fetchHomeworks() {
         const data = await response.json();
         console.log(data);
         const homeworks = data;
+        if(homeworks!=null)
         displayHomeworks(homeworks);
+        else console.error('No homeworks to upload', error);
       } else {
         console.error('Failed to fetch homeworks:', response.status);
       }

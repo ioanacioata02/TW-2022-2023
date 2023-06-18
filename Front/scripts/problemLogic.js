@@ -9,14 +9,14 @@ function popualteData()
    
     document.getElementById("title-text").textContent=urlParams.get("id")+" ."+urlParams.get("name");
     document.getElementById("description-text").textContent=urlParams.get('description');
-    document.getElementById("rating-text").textContent=urlParams.get("acceptance");
+    //document.getElementById("rating-text").textContent=urlParams.get("acceptance");
     document.getElementById("difficulty-text").textContent=urlParams.get("difficulty");
     //console.log(text)
 }
 
 function getComments()
 {
-    const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJBRE1JTiIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY5MTgyNjcsImV4cGlyYXRpb25EYXRlIjoxNjg5NTEwMjY3fQ==.0tcrRiYYa2wq0X+fYE/gs1zzlEcIrSEWlY0GATnSKhk=" //localStorage.getItem('token');
+    const token =localStorage.getItem('token');
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -57,7 +57,7 @@ function submitSolution()
         return;
     }
     const body = JSON.stringify({ solution:text});
-    const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJBRE1JTiIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY5MTgyNjcsImV4cGlyYXRpb25EYXRlIjoxNjg5NTEwMjY3fQ==.0tcrRiYYa2wq0X+fYE/gs1zzlEcIrSEWlY0GATnSKhk=" //localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
   
     fetch(url, {
@@ -87,7 +87,7 @@ function submitSolution()
 
 function getSolutions()
 {
-    const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJBRE1JTiIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY5MTgyNjcsImV4cGlyYXRpb25EYXRlIjoxNjg5NTEwMjY3fQ==.0tcrRiYYa2wq0X+fYE/gs1zzlEcIrSEWlY0GATnSKhk=" //localStorage.getItem('token');
+    const token =localStorage.getItem('token');
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -117,7 +117,7 @@ function getSolutions()
 function appendSolution(json, container)
 {   
     let anchor = document.createElement('a');
-    anchor.href = "viewSolution.html?solution="+json.solution;
+    anchor.href = "viewSolution.html?solution="+encodeURIComponent(json.solution);
     anchor.classList.add('solution-format');
   
     // Create div element
@@ -180,7 +180,7 @@ function appendComment(json, container) {
 
 
 function makeComment() {
-    const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJBRE1JTiIsInN0YXR1cyI6IjIiLCJjcmVhdGlvbkRhdGUiOjE2ODY5MTgyNjcsImV4cGlyYXRpb25EYXRlIjoxNjg5NTEwMjY3fQ==.0tcrRiYYa2wq0X+fYE/gs1zzlEcIrSEWlY0GATnSKhk=" //localStorage.getItem('token');
+    const token =localStorage.getItem('token');
     const body = JSON.stringify({ grade:document.getElementById("difficulty").value, title: document.getElementById("title").value , comment_txt: document.getElementById("justification").value});
     const requestOptions = {
       method: 'POST',

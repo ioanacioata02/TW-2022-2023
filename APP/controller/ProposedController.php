@@ -66,7 +66,7 @@ class ProposedController extends Controller{
 
         switch ($method){
             case "GET":
-                echo json_encode(["problems"=>$this->model->getPage($params), "nrOfProblems" => $this->model->getNrOfProblems()]);
+                echo json_encode(["problems"=>$this->model->getPage($params), "nrOfProblems" => $this->model->getNrOfProblems(), "stats" => $this->model->getStats()]);
                 break;
             
             default:

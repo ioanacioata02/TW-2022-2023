@@ -62,16 +62,17 @@ function getProblems() {
             return response.json();
         })
         .then(data => {
+            console.log(data);
             nrOfProblems = data.nrOfProblems;
-
+            displayStats(data.stats);
             if (nrOfProblems === 0) {
                 noProposedProb();
             }
             else {
-
                 problems = data.problems;
                 console.log(problems);
                 console.log(nrOfProblems);
+
                 pageCount = Math.ceil(nrOfProblems / nrOfRows);
 
                 //console.log(pageCount);
@@ -96,6 +97,17 @@ function getProblems() {
         });
 }
 
+function displayStats(stats){
+    let nrUsers = document.getElementById("nr-users");
+    nrUsers.innerText = stats.nr_users.toLocaleString();
+
+    let nrProblems = document.getElementById("nr-problems");
+    nrProblems.innerText = stats.nr_probl.toLocaleString();
+
+    let nrAttempts = document.getElementById("nr-attempted-problems");
+    nrAttempts.innerText = stats.nr_attempted_probl.toLocaleString();
+}
+
 
 function noProposedProb() {
     let selectBox = document.getElementById("admin-select-box");
@@ -108,7 +120,7 @@ function noProposedProb() {
 }
 
 
-function displayNoContent(text){
+function displayNoContent(text) {
     let area = document.createElement("div");
     area.classList.add("nothing");
 
@@ -359,7 +371,6 @@ function reject(id) {
 }
 
 loadPage();
-
 
 let popUpBox = document.getElementById("pop-up-box");
 let selectedRole = document.getElementById("user-type");

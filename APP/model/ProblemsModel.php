@@ -6,6 +6,28 @@ class ProblemsModel extends Model
         parent::__construct();
 
     }
+    public function sortByDifficulty($type)
+    {
+        if($type=="1")
+            $type="ASC";
+        else
+            $type="DESC";
+        $connection = $this->connectionPool->getConnection();
+        $stmt =  $connection->prepare("SELECT p.id, p.name, p.description, p.nr_attempts, p.nr_successes, p.tags, COALESCE(AVG(c.grade), 0) AS average_grade
+                                            FROM problems p
+                                            LEFT JOIN all_comments c ON p.id = c.id_problem
+                                            GROUP BY p.id, p.name, p.description, p.tags, p.nr_attempts, p.nr_successes
+                                            ORDER BY average_grade ".$type);
+        //$stmt->bindValue(1, $type);
+        $stmt->execute();
+        $data = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            $data[] = $this->processRow($row);
+        }
+        $this->connectionPool->closeConnection($connection);
+        return $data;
+    }
     public function update(int $id, array $data):bool
     {
         $connection = $this->connectionPool->getConnection();
@@ -38,7 +60,13 @@ class ProblemsModel extends Model
 
     public function getAll($limit = 9999999):array
     {
-        $sql = "select id, name, description, tags, nr_attempts, nr_successes from problems LIMIT (?)";
+
+        $sql = "SELECT p.id, p.name, p.description, p.nr_attempts, p.nr_successes, p,p.tags, COALESCE(AVG(c.grade), 0) AS average_grade
+                                            FROM problems p
+                                            LEFT JOIN all_comments c ON p.id = c.id_problem
+                                            GROUP BY p.id, p.name, p.description, p.tags, p.nr_attempts, p.nr_successes order by p.id
+                                            LIMIT (?) ";
+        //$sql = "select id, name, description, tags, nr_attempts, nr_successes from problems LIMIT (?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1, $limit);
@@ -53,9 +81,37 @@ class ProblemsModel extends Model
         return $data;
     }
 
+    public function sortByLike($field, $value)
+    {
+        $sql= "SELECT p.id, p.name, p.description, p.nr_attempts, p.nr_successes,p.tags, COALESCE(AVG(c.grade), 0) AS average_grade
+                                            FROM problems p
+                                            LEFT JOIN all_comments c ON p.id = c.id_problem
+                                            GROUP BY p.id, p.name, p.description, p.tags, p.nr_attempts, p.nr_successes having ". $field ." LIKE "." ? order by p.id";
+
+
+        $connection =  $this->connectionPool->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(1, '%' . $value . '%');
+        $stmt->execute();
+        $data = [];
+        while ($row =  $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[]=$this->processRow($row);
+        }
+
+        $this->connectionPool->closeConnection($connection);
+        return $data;
+    }
     public function sortLimit($field, $limit, $order)
     {
-        $sql = "select id, name, description, tags, nr_attempts, nr_successes from problems order by ".$field." ". $order." limit :limit";
+        $sql="SELECT p.id, p.name, p.description, p.nr_attempts, p.nr_successes,p.tags, COALESCE(AVG(c.grade), 0) AS average_grade
+                                            FROM problems p
+                                            LEFT JOIN all_comments c ON p.id = c.id_problem
+                                            GROUP BY p.id, p.name, p.description, p.tags, p.nr_attempts, p.nr_successes
+                                            order by ".$field." ". $order." limit :limit";
+
+
+        #$sql = "select id, name, description, tags, nr_attempts, nr_successes from problems order by ".$field." ". $order." limit :limit";
         $connection=  $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(":limit", $limit);
@@ -109,16 +165,16 @@ class ProblemsModel extends Model
     }
     public function create(array $data): int
     {
-        $sql =  "INSERT INTO problems (name, description, tags,tests, nr_attempts, nr_successes) values (?, ?,? ,?,?,?)";
+        $sql =  "INSERT INTO problems (name, description, tags, nr_attempts, nr_successes) values (?, ? ,?,?,?)";
         $connection = $this->connectionPool->getConnection();
         $stmt =  $connection->prepare($sql);
         $stmt->bindValue(1,strip_tags($data["name"]), PDO::PARAM_STR);
         $stmt->bindValue(2,strip_tags($data["description"]));
         #echo var_dump($data["tests"]);
         $stmt->bindValue(3,strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
-        $stmt->bindValue(4, json_encode([" "=>' ']));
+        //$stmt->bindValue(4, json_encode([" "=>' ']));
+        $stmt->bindValue(4,0);
         $stmt->bindValue(5,0);
-        $stmt->bindValue(6,0);
         $stmt->execute();
         $this->connectionPool->closeConnection($connection);
         return intval($connection->lastInsertId());

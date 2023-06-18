@@ -93,7 +93,7 @@ function showAll() {
 function displayOwnHistory(submit) {
     let container = displayHistory(submit);
     container.addEventListener("click", () => {
-        window.location.href = `viewSolution.html?id=${submit.id}`;
+        window.location.href = "viewSolution.html?solution="+encodeURIComponent(submit.solution);
     });
 }
 
@@ -191,7 +191,7 @@ function getProblem(id) {
         .then(data => {
             console.log(data);
             let diff = data.nr_attempts / (1 + data.nr_successes);
-            window.location = "problem.html?id=" + data.id + "&name=" + data.name + "&description=" + encodeURIComponent(element.description) + "&acceptance=" + diff * 100 + "%" + "&difficulty=" + diff * 5;
+            window.location = "problem.html?id=" + data.id + "&name=" + data.name + "&description=" + encodeURIComponent(data.description) + "&acceptance=" + diff * 100 + "%" + "&difficulty=" + diff + +"&tags="+data.tags;
         })
         .catch(error => {
             console.error('An error occurred:', error.message);

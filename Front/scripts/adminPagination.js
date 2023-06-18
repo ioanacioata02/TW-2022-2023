@@ -4,7 +4,7 @@ let nextButton = document.getElementById("next-button");
 let prevButton = document.getElementById("prev-button");
 let selectedNr = document.getElementById("rows-per-page");
 let nrOfRows = selectedNr.value;
-let pageCount = 0;
+let pageCount = 1;
 let currentPage = 1;
 
 prevButton.addEventListener("click", () => {
@@ -122,11 +122,25 @@ function resetButtons() {
   paginationNumbers.innerHTML = "";//curatam elementul cu id-ul pagination numbers
   let rows = tbody ? tbody.querySelectorAll("tr") : null;
   if (rows) {
-    pageCount = Math.ceil(rows.length / nrOfRows);
+    if(rows.length === 0)
+      pageCount = 1;
+    else
+      pageCount = Math.ceil(rows.length / nrOfRows);
   } else {
-    pageCount = 0;
+    pageCount = 1;
   }
+  deleteAllNrBtns();
   setAllButtons();
+  setActiveButton();
+  setLeftRightButtons();
+}
+
+function deleteAllNrBtns() {
+  let btnFirstChild = paginationNumbers.firstChild;
+  while (btnFirstChild) {
+      paginationNumbers.removeChild(btnFirstChild);
+      btnFirstChild = paginationNumbers.firstChild;
+  }
 }
 
 function reloadPage() {
@@ -137,8 +151,6 @@ function reloadPage() {
 function loadPage() {
   setCurrentPage(1);
 }
-
-loadPage();
 
 
 function updatePagination() {

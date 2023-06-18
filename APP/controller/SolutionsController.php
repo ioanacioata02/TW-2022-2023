@@ -45,12 +45,13 @@ class SolutionsController extends Controller
         else
         {
             $this->badRequest();
+
         }
     }
     private function badRequest()
     {
         http_response_code(401);
-        throw new Exception("Something went wrong");
+       throw new Exception("Something went wrong");
 
     }
 }

@@ -3,6 +3,7 @@
 
 class ProblemsController extends Controller
 {
+    private $params;
     public function __construct()
     {
         parent::__construct();
@@ -10,20 +11,20 @@ class ProblemsController extends Controller
     }
     public function processRequest(string $method, ?string $actions): void
     {
-        $params = $actions ? $this->processAction($actions) : null;
+        $this->params = $actions ? $this->processAction($actions) : null;
 
         //if the id is set then this takes priority over anything else
-        if (isset($params["id"])) {
-            $this->processResourceRequest($method, intval($params["id"]));
+        if (isset($this->params["id"])) {
+            $this->processResourceRequest($method, intval($this->params["id"]));
             return;
         }
 
-        $limit = $params["limit"] ?? 99999999;
-        if (isset($params["sort"]) && $method=="GET") {
-            echo $this->sortLimit($params["sort"], $limit);
+        $limit = $this->params["limit"] ?? 99999999;
+        if (isset($this->params["sort"]) && $method=="GET") {
+            echo $this->sortLimit($this->params["sort"], $limit);
             return;
         }
-        elseif(isset($params["limit"])) {
+        elseif(isset($this->params["limit"])) {
             echo json_encode($this->model->getAll($limit));
             return;
         }
@@ -31,11 +32,21 @@ class ProblemsController extends Controller
     }
     private function sortLimit($sort,$limit)
     {
+
+
+
         $sort=strtoupper($sort);
         switch ($sort)
         {
             CASE "POPULARITY":
                 echo json_encode($this->model->sortLimit("nr_attempts", $limit, "DESC"));
+                break;
+            CASE "TEXT":
+                echo json_encode($this->model->sortByLike("name", $this->params["text"]));
+                break;
+            CASE "DIFFICULTY":
+
+                echo json_encode($this->model->sortByDifficulty($this->params["type"]));
                 break;
             CASE "NAME":
                 echo json_encode($this->model->sortLimit("name", $limit, "ASC"));

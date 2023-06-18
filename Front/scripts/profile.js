@@ -75,14 +75,22 @@ function displayDetails(user) {
 
     profileBoxPart(user);
 
-    if (user.role.toLocaleLowerCase() === "student") {
-        myClass.setAttribute("href", "myClasses.html");
-        myHomeworks.setAttribute("href","myHomeworks.html");
+     if (user.role.toLocaleLowerCase() === "student") {
+        myClass.addEventListener("click", ()=>{
+            window.location.href = "myClasses.html";
+        });
+        myHomeworks.addEventListener("click", ()=>{
+            window.location.href = "myHomeworks.html";
+        });
     }
     else {
         proposeProblem.classList.remove("hidden");
-        myClass.setAttribute("href", "myClasses.html");
-        myHomeworks.setAttribute("href","myHomeworks.html");
+        myClass.addEventListener("click", ()=>{
+            window.location.href = "myClasses.html";
+        });
+        myHomeworks.addEventListener("click", ()=>{
+            window.location.href = "myHomeworks.html";
+        });
     }
     statsPart(user);
 

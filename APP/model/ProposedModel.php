@@ -120,9 +120,9 @@ class ProposedModel extends Model{
 
             $sql =  "INSERT INTO proposed_problems (name, description, tags, id_author) values (?, ?, ?, ?)";
             $stmt =  $connection->prepare($sql);
-            $stmt->bindValue(1, htmlspecialchars($data['name'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(2, htmlspecialchars($data['description'], ENT_NOQUOTES), PDO::PARAM_STR);
-            $stmt->bindValue(3, htmlspecialchars('{'.addslashes(implode(",",$data["tags"])).'}', ENT_NOQUOTES));
+            $stmt->bindValue(1, strip_tags($data["name"]), PDO::PARAM_STR);
+            $stmt->bindValue(2, strip_tags($data["description"]), PDO::PARAM_STR);
+            $stmt->bindValue(3, strip_tags('{'.addslashes(implode(",",$data["tags"])).'}'));
             //$stmt->bindValue(4, htmlspecialchars(json_encode($data['tests']), ENT_NOQUOTES));
             $stmt->bindValue(4, $id_auth, PDO::PARAM_INT);
             $stmt->execute();
@@ -191,5 +191,39 @@ class ProposedModel extends Model{
             $this->connectionPool->closeConnection($connection);
         }
         return $response;
+    }
+
+    public function getStats():array{
+        $results=[];
+
+        try{
+            $connection = $this->connectionPool->getConnection();
+
+            // nr of users
+            $sql = "SELECT COUNT(*) FROM users";
+            $stmt =  $connection->prepare($sql);
+            $stmt->execute();
+
+            $results["nr_users"] = intval($stmt->fetchColumn());
+
+            // nr of problems
+            $sql = "SELECT COUNT(*) FROM problems";
+            $stmt =  $connection->prepare($sql);
+            $stmt->execute();
+
+            $results["nr_probl"] = intval($stmt->fetchColumn());
+
+            // nr of attempted problems
+            $sql = "SELECT COUNT(*) FROM problems WHERE nr_attempts > 0";
+            $stmt =  $connection->prepare($sql);
+            $stmt->execute();
+
+            $results["nr_attempted_probl"] = intval($stmt->fetchColumn());
+        } catch (Throwable $exception) {
+            ErrorHandler::handleException($exception);
+        } finally {
+            $this->connectionPool->closeConnection($connection);
+        }
+        return $results;
     }
 }
