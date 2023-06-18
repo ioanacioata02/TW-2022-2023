@@ -73,11 +73,9 @@ async function fetchHomeworks() {
     console.log(status);
     if (status === 0) {
       document.location = `myHomework_student.html?hwId=${homeworkId}`;
-    } else if (status === 1) {
+    } else  {
       document.location = `myHomeworks_teacher.html?id=${homeworkId}`;
-    } else {
-      document.location = `index.html`;
-    }
+    } 
  
   }
   function redirectPage()
