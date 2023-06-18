@@ -157,7 +157,7 @@ public function addMember(int $classId, int $userId): bool {
 }
 
 public function createClass(string $className,int $userId): bool {
-    try {echo("incerc sa adaug");
+    try {
         $sql = "INSERT INTO classes (name) VALUES (?)";
         $connection = $this->connectionPool->getConnection();
         $stmt = $connection->prepare($sql);
