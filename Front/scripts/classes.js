@@ -46,12 +46,12 @@ async function fetchClasses() {
       const myButton = document.querySelector('.myButton');
       const homeworkButton = myButton.querySelector('.homeworkButton');
       console.log(status);
-      if (status === 1) {
-        myButton.style.display = 'block';
-        homeworkButton.style.display = 'block';
-      } else {
+      if (status === 0) {
         myButton.style.display = 'none';
         homeworkButton.style.display = 'none';
+      } else {
+        myButton.style.display = 'block';
+        homeworkButton.style.display = 'block';
       }
     } else {
       console.log('Token does not exist');
