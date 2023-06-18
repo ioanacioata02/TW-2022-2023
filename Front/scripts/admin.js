@@ -40,6 +40,10 @@ tBody.addEventListener("click", (event) => {
 });
 
 function getProblems() {
+    if(token === null){
+        displayUnauthorized();
+        return;
+    }
     nrOfRows = selectedNr.value;
     fetch(`http://localhost/proposed/?page=${currentPage}&limit=${nrOfRows}`, {
         method: 'GET',

@@ -1,6 +1,10 @@
 let token = localStorage.getItem('token');
 
 async function loadProposed(id) {
+    if(token === null){
+        displayUnauthorized();
+        return;
+    }
     try {
         const response = await fetch(`http://localhost/proposed/${id}`, {
             method: 'GET',

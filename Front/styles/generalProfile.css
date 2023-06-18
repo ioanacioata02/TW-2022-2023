@@ -145,7 +145,7 @@ body {
 	position: relative;
 }
 
-.text {
+.progress-bar .text {
 	display: flex;
 	align-items: center;
 	position: absolute;
@@ -157,7 +157,7 @@ body {
 	letter-spacing: 0.1em;
 }
 
-.text span {
+.progress-bar .text span {
 	font-size: 1.4rem;
 }
 

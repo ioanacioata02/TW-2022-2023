@@ -6,6 +6,10 @@ let nrSubmitsDisplayed = 0;
 
 
 async function getOwnHistory() {
+    if(token === null){
+        displayUnauthorized();
+        return;
+    }
     try {
         const response = await fetch(`http://localhost/profile/history?page=${pageNr}`, {
             method: 'GET',

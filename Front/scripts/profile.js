@@ -42,6 +42,10 @@ async function changePass(event) {
 }
 
 async function getDetails() {
+    if(token === null){
+        displayUnauthorized();
+        return;
+    }
     try {
         const response = await fetch('http://localhost/profile', {
             method: 'GET',
