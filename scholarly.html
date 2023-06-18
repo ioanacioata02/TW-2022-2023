@@ -228,80 +228,78 @@
                 </li>
                 <li>My classes Page
                     <p>
-                        This page is accessible only from a teacher account and allows the user to see their classes, to
-                        add student to these and
-                        to access information about them such as their students or their assigned homeworks.
+                        This page is accessible  from a teacher account or from a student account and 
+                        allows the user to see all the classes they are a part of. Moreover,
+                        teachers have a suplimentary create class button.
                     </p>
                 </li>
-                <li>My class Page
+                <li>My classes_teacher Page
+                    <p>
+                        This page is accessible  from a teachers`s account, from the myClasses page and allows the user
+                        to see the members of a specific class they are a part of and also to add students to it.
+                    </p>
+                </li>
+                <li>My classes_student Page
                     <p>
                         This page is accessible only from a student account and allows the user to see their classmates
-                        and allows them to access their profiles.
-                    </p>
-                </li>
-                <li>View Students Page
-                    <p>
-                        This page is accessible from My classes Page and allows a teacher user to view details about the
-                        students in a certain class, as well as to see the homework status
-                        for each.
-                    </p>
-                </li>
-                <li>View Student Homeworks Page
-                    <p>
-                        This page is accessible from View Students Page and allows a teacher user to view the assigned
-                        homeworks for a student,
-                        the homework status (solved yes/no), and allows the user to access View Submits Page.
-                    </p>
-                </li>
-                <li>View Submits Page
-                    <p>
-                        This page is accessible from View Student Homework Page and allows a teacher user to view the
-                        solutions a student has submited
-                        for the problems in their homeworks.
-                    </p>
-                </li>
-                <li>View Solution Page
-                    <p>
-                        This page is accessible from View Submits Page and allows a teacher user to view the code of a
-                        solution a student has submited
-                        for a problem in one of their homeworks.
+                        and access their profiles.
                     </p>
                 </li>
                 <li>Add Student Page
                     <p>
-                        This page is accessible from My Classes Page and allows a teacher user to complete a form in
+                        This page is accessible from My Classes_teacher Page and allows a teacher user to complete a form in
                         order to add a student in one of their
-                        classes, using the username of the student.
+                        classes, using the id of the student.
                     </p>
                 </li>
-                <li>View Homeworks Page
+        
+                <li>My homeworks Page
                     <p>
-                        This page is accessible from My Classes Page and allows a teacher user to view the homeworks
-                        assigned to a certain class,
-                        as well as to access the View Problems Page. This Page also has a button for creating a new
-                        homework.
+                        This page is accessible  from a teacher account or from a student account and 
+                        allows the user to see all the homeworks they assigned(for teachers) or the homeworks 
+                        they were assigned(for students). Moreover,
+                        teachers have a suplimentary create class homework.
                     </p>
                 </li>
-                <li>View Problems Page
+                <li>My homeworks_teacher Page
                     <p>
-                        This page is accessible from View Homeworks Page and allows a teacher user to view the problems
-                        that a certain homeworks is made of.
-                    </p>
-                </li>
-                <li>View Problem Page
-                    <p>
-                        This page is accessible from View Problems Page and Problems Page and allows a user to view
-                        description of a problem.
+                        This page is accessible  from a teacher`s account, from the myHomeworks page and allows the teacher
+                        to see all the members a specific homework was assigned to.
                     </p>
                 </li>
                 <li>Create Homework Page
                     <p>
-                        This page is accessible from View Homeworks Page and allows a teacher user
+                        This page is accessible from myHomeworks_teacher Page and allows a teacher user
                         to complete a form in order to create a new homework. The form allows the user to name the
                         homework,
                         to give it a deadline, as well as adding problems to it,based on the id of the problems.
                     </p>
                 </li>
+           
+                <li>My homeworks_student Page
+                    <p>
+                        This page is accessible only from a student account and allows the user to see the problems 
+                        from a specific homework.
+                    </p>
+                </li>
+              
+                
+                <li>ViewSolution_teacher Page
+                    <p>
+                        This page is accessible from myHomeworks_teacher Page and allows a teacher user to view the code of a
+                        solution a student has submited
+                        for a problem in one of their homeworks.
+                    </p>
+                </li>
+               
+ 
+                <li>Solution  Page
+                    <p>
+                        This page is accessible from myHomeworks_student Page and allows a user to view the 
+                        description of a problem and submit a solution for it.
+                    </p>
+                </li>
+                
             </ol>
         </section>
     </section>
@@ -338,7 +336,7 @@
                     <img class="ig" src="imgs/profesor_class.png" alt="">
                 </li>
                 <li>Homework
-                    <img class="ig" src="imgs/class_homework.png" alt="">
+                    <img class="ig" src="imgs/viewHomework.png" alt="">
                 </li>
                 <li>About
                     <img class="ig" src="imgs/about.png" alt="">
@@ -350,7 +348,7 @@
                     <img class="ig" src="imgs/help.png" alt="">
                 </li>
                 <li>View Homework 
-                    <img class="ig" src="imgs/viewhomework.png" alt="">
+                    <img class="ig" src="imgs/homework.png" alt="">
                 </li>
                 <li>Solution 
                     <img class="ig" src="imgs/solution.png" alt="">
@@ -532,6 +530,7 @@
                         <li>Documentation</li>
 			<li>Auth API</li>
 			<li>Comments API</li>
+            <li>Classes API</li>
                     </ul>
                 </section>
             </section>
