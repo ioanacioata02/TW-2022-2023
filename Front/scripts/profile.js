@@ -75,7 +75,7 @@ function displayDetails(user) {
 
     profileBoxPart(user);
 
-    if (user.role.toLocaleLowerCase() === "student") {
+    if (user.role.toLocaleLowerCase() === "student") {console.log("sunt student");
         myClass.setAttribute("href", "myClasses.html");
         myHomeworks.setAttribute("href","myHomeworks.html");
     }
