@@ -31,9 +31,13 @@ function getId() {
   }
   
   function displayMembers(members) {
+    const token = localStorage.getItem('token');
+    let id = parseJwt(token).id;
     table="<table>";
     for(let i=0;i<members.length;i++)
     {const member = members[i];
+      if(member.id==id)
+      continue;
       table+="<tr>";
       table+="<td>"+member.id+"</td>";
       table+="<td>"+member.first_name+"</td>";
@@ -50,7 +54,13 @@ function getId() {
     const homeworkId = getId();
     document.location = `viewSolutions_teacher.html?studentId=${id}&hwId=${homeworkId}`;
   }
-
+  function parseJwt(token) {
+    if (!token) {
+      return;
+    }
+    const base64 = token.split('.')[1]; 
+    return JSON.parse(window.atob(base64));
+    }
   
   fetchMembers();
   
