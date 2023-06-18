@@ -63,7 +63,7 @@ class ClassesController extends Controller
                     echo json_encode(["classes"=>$rows, "nrOfClasses" => $nr]);
                 } else {
                     http_response_code(404);
-                    echo json_encode(["userId" => $id, "message" => "No classes were found"]);
+                    echo json_encode(["userId" => $userId, "message" => "No classes were found"]);
                 }
                 break;
             case "POST":
