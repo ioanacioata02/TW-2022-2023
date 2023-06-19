@@ -1,2 +1,2 @@
 # TW-2022-2023
-am facut butoanele de login si sign up
+Link REST documentation https://app.swaggerhub.com/apis/IOANALARISA29/homework-and_problems_api/1.0.0
